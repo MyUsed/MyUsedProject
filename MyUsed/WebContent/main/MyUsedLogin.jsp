@@ -31,7 +31,8 @@
 		<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
 			<td style="vertical-align:left; padding-left: 110px; padding-right: 0px;">
-			<font size="6">My Used</font>
+			
+			<img src="/MyUsed/images/Mlogo2.png" width=170 height="50">
 			</td>
 			<td style="vertical-align:left; padding-left: 50px; padding-right: 0px;">
 				

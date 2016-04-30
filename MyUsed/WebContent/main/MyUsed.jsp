@@ -20,7 +20,7 @@
 			left:0px;
 			-webkit-box-shadow: 0 1px 2px 0 #777;
 			box-shadow: 0 1px 2px 0 #777;
-			background-color:#4c6396;
+			background-color:#3B5998;
 		}
 	</style>
 </head>
@@ -29,12 +29,17 @@
 	<div id="layer_fixed">
 		<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
-			<td style="vertical-align:left; padding-left: 20px; padding-right: 20px;">
-			<font size="6"><img src="/jsp/project/images/MyUsed.PNG" border="0"  height="30"></font>
-			</td>
-			<td style="vertical-align:right; padding-left: 500px; padding-left: 0px;">
-				<input type="text" size="50"/>
-				<button type="submit" class="btn btn-success">Search</button>
+			<td style="vertical-align:left; padding-left: 30px; padding-right: 80px;">
+			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="text" size="70"/>
+				<button type="submit"><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src="/MyUsed/images/Flogo.PNG" width="45"  height="40">
+				<img src="/MyUsed/images/message.PNG" width="40"  height="35">
+				<img src="/MyUsed/images/view.PNG" width="40"  height="35">
 			</td>
 			
 		</tr>
@@ -44,8 +49,8 @@
 
 
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:50%; margin-left:500px; width:200px; height:500px; background:#BDBDBD; }
-#sidebannerL { position:fixed; top:50px; right:50%; margin-right:500px; width:200px; height:500px; background:#BDBDBD; }
+#sidebannerR { position:fixed; top:50px; left:50%; margin-left:500px; width:200px; height:800px; background:#EAEAEA; }
+#sidebannerL { position:fixed; top:50px; right:50%; margin-right:500px; width:200px; height:800px; background:#E9EAED; }
 #content { width:980px; height:3000px; margin:0 auto; background:#EAEAEA; }
 </style>
 </head>
@@ -58,7 +63,8 @@
 </div>
 <div id="sidebannerL">
     <center>
- 	<font size="5">사이드고정L</font>
+ 	<font size="5">사이드고정L</font> <br /><br />
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/modify.PNG" width="30" height="30">&nbsp;프로필 수정</a>
    	</center>
 </div>
 <div id="content">
