@@ -30,16 +30,18 @@
 		<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
 			<td style="vertical-align:left; padding-left: 30px; padding-right: 80px;">
+			<a href="/MyUsed/main/MyUsed.jsp">
 			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
+			</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type="text" size="70"/>
 				<button type="submit"><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<img src="/MyUsed/images/Flogo.PNG" width="45"  height="40">
-				<img src="/MyUsed/images/message.PNG" width="40"  height="35">
-				<img src="/MyUsed/images/view.PNG" width="40"  height="35">
+				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/Flogo.PNG" width="45"  height="40"></a>
+				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/message.PNG" width="40"  height="35"></a>
+				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/view.PNG" width="40"  height="35"></a>
 			</td>
 			
 		</tr>
@@ -62,18 +64,76 @@
    	</center>
 </div>
 <div id="sidebannerL">
-    <center>
+  
  	<font size="5">사이드고정L</font> <br /><br />
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/modify.PNG" width="30" height="30">&nbsp;프로필 수정</a>
-   	</center>
+ 
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/modify.png" width="20" height="20">&nbsp;프로필 수정</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/newSpeed.png" width="20" height="20">&nbsp;뉴스피드</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/categ.png" width="20" height="20">&nbsp;카테고리</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/chat.png" width="20" height="20">&nbsp;메세지</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friend.png" width="20" height="20">&nbsp;친구보기</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/picture.png" width="20" height="20">&nbsp;사진</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/favorite.png" width="20" height="20">&nbsp;즐겨찾기</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/address.png" width="20" height="20">&nbsp;주소</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/board.png" width="20" height="20">&nbsp;게시판</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/deliver.png" width="20" height="20">&nbsp;배송관리</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;좋아요</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/share.png" width="20" height="20">&nbsp;공유하기</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friendSearch.png" width="20" height="20">&nbsp;친구찾기</a>
+ 	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/deposit.png" width="20" height="20">&nbsp;입금현황</a>
+   	<br /><br />
+ 	&nbsp;&nbsp;&nbsp;&nbsp;
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/option.png" width="20" height="20">&nbsp;설정</a>
 </div>
 <div id="content">
 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
 	
+	<table align="center"  width="800" height="200">
+	<tr bgcolor="#FFFFFF">
+	<td align="center">1 
+	</td>
+	</tr>
+	<tr bgcolor="#FFFFFF">
+	<td align="center">
+	2 <br />
+	</td>
+	</tr>
+	<tr bgcolor="#FFFFFF">
+	<td align="center">
+	3
+	</td>
+	</tr>
+	</table>
+	<br /> <br />
 	<center>
- 	<table align="center" border="1" cellspacing="0" paddingspacing="1">
+ 	<table align="center" border="1" cellspacing="0" bgcolor="#FFFFFF">
 
 
 
