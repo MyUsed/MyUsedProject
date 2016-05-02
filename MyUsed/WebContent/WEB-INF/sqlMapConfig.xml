@@ -6,6 +6,7 @@
 	<settings useStatementNamespaces="true" />
 	
 	<sqlMap resource="/sql/mainSQL.xml"/>
+	<sqlMap resource="/sql/memberSQL.xml"/>
 	
 
 

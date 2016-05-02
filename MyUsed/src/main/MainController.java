@@ -23,7 +23,7 @@ public class MainController {
 	public ModelAndView login(){
 		ModelAndView mv = new ModelAndView();
 		
-		mv.setViewName("/main/MyUsedLogin.jsp");
+		mv.setViewName("/member/MyUsedLogin.jsp");
 		return mv;
 	}
 	
