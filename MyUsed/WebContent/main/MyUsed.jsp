@@ -1,10 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 <html lang="ko">
 <head>
+
+ 		<script type="text/javascript">
+        
+              function send(){     
+        
+
+                   document.formId.method = "post"     // method 선택, get, post
+                   document.formId.action = "/MyUsed/main/test.jsp";  // submit 하기 위한 페이지 
+
+                   document.formId.submit();
+                  
+              }
+             
+             
+         </script>
+
+
+
+
 	<meta charset="utf-8"/>
 	<title>MyUsed</title>
 	<style type="text/css">
@@ -22,6 +45,14 @@
 			box-shadow: 0 1px 2px 0 #777;
 			background-color:#3B5998;
 		}
+		
+		input[type=text] {
+ 		padding: 3px;
+ 		text-align: center;
+ 		margin: 0px;
+		}
+		
+		
 	</style>
 </head>
 
@@ -115,22 +146,46 @@
 <div id="content">
 	<br /><br /><br />
 	
+	
+	 <form name="formId" >
+	
 	<table align="center"  width="800" height="200">
 	<tr bgcolor="#FFFFFF">
-	<td align="center">1 
+	<td align="center">
+	<font size="3" color="#3B5998" >상품등록</font> 
+		  <hr width="80%"  > 
 	</td>
 	</tr>
 	<tr bgcolor="#FFFFFF">
 	<td align="center">
-	2 <br />
+		<textarea rows = "5" cols = "60" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> 
+	
+		<hr width="80%"  > 
 	</td>
+	
 	</tr>
 	<tr bgcolor="#FFFFFF">
 	<td align="center">
-	3
+	 
+	 	
+           <div id='button' style='position:relative;top:23;left:152;height:22;width:96;background-color:#ffffff;padding:0 0 0 4;'>
+           <img src="http://blogimgs.naver.com/imgs/btn_addfile.gif" border="0" onClick="filename.click()">	</div>
+           
+			<input type="file" name="filename" style='display: none;'>
+			
+
+				
+              <img src="/MyUsed/images/submit.PNG" onclick="javascript_:send();" />
+
+	 	
+	 	
 	</td>
 	</tr>
 	</table>
+	
+	 </form>
+	
+	
 	<br /> <br />
 	<center>
  	<table align="center" border="1" cellspacing="0" bgcolor="#FFFFFF">
