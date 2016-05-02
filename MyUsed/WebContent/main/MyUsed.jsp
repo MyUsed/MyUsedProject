@@ -37,11 +37,11 @@
 				<input type="text" size="70"/>
 				<button type="submit"><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/Flogo.PNG" width="45"  height="40"></a>
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/message.PNG" width="40"  height="35"></a>
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/view.PNG" width="40"  height="35"></a>
+				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40"></a>
+				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35"></a>
+				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainView.png" width="40"  height="35"></a>
 			</td>
 			
 		</tr>
@@ -51,8 +51,8 @@
 
 
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:50%; margin-left:500px; width:200px; height:800px; background:#EAEAEA; }
-#sidebannerL { position:fixed; top:50px; right:50%; margin-right:500px; width:200px; height:800px; background:#E9EAED; }
+#sidebannerR { position:fixed; top:50px; left:50%; margin-left:470px; width:200px; height:800px; background:#EAEAEA; }
+#sidebannerL { position:fixed; top:50px; right:50%; margin-right:470px; width:200px; height:800px; background:#E9EAED; }
 #content { width:980px; height:3000px; margin:0 auto; background:#EAEAEA; }
 </style>
 </head>
@@ -65,8 +65,8 @@
 </div>
 <div id="sidebannerL">
   
- 	<font size="5">사이드고정L</font> <br /><br />
- 
+ 	
+ 	<br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/modify.png" width="20" height="20">&nbsp;프로필 수정</a>
  	<br /><br />

@@ -19,5 +19,13 @@ public class MainController {
 		return mv;
 	}
 	
+	@RequestMapping("/MyUsedLogin.nhn")
+	public ModelAndView login(){
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("/main/MyUsedLogin.jsp");
+		return mv;
+	}
+	
 
 }
