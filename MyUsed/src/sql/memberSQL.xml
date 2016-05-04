@@ -6,17 +6,25 @@
 		insert into memberlist values(sq_memberlist.NEXTVAL, #id#, #name#, #password#, #birthdate#, #gender#, #naverid#)
 	</insert>
 
-	<select id="checkId" resultClass="int" parameterClass="String">
+	<select id="checkNaverId" resultClass="int" parameterClass="String">
 		select count(*) from memberlist where naverid=#naverid#
 	</select>
+	
+	<select id="checkId" resultClass="int" parameterClass="String">
+		select count(*) from memberlist where id=#id#
+	</select>
 
-	<statement id='createMemInfo' parameterClass="String">
-		create table mem_#id#
-			id varchar2(100) primary key,
-			email varchar2(100),
-			name varchar2(50),
-			phone varchar2(50)
-	</statement>
+	<select id="loginCheck" resultClass="int" parameterClass="java.util.Map">
+		select count(*) from memberlist where id=#id# and password=#password#
+	</select>
+
+	<select id="selectName" resultClass="String" parameterClass="String">
+		select name from memberlist where id=#id#
+	</select>
+	
+	
+
+	
 
 
 </sqlMap>

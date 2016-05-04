@@ -36,7 +36,7 @@
     var naver = NaverAuthorize({
         client_id : "qMD7f0qkqenQGghOLdVc",
         //redirect_uri : "http://192.168.35.247:8000/test/login.nhn",	//데탑
-        redirect_uri : "http://127.0.0.1:8000/MyUsed/MyUsedLogin.nhn",	//학원
+        redirect_uri : "http://192.168.50.9:8000/MyUsed/MyUsedLogin.nhn",	//학원
         client_secret : "QF4E_FPwax"
     });
 
@@ -110,7 +110,7 @@
             str4 = "&birthday="+birthday.toString();
             str5 = "&accesstoken="+accesstoken.toString();
             //urladd = "http://192.168.35.247:8000/test/main.nhn?email="+email.toString(); //데탑
-            urladd = "http://127.0.0.1:8000/MyUsed/MyUsedNaverLoginPro.nhn?email="+email.toString();	//학원
+            urladd = "http://192.168.50.9:8000/MyUsed/MyUsedNaverLoginPro.nhn?email="+email.toString();	//학원
             window.location=urladd + str1 + str2 + str3 + str4 + str5; 
              
             });
@@ -131,45 +131,25 @@
      var userinput = eval("document.userinput");
      if(!userinput.signup_lname.value) {
          alert("성(姓)를 입력하세요");
-         return 0;
+         return false;
      }
 
      if(!userinput.signup_fname.value) {
          alert("이름을 입력하세요");
-         return 0;
+         return false;
      }
      if(!userinput.signup_pw.value ) {
          alert("비밀번호를 입력하세요");
-         return 0;
+         return false;
      }
      if(!userinput.signup_id.value ) {
          alert("아이디를 입력하세요");
-         return 0;
+         return false;
      }
      
      if(userinput.signup_id.value != userinput.signup_idchk.value)
      {
          alert("아이디를 동일하게 입력하세요");
-         return false;
-     }
-     if(!userinput.year.value )
-     {
-         alert("년도를 입력하세요");
-         return false;
-     }
-     if(!userinput.month.value )
-     {
-         alert("생일을 입력하세요");
-         return false;
-     }
-     if(!userinput.date.value )
-     {
-         alert("생일을 입력하세요");
-         return false;
-     }
-     if(!userinput.gender.value )
-     {
-         alert("성별을 입력하세요");
          return false;
      }
  }
@@ -178,9 +158,7 @@
   <script type="text/javascript">
     $(document).ready(function(){		//onload이벤트같은것(시작하자마자 바로 동작)
       $("#button").click(function(){
-    	  if(checkIt() != false){
-              callAjax();    		  
-    	  }
+          callAjax();
       });
     });
     function callAjax(){
@@ -276,8 +254,7 @@
 
               <input type="password" placeholder="Password" name="pw" class="form-control">
 
-            
-
+  
             <button type="submit" class="btn btn-success">Sign in</button>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" onClick="loginNaver()" class="btn btn-success">네이버로 로그인</button>
@@ -291,86 +268,48 @@
 		</tr>
 	
 		</table>
-	
+		
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:40%; margin-left:30px; width:800px; height:700px; background:#EAEAEA; overflow:auto; }
-#sidebannerL { position:fixed; top:50px; right:45%; margin-right:30px; width:800px; height:700px; background:#EAEAEA; }
+#body { position:fixed; top:50px; width:100%; height:700px; background:#EAEAEA; }
 
 </style> 
-</head>
+<div id="body">
+
+<br /><br /><br />
+<br /><br />
 
 
-<div id="sidebannerR">
-	<center>
-	<br/> <br /> <br />
- 	<font size="7"><b>가입하기</b></font>
- 	  <div class="img_area">
-           
-          <p style="font-size: 18px; line-height: 200%;">항상 지금처럼 무료로 즐기실 수 있습니다.</p>
-          <form class="signup" action="/MyUsed/MyUsedJoinPro.nhn" method="post" name="userinput" onSubmit="return checkIt()">
-            <input class="signup_name" type="text" name="signup_lname" id="signup_lname" placeholder="성(姓)">
-            <input class="signup_name" type="text" name="signup_fname" id="signup_fname" placeholder="이름(성은 제외)"> <br /> <br />
-            <input class="signup_input" size="45" type="text" name="signup_id" id="signup_id" placeholder="이메일 또는 휴대폰 번호"> <br /> <br />
-            <input class="signup_input" size="45" type="text" name="signup_idchk" placeholder="이메일 또는 휴대폰 번호 재입력"> <br /> <br />
-            <input class="signup_input" size="46" type="password" name="signup_pw" id="signup_pw" placeholder="새 비밀번호">
-            <p style="font-size: 18px; color: #000; padding-top: 8px;">생일</p>
-            <!-- small width -->
-            <table>
-              <tbody>
-                <tr>
-                  <!-- birth -->
-                  <td>
-                  
-                  <select name="year" id="year">
-                    <option>년도</option>
-                    <c:forEach var="i" begin="1905" end="2016" step="1">
-                    	<option>${i}</option>
-                    </c:forEach>
-                  </select>
-                  
-                  <select name="month" id="month">
-                    <option>월</option>                    
-                    <c:forEach var="i" begin="1" end="12" step="1">
-                    	<option>${i}</option>
-                    </c:forEach>
-                  </select>
-                  
-                  <select name="date" id="date">
-                    <option>일</option>
-                    <c:forEach var="i" begin="1" end="31" step="1">
-                    	<option>${i}</option>
-                    </c:forEach>
-                  </select>
-                  
-                  </td>
-                  <!-- /birth -->
-                  
-                </tr>
-                <tr>
-                  <td>&nbsp;&nbsp;<input type="radio" name="gender" id="gender" value="F">&nbsp;<span style="color: #000; font-size: 12px;">여성</span>
-                    &nbsp;&nbsp;&nbsp;<input type="radio" name="gender" id="gender" value="M"><span style="color: #000; font-size: 12px;">&nbsp;남성</span></td>
-                  <td></td>
-                </tr>
-                
-              </tbody>
-            </table> <br /><br />
-            <!-- <input type="submit" value="가입하기"> -->
-            <font size="2">
-            	가입하기 버튼을 클릭하면 약관에 동의하며 쿠키 사용을 포함한 <br />
-            	데이터 정책을 읽고 이해하신 것으로 간주됩니다.<br /><br /><br />
-            </font><!-- onClick="return checkIt()"  -->
-	     	<input id="button" type="button" value="가입하기" class="btn btn-success" style="width:180px; height:50px" >
-            </form>
-   	</center>
-   	
- 
-   	</div>
+<form action="/MyUsed/MyUsedLoginPro.nhn" method="post">
+<table bgcolor="#FFFFFF" align="center">
+	<tr height="360">
+		<td width="600" bgcolor="#FFFFFF" align="center">
+			<font size="5">
+			MyUsed에 로그인 <br/><br />
+			</font>			
+			<input type="text" name="id" value="${id}" placeholder="아이디" style="width:300px">
+			<br /><br />
+			<input type="password" name="pw"  placeholder="비밀번호" style="width:300px">
+			<br /><br />
+			<input type="submit" value="로그인" style="width:300px; height:50px; background-color:#4c6396;">
+			<br /><br />
+		
+			<font size="2" color="#4374D9">
+			<a href="/MyUsed/">
+			문제가 있나요?
+			</a> · 
+			<a href="/MyUsed/MyUsedLogin.nhn">
+			MyUsed에 가입하기
+			</a>
+			<br /><br />
+			</font>
+
+		</td>
+	</tr>
+</table>
+
+</form>
 </div>
-<div id="sidebannerL">
-    <center>
- 	<font size="5">사이드고정L</font>
-   	</center>
-</div>
+
 </body>
 
 	

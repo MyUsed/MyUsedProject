@@ -19,9 +19,14 @@
                    document.formId.action = "mainTest.nhn";  // submit 하기 위한 페이지 
 
                    document.formId.submit();
+                   document.formId.image_preview();
                   
               }
-             
+              
+            
+              
+   
+              
              
          </script>
 
@@ -160,19 +165,18 @@
 	
 	<table align="center"  width="800" height="200">
 	<tr bgcolor="#FFFFFF">
-	<td align="center" colspan="4">
+	<td align="center" colspan="8">
 	<font size="3" color="#3B5998" >상품등록</font> 
 		  <hr width="80%"  > 
 	</td>
 	</tr>
 	<tr bgcolor="#FFFFFF">
-	<td align="center" colspan="4">
+	<td align="center" colspan="8">
 	<br/>
 		
 		<textarea rows = "5" cols = "90" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> 
 	
 		<hr width="80%"  > 
-		
 		
 	
 	</td>
@@ -184,7 +188,7 @@
 	
 	
 	
-	<c:forEach var="i" begin="1" end="4">
+		<c:forEach var="i" begin="1" end="8">
     <td align="center"  >
 <!-- 이미지 미리보기  -->
 
@@ -197,22 +201,25 @@
     display:none;
 }
   </style>
+  
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 
         <label for="image${i}">Image${i}</label>
-    
-        <input type="file" name="image${i}" id="image${i}" style='display: none;'/>
+   
+        <input type="file" name="image${i}" id="image${i}" style='display: none;' >
 	
    
-    <div id="image${i}_preview" style="display:none;" >
-        <img src="#" />
+    <div id="image${i}_preview" style='display: none;'>
+        <img src="/MyUsed/images/option.png" width="50" height="50"/>
         <a href="#">Remove</a>
     </div>
- 
+
 
     <script type="text/javascript">
 
+ 
+    
     $('#image${i}').on('change', function() {
         
         ext = $(this).val().split('.').pop().toLowerCase(); //확장자
@@ -246,14 +253,13 @@
     }
     </script>
 </td>
-<!-- 이미지 미리보기  -->
 </c:forEach>
-
+<!-- 이미지 미리보기  -->
 
 
 </tr>
 	<tr bgcolor="#FFFFFF" align="center"	>
-		<td colspan="4">
+		<td colspan="8">
 	 	<img src="/MyUsed/images/submit.PNG" onclick="javascript_:send();" />
 	 	</td>
 	</tr> 	
