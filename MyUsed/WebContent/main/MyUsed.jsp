@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+ 
 
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -98,7 +99,7 @@
 <style type="text/css">
 #sidebannerR { position:fixed; top:50px; left:50%; margin-left:470px; width:200px; height:800px; background:#EAEAEA; }
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:470px; width:200px; height:800px; background:#E9EAED; }
-#content { width:980px; height:3000px; margin:0 auto; background:#EAEAEA; }
+#content { width:980px; height:9000px; margin:0 auto; background:#EAEAEA; }
 </style>
 </head>
 
@@ -163,7 +164,7 @@
 	
 	 <form name="formId" enctype="multipart/form-data" action="mainTest.nhn" method="post" >
 	
-	<table align="center"  width="800" height="200">
+	<table align="center"  width="700" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
 	<font size="3" color="#3B5998" >상품등록</font> 
@@ -173,9 +174,17 @@
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
 	<br/>
-		
+		<select name="categ">
+                   <option>카테고리</option>
+                   <option>의류</option>
+                   <option>전자제품</option>
+                   <option>가구</option>
+                   <option>티켓</option>
+                   <option>기타</option>
+        </select>
+        <br />
 		<textarea rows = "5" cols = "90" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> 
-	
+		<input type="text" name="price" placeholder="상품가격"/>
 		<hr width="80%"  > 
 		
 	
@@ -207,11 +216,11 @@
 
         <label for="image${i}">Image${i}</label>
    
-        <input type="file" name="image${i}" id="image${i}" style='display: none;' >
+        <input type="file" name="image${i}" id="image${i}" style='display: none;'>
 	
    
     <div id="image${i}_preview" style='display: none;'>
-        <img src="/MyUsed/images/option.png" width="50" height="50"/>
+        <img src="/MyUsed/images/option.png" width="70" height="70"/>
         <a href="#">Remove</a>
     </div>
 
@@ -290,270 +299,41 @@
 	
 	
 	
+<center>	
+<!--  상품 보기 페이지  -->	
 	
-	
-	
-	
+<c:forEach begin="1" end="10">	
 	<br /> <br />
-	<center>
- 	<table align="center" border="1" cellspacing="0" bgcolor="#FFFFFF">
-
-
-
-<tr><td width="200" rowspan="5" align="center">
-<img src="/jsp/save/0876.jpg" width="200" height="300">   
-</td>
-</tr>
-
-<tr height="30">
-<td colspan="2"  align="center">카테고리</td>
-<td colspan="2" align="center"> ${product.itemCateg}</td></tr>
-
-<tr height="30">
-<td colspan="2" align="center">판매가격</td>
-<td colspan="2" width="300" align="center" >${product.itemPrice}원</td>
-</tr>
-
-<tr height="30">
-<td colspan="4" align="center"><font color="black"><b>제품설명</b></font></td>
-</tr>
-
-<tr height="170">
-<td colspan="4" align="center">${product.itemIntro}</td></tr>
-
-
-<tr><td colspan="5" align="center">구매 개수:
-<select name="orderNum">
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-</select>
-</td></tr>
-
-<tr align="center">
-<td colspan="5" align="center">
-<input type="hidden" name ="itemNum" value="${product.itemNum}">
-<c:if test="${product.itemStock > 0}">      
-<input type="submit" value="주문하기">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</c:if>
-<c:if test="${product.itemStock <= 0}">
-<input type="button" value="SOLD OUT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</c:if>
-<input type="button" value="돌아가기" onClick="javascript:window.location='main.nhn'"></td>
-</tr>
-
-</table>
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
 	
-	<center>
- 	<table align="center" border="1" cellspacing="0" paddingspacing="1">
+ 	<table align="center"  width="530" height="180">
+		<tr	bgcolor="#FFFFFF">
+		<td>
+		(   )님이 상품을 좋아합니다
+		<hr width="100%" > 
+		</td>
+		</tr>
+		
+		<tr  bgcolor="#FFFFFF">
+		<td align="center">
+		<img src="/MyUsed/images/sample.jpg" width="500" height="350"/>
+		</td>
+		</tr>
+		
+		<tr bgcolor="#FFFFFF">
+		<td>
+		<hr width="100%"  > 
+		좋아요 / 댓글달기 / 공유하기 / 구매하기 
+		</td>
+		</tr>
 
-
-
-<tr><td width="200" rowspan="5" align="center">
-<img src="/jsp/save/1.jpg" width="200" height="300">   
-</td>
-</tr>
-
-<tr height="30">
-<td colspan="2"  align="center">카테고리</td>
-<td colspan="2" align="center"> ${product.itemCateg}</td></tr>
-
-<tr height="30">
-<td colspan="2" align="center">판매가격</td>
-<td colspan="2" width="300" align="center" >${product.itemPrice}원</td>
-</tr>
-
-<tr height="30">
-<td colspan="4" align="center"><font color="black"><b>제품설명</b></font></td>
-</tr>
-
-<tr height="170">
-<td colspan="4" align="center">${product.itemIntro}</td></tr>
-
-
-<tr><td colspan="5" align="center">구매 개수:
-<select name="orderNum">
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-</select>
-</td></tr>
-
-<tr align="center">
-<td colspan="5" align="center">
-<input type="hidden" name ="itemNum" value="${product.itemNum}">
-<c:if test="${product.itemStock > 0}">      
-<input type="submit" value="주문하기">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</c:if>
-<c:if test="${product.itemStock <= 0}">
-<input type="button" value="SOLD OUT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</c:if>
-<input type="button" value="돌아가기" onClick="javascript:window.location='main.nhn'"></td>
-</tr>
-
-</table>
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	<table align="center" border="1" cellspacing="0" paddingspacing="1">
-
-
-
-<tr><td width="200" rowspan="5" align="center">
-<img src="/jsp/save/11.jpg" width="200" height="300">   
-</td>
-</tr>
-
-<tr height="30">
-<td colspan="2"  align="center">카테고리</td>
-<td colspan="2" align="center"> ${product.itemCateg}</td></tr>
-
-<tr height="30">
-<td colspan="2" align="center">판매가격</td>
-<td colspan="2" width="300" align="center" >${product.itemPrice}원</td>
-</tr>
-
-<tr height="30">
-<td colspan="4" align="center"><font color="black"><b>제품설명</b></font></td>
-</tr>
-
-<tr height="170">
-<td colspan="4" align="center">${product.itemIntro}</td></tr>
-
-
-<tr><td colspan="5" align="center">구매 개수:
-<select name="orderNum">
-<option>1</option>
-<option>2</option>
-<option>3</option>
-<option>4</option>
-<option>5</option>
-<option>6</option>
-<option>7</option>
-<option>8</option>
-<option>9</option>
-<option>10</option>
-</select>
-</td></tr>
-
-<tr align="center">
-<td colspan="5" align="center">
-<input type="hidden" name ="itemNum" value="${product.itemNum}">
-<c:if test="${product.itemStock > 0}">      
-<input type="submit" value="주문하기">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</c:if>
-<c:if test="${product.itemStock <= 0}">
-<input type="button" value="SOLD OUT">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</c:if>
-<input type="button" value="돌아가기" onClick="javascript:window.location='main.nhn'"></td>
-</tr>
-
-</table>
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
- 	<br /><br /><br />
-	<br /><br /><br />
-	<br /><br /><br />
-	
-	<center>
- 	내용
- 	</center>
+	</table>
  	
  	
+</c:forEach>	
+<!--  상품 보기 페이지  -->	
+</center>
+
  	
-</div>
-
-
-	
-	
-	<br /><br /><br />
-	
-	
-
 
 </body>
 </html>

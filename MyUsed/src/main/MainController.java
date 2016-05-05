@@ -49,7 +49,7 @@ public class MainController {
 	for(int i=1;i<=8;i++){
 
 	MultipartFile mf = request.getFile("image"+i); // 파일을 받는 MultipartFile 클래스  (원본)
-	if(!mf.isEmpty()){
+	if(!mf.isEmpty()){		// mf에 파일이 담겼는지 확인 한후 있으면 업로드 수행 
 	String orgName = mf.getOriginalFilename(); 
 	File copy = new File("E:\\Jsp Example\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\"+ orgName); // 업로드
 	System.out.println("업로드성공");
@@ -72,7 +72,7 @@ public class MainController {
 	}
 	
 
-		return "/main/test.jsp";
+		return "MyUsed.nhn";
 	}
 	
 
