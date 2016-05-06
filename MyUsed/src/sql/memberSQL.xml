@@ -22,7 +22,9 @@
 		select name from memberlist where id=#id#
 	</select>
 	
-	
+	<select id="searchMember" resultClass="member.MemberDTO" parameterClass="String">
+		select * from memberlist where name like '%'||#name#||'%' order by num desc
+	</select>
 
 	
 

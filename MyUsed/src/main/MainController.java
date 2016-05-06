@@ -1,6 +1,8 @@
 package main;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,6 +34,29 @@ public class MainController {
 		request.setAttribute("name", name);
 		
 		mv.setViewName("/main/MyUsed.jsp");
+		return mv;
+	}	
+	
+	
+	@RequestMapping("/MyUsedSearchMember.nhn")
+	public ModelAndView MyUsedSearchMember(HttpServletRequest request, String member){
+		ModelAndView mv = new ModelAndView();
+		/** 로그인한 사용자의 이름 가져오기(세션아이디 이용) */
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("memId");
+		String name = (String) sqlMap.queryForObject("member.selectName", sessionId);
+		
+		/** 회원검색 -> 동명이인이 많아질 경우 검색 우선순위 정하는것 생각해보기 */
+		System.out.println(member);
+		List searchList = new ArrayList();
+		searchList = sqlMap.queryForList("member.searchMember", member);
+
+		
+		request.setAttribute("name", name);
+		request.setAttribute("member", member);
+		request.setAttribute("searchList", searchList);
+		
+		mv.setViewName("/main/MyUsedSearchMember.jsp");
 		return mv;
 	}	
 	

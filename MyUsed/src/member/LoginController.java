@@ -26,15 +26,15 @@ public class LoginController {
 	private MemberDTO memDTO = new MemberDTO();
 	
 
-	/** ·Î±×¾Æ¿ô ¾ÆÁ÷ ¾ÈµÊ */
-/*	@RequestMapping("/logout.nhn")
+	/** ³×ÀÌ¹ö ·Î±×¾Æ¿ô ¾ÆÁ÷ ¾ÈµÊ */
+	@RequestMapping("/MyUsedLogout.nhn")
 	public String logout(HttpServletRequest request){
 		
 		HttpSession session = request.getSession();
 		session.removeAttribute("memId");
 		
-		return "/naver/logout.jsp";
-	}*/
+		return "/member/MyUsedLogoutPro.jsp";
+	}
 	
 	@RequestMapping("/MyUsedNaverLoginPro.nhn")
 	public String MyUsedNaverLoginPro(HttpServletRequest request, String id, String email, String name, String gender, String birthday, String accesstoken){
