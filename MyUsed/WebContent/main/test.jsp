@@ -4,4 +4,9 @@
 
 <h2> test 페이지 </h2> <br/>
 
-content = ${content}
+content = ${content} <br />
+카테고리 = ${categ} <br />
+가격 = ${price}
+
+
+

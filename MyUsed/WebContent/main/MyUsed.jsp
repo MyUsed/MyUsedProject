@@ -97,18 +97,46 @@
 
 
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:50%; margin-left:470px; width:200px; height:800px; background:#EAEAEA; }
-#sidebannerL { position:fixed; top:50px; right:50%; margin-right:470px; width:200px; height:800px; background:#E9EAED; }
-#content { width:980px; height:9000px; margin:0 auto; background:#EAEAEA; }
+#sidebannerR { position:fixed; top:50px; left:48%; margin-left:540px; width:240px; height:800px; background:#EAEAEA; }
+#sidebannerL { position:fixed; top:50px; right:50%; margin-right:540px; width:200px; height:800px; background:#E9EAED; }
+#content { width:670px; height:9000px; margin:0 auto; margin-left:190px;background:#EAEAEA; }
+#advertise {  position:fixed; width:410px; height:9000px; left:57%; margin-right:320px;background:#EAEAEA; }
+
 </style>
 </head>
 
 <body>
+
+
 <div id="sidebannerR">
 	<center>
  	<font size="5">사이드고정R</font>
    	</center>
 </div>
+
+<div id="advertise">
+<br /> <br /> <br />
+<center>
+	<table align="center" width="280" height="550">
+	<tr bgcolor="#FFFFFF">
+	<td align="center">
+		<hr width="90%" />
+	<a href="http://www.iei.or.kr/">
+	<img src="/MyUsed/images/adver.PNG" width="270" height="370"/>
+		<hr width="90%" />
+	</a>
+	<a href="http://www.iei.or.kr/"><u>국비지원 바로가기</u></a>
+	</td>
+	</tr>
+	</table>
+	
+	
+	
+</center>
+	
+</div>
+
+
 <div id="sidebannerL">
   
  	
@@ -158,13 +186,17 @@
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/option.png" width="20" height="20">&nbsp;설정</a>
 </div>
+
+
+
+
 <div id="content">
 	<br /><br /><br />
 	
 	
 	 <form name="formId" enctype="multipart/form-data" action="mainTest.nhn" method="post" >
 	
-	<table align="center"  width="700" height="200">
+	<table align="center"  width="570" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
 	<font size="3" color="#3B5998" >상품등록</font> 
@@ -183,7 +215,13 @@
                    <option>기타</option>
         </select>
         <br />
-		<textarea rows = "5" cols = "90" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> 
+		<textarea rows = "5" cols = "80" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
+		<font size ="2" color="#3B5998">
+		* 배송료
+		포함(선불) <input type="radio" name="sendPay" value="yes" />
+		미포함(착불) <input type="radio" name="sendPay" value="no"  />
+		</font>
+		<br />
 		<input type="text" name="price" placeholder="상품가격"/>
 		<hr width="80%"  > 
 		
@@ -277,35 +315,15 @@
 	</table>
 	
 	 </form>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-<center>	
+	 
+	 <br /> <br />
+
 <!--  상품 보기 페이지  -->	
 	
-<c:forEach begin="1" end="10">	
-	<br /> <br />
+
+
 	
- 	<table align="center"  width="530" height="180">
+ 	<table align="center"  width="570" height="180">
 		<tr	bgcolor="#FFFFFF">
 		<td>
 		(   )님이 상품을 좋아합니다
@@ -315,7 +333,7 @@
 		
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
-		<img src="/MyUsed/images/sample.jpg" width="500" height="350"/>
+		<img src="/MyUsed/images/sample.jpg" width="550" height="350"/>
 		</td>
 		</tr>
 		
@@ -327,11 +345,37 @@
 		</tr>
 
 	</table>
+ 	<br />	<br /> <br />
  	
- 	
-</c:forEach>	
+
 <!--  상품 보기 페이지  -->	
-</center>
+	 
+	 
+	 
+	 
+	 
+</div>
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
  	
 
