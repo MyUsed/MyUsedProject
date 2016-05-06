@@ -97,10 +97,10 @@
 
 
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:45%; margin-left:540px; width:240px; height:800px; background:#EAEAEA; }
+#sidebannerR { position:fixed; top:50px; left:43%; margin-left:540px; width:240px; height:800px; background:#EAEAEA; }
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:465px; width:205px; height:800px; background:#E9EAED; }
-#content { width:670px; height:9000px; margin:0 auto; margin-left:190px;background:#EAEAEA; }
-#advertise {  position:fixed; width:410px; height:9000px; left:57%; margin-right:320px;background:#EAEAEA; }
+#content { width:630px; height:9000px; margin:0 auto; margin-left:180px;background:#EAEAEA; }
+#advertise {  position:fixed; width:300px; height:9000px; left:61%; margin-right:300px;background:#EAEAEA; }
 
 </style>
 </head>
@@ -196,7 +196,7 @@
 	
 	 <form name="formId" enctype="multipart/form-data" action="mainTest.nhn" method="post" >
 	
-	<table align="center"  width="570" height="200">
+	<table align="center"  width="550" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
 	<font size="3" color="#3B5998" >상품등록</font> 
@@ -215,14 +215,14 @@
                    <option>기타</option>
         </select>
         <br />
-		<textarea rows = "5" cols = "80" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
+		<textarea rows = "5" cols = "73" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
 		<font size ="2" color="#3B5998">
 		* 배송료
 		포함(선불) <input type="radio" name="sendPay" value="yes" />
 		미포함(착불) <input type="radio" name="sendPay" value="no"  />
 		</font>
 		<br />
-		<input type="text" name="price" placeholder="상품가격"/>
+		<input type="text" name="price" size="7" placeholder="상품가격"/>
 		<hr width="80%"  > 
 		
 	
@@ -323,7 +323,7 @@
 
 <c:forEach begin="1" end="10">
 	
- 	<table align="center"  width="570" height="180">
+ 	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
 		<td>
 		(   )님이 상품을 좋아합니다
