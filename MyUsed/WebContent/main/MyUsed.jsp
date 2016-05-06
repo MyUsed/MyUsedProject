@@ -97,8 +97,8 @@
 
 
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:48%; margin-left:540px; width:240px; height:800px; background:#EAEAEA; }
-#sidebannerL { position:fixed; top:50px; right:50%; margin-right:540px; width:200px; height:800px; background:#E9EAED; }
+#sidebannerR { position:fixed; top:50px; left:45%; margin-left:540px; width:240px; height:800px; background:#EAEAEA; }
+#sidebannerL { position:fixed; top:50px; right:50%; margin-right:465px; width:205px; height:800px; background:#E9EAED; }
 #content { width:670px; height:9000px; margin:0 auto; margin-left:190px;background:#EAEAEA; }
 #advertise {  position:fixed; width:410px; height:9000px; left:57%; margin-right:320px;background:#EAEAEA; }
 
@@ -114,7 +114,7 @@
    	</center>
 </div>
 
-<div id="advertise">
+<div id="advertise" >
 <br /> <br /> <br />
 <center>
 	<table align="center" width="280" height="550">
@@ -321,7 +321,7 @@
 <!--  상품 보기 페이지  -->	
 	
 
-
+<c:forEach begin="1" end="10">
 	
  	<table align="center"  width="570" height="180">
 		<tr	bgcolor="#FFFFFF">
@@ -345,12 +345,12 @@
 		</tr>
 
 	</table>
- 	<br />	<br /> <br />
+ 	<br />	
  	
 
 <!--  상품 보기 페이지  -->	
 	 
-	 
+</c:forEach>
 	 
 	 
 	 

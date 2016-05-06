@@ -44,7 +44,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/mainTest.nhn")
-	public String mainSubmit(MultipartHttpServletRequest request , String content , String categ , String price){
+	public String mainSubmit(MultipartHttpServletRequest request , String content , String categ , String price , String sendPay){
 	
 	for(int i=1;i<=8;i++){
 
@@ -57,9 +57,10 @@ public class MainController {
 	System.out.println(orgName);
 	System.out.println(copy);
 	
+	request.setAttribute("sendPay", sendPay);
 	request.setAttribute("price", price);
 	request.setAttribute("categ", categ);
-	request.setAttribute("orgName", orgName);
+	request.setAttribute("orgName"+i, orgName);
 	request.setAttribute("copy", copy);
 	request.setAttribute("content", content);
 	
