@@ -94,34 +94,40 @@ public class LoginController {
 		loginmap.put("id", id);
 		loginmap.put("password", pw);
 		
-		int check = (Integer)sqlMapClientTemplate.queryForObject("member.loginCheck", loginmap);
-		if(check == 1){
-			// 가입된 아이디가 있으면 세션에 넣음
-			HttpSession session = request.getSession();
-			session.setAttribute("memId", id);
+		int naver = (Integer) sqlMapClientTemplate.queryForObject("member.joinedNaverId", id);
+		System.out.println(naver);
+		if(naver == 0){			//네이버 아이디가 아닐경우
 			
-			result = "/member/MyUsedLoginPro.jsp";
-		}else{
-			/**  
-			 * 아이디가 디비에 있는지 검색한 후 
-			 * 디비에 있으면 ~~님 맞으세요? 창 띄우고 다시 로그인/비번찾기
-			 * 디비에 없으면 로그인창 띄우고 계정가입(입력된 이메일과 일치하는 계정이 없습니다. 계정을 가입하세요.)
-			 * */
-			int checkId = (Integer)sqlMapClientTemplate.queryForObject("member.checkId", id);
-			if(checkId == 1){
-				String name = (String) sqlMapClientTemplate.queryForObject("member.selectName", id);
+			int check = (Integer)sqlMapClientTemplate.queryForObject("member.loginCheck", loginmap);
+			if(check == 1){
+				// 가입된 아이디가 있으면 세션에 넣음
+				HttpSession session = request.getSession();
+				session.setAttribute("memId", id);
+				
+				result = "/member/MyUsedLoginPro.jsp";
+			}else{
+				/**  
+				 * 아이디가 디비에 있는지 검색한 후 
+				 * 디비에 있으면 ~~님 맞으세요? 창 띄우고 다시 로그인/비번찾기
+				 * 디비에 없으면 로그인창 띄우고 계정가입(입력된 이메일과 일치하는 계정이 없습니다. 계정을 가입하세요.)
+				 * */
+				int checkId = (Integer)sqlMapClientTemplate.queryForObject("member.checkId", id);
+				if(checkId == 1){
+					String name = (String) sqlMapClientTemplate.queryForObject("member.selectName", id);
 
-				request.setAttribute("name", name);
-				request.setAttribute("id", id);
-			
-				result = "/member/MyUsedLoginReconfirm.jsp";
-				}else{
+					request.setAttribute("name", name);
 					request.setAttribute("id", id);
-					result = "/member/MyUsedLoginOnly.jsp";
-				}
+				
+					result = "/member/MyUsedLoginReconfirm.jsp";
+					}else{
+						request.setAttribute("id", id);
+						result = "/member/MyUsedLoginOnly.jsp";
+					}
+			}
+		}else{
+			result = "/member/MyUsedLoginFailed.jsp";
 		}
 		
-
 		return result;
 	}
 

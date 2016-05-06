@@ -6,6 +6,7 @@
 		insert into memberlist values(sq_memberlist.NEXTVAL, #id#, #name#, #password#, #birthdate#, #gender#, #naverid#)
 	</insert>
 
+	<!-- 가입되어 있는 아이디인지 체크(네이버) -->
 	<select id="checkNaverId" resultClass="int" parameterClass="String">
 		select count(*) from memberlist where naverid=#naverid#
 	</select>
@@ -14,6 +15,7 @@
 		select count(*) from memberlist where id=#id#
 	</select>
 
+	<!-- 가입된 아이디인지 체크(일반) -->
 	<select id="loginCheck" resultClass="int" parameterClass="java.util.Map">
 		select count(*) from memberlist where id=#id# and password=#password#
 	</select>
@@ -26,7 +28,9 @@
 		select * from memberlist where name like '%'||#name#||'%' order by num desc
 	</select>
 
-	
+	<select id="joinedNaverId" resultClass="int" parameterClass="String">
+		select naverid from (select * from memberlist where id=#id#)
+	</select>
 
 
 </sqlMap>
