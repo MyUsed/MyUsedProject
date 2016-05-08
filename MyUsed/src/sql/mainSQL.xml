@@ -2,6 +2,19 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="main">
 
-
+	<statement id="test" parameterClass="java.util.Map">
+		create table test_$num$(
+                test_num number,
+                test_pic varchar2(4000),
+                reg date default sysdate
+                )
+	</statement>
+	
+	<statement id="test_seq" parameterClass="java.util.Map">
+	
+		create sequence test_$num$seq nocache
+	
+	</statement>
+		
 
 </sqlMap>

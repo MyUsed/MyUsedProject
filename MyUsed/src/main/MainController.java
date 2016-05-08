@@ -2,7 +2,9 @@ package main;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,6 +23,29 @@ public class MainController {
 	@Autowired	 // 컨트롤러로 부터 Date 객체를 자동으로 받아줌;
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 	
+	
+	// ==========================  동적테이블 생성 테스트 ================================
+	
+	@RequestMapping("/test.nhn")
+	public String test(){
+			return "/gitTest/test2.jsp";
+		}
+	@RequestMapping("testPro.nhn")
+	public ModelAndView testPro(int num){
+		
+		Map map = new HashMap();
+		map.put("num", num);
+		
+		sqlMap.update("main.test", map); // 테이블  생성
+		sqlMap.update("main.test_seq", map); // 테이블에 대한 sequence 생성 
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("num",num);
+		mv.setViewName("/gitTest/test3.jsp");
+		return mv;
+	}
+	
+	// ==========================  동적테이블 생성 테스트 ================================
 	
 	
 	@RequestMapping("/MyUsed.nhn")

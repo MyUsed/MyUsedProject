@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="create">
+	
+	
+	<!-- 개인글쓰기(board) table/sequence  -->
+	<statement id="board" parameterClass="java.util.Map">	
+		create table board_$num$ (
+								num number not null primary key,
+								content varchar2(4000),
+								name varchar2(4000),
+								likes number default 0,
+								reg date default sysdate
+							 	)
+	</statement>
+	<statement id="board_seq" parameterClass="java.util.Map">
+		create sequence board_$num$seq nocache
+	</statement>
+	
+	<!-- 개인 사진(pic) table -->
+	<statement id="pic" parameterClass="java.util.Map">	
+		create table pic_$num$ (
+								num number not null,
+								mem_pic varchar2(4000),
+								name varchar2(4000),
+								reg date default sysdate
+								)		
+	</statement>
+	
+	<!-- 일반 좋아요(likes) table -->
+	<statement id="likes" parameterClass="java.util.Map">
+		create table likes_$num$ (
+								num number not null,
+								mem_num number,
+								name varchar2(4000),
+								likes number default 0,
+								reg date default sysdate
+								)
+	</statement>
+	
+	<!-- 일반 댓글(reple) table -->
+	<statement id="reple" parameterClass="java.util.Map">
+		create table reple_$num$ (
+								num number not null,
+								content varchar2(4000),
+								name varchar2(4000),
+								reg date default sysdate
+								)
+	</statement>
+	
+	<!-- 친구목록(friendlist) table -->
+	<statement id="friendlist" parameterClass="java.util.Map">
+		create table friendlist_$num$ (
+								mem_num number,
+								id varchar2(4000),
+								name varchar2(4000),
+								state number default 0,
+								categ varchar2(4000),
+								reg date default sysdate
+								)
+	</statement>
+		
+	
+	
+	
+	
+	<!-- ================================================================================================= -->
+	
+	
+	
+	
+	<!-- 상품글쓰기(proboard) table/sequence -->
+	<statement id="proboard" parameterClass="java.util.Map">
+		create table proboard_$num$ (
+								num number not null primary key,
+								content varchar2(4000),
+								categ varchar2(4000),
+								name varchar2(4000),
+								likes number default 0,
+								price number,
+								reg date default sysdate
+							     )
+	</statement>
+	<statement id="proboard_seq" parameterClass="java.util.Map">
+		create sequence proboard_$num$seq nocache
+	</statement>
+	
+	<!-- 상품 사진(propic) table -->
+	<statement id="propic" parameterClass="java.util.Map">
+		create table propic_$num$ (
+								num number not null,
+								pro_pic varchar2(4000),
+								name varchar2(4000),
+								reg date default sysdate
+							     )
+		
+	</statement>
+	
+	<!-- 상품댓글(proreple) table -->
+	<statement id="proreple" parameterClass="java.util.Map">
+		create table proreple_$num$ (
+								num number,
+								content varchar2(4000),
+								name varchar2(4000),
+								reg date default sysdate
+								)
+	</statement>
+	
+	<!-- 상품 좋아요(prolikes) table -->
+	<statement id="prolikes" parameterClass="java.util.Map">
+		create table prolikes_$num$ (
+								num number,
+								mem_num number,
+								name varchar2(4000),
+								likes number,
+								reg date default sysdate
+								)
+	</statement>
+	
+	
+
+
+
+
+
+
+
+
+
+</sqlMap>
