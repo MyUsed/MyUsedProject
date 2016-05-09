@@ -19,7 +19,7 @@
 
 
 	<insert id="addFriend" parameterClass="java.util.Map">
-		insert into friendlist_$num$ values(#mem_num# ,#id# ,#state# ,#categ#, sysdate)
+		insert into friendlist_$num$ values(#mem_num# , #id#, #name# ,#state# ,#categ#, sysdate)
 	</insert>
 	
 	<select id="allFriend" resultClass="member.FriendDTO" parameterClass="java.util.Map">

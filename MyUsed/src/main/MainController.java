@@ -25,7 +25,6 @@ public class MainController {
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 	
 	
-	
 	@RequestMapping("/MyUsed.nhn")
 	public ModelAndView main(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();

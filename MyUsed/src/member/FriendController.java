@@ -25,7 +25,7 @@ public class FriendController {
 	private FriendDTO friDTO = new FriendDTO();
 			
 	@RequestMapping("/MyUsedAddFriend.nhn")
-	public String addFriend(HttpServletRequest request, int num, int mem_num, String id){
+	public String addFriend(HttpServletRequest request, int num, int mem_num, String id, String fri_categ){
 		
 		/** 로그인한 사용자의 이름 가져오기(세션아이디 이용) */
 		HttpSession session = request.getSession();
@@ -44,7 +44,7 @@ public class FriendController {
 		map1.put("id", id);
 		map1.put("name", mem_friDTO.getName());
 		map1.put("state", "0");
-		map1.put("categ", "기타");
+		map1.put("categ", fri_categ);
 		
 		System.out.println(map1);
 		
@@ -56,9 +56,9 @@ public class FriendController {
 		map2.put("num", mem_num);	// 나의 num
 		map2.put("mem_num", num);	// 친구신청 받는 사람의 num
 		map2.put("id", sessionId);
-		map1.put("name", memDTO.getName());
+		map2.put("name", memDTO.getName());
 		map2.put("state", "1");
-		map2.put("categ", "기타");
+		map2.put("categ", fri_categ);
 		
 		System.out.println(map2);
 		
