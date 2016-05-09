@@ -53,6 +53,10 @@
 	<delete id="deleteFriend" parameterClass="java.util.Map">
 		delete from friendlist_$num$ where mem_num=$mem_num$
 	</delete>
+	
+	<select id="amongFriend" resultClass="int" parameterClass="java.util.Map">
+		select count(*) from friendlist_$num$ where mem_num=$mem_num$
+	</select>
 
 
 	

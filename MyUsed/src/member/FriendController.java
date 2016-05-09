@@ -26,6 +26,7 @@ public class FriendController {
 			
 	@RequestMapping("/MyUsedAddFriend.nhn")
 	public String addFriend(HttpServletRequest request, int num, int mem_num, String id, String fri_categ){
+		String result = "";
 		
 		/** 로그인한 사용자의 이름 가져오기(세션아이디 이용) */
 		HttpSession session = request.getSession();
@@ -36,36 +37,55 @@ public class FriendController {
 		memDTO = (MemberDTO) sqlMapClientTemplate.queryForObject("member.selectDTO", sessionId);
 		// 상대방의 정보
 		mem_friDTO = (MemberDTO) sqlMapClientTemplate.queryForObject("member.selectDTO", id);
+		
+		/** 친구리스트에 포함되어 있는 넘버인지 검사 */
+		Map frimap = new HashMap();
+		frimap.put("num", num);	// 나의 num
+		frimap.put("mem_num", mem_num);	// 친구신청 받는 사람의 num
+		
+		// 1 친구 사이 / 0 이면 친구사이아님 -> 등록해주어야 
+		int amongFriend = (Integer)sqlMapClientTemplate.queryForObject("friend.amongFriend", frimap);
+		if(amongFriend == 1){
+			
+			result = "/member/MyUsedAlreadyFriend.jsp";
+			
+		}else{
 
-		/** 나의 친구리스트에 추가 */
-		Map map1 = new HashMap();
-		map1.put("num", num);	// 나의 num
-		map1.put("mem_num", mem_num);	// 친구신청 받는 사람의 num
-		map1.put("id", id);
-		map1.put("name", mem_friDTO.getName());
-		map1.put("state", "0");
-		map1.put("categ", fri_categ);
-		
-		System.out.println(map1);
-		
-		sqlMapClientTemplate.insert("friend.addFriend", map1);
-		
+			/** 나의 친구리스트에 추가 */
+			Map map1 = new HashMap();
+			map1.put("num", num);	// 나의 num
+			map1.put("mem_num", mem_num);	// 친구신청 받는 사람의 num
+			map1.put("id", id);
+			map1.put("name", mem_friDTO.getName());
+			map1.put("state", "0");
+			map1.put("categ", fri_categ);
+			
+			System.out.println(map1);
+			
+			sqlMapClientTemplate.insert("friend.addFriend", map1);
+			
 
-		/** 친구신청 받는 사람의 친구리스트에 나를 추가 */
-		Map map2 = new HashMap();
-		map2.put("num", mem_num);	// 나의 num
-		map2.put("mem_num", num);	// 친구신청 받는 사람의 num
-		map2.put("id", sessionId);
-		map2.put("name", memDTO.getName());
-		map2.put("state", "1");
-		map2.put("categ", fri_categ);
+			/** 친구신청 받는 사람의 친구리스트에 나를 추가 */
+			Map map2 = new HashMap();
+			map2.put("num", mem_num);	// 나의 num
+			map2.put("mem_num", num);	// 친구신청 받는 사람의 num
+			map2.put("id", sessionId);
+			map2.put("name", memDTO.getName());
+			map2.put("state", "1");
+			map2.put("categ", fri_categ);
+			
+			System.out.println(map2);
+			
+			sqlMapClientTemplate.insert("friend.addFriend", map2);
+			
+			result = "/member/MyUsedAddFriend.jsp";
+			
+		}
 		
-		System.out.println(map2);
 		
-		sqlMapClientTemplate.insert("friend.addFriend", map2);
+		request.setAttribute("mem_num", mem_num);
 		
-		
-		return "/member/MyUsedAddFriend.jsp";
+		return result;
 	}
 	
 	

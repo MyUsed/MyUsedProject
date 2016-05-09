@@ -85,7 +85,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 				<img src="/MyUsed/images/profile.png" width="15"  height="15">
-				<a href="/MyUsed/MyUsedMyPage.nhn">${name}</a> | 
+				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${num}">${name}</a> | 
 				<a href="/MyUsed/MyUsed.nhn">权</a> | 
 				<a href="/MyUsed/MyUsed.nhn">模备茫扁</a>
 				
@@ -180,10 +180,11 @@
 		<c:forEach var="search" items="${searchList}">
 			<div id="memlist">
 				<div id="memlist1">
+					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${search.num}"">
 						<img src="/MyUsed/images/" width="70" height="70">
+					</a>
 				</div>
 				<div id="memlist2">
-					<%-- <a href="/MyUsed/MyUsedMemPage.nhn?mem_num=${searchList.num}&id=${searchList.id}"> --%>
 					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${search.num}"">
 						<b>${search.name}</b> <br />
 					</a>
@@ -192,19 +193,20 @@
 				
 				<div id="memlist3">
 				
-				<form action="MyUsedAddFriend.nhn">
-					<input type="hidden" name="num" value="${num}">
-					<input type="hidden" name="mem_num" value="${search.num}">
-					<input type="hidden" name="id" value="${search.id}">
-					<select name="fri_categ">
-                    	<c:forEach var="friendCateg" items="${friendCateg}">
-                    		<option>${friendCateg.categ}</option>
-                    	</c:forEach>
-                	</select>
-                	<input type="submit" value="模备眠啊" >
-                </form>
-					<%-- <input type="button" value="模备眠啊" onClick="javascript:window.location='MyUsedAddFriend.nhn?num=${num}&mem_num=${search.num}&id=${search.id}'"> --%>
+					<form action="MyUsedAddFriend.nhn">
+						<input type="hidden" name="num" value="${num}">
+						<input type="hidden" name="mem_num" value="${search.num}">
+						<input type="hidden" name="id" value="${search.id}">
+						<select name="fri_categ">
+                    		<c:forEach var="friendCateg" items="${friendCateg}">
+                    			<option>${friendCateg.categ}</option>
+                    		</c:forEach>
+                		</select>
+                		<input type="submit" value="模备眠啊" >
+                	</form>
+                
 				</div>
+				
 			</div>
 			<div id="gap"></div>
 		</c:forEach>
