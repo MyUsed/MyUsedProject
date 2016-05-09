@@ -47,7 +47,7 @@ public class BoardController {
 		
 		Map map = new HashMap();
 		map.put("num", num);
-		map.put("content",dto.getContent());
+		map.put("content",content);
 		map.put("name", name);
 		
 		

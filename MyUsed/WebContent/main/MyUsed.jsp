@@ -488,7 +488,7 @@
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
 		<td>
-		(   )님이 상품을 좋아합니다
+		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${list.mem_num}">( ${list.name} )</a> 님이 글을 게시하였습니다
 		<hr width="100%" > 
 		</td>
 		</tr>
