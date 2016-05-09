@@ -11,10 +11,13 @@ public class FriendDTO {
 	private String categ;
 	private Timestamp reg;
 	
+	private String onoff;//조인했을때
+	
+	
 	
 	public int getMem_num() {		return mem_num;		}
 	public String getId() 	{		return id;			}
-	public String getName() 	{		return name;			}
+	public String getName() {		return name;		}
 	public String getState(){		return state;		}
 	public String getCateg(){		return categ;		}
 	public Timestamp getReg(){		return reg;			}
@@ -25,6 +28,10 @@ public class FriendDTO {
 	public void setState(String state)  {		this.state = state;		}
 	public void setCateg(String categ)  {		this.categ = categ;		}
 	public void setReg(Timestamp reg)   {		this.reg = reg;			}
+	
+
+	public String getOnoff() {		return onoff;	}
+	public void setOnoff(String onoff) {		this.onoff = onoff;	}
 	
 	
 }

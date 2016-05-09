@@ -305,12 +305,12 @@
  	친구 목록(state 2)<br />
  	<c:forEach var="friendState2" items="${friendState2}">
  		${friendState2.mem_num} |${friendState2.name}  |${friendState2.id} |${friendState2.categ}  
- 		<c:if test="${onoff == 0}">
+ 		<c:if test="${friendState2.onoff == 0}">
  			<%--로그아웃 상태 --%>
  			<font color="#FF0000">OFF</font>
  		</c:if>
- 		<c:if test="${onoff == 1}">
- 			<%--로그아웃 상태 --%>
+ 		<c:if test="${friendState2.onoff == 1}">
+ 			<%--로그인 상태 --%>
  			<font color="#2F9D27">ON</font>
  		</c:if>
  		<br />

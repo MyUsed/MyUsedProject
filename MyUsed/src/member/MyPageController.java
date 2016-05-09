@@ -54,17 +54,11 @@ public class MyPageController {
 		List friendState_m1 = new ArrayList();
 		friendState_m1 = sqlMapClientTemplate.queryForList("friend.friendState_m1", map);
 
-		// 친구가 접속중인지 아닌지 확인
-		Map onMap = new HashMap();
-		onMap.put("num", memDTO.getNum());
-		int onoff = (Integer)sqlMapClientTemplate.queryForObject("member.findOnOff", onMap);
 
-		
 		request.setAttribute("sessionName", memDTO.getName());
 		request.setAttribute("name", frimemDTO.getName());
 		request.setAttribute("num", frimemDTO.getNum());
 		request.setAttribute("mynum", memDTO.getNum());
-		//request.setAttribute("onoff", frimemDTO.getOnoff());
 		request.setAttribute("friendList", friendList);
 		request.setAttribute("friendState0", friendState0);
 		request.setAttribute("friendState1", friendState1);

@@ -23,23 +23,23 @@
 	</insert>
 	
 	<select id="allFriend" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$
+		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num
 	</select>
 	
 	<select id="friendState0" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$ where state=0
+		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num and state=0
 	</select>
 	
 	<select id="friendState1" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$ where state=1
+		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num and state=1
 	</select>
 	
 	<select id="friendState2" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$ where state=2
+		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num and state=2
 	</select>
 	
 	<select id="friendState_m1" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$ where state=-1
+		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num and state=-1
 	</select>
 	
 	<select id="friendCateg" resultClass="member.FriendCategDTO">
