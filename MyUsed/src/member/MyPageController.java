@@ -21,15 +21,20 @@ public class MyPageController {
 	
 	
 	@RequestMapping("/MyUsedMyPage.nhn")
-	public String MyUsedMyPage(HttpServletRequest request){
+	public String MyUsedMyPage(HttpServletRequest request, int mem_num){
 		
 		/** 로그인한 사용자의 이름 가져오기(세션아이디 이용) */
 		HttpSession session = request.getSession();
 		String sessionId = (String) session.getAttribute("memId");
 		MemberDTO memDTO = new MemberDTO();
 		memDTO = (MemberDTO) sqlMapClientTemplate.queryForObject("member.selectDTO", sessionId);
+
+		MemberDTO frimemDTO = new MemberDTO();
+		System.out.println("mem_num : "+mem_num);
+		frimemDTO = (MemberDTO) sqlMapClientTemplate.queryForObject("member.selectDTOforNum", mem_num);
 		
-		//친구 목록 리스트 가져가기
+		
+		//친구 목록 리스트 가져가기(state별로)
 		Map map = new HashMap();
 		map.put("num", memDTO.getNum());
 		System.out.println(map);
@@ -49,9 +54,17 @@ public class MyPageController {
 		List friendState_m1 = new ArrayList();
 		friendState_m1 = sqlMapClientTemplate.queryForList("friend.friendState_m1", map);
 
+		// 친구가 접속중인지 아닌지 확인
+		Map onMap = new HashMap();
+		onMap.put("num", memDTO.getNum());
+		int onoff = (Integer)sqlMapClientTemplate.queryForObject("member.findOnOff", onMap);
 
-		request.setAttribute("name", memDTO.getName());
-		request.setAttribute("num", memDTO.getNum());
+		
+		request.setAttribute("sessionName", memDTO.getName());
+		request.setAttribute("name", frimemDTO.getName());
+		request.setAttribute("num", frimemDTO.getNum());
+		request.setAttribute("mynum", memDTO.getNum());
+		//request.setAttribute("onoff", frimemDTO.getOnoff());
 		request.setAttribute("friendList", friendList);
 		request.setAttribute("friendState0", friendState0);
 		request.setAttribute("friendState1", friendState1);
@@ -60,6 +73,5 @@ public class MyPageController {
 		
 		return "/member/MyUsedMyPage.jsp";
 	}
-	
 
 }

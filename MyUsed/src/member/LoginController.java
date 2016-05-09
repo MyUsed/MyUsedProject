@@ -29,8 +29,10 @@ public class LoginController {
 	/** 네이버 로그아웃 아직 안됨 */
 	@RequestMapping("/MyUsedLogout.nhn")
 	public String logout(HttpServletRequest request){
-		
 		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("memId");
+		sqlMapClientTemplate.update("member.Log_off", id);	// 로그인상태를 on으로(onoff 컬럼 1)
+
 		session.removeAttribute("memId");
 		
 		return "/member/MyUsedLogoutPro.jsp";
@@ -44,9 +46,10 @@ public class LoginController {
 		/** 로그인 체크 -> 로그인한적있으면 1 / 첫로그인 0 */
 		int check = (Integer)sqlMapClientTemplate.queryForObject("member.checkNaverId", id);
 		if(check == 1){
-			/** 로그인을 한 적있는 아이디 -> 아이디를 세션에 넣음 */
+			/** 로그인을 한 적있는 아이디 -> 아이디를 세션에 넣음-> 로그인 on 상태로 바꿈*/
 			HttpSession session = request.getSession();
 			session.setAttribute("memId", email);
+			sqlMapClientTemplate.update("member.Log_on", email);	// 로그인상태를 on으로(onoff 컬럼 1)
 
 			result="/member/MyUsedNaverLoginPro.jsp";
 			
@@ -77,6 +80,8 @@ public class LoginController {
 			// 세션에 넣음(네이버에서 부여한 고유 id)
 			HttpSession session = request.getSession();
 			session.setAttribute("memId", email);
+			sqlMapClientTemplate.update("member.Log_on", email);	// 로그인상태를 on으로(onoff 컬럼 1)
+
 			
 			System.out.println("First LOGIN");
 			
@@ -86,6 +91,7 @@ public class LoginController {
 		return result;
 	}
 	
+	/* 일반 로그인 */
 	@RequestMapping("/MyUsedLoginPro.nhn")
 	public String MyUsedLoginPro(HttpServletRequest request, String id, String pw){
 		String result = "";
@@ -103,6 +109,8 @@ public class LoginController {
 				// 가입된 아이디가 있으면 세션에 넣음
 				HttpSession session = request.getSession();
 				session.setAttribute("memId", id);
+				sqlMapClientTemplate.update("member.Log_on", id);	// 로그인상태를 on으로(onoff 컬럼 1)
+
 				
 				result = "/member/MyUsedLoginPro.jsp";
 			}else{

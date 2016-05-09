@@ -28,6 +28,10 @@
 		select * from memberlist where id=#id#
 	</select>
 	
+	<select id="selectDTOforNum" resultClass="member.MemberDTO" parameterClass="int">
+		select * from memberlist where num=#num#
+	</select>
+	
 	<select id="searchMember" resultClass="member.MemberDTO" parameterClass="String">
 		select * from memberlist where name like '%'||#name#||'%' order by num desc
 	</select>
@@ -40,58 +44,17 @@
 		select num from memberlist where id=#id# and name=#name# and password=#password#
 	</select>
 
-	<statement id="friendlistTable" parameterClass="java.util.Map">
-		create table friendlist_$num$(
-        	mem_num number primary key not null,
-        	id varchar2(100) not null,
-        	state varchar2(100) not null,
-        	categ varchar2(100) not null,
-        	reg date not null      
-        )
-	</statement>
-
- 	<statement id="friendlistSeq" parameterClass="java.util.Map">
-		create sequence sq_friendlist_$num$ start with 1 increment by 1
-	</statement>
-
-
-	<insert id="addFriend" parameterClass="java.util.Map">
-		insert into friendlist_$num$ values(#mem_num# ,#id# ,#state# ,#categ#, sysdate)
-	</insert>
-	
-	<select id="allFriend" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$
-	</select>
-	
-	<select id="friendState0" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$ where state=0
-	</select>
-	
-	<select id="friendState1" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$ where state=1
-	</select>
-	
-	<select id="friendState2" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$ where state=2
-	</select>
-	
-	<select id="friendState_m1" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select * from friendlist_$num$ where state=-1
-	</select>
-	
-	<select id="friendCateg" resultClass="member.FriendCategDTO">
-		select * from friend_categ
-	</select>
-	
-	<update id="friendAgree" parameterClass="java.util.Map">
-		update friendlist_$mem_num$ set state=#state# where mem_num=#num# 
+	<update id="Log_on" parameterClass="String">
+		update memberlist set onoff=1 where id=#id#
 	</update>
 
-	<delete id="deleteFriend" parameterClass="java.util.Map">
-		delete from friendlist_$num$ where mem_num=$mem_num$
-	</delete>
+	<update id="Log_off" parameterClass="String">
+		update memberlist set onoff=0 where id=#id#
+	</update>
 
-
+	<select id="findOnOff" resultClass="int" parameterClass="java.util.Map" >
+		select onoff from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num
+	</select>
 	
 
 </sqlMap>

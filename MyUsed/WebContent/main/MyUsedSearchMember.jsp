@@ -180,10 +180,13 @@
 		<c:forEach var="search" items="${searchList}">
 			<div id="memlist">
 				<div id="memlist1">
-					<img src="/MyUsed/images/" width="70" height="70">
+						<img src="/MyUsed/images/" width="70" height="70">
 				</div>
 				<div id="memlist2">
-					<b>${search.name}</b> <br />
+					<%-- <a href="/MyUsed/MyUsedMemPage.nhn?mem_num=${searchList.num}&id=${searchList.id}"> --%>
+					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${search.num}"">
+						<b>${search.name}</b> <br />
+					</a>
 					설명설명설명
 				</div>
 				

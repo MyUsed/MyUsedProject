@@ -99,10 +99,11 @@
 			
 			
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
 				<img src="/MyUsed/images/profile.png" width="15"  height="15">
-	            <a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${num}">${name}</a> | 
-	            <a href="/MyUsed/MyUsed.nhn">홈</a> | 
-	            <a href="/MyUsed/MyUsed.nhn">친구찾기</a>
+				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${num}">${name}</a> | 
+				<a href="/MyUsed/MyUsed.nhn">홈</a> | 
+				<a href="/MyUsed/MyUsed.nhn">친구찾기</a>
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40"></a>
@@ -125,7 +126,7 @@
 <style type="text/css">
 #sidebannerR { position:fixed; top:50px; left:43%; margin-left:540px; width:240px; height:800px; background:#EAEAEA; }
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:465px; width:205px; height:800px; background:#E9EAED; }
-#contents { width:630px; height:9000px; margin:0 auto; margin-left:180px;background:#EAEAEA; }
+#content { width:630px; height:9000px; margin:0 auto; margin-left:180px;background:#EAEAEA; }
 #advertise {  position:fixed; width:300px; height:9000px; left:61%; margin-right:300px;background:#EAEAEA; }
 </style>
 </head>
@@ -215,7 +216,7 @@
 
 
 
-<div id="contents">
+<div id="content">
 	<br /><br /><br />
 	
 	
@@ -247,9 +248,8 @@
 	<td align="center" colspan="8">
 	<br/>
 	
-		<textarea rows ="5" cols ="70" name="content" placeholder="무슨 생각을 하고계신가요 ?"></textarea>
-		<br/> 
-		 
+		<textarea rows = "5" cols = "73" name="content" placeholder="무슨 생각을 하고계신가요 ?"></textarea> <br/> 
+		
 		
 		<hr width="80%"  > 
 		
@@ -367,8 +367,7 @@
                    <option>기타</option>
         </select>
         <br />
-		<textarea rows ="5" cols ="70" name="Pcontent" placeholder="상품에 대한 설명을 써주세요"></textarea>
-		 <br/> 
+		<textarea rows = "5" cols = "73" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
 		<font size ="2" color="#3B5998">
 		* 배송료
 		포함(선불) <input type="radio" name="sendPay" value="yes" />

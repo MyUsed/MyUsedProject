@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="main">
-	<!-- num 을 가져오는 sql -->
-	<select id="num" resultClass="int" parameterClass="String">
-		select num from memberlist where id = #sessionId#
-	</select>
-	<!-- name 을 가져오는 sql -->
-	<select id="name" resultClass="String"  parameterClass="String">
-		select name from memberlist where id = #sessionId#
-	</select>
-	<!-- num 을 사용해서 개인 DB insert sql -->
-	<insert id="addContent" parameterClass="java.util.Map">
-		insert into board_$num$ values(board_$num$seq.NEXTVAL, #content#, #name# , default ,sysdate)
-	</insert>
-	<!-- num 을 사용해서 전체 DB insert sql -->
-	<insert id="addTotalContent" parameterClass="java.util.Map">
-		insert into totalboard values(totalboard_seq.NEXTVAL, #content#, #name# , default ,#num#,sysdate)
-	</insert>
+
+
 
 </sqlMap>

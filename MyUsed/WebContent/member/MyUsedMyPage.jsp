@@ -69,7 +69,7 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 				<img src="/MyUsed/images/profile.png" width="15"  height="15">
-				<a href="/MyUsed/MyUsedMyPage.nhn">${name}</a> | 
+				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}">${sessionName}</a> | 
 				<a href="/MyUsed/MyUsed.nhn">홈</a> | 
 				<a href="/MyUsed/MyUsed.nhn">친구찾기</a>
 				
@@ -101,7 +101,16 @@
 	border-color:#353535;
 	
 	}
-	
+#name { 
+	position:absolute; 
+	width:70px;
+	height:30px; 
+	margin-top:190px; 
+	margin-left:192px; 
+	text-align:center;
+	font-size:160%;
+	font-weight:bold;
+	}
 	
 /* #menu{ position:absolute; width:680px; height:40px; margin-top:223px ;margin-right:10px; background:#FFFFFF; } */
 #menu0{ position:absolute;
@@ -263,13 +272,8 @@
 	<center>
  	<font size="5">사이드고정R</font>
  	<br />
- 	세션 : ${sessionScope.memId} <br />
- 	------------------------------------------<br />
- 	모든 친구 리스트(모든 state)<br />
- 	<c:forEach var="friendList" items="${friendList}">
- 		${friendList.mem_num} |${friendList.name} |${friendList.id} |${friendList.state} |${friendList.categ} |${friendList.reg}   <br />
- 	</c:forEach>
- 	
+ 	세션 : ${sessionScope.memId} 
+ 	<br />
  	<br />
  	------------------------------------------<br />
  	친구 신청 대기(state 0)<br />
@@ -300,7 +304,16 @@
  	------------------------------------------<br />
  	친구 목록(state 2)<br />
  	<c:forEach var="friendState2" items="${friendState2}">
- 		${friendState2.mem_num} |${friendState2.name}  |${friendState2.id} |${friendState2.categ}  <br />
+ 		${friendState2.mem_num} |${friendState2.name}  |${friendState2.id} |${friendState2.categ}  
+ 		<c:if test="${onoff == 0}">
+ 			<%--로그아웃 상태 --%>
+ 			<font color="#FF0000">OFF</font>
+ 		</c:if>
+ 		<c:if test="${onoff == 1}">
+ 			<%--로그아웃 상태 --%>
+ 			<font color="#2F9D27">ON</font>
+ 		</c:if>
+ 		<br />
  	</c:forEach>
  	
  	</center>
@@ -324,6 +337,10 @@
 	<div id="profileImage">
 	
 	
+	</div>	
+	
+	<div id="name">
+		${name}
 	</div>
 	
 	<div id="knewpeople">
