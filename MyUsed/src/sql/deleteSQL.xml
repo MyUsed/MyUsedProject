@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="delete">
+	
+	<select id="totalreg" resultClass="String" parameterClass="int">
+		select reg from totalboard where num = #num#
+	</select>
+	<select id="mem_num" resultClass="int" parameterClass="int">
+		select mem_num from totalboard where num = #num#
+	</select>
+	
+	<delete id="boardDelete" parameterClass="java.util.Map">
+		delete from board_$num$ where reg = #reg#
+	</delete>
+	<delete id="totalboardDelete" parameterClass="int">
+		delete from totalboard where num = #num#
+	</delete>
+
+	
+</sqlMap>

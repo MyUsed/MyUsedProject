@@ -9,6 +9,7 @@
 	<sqlMap resource="/sql/memberSQL.xml"/>
 	<sqlMap resource="/sql/friendSQL.xml"/>
 	<sqlMap resource="/sql/createSQL.xml"/>
+	<sqlMap resource="/sql/deleteSQL.xml"/>
 	
 	
 
