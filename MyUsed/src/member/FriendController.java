@@ -90,7 +90,7 @@ public class FriendController {
 	
 	
 	@RequestMapping("/MyUsedAgreeFriend.nhn")
-	public String MyUsedAgreeFriend(int agree, int mem_num, int num){
+	public String MyUsedAgreeFriend(HttpServletRequest request ,int agree, int mem_num, int num){
 		// mem_num은 친구 신청한 상대방의 번호, num은 나의 번호
 
 		System.out.println("num : "+num);
@@ -125,12 +125,13 @@ public class FriendController {
 			sqlMapClientTemplate.delete("friend.deleteFriend", map);
 			
 		}
-		
+		request.setAttribute("num", num);
 		return "/member/MyUsedAgreeFriend.jsp";
 	}
 	
 	/** 상대방이 거절 눌렀을 경우 나의 테이블에서 삭제 */
 	@RequestMapping("/MyUsedRejectionFriend.nhn")
+    
 	public String MyUsedRejectionFriend(int agree, int mem_num, int num){
 		// mem_num은 친구 신청한 상대방의 번호, num은 나의 번호
 		

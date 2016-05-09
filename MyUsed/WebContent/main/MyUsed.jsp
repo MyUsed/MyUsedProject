@@ -16,7 +16,7 @@
               function send(){     
         
                    document.formId.method = "post"     // method 선택, get, post
-                   document.formId.action = "mainTest.nhn";  // submit 하기 위한 페이지 
+                   document.formId.action = "mainSubmit.nhn";  // submit 하기 위한 페이지 
                    document.formId.submit();
                    document.formId.image_preview();
                   
@@ -88,7 +88,7 @@
 	<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
 			<td style="vertical-align:left; padding-left: 30px; padding-right: 80px;">
-			<a href="http://localhost:8000/MyUsed/MyUsed.nhn">
+			<a href="MyUsed.nhn">
 			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
 			</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -220,7 +220,7 @@
 	<br /><br /><br />
 	
 	
-	 <form name="formId" enctype="multipart/form-data" action="mainTest.nhn" method="post" >
+	 <form name="formId" enctype="multipart/form-data" action="mainSubmit.nhn" method="post" >
 	 
 	 
 	 <table align="center"  width="550" height="30">

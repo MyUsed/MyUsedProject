@@ -25,14 +25,12 @@ public class BoardController {
 		
 	
 	
-	@RequestMapping("/mainTest.nhn")
+	@RequestMapping("/mainSubmit.nhn")
 	public String mainSubmit(MultipartHttpServletRequest request , MainboardDTO dto){
 	
-		request.setAttribute("sendPay", dto.getSendPay());
 		
-		request.setAttribute("categ", dto.getCateg());
-		String content = dto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ; 
-		request.setAttribute("content", content);	
+		
+		
 		
 		 // << 접속한 아이디 의 num 가져오기 >> 
 		HttpSession session = request.getSession();
@@ -42,7 +40,7 @@ public class BoardController {
 		String name = (String)sqlMap.queryForObject("main.name", sessionId);
 		System.out.println("접속자의 num = "+num);
 		System.out.println("접속자의 name = "+name);
-		
+		String content = dto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ; 
 		
 		
 		Map map = new HashMap();
