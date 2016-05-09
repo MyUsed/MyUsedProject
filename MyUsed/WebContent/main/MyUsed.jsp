@@ -126,7 +126,7 @@
 <style type="text/css">
 #sidebannerR { position:fixed; top:50px; left:43%; margin-left:540px; width:240px; height:800px; background:#EAEAEA; }
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:465px; width:205px; height:800px; background:#E9EAED; }
-#content { width:630px; height:9000px; margin:0 auto; margin-left:180px;background:#EAEAEA; }
+#contents { width:630px; height:9000px; margin:0 auto; margin-left:180px;background:#EAEAEA; }
 #advertise {  position:fixed; width:300px; height:9000px; left:61%; margin-right:300px;background:#EAEAEA; }
 </style>
 </head>
@@ -216,7 +216,7 @@
 
 
 
-<div id="content">
+<div id="contents">
 	<br /><br /><br />
 	
 	
@@ -367,7 +367,7 @@
                    <option>기타</option>
         </select>
         <br />
-		<textarea rows = "5" cols = "73" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
+		<textarea rows = "5" cols = "73" name="pcontent" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
 		<font size ="2" color="#3B5998">
 		* 배송료
 		포함(선불) <input type="radio" name="sendPay" value="yes" />
@@ -483,7 +483,7 @@
 <!--  상품 보기 페이지  -->	
 	
 
-<c:forEach begin="1" end="10">
+<c:forEach var="list" items="${list}">
 	
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
@@ -495,7 +495,8 @@
 		
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
-		<img src="/MyUsed/images/sample.jpg" width="550" height="350"/>
+		${list.content}
+		
 		</td>
 		</tr>
 		

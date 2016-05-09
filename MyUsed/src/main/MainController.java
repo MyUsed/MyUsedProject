@@ -26,7 +26,7 @@ public class MainController {
 	@Autowired	 // 컨트롤러로 부터 Date 객체를 자동으로 받아줌;
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 	
-	
+	private List<MainboardDTO> list = new ArrayList<MainboardDTO>();;	
 
 	   @RequestMapping("/MyUsed.nhn")
 	   public ModelAndView main(HttpServletRequest request){
@@ -41,6 +41,8 @@ public class MainController {
 	      request.setAttribute("name", memDTO.getName());
 	      request.setAttribute("num", memDTO.getNum());
 	      
+	  	  list = sqlMap.queryForList("main.boardView", null);
+	  	  mv.addObject("list", list);
 	      mv.setViewName("/main/MyUsed.jsp");
 	      return mv;
 	   }   

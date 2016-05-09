@@ -17,5 +17,10 @@
    <insert id="addTotalContent" parameterClass="java.util.Map">
       insert into totalboard values(totalboard_seq.NEXTVAL, #content#, #name# , default ,#num#,sysdate)
    </insert>
+   
+   <!-- selct로 출력 -->
+   <select id="boardView" resultClass="main.MainboardDTO" >
+		select * from totalboard order by num desc
+   </select>
 
 </sqlMap>

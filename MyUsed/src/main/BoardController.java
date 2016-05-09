@@ -1,27 +1,35 @@
 package main;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-public class boardController {
-	
+
+
+@Controller
+public class BoardController {
+
 	@Autowired	 // 컨트롤러로 부터 Date 객체를 자동으로 받아줌;
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
+		
+	
 	
 	@RequestMapping("/mainTest.nhn")
 	public String mainSubmit(MultipartHttpServletRequest request , MainboardDTO dto){
 	
 		request.setAttribute("sendPay", dto.getSendPay());
-		request.setAttribute("price", dto.getPrice());
+		
 		request.setAttribute("categ", dto.getCateg());
 		String content = dto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ; 
 		request.setAttribute("content", content);	
@@ -49,8 +57,12 @@ public class boardController {
 			System.out.println("일반 게시글 등록성공");
 			sqlMap.insert("main.addTotalContent", map);
 			System.out.println("토탈 게시글 등록성공");
+			
+			
+			
 		}
-
+		
+	
 	for(int i=1;i<=8;i++){
 
 	MultipartFile mf = request.getFile("image"+i); // 파일을 받는 MultipartFile 클래스  (원본)
@@ -78,7 +90,7 @@ public class boardController {
 	}
 	
 
-		return "/main/test.jsp";
+		return "MyUsed.nhn";
 	}
 
 }
