@@ -30,13 +30,23 @@ public class JoinController {
 		memDTO.setPassword(signup_pw);
 		memDTO.setBirthdate(birthdate);
 		memDTO.setGender(gender);
+		memDTO.setGrade(3);
+		memDTO.setPoint(0);
+		memDTO.setOnoff("0");	//0 비로그인/ 1 로그인
 		memDTO.setNaverid("0");
 
 		// 회원 등록
 		sqlMapClientTemplate.insert("member.insertMem", memDTO);
+		
+		// 등록된 회원의 넙버를 가져온다.
+		int num = (Integer)sqlMapClientTemplate.queryForObject("member.findNum", memDTO);
+	
+		// creatDB로 num변수를 보낸다.
+		request.setAttribute("num", num);
 
 
-		return "/member/MyUsedJoinPro.jsp";
+		//return "/member/MyUsedJoinPro.jsp";
+		return "/member/createDB.jsp";
 	}
 	
 	@RequestMapping("/MyUsedAgreement.nhn")

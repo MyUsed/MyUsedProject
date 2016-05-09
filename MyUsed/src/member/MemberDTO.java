@@ -8,6 +8,9 @@ public class MemberDTO {
 	private String password;
 	private String birthdate;
 	private String gender;
+	private int grade;
+	private int point;
+	private String onoff;
 	private String naverid;
 	
 	public int getNum() 		{		return num;			}
@@ -17,6 +20,9 @@ public class MemberDTO {
 	public String getBirthdate(){		return birthdate;	}
 	public String getGender() 	{		return gender;		}
 	public String getNaverid() 	{		return naverid;		}
+	public int getGrade() {		return grade;	}
+	public int getPoint() {		return point;	}
+	public String getOnoff() {		return onoff;	}
 	
 	public void setNum(int num) 			   {		this.num = num;				}
 	public void setId(String id) 			   {		this.id = id;				}
@@ -25,6 +31,9 @@ public class MemberDTO {
 	public void setBirthdate(String birthdate) {		this.birthdate = birthdate;	}
 	public void setGender(String gender) 	   {		this.gender = gender;		}
 	public void setNaverid(String naverid) 	   {		this.naverid = naverid;		}
+	public void setGrade(int grade) {		this.grade = grade;	}
+	public void setPoint(int point) {		this.point = point;	}
+	public void setOnoff(String onoff) {		this.onoff = onoff;	}
 	
 	
 }

@@ -262,8 +262,48 @@
 <div id="sidebannerR">
 	<center>
  	<font size="5">사이드고정R</font>
- 	${sessionScope.memId}
-   	</center>
+ 	<br />
+ 	세션 : ${sessionScope.memId} <br />
+ 	------------------------------------------<br />
+ 	모든 친구 리스트(모든 state)<br />
+ 	<c:forEach var="friendList" items="${friendList}">
+ 		${friendList.mem_num} |${friendList.name} |${friendList.id} |${friendList.state} |${friendList.categ} |${friendList.reg}   <br />
+ 	</c:forEach>
+ 	
+ 	<br />
+ 	------------------------------------------<br />
+ 	친구 신청 대기(state 0)<br />
+ 	<c:forEach var="friendState0" items="${friendState0}">
+ 		${friendState0.mem_num} |${friendState0.name}  |${friendState0.id} |${friendState0.categ}  <br />
+ 	</c:forEach>
+ 	
+ 	<br />
+ 	------------------------------------------<br />
+ 	거절된 친구 신청(state -1)<br />
+ 	<c:forEach var="friendState_m1" items="${friendState_m1}">
+ 		${friendState_m1.mem_num} |${friendState_m1.name}  |${friendState_m1.id} |${friendState_m1.categ}  
+ 		<input type="button" value="확인" onClick="javascript:window.location='MyUsedRejectionFriend.nhn?agree=${0}&mem_num=${friendState_m1.mem_num}&num=${num}'">
+ 		<br />
+ 	</c:forEach>
+ 	
+ 	<br />
+ 	------------------------------------------<br />
+ 	나에게 들어온 친구신청(state 1)<br />
+ 	<c:forEach var="friendState1" items="${friendState1}">
+ 		${friendState1.mem_num} |${friendState1.name}  |${friendState1.id} |${friendState1.categ}  
+ 		<input type="button" value="수락" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${0}&mem_num=${friendState1.mem_num}&num=${num}'">
+ 		<input type="button" value="거절" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${1}&mem_num=${friendState1.mem_num}&num=${num}'">
+ 		<br />
+ 	</c:forEach>
+ 	
+ 	<br />
+ 	------------------------------------------<br />
+ 	친구 목록(state 2)<br />
+ 	<c:forEach var="friendState2" items="${friendState2}">
+ 		${friendState2.mem_num} |${friendState2.name}  |${friendState2.id} |${friendState2.categ}  <br />
+ 	</c:forEach>
+ 	
+ 	</center>
 </div>
 <div id="sidebannerL">
 </div>

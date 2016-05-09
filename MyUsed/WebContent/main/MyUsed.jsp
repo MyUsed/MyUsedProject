@@ -15,10 +15,8 @@
         
               function send(){     
         
-
                    document.formId.method = "post"     // method 선택, get, post
                    document.formId.action = "mainTest.nhn";  // submit 하기 위한 페이지 
-
                    document.formId.submit();
                    document.formId.image_preview();
                   
@@ -130,7 +128,6 @@
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:465px; width:205px; height:800px; background:#E9EAED; }
 #content { width:630px; height:9000px; margin:0 auto; margin-left:180px;background:#EAEAEA; }
 #advertise {  position:fixed; width:300px; height:9000px; left:61%; margin-right:300px;background:#EAEAEA; }
-
 </style>
 </head>
 
@@ -295,7 +292,6 @@
 
 
     <script type="text/javascript">
-
  
     
     $('#image${i}').on('change', function() {
@@ -314,7 +310,6 @@
             $(this).slideUp(); //파일 양식 감춤
         }
     });
-
     $('#image${i}_preview a').bind('click', function() {
         resetFormElement($('#image${i}')); //전달한 양식 초기화
         $('#image${i}').slideDown(); //파일 양식 보여줌
@@ -421,7 +416,6 @@
 
 
     <script type="text/javascript">
-
  
     
     $('#image${i}').on('change', function() {
@@ -440,7 +434,6 @@
             $(this).slideUp(); //파일 양식 감춤
         }
     });
-
     $('#image${i}_preview a').bind('click', function() {
         resetFormElement($('#image${i}')); //전달한 양식 초기화
         $('#image${i}').slideDown(); //파일 양식 보여줌
@@ -550,5 +543,4 @@
 
 </body>
 </html>
-
 

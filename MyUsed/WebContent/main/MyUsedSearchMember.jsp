@@ -188,7 +188,19 @@
 				</div>
 				
 				<div id="memlist3">
-					<input type="button" value="模备眠啊">
+				
+				<form action="MyUsedAddFriend.nhn">
+					<input type="hidden" name="num" value="${num}">
+					<input type="hidden" name="mem_num" value="${search.num}">
+					<input type="hidden" name="id" value="${search.id}">
+					<select name="fri_categ">
+                    	<c:forEach var="friendCateg" items="${friendCateg}">
+                    		<option>${friendCateg.categ}</option>
+                    	</c:forEach>
+                	</select>
+                	<input type="submit" value="模备眠啊" >
+                </form>
+					<%-- <input type="button" value="模备眠啊" onClick="javascript:window.location='MyUsedAddFriend.nhn?num=${num}&mem_num=${search.num}&id=${search.id}'"> --%>
 				</div>
 			</div>
 			<div id="gap"></div>

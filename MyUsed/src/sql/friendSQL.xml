@@ -1,49 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
-<sqlMap namespace="member">
-
-	<insert id="insertMem"  parameterClass="member.MemberDTO">
-		insert into memberlist values(sq_memberlist.NEXTVAL, #id#, #name#, #password#, #birthdate#, #gender#, #grade#, #point#, #onoff#, #naverid# )
-	</insert>
-
-	<!-- 가입되어 있는 아이디인지 체크(네이버) -->
-	<select id="checkNaverId" resultClass="int" parameterClass="String">
-		select count(*) from memberlist where naverid=#naverid#
-	</select>
-	
-	<select id="checkId" resultClass="int" parameterClass="String">
-		select count(*) from memberlist where id=#id#
-	</select>
-
-	<!-- 가입된 아이디인지 체크(일반) -->
-	<select id="loginCheck" resultClass="int" parameterClass="java.util.Map">
-		select count(*) from memberlist where id=#id# and password=#password#
-	</select>
-	
-	<select id="selectName" resultClass="String" parameterClass="String">
-		select name from memberlist where id=#id#
-	</select>
-	
-	<select id="selectDTO" resultClass="member.MemberDTO" parameterClass="String">
-		select * from memberlist where id=#id#
-	</select>
-	
-	<select id="searchMember" resultClass="member.MemberDTO" parameterClass="String">
-		select * from memberlist where name like '%'||#name#||'%' order by num desc
-	</select>
-
-	<select id="joinedNaverId" resultClass="int" parameterClass="String">
-		select naverid from (select * from memberlist where id=#id#)
-	</select>
-	
-	<select id="findNum" resultClass="int" parameterClass="member.MemberDTO">
-		select num from memberlist where id=#id# and name=#name# and password=#password#
-	</select>
+<sqlMap namespace="friend">
 
 	<statement id="friendlistTable" parameterClass="java.util.Map">
 		create table friendlist_$num$(
         	mem_num number primary key not null,
         	id varchar2(100) not null,
+			name varchar2(4000) not null,
         	state varchar2(100) not null,
         	categ varchar2(100) not null,
         	reg date not null      
@@ -51,7 +14,7 @@
 	</statement>
 
  	<statement id="friendlistSeq" parameterClass="java.util.Map">
-		create sequence sq_friendlist_$num$ start with 1 increment by 1
+		create sequence sq_friendlist_$num$ start with 1 increment by 1 nocache
 	</statement>
 
 
