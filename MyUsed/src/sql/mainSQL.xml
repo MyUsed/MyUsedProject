@@ -14,26 +14,23 @@
       insert into board_$num$ values(board_$num$seq.NEXTVAL, #content#, #name# , default ,sysdate)
    </insert>
    <!-- num 을 사용해서 전체 DB insert sql -->
-   <insert id="addTotalContent" parameterClass="java.util.Map">
-      insert into totalboard values(totalboard_seq.NEXTVAL, #content#, #name# , default ,#num#,sysdate)
+   <insert id="insertboardlist" parameterClass="java.util.Map">
+      insert into boardlist values(boardlist_seq.NEXTVAL, #content#, #mem_pic# , #name# , default ,#num#,sysdate)
    </insert>
-   <!-- selct로 출력 -->
+   <!-- selct로 boardlist출력 -->
    <select id="boardView" resultClass="main.MainboardDTO" >
-	select * from totalboard order by num desc                       
-
+	select * from boardlist order by num desc                       
    </select>
 
-
+   <!-- board_num 에서 가장 높은 num을 구하기 위해서  -->
    <select id="board_num" resultClass="int"  parameterClass="int">
    		select max(num) from board_$num$ 
    </select>
-	
+   <!-- 개인사진 db에 저장하기 위해  -->
    <insert id="addPic" parameterClass="java.util.Map">
       insert into pic_$num$ values(#board_num#, #mem_pic#, #name# , sysdate)
    </insert>
-   <insert id="addTotalPic" parameterClass="java.util.Map">
-   	  insert into totalpic values(#board_num#,#mem_pic#,#name#,default,#num#,sysdate)
-   </insert>
+ 
    
    
    

@@ -501,9 +501,9 @@
 		
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
-		
+		<c:if test="${list.mem_pic != null}">
 		<img src="/MyUsed/images/${list.mem_pic}" width="330" height="250"/> <br/>
-		
+		</c:if>
 		${list.content}
 		
 		</td>

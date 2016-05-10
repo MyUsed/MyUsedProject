@@ -4,11 +4,11 @@
 	
 	<!-- totalboard에서 개인의 table번호를 가져오는 쿼리 -->
 	<select id="mem_num" resultClass="int" parameterClass="int">
-		select mem_num from totalboard where num = #num#
+		select mem_num from boardlist where num = #num#
 	</select>
 	<!-- totalboard와 개인board의 조인으로 등록시간이 같은 것을 가져오는 쿼리 -->
 	<select id="board_num" resultClass="int" parameterClass="java.util.Map">
-		select d.num from totalboard e , board_$mem_num$ d where e.reg = d.reg
+		select d.num from boardlist e , board_$mem_num$ d where e.reg = d.reg
 		and e.num = #num#
 	</select>
 	
@@ -17,8 +17,12 @@
 		delete from board_$mem_num$ where num = #board_num#
 	</delete>
 	<!-- totalboard에서 글번호를받아 삭제하는 쿼리 -->
-	<delete id="totalboardDelete" parameterClass="int">
-		delete from totalboard where num = #num#
+	<delete id="boardlistDelete" parameterClass="int">
+		delete from boardlist where num = #num#
+	</delete>
+	<!-- 개인사진 pic_DB에서 삭제하는 쿼리 -->
+	<delete id="picDelete" parameterClass="java.util.Map">
+		delete from pic_$mem_num$ where num = #board_num#
 	</delete>
 	
 
