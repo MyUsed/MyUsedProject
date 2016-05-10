@@ -43,6 +43,8 @@ public class MainController {
 	      
 	  	  list = sqlMap.queryForList("main.boardView", null);
 	  	  mv.addObject("list", list);
+	  	  
+	  	  mv.addObject("memDTO" , memDTO);
 	      mv.setViewName("/main/MyUsed.jsp");
 	      return mv;
 	   }   

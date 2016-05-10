@@ -20,23 +20,29 @@ public class DeleteController {
 	public ModelAndView delete(int num){
 		ModelAndView mv = new ModelAndView();
 		
+		
 		// /////////////////////////////////// 테이블 join해서 문제해결 가능
-		Object reg = sqlMap.queryForObject("delete.totalreg", num); // totalboard 의 reg 
+		
 		int mem_num = (int)sqlMap.queryForObject("delete.mem_num", num); // board_ (개인 board의 번호를 가져옴)
 		
-		Map map = new HashMap(); // 2개의 값을 넘겨주기위해
 		
-		map.put("num",mem_num);
-		map.put("reg", reg); 
+		Map map = new HashMap();
+		map.put("mem_num", mem_num);
+		map.put("num", num);
 		
-		//sqlMap.delete("delete.boardDelete", map);	 // 개인 db 게시글 삭제
-		//sqlMap.delete("delete.totalboardDelete", num); // 토탈 db 게시글 삭제
+		
+		int board_num = (int)sqlMap.queryForObject("delete.board_num", map); // board_#num# 의 게시글번호를 가져옴
+		map.put("board_num", board_num);
+		
+		
+		sqlMap.delete("delete.boardDelete", map);	 // 개인 db 게시글 삭제
+		sqlMap.delete("delete.totalboardDelete", num); // 토탈 db 게시글 삭제
 
-		System.out.println("board의 mem_num = "+mem_num);
-		System.out.println("totalboard의 reg = "+reg);
+		System.out.println("board의 회원 mem_num = "+mem_num);
+		System.out.println("개인board의 게시글 num = "+board_num);
 		
 		System.out.println(num+"번 토탈게시글삭제완료");
-		System.out.println(mem_num+"개인게시글삭제완료");
+		System.out.println(mem_num+"개인board의"+board_num+"게시글삭제완료");
 		mv.setViewName("/main/Delete.jsp");
 		return mv;
 	}
