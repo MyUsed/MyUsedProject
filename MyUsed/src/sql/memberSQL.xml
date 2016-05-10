@@ -3,7 +3,7 @@
 <sqlMap namespace="member">
 
 	<insert id="insertMem"  parameterClass="member.MemberDTO">
-		insert into memberlist values(sq_memberlist.NEXTVAL, #id#, #name#, #password#, #birthdate#, #gender#, #grade#, #point#, #onoff#, #naverid# )
+		insert into memberlist values(sq_memberlist.NEXTVAL, #id#, #name#, #password#, #birthdate#, #gender#, #grade#, #point#, #onoff#, #naverid#, #chatonoff# )
 	</insert>
 
 	<!-- 가입되어 있는 아이디인지 체크(네이버) -->

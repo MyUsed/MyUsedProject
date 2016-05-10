@@ -34,6 +34,7 @@ public class JoinController {
 		memDTO.setPoint(0);
 		memDTO.setOnoff("0");	//0 비로그인/ 1 로그인
 		memDTO.setNaverid("0");
+		memDTO.setChatonoff("0");
 
 		// 회원 등록
 		sqlMapClientTemplate.insert("member.insertMem", memDTO);

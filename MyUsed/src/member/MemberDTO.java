@@ -12,6 +12,7 @@ public class MemberDTO {
 	private int point;
 	private String onoff;
 	private String naverid;
+	private String chatonoff;
 	
 	public int getNum() 		{		return num;			}
 	public String getId() 		{		return id;			}
@@ -23,6 +24,7 @@ public class MemberDTO {
 	public int getGrade() {		return grade;	}
 	public int getPoint() {		return point;	}
 	public String getOnoff() {		return onoff;	}
+	public String getChatonoff() {		return chatonoff;	}
 	
 	public void setNum(int num) 			   {		this.num = num;				}
 	public void setId(String id) 			   {		this.id = id;				}
@@ -34,6 +36,7 @@ public class MemberDTO {
 	public void setGrade(int grade) {		this.grade = grade;	}
 	public void setPoint(int point) {		this.point = point;	}
 	public void setOnoff(String onoff) {		this.onoff = onoff;	}
+	public void setChatonoff(String chatonoff) {		this.chatonoff = chatonoff;	}
 	
 	
 }
