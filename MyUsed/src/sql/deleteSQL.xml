@@ -20,6 +20,7 @@
 	<delete id="totalboardDelete" parameterClass="int">
 		delete from totalboard where num = #num#
 	</delete>
+	
 
 	
 </sqlMap>

@@ -501,6 +501,9 @@
 		
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
+		
+		<img src="/MyUsed/images/${list.mem_pic}" width="330" height="250"/> <br/>
+		
 		${list.content}
 		
 		</td>

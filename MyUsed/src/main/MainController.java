@@ -42,6 +42,7 @@ public class MainController {
 	      request.setAttribute("num", memDTO.getNum());
 	      
 	  	  list = sqlMap.queryForList("main.boardView", null);
+	  	  
 	  	  mv.addObject("list", list);
 	  	  
 	  	  mv.addObject("memDTO" , memDTO);

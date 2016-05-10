@@ -9,7 +9,7 @@ public class MainboardDTO {
 	private int mem_num;
 	private String content;
 	private String categ;
-	
+
 	private String sendPay;
 	private String name;
 	private String mem_pic;
