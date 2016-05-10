@@ -60,7 +60,7 @@
 		<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
 			<td style="vertical-align:left; padding-left: 30px; padding-right: 80px;">
-			<a href="/MyUsed/main/MyUsed.jsp">
+			<a href="/MyUsed/MyUsed.nhn">
 			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
 			</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -86,9 +86,9 @@
 
 
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:50%; margin-left:470px; width:200px; height:800px; background:#EAEAEA; }
+#sidebannerR { position:absolute; height:5000px; top:50px; left:50%; margin-left:470px; width:200px; background:#EAEAEA; }
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:470px; width:200px; height:800px; background:#E9EAED; }
-#content { width:980px; height:3000px; margin:0 auto; background:#EAEAEA; }
+#content { width:980px; height:5000px; margin:0 auto; background:#EAEAEA; }
 #coverImage { position:absolute; width:800px; height:220px; margin-right:10px; background:#FFFFFF; }
 #profileImage { 
 	position:absolute; 
@@ -201,7 +201,27 @@
 			  margin-right:10px; 
 			  background:#BDBDBD;
 			  padding-top:6px; }
+
+#knewpeopleindex { position:relative; 
+			  width:110px; 
+			  height:140px;  
+			  margin-top:40px; 
+			  margin-left:10px;
+			  float:left;} 
+			  			  
+#knewpeopleimage { position:absolute; 
+			  width:110px; 
+			  height:110px;  
+			  background:#BDBDBD;}  
 		
+#knewpeoplename { position:absolute; 
+			  width:110px; 
+			  height:20px; 
+			  margin-top:115px;  
+			  text-align:center;
+			  font-weight:bold;}  
+			  
+			  
 			  
 #simpleinfo { position:absolute; 
 			  width:230px; 
@@ -344,10 +364,20 @@
 	</div>
 	
 	<div id="knewpeople">
-		<div id="knewpeopletitle">
-			알 수 도 있는 친구
-	
-		</div>
+		<div id="knewpeopletitle">알 수 도 있는 친구</div>
+		
+		<c:forEach var="knewFriend" items="${knewFriendList}">
+			<div id="knewpeopleindex">
+				<div id="knewpeopleimage">
+					<img src="/MyUsed/images/">
+				</div>
+				<div id="knewpeoplename">
+					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${knewFriend.mem_num}">
+					${knewFriend.name}
+					</a>
+				</div>
+			</div>
+		</c:forEach>
 	</div>
 	
 	<div id="simpleinfo">

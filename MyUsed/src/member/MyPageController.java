@@ -53,8 +53,46 @@ public class MyPageController {
 		
 		List friendState_m1 = new ArrayList();
 		friendState_m1 = sqlMapClientTemplate.queryForList("friend.friendState_m1", map);
+		
+		/***** 알 수 도 있는 친구*****/
+		String sql = "";
+		
+		Map num_map = new HashMap();
+		num_map.put("num", mem_num);
+		
+		List friNumList = new ArrayList();
+		friNumList = sqlMapClientTemplate.queryForList("friend.friendNumList", num_map);
+		int size = friNumList.size();
+		
+		System.out.println(size);
+		// 유니언을 하여 테이블을 이어붙인다 -> mem_num의 친구수만큼 반복(마지막줄은 union이 붙으면 안됨으로 따로 붙여줌)
+		for(int i = 0 ; i < friNumList.size()-1 ; i++){
+			sql += "select * from friendlist_"+friNumList.get(i)+" union ";
+		}
+		sql = sql + "select * from friendlist_"+friNumList.get(size-1);
+		
+		System.out.println(sql);
 
+		// 이어붙인 sql문의 일부를 Map을 이용해 sqlMap으로 가져간다
+		Map sqlmap = new HashMap();
+		sqlmap.put("sql", sql);
+		
+		// mem_num의 친구리스트(빈도순 정렬)
+		List knewFriendList = new ArrayList();
+		knewFriendList = sqlMapClientTemplate.queryForList("friend.all", sqlmap);
 
+		//리스트에 자기자신이 포함되어 있을 수 도 있으므로 찾아서 삭제해준다
+		FriendDTO friDTO = new FriendDTO();
+		for (int i = 0; i < knewFriendList.size() ; i++){
+			if(mem_num == ((FriendDTO) knewFriendList.get(i)).getMem_num()){
+				knewFriendList.remove(i);
+			}
+		}
+		
+		
+		
+		request.setAttribute("knewFriendList", knewFriendList);
+		
 		request.setAttribute("sessionName", memDTO.getName());
 		request.setAttribute("name", frimemDTO.getName());
 		request.setAttribute("num", frimemDTO.getNum());

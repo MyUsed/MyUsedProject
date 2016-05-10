@@ -12,6 +12,7 @@ public class FriendDTO {
 	private Timestamp reg;
 	
 	private String onoff;//조인했을때
+	private int count;	//친구의 친구 찾을 때 필요
 	
 	
 	
@@ -32,6 +33,10 @@ public class FriendDTO {
 
 	public String getOnoff() {		return onoff;	}
 	public void setOnoff(String onoff) {		this.onoff = onoff;	}
+	
+	public int getCount() {		return count;	}
+	public void setCount(int count) {		this.count = count;	}
+	
 	
 	
 }

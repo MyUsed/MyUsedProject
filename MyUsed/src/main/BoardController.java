@@ -40,7 +40,7 @@ public class BoardController {
 		String name = (String)sqlMap.queryForObject("main.name", sessionId);
 		System.out.println("접속자의 num = "+num);
 		System.out.println("접속자의 name = "+name);
-		String content = dto.getContent().replaceAll("\r\n","<br>"); // textarea에서 줄바꿈 처리 ; 
+		String content = dto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ; 
 		
 		
 		Map map = new HashMap();

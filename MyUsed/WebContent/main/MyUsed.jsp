@@ -88,7 +88,7 @@
 	<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
 			<td style="vertical-align:left; padding-left: 30px; padding-right: 80px;">
-			<a href="MyUsed.nhn">
+			<a href="/MyUsed/MyUsed.nhn">
 			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
 			</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -489,10 +489,6 @@
 		<tr	bgcolor="#FFFFFF">
 		<td>
 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${list.mem_num}">( ${list.name} )</a> 님이 글을 게시하였습니다
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<a href="delete.nhn?num=${list.num}">게시글삭제</a>
 		<hr width="100%" > 
 		</td>
 		</tr>

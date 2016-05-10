@@ -1,8 +1,10 @@
 package member;
 
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -131,7 +133,6 @@ public class FriendController {
 	
 	/** 상대방이 거절 눌렀을 경우 나의 테이블에서 삭제 */
 	@RequestMapping("/MyUsedRejectionFriend.nhn")
-    
 	public String MyUsedRejectionFriend(int agree, int mem_num, int num){
 		// mem_num은 친구 신청한 상대방의 번호, num은 나의 번호
 		
@@ -144,5 +145,47 @@ public class FriendController {
 		
 		return "/member/MyUsedAgreeFriend.jsp";
 	}
+	
+/*	
+	@RequestMapping("/testfriend.nhn")
+	public String test(HttpServletRequest request ){
+		String sql = "";
+		
+		Map map = new HashMap();
+		map.put("num", 7);
+		
+		List friNumList = new ArrayList();
+		friNumList = sqlMapClientTemplate.queryForList("friend.friendNumList", map);
+		int size = friNumList.size();
+		System.out.println(size);
+		for(int i = 0 ; i < friNumList.size()-1 ; i++){
+			sql += "select * from friendlist_"+friNumList.get(i)+" union ";
+		}
+		sql = sql + "select * from friendlist_"+friNumList.get(size-1);
+		
+		System.out.println(sql);
 
+
+		Map sqlmap = new HashMap();
+		sqlmap.put("sql", sql);
+		
+		List all = new ArrayList();
+		all = sqlMapClientTemplate.queryForList("friend.all", sqlmap);
+		
+		
+		request.setAttribute("all", all);
+		
+		return "/member/test.jsp";
+	}*/
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

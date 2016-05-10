@@ -57,7 +57,23 @@
 	<select id="amongFriend" resultClass="int" parameterClass="java.util.Map">
 		select count(*) from friendlist_$num$ where mem_num=$mem_num$
 	</select>
+	
+	
+	<!-- 친구의 num를 리스트를 뽑아서 가져감 -->
+	<select id="friendNumList" resultClass="int" parameterClass="java.util.Map">
+		select mem_num from friendlist_$num$ 
+	</select>
+	
+	
+<!-- 	<resultMap id="dtoMap" class="member.FriendDTO">
+		<result property="mem_num" column="mem_num"/>
+		<result property="name" column="name"/>
+		<result property="state" column="count"/>
+	</resultMap> -->
 
+	<select id="all" resultClass="member.FriendDTO" parameterClass="java.util.Map">
+		select mem_num,name,count(name) count from ( $sql$ ) where state=2 group by name, mem_num order by count desc
+	</select>
 
 	
 
