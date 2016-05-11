@@ -27,6 +27,7 @@ public class MainController {
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 	
 	private List<MainboardDTO> list = new ArrayList<MainboardDTO>();;	
+	private List<MainProboardDTO> prolist = new ArrayList<MainProboardDTO>();; 
 
 	   @RequestMapping("/MyUsed.nhn")
 	   public ModelAndView main(HttpServletRequest request){
@@ -47,9 +48,11 @@ public class MainController {
 			
 	      request.setAttribute("categList", categList);
 	      
-	  	  list = sqlMap.queryForList("main.boardView", null);
+	  	  list = sqlMap.queryForList("main.boardView", null); // state 리스트
+	  	  prolist = sqlMap.queryForList("main.proboardView", null); 	// product 리스트 
 	  	  
 	  	  mv.addObject("list", list);
+	  	  mv.addObject("prolist",prolist);
 	  	  
 	  	  mv.addObject("memDTO" , memDTO);
 	      mv.setViewName("/main/MyUsed.jsp");

@@ -9,6 +9,8 @@
    <select id="name" resultClass="String"  parameterClass="String">
       select name from memberlist where id = #sessionId#
    </select>
+   
+   
    <!-- num 을 사용해서 개인 DB insert sql -->
    <insert id="addContent" parameterClass="java.util.Map">
       insert into board_$num$ values(board_$num$seq.NEXTVAL, #content#, #name# , default ,sysdate)
@@ -17,11 +19,6 @@
    <insert id="insertboardlist" parameterClass="java.util.Map">
       insert into boardlist values(boardlist_seq.NEXTVAL, #content#, #mem_pic# , #name# , default ,#num#,sysdate)
    </insert>
-   <!-- selct로 boardlist출력 -->
-   <select id="boardView" resultClass="main.MainboardDTO" >
-	select * from boardlist order by num desc                       
-   </select>
-
    <!-- board_num 에서 가장 높은 num을 구하기 위해서  -->
    <select id="board_num" resultClass="int"  parameterClass="int">
    		select max(num) from board_$num$ 
@@ -30,9 +27,36 @@
    <insert id="addPic" parameterClass="java.util.Map">
       insert into pic_$num$ values(#board_num#, #mem_pic#, #name# , sysdate)
    </insert>
+    <!-- selct로 boardlist출력 -->
+   <select id="boardView" resultClass="main.MainboardDTO" >
+	select * from boardlist order by num desc                       
+   </select>
+   
+   
+   
  
-   
-   
+ 	
+
+	<!-- num 을 사용해서 개인 pro DB insert sql -->
+   <insert id="addProContent" parameterClass="java.util.Map">
+      insert into proboard_$num$ values(proboard_$num$seq.NEXTVAL,  #content#, #categ#, #name# , default ,#price#,sysdate)
+   </insert>
+   <!-- 전체proboardlist에 insert sql  -->
+   <insert id="insertproboardlist" parameterClass="java.util.Map">
+      insert into proboardlist values(proboardlist_seq.NEXTVAL, #content#, #categ# , #name# , default ,#price#, #pro_pic#, #num#, sysdate)
+   </insert>
+    <!-- proboard_num 에서 가장 높은 num을 구하기 위해서  -->
+   <select id="proboard_num" resultClass="int"  parameterClass="int">
+   		select max(num) from proboard_$num$ 
+   </select>
+    <!-- 개인상품사진 db에 저장하기 위해  -->
+   <insert id="addProPic" parameterClass="java.util.Map">
+      insert into propic_$num$ values(#proboard_num#, #pro_pic#, #name# , sysdate)
+   </insert>
+     <!-- selct로 boardlist출력 -->
+   <select id="proboardView" resultClass="main.MainProboardDTO" >
+	select * from proboardlist order by num desc                       
+   </select>
    
    
    

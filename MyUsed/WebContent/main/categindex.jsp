@@ -97,11 +97,12 @@
 		</c:forEach>
 	</select>
 	<input type="hidden" name="categ0" value="${categ0}"/>
+	<input type="hidden" name="deposit" value="product"/>
 	
 	<br /><br />
 
 
-		<textarea rows = "5" cols = "73" name="pcontent" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
+		<textarea rows = "5" cols = "73" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
 		<font size ="2" color="#3B5998">
 		* 배송료
 		포함(선불) <input type="radio" name="sendPay" value="yes" />
@@ -138,12 +139,12 @@
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
 
-        <label for="image${i}">Image${i}</label>
+        <label for="pimage${i}">Image${i}</label>
    
-        <input type="file" name="image${i}" id="image${i}" style='display: none;'>
+        <input type="file" name="pimage${i}" id="pimage${i}" style='display: none;'>
 	
    
-    <div id="image${i}_preview" style='display: none;'>
+    <div id="pimage${i}_preview" style='display: none;'>
         <img src="/MyUsed/images/option.png" width="70" height="70"/>
         <a href="#">Remove</a>
     </div>
@@ -152,7 +153,7 @@
     <script type="text/javascript">
  
     
-    $('#image${i}').on('change', function() {
+    $('#pimage${i}').on('change', function() {
         
         ext = $(this).val().split('.').pop().toLowerCase(); //확장자
         
@@ -161,16 +162,16 @@
             resetFormElement($(this)); //폼 초기화
             window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
         } else {
-            file = $('#image${i}').prop("files")[0];
+            file = $('#pimage${i}').prop("files")[0];
             blobURL = window.URL.createObjectURL(file);
-            $('#image${i}_preview img').attr('src', blobURL);
-            $('#image${i}_preview').slideDown(); //업로드한 이미지 미리보기 
+            $('#pimage${i}_preview img').attr('src', blobURL);
+            $('#pimage${i}_preview').slideDown(); //업로드한 이미지 미리보기 
             $(this).slideUp(); //파일 양식 감춤
         }
     });
-    $('#image${i}_preview a').bind('click', function() {
-        resetFormElement($('#image${i}')); //전달한 양식 초기화
-        $('#image${i}').slideDown(); //파일 양식 보여줌
+    $('#pimage${i}_preview a').bind('click', function() {
+        resetFormElement($('#pimage${i}')); //전달한 양식 초기화
+        $('#pimage${i}').slideDown(); //파일 양식 보여줌
         $(this).parent().slideUp(); //미리 보기 영역 감춤
         return false; //기본 이벤트 막음
     });	
