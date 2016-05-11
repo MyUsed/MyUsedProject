@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="procateg">
+
+	<select id="selectCateg" resultClass="main.ProBoardCategDTO" parameterClass="int">
+		select * from proboard_categ where ca_level=#ca_level# order by ca_group
+	</select>
+	
+	<select id="findgroup" resultClass="int" parameterClass="java.util.Map">
+		select ca_group from proboard_categ where categ=#categ# and ca_level=#ca_level#
+	</select>
+	
+	<select id="selectCategGroup" resultClass="main.ProBoardCategDTO" parameterClass="java.util.Map">
+		select * from proboard_categ where ca_level=#ca_level# and ca_group=#ca_group#
+	</select>
+	
+</sqlMap>

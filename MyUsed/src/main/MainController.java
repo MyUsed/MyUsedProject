@@ -31,8 +31,7 @@ public class MainController {
 	   @RequestMapping("/MyUsed.nhn")
 	   public ModelAndView main(HttpServletRequest request){
 	      ModelAndView mv = new ModelAndView();
-	      
-	      
+	  
 	      HttpSession session = request.getSession();
 	      String sessionId = (String) session.getAttribute("memId");
 	      MemberDTO memDTO = new MemberDTO();
@@ -40,6 +39,13 @@ public class MainController {
 	      
 	      request.setAttribute("name", memDTO.getName());
 	      request.setAttribute("num", memDTO.getNum());
+	      
+	      /** 카테고리 추가  */
+	      ProBoardCategDTO categDTO0 = new ProBoardCategDTO();
+	      List categList = new ArrayList();
+	      categList = sqlMap.queryForList("procateg.selectCateg", 0);
+			
+	      request.setAttribute("categList", categList);
 	      
 	  	  list = sqlMap.queryForList("main.boardView", null);
 	  	  

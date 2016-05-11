@@ -26,12 +26,10 @@ public class BoardController {
 	
 	
 	@RequestMapping("/mainSubmit.nhn")
-	public String mainSubmit(MultipartHttpServletRequest request , MainboardDTO dto){
+	public String mainSubmit(MultipartHttpServletRequest request , MainboardDTO dto , String deposit){
 	
 		
-		
-		
-		
+
 		 // << 접속한 아이디 의 num 가져오기 >> 
 		HttpSession session = request.getSession();
 		String sessionId = (String)session.getAttribute("memId");
@@ -42,17 +40,15 @@ public class BoardController {
 		System.out.println("접속자의 name = "+name);
 		String content = dto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ; 
 		
+		String Submit = request.getParameter("deposit");
 		
-		
-		
+		if(Submit.equals("state")){   // submit이 state일때 실행
+
 		Map map = new HashMap();
 		map.put("num", num);
 		map.put("content",content);
 		map.put("name", name);
-		
-		
-		
-		
+
 		// <<  num 값을받아  insert >>
 		if(request.getFile("image1").isEmpty()){	
 			sqlMap.insert("main.addContent", map);
@@ -91,13 +87,18 @@ public class BoardController {
 	
 	try{
 		mf.transferTo(copy);	// 업로드 
-	}catch(Exception e){
-		e.printStackTrace();
-	}
+	}catch(Exception e){e.printStackTrace();}
 	
 	}
 
 	}
+		
+		}else{ // product 가 submit 될때 실행 ;; 
+			System.out.println("product 실행");
+			
+			
+			
+		}
 	
 
 		return "MyUsed.nhn";

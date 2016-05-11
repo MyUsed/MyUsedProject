@@ -28,11 +28,13 @@
                {
                 div1.style.display = '';
                 div2.style.display = 'none';
+                div2_categ.style.display = 'none';
                }
                else if(num == 2)
                {
                 div1.style.display = 'none';
                 div2.style.display = '';  
+                div2_categ.style.display = '';
                }
                else
                {
@@ -213,7 +215,34 @@
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/option.png" width="20" height="20">&nbsp;설정</a>
 </div>
 
-
+  
+ <!-- 상품 카테고리 -->
+  <script type="text/javascript">
+    $(document).ready(function(){		//onload이벤트같은것(시작하자마자 바로 동작)
+      $("#categ0").change(function(){	// 이렇게 안불러와짐........
+          callAjax();
+      });
+    });
+    function callAjax(){
+        $.ajax({
+	        type: "post",
+	        url : "/MyUsed/categindex.nhn",
+	        data: {	// url 페이지도 전달할 파라미터
+	        	categ0 : $('#categ0').val()
+	        },
+	        success: test,	// 페이지요청 성공시 실행 함수
+	        error: whenError	//페이지요청 실패시 실행함수
+     	});
+    }
+    function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+        $("#div2").html(aaa);
+        console.log(resdata);
+    }
+    function whenError(){
+        alert("Error");
+    }
+  </script>
+ 
 
 
 <div id="contents">
@@ -226,8 +255,8 @@
 	 <table align="center"  width="550" height="30">
 	 <tr bgcolor="#FFFFFF">
 	 <td align="center" colspan="8">
-	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' checked>상태 업데이트
-     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'>상품 등록
+	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' checked>State
+     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'>Product
 	 </td>
 	 </tr>
 	 </table>
@@ -236,7 +265,7 @@
 	<!--  일반게시글 등록  -->
 	 
 	
-	 <div id='div1'>
+<div id='div1'>
 	 <table align="center"  width="550" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
@@ -325,6 +354,7 @@
         e.unwrap(); //감싼 <form> 태그를 제거
     }
     </script>
+  
 </td>
 </c:forEach>
 <!-- 이미지 미리보기  -->
@@ -339,34 +369,91 @@
 	
 	
 	</table>
-	 </div>
+	
+	<br /> <br />
+	
+	
+
+
+<!--  상품 보기 페이지  -->	
+	
+
+<c:forEach var="list" items="${list}">
+	
+ 	<table align="center"  width="550" height="180">
+		<tr	bgcolor="#FFFFFF">
+		<td>
+		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${list.mem_num}">( ${list.name} )</a> 님이 글을 게시하였습니다  
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<c:if test="${list.mem_num == memDTO.num}">
+		<a href="delete.nhn?num=${list.num}">게시글삭제</a>
+		</c:if>
+		<hr width="100%" > 
+		</td>
+		</tr>
+		
+		<tr  bgcolor="#FFFFFF">
+		<td align="center">
+		<c:if test="${list.mem_pic != null}">
+		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/> <br/>
+		</c:if>
+		${list.content}
+		
+		</td>
+		</tr>
+		
+		<tr bgcolor="#FFFFFF">
+		<td>
+		<hr width="100%"  > 
+		좋아요 / 댓글달기 / 공유하기 / 구매하기 
+		</td>
+		</tr>
+
+	</table>
+ 	<br />	
+ 	
+
+<!--  상품 보기 페이지  -->	
+	 
+</c:forEach>
+	 
+	
+</div>
 	
 	
 	
 	 
+<div id='div2_categ' style='display:none;' > 
 	 <!--  일반상품 등록  -->
+	 	
+<table align="center"  width="550" height="30">
+<tr bgcolor="#FFFFFF">
+	<td align="center">
+	<font size="2" color="#3B5998" >상품 등록</font> 
+		  <hr width="80%"  > 
+	<select name="categ0" id="categ0">
+		<option>--------1차--------</option>
+		<c:forEach var="categ" items="${categList}">
+			<option>${categ.categ}</option>
+		</c:forEach>
+	</select>
+	<input id="button" type="button" value="확인" onClick="callAjax()">
+	<br />
+	</td>
+</tr>
+</table>
 	 
-	  <div id='div2' style='display:none;' >
+</div>
+	 
+<div id='div2' style='display:none;' >
 	
 	<table align="center"  width="550" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
-	<font size="2" color="#3B5998" >상품 등록</font> 
-		  <hr width="80%"  > 
-	</td>
-	</tr>
-	<tr bgcolor="#FFFFFF">
-	<td align="center" colspan="8">
 	<br/>
-		<select name="categ">
-                   <option>카테고리</option>
-                   <option>의류</option>
-                   <option>전자제품</option>
-                   <option>가구</option>
-                   <option>티켓</option>
-                   <option>기타</option>
-        </select>
-        <br />
+	
 		<textarea rows = "5" cols = "73" name="pcontent" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
 		<font size ="2" color="#3B5998">
 		* 배송료
@@ -464,8 +551,7 @@
 	
 	</table>
 	
-	
-	</div>
+</div>
 	
 	
 	
@@ -478,52 +564,6 @@
 
 
 
-
-
-<!--  상품 보기 페이지  -->	
-	
-
-<c:forEach var="list" items="${list}">
-	
- 	<table align="center"  width="550" height="180">
-		<tr	bgcolor="#FFFFFF">
-		<td>
-		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${list.mem_num}">( ${list.name} )</a> 님이 글을 게시하였습니다  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<c:if test="${list.mem_num == memDTO.num}">
-		<a href="delete.nhn?num=${list.num}">게시글삭제</a>
-		</c:if>
-		<hr width="100%" > 
-		</td>
-		</tr>
-		
-		<tr  bgcolor="#FFFFFF">
-		<td align="center">
-		<c:if test="${list.mem_pic != null}">
-		<img src="/MyUsed/images/${list.mem_pic}" width="330" height="250"/> <br/>
-		</c:if>
-		${list.content}
-		
-		</td>
-		</tr>
-		
-		<tr bgcolor="#FFFFFF">
-		<td>
-		<hr width="100%"  > 
-		좋아요 / 댓글달기 / 공유하기 / 구매하기 
-		</td>
-		</tr>
-
-	</table>
- 	<br />	
- 	
-
-<!--  상품 보기 페이지  -->	
-	 
-</c:forEach>
-	 
 	 
 	 
 </div>
