@@ -24,8 +24,8 @@
 			select count(*) from memberlist where chatonoff='1'
 		</select>
 
-		<select id="onId" resultClass="dto">
-			select id from memberlist where chatonoff='1'
+		<select id="onName" resultClass="dto">
+			select name from memberlist where chatonoff='1'
 		</select>
 		
 </sqlMap>

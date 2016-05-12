@@ -49,12 +49,12 @@ public class chatController {
 		return mv;
 	}
 	
-	@RequestMapping("idlist.nhn")
-	public ModelAndView idlist(){
+	@RequestMapping("namelist.nhn")
+	public ModelAndView namelist(){
 		ModelAndView mv = new ModelAndView();
-		List list = SqlMapClientTemplate.queryForList("chat.onId", null);	// 채팅방에 들어와있는 사람의 ID 
+		List list = SqlMapClientTemplate.queryForList("chat.onName", null);	// 채팅방에 들어와있는 사람의 name 
 		mv.addObject("list", list);
-		mv.setViewName("/views/idlist.jsp");
+		mv.setViewName("/views/namelist.jsp");
 		return mv;
 	}
 	

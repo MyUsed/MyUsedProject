@@ -49,6 +49,8 @@
       			window.open(url, "chat", "width=500, height=600, resizable=yes, location=no, status=no, toolbar=no, menubar=no, left=400, top=30");
       			
       		}
+              
+              
    
               
              
@@ -132,10 +134,10 @@
 
 
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:43%; margin-left:540px; width:240px; height:800px; background:#EAEAEA; }
-#sidebannerL { position:fixed; top:50px; right:50%; margin-right:465px; width:205px; height:800px; background:#E9EAED; }
-#contents { width:630px; height:9000px; margin:0 auto; margin-left:180px;background:#EAEAEA; }
-#advertise {  position:fixed; width:300px; height:9000px; left:61%; margin-right:300px;background:#EAEAEA; }
+#sidebannerR { position:fixed; top:50px; left:43%; margin-left:37%; width:20%; height:100%; background:#EAEAEA; }
+#sidebannerL { position:fixed; top:50px; right:50%; margin-right:35%; width:15%; height:100%; background:#E9EAED; }
+#contents { width:50%; height:150%; margin:0 auto; margin-left:13%;background:#EAEAEA; }
+#advertise {  position:fixed; width:22%; height:100%; left:61%; margin-right:30%;background:#EAEAEA; }
 </style>
 </head>
 
@@ -186,8 +188,7 @@
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/chat.nhn"><img src="/MyUsed/images/chat.png" width="20" height="20">&nbsp;메세지</a>
-			<input type="button" id="button" value="자유 채팅방" onclick="openChat();"/><br/>	
-	
+			<input type="button" id="button" value="자유 채팅방" onclick="openChat();"/>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friend.png" width="20" height="20">&nbsp;친구보기</a>

@@ -100,6 +100,7 @@ public class BoardController {
 		
 		}else if(Submit.equals("product")){ // product 가 submit 될때 실행 ;;
 			
+			
 			request.setAttribute("view", "none");  // div1 이 안보이게 
 			request.setAttribute("view2", "view"); // div2 가 보이게 
 			request.setAttribute("checked1", "checked");

@@ -82,18 +82,18 @@
 <!-- 접속자의 ID 나타내는 함수 -->
 <script type="text/javascript">
     $(document).ready(function(){
-    	window.setInterval('idlistAjax()', 200); //0.2초마다한번씩 함수를 실행
+    	window.setInterval('namelistAjax()', 200); //0.2초마다한번씩 함수를 실행
     });
-    function idlistAjax(){
+    function namelistAjax(){
     	 $.ajax({
  	        type: "post",
- 	        url : "/MyUsed/idlist.nhn",
- 	        success: idlist,	// 페이지요청 성공시 실행 함수
+ 	        url : "/MyUsed/namelist.nhn",
+ 	        success: namelist,	// 페이지요청 성공시 실행 함수
  	        error: whenError	//페이지요청 실패시 실행함수
       	});
     }
-    function idlist(il){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
-        $("#idlistReturn").html(il);
+    function namelist(nl){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+        $("#namelistReturn").html(nl);
     }
     function whenError(){
         alert("Error");
@@ -116,7 +116,7 @@
 			<tr>
 				<td><textarea name="area" id="areai" readonly="readonly" rows="25" cols="40"></textarea></td>
 				<td>
-				<div id="idlistReturn"></div>
+				<div id="namelistReturn"></div>
 				</td>
 			</tr>
 			
@@ -124,7 +124,7 @@
 				<td><textarea name="chat" id="chati" rows="3" cols="40"></textarea></td>
 			</tr>
 			
-			<tr>
+			<tr align="center">
 				<td><input type="button" value="보내기" id="sendBtn"/>
 					<input type="button" value="나가기" onclick="Exit()"/>
 				</td>

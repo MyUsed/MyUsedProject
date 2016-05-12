@@ -2,9 +2,9 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-	<select multiple="multiple" size="22">
+	<select multiple="multiple" size="20">
 		<c:forEach var="list" items="${list}">
-			<option>${list.id}	</option>
+			<option>${list.name}</option>
 		</c:forEach>			
 	</select>
 		

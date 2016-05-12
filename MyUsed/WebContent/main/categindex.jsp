@@ -96,6 +96,7 @@
 			<option>${categ.categ}</option>
 		</c:forEach>
 	</select>
+	
 	<input type="hidden" name="categ0" value="${categ0}"/>
 	<input type="hidden" name="deposit" value="product"/>
 	

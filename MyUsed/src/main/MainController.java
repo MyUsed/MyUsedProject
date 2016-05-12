@@ -30,7 +30,7 @@ public class MainController {
 	private List<MainProboardDTO> prolist = new ArrayList<MainProboardDTO>();; 
 
 	   @RequestMapping("/MyUsed.nhn")
-	   public ModelAndView main(HttpServletRequest request){
+	   public ModelAndView main(HttpServletRequest request ){
 	      ModelAndView mv = new ModelAndView();
 	  
 	      HttpSession session = request.getSession();
@@ -49,13 +49,7 @@ public class MainController {
 	      request.setAttribute("categList", categList);
 	      request.setAttribute("checked", "checked");
 	      
-	   
-	   
-	      if(request.getParameter("checked1")=="checked"){   // radio 버튼의 체크 설정 
-	    	  request.setAttribute("checked", "view");
-	    	  request.setAttribute("checked1", "checked");  
-	    	  
-	      }
+	     
 	      
 	  	  list = sqlMap.queryForList("main.boardView", null); // state 리스트
 	  	  prolist = sqlMap.queryForList("main.proboardView", null); 	// product 리스트 

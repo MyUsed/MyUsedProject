@@ -34,7 +34,7 @@ public class ProBoardCategController {
 	
 
 	@RequestMapping("/categindex.nhn")
-	public String categindex(HttpServletRequest request, String categ0){
+	public String categindex(HttpServletRequest request, String categ0,String deposit){
 		Map categMap = new HashMap();
 		categMap.put("categ", categ0);
 		categMap.put("ca_level", 0);
@@ -54,7 +54,7 @@ public class ProBoardCategController {
 		request.setAttribute("prolist", prolist);
 		request.setAttribute("categList", categList);
 		request.setAttribute("categ0", categ0);
-		request.setAttribute("view2", "view"); // div2 가 보이게 
+		
 		
 		return "/main/categindex.jsp";
 	}
