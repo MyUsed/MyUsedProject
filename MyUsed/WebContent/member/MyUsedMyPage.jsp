@@ -2,17 +2,19 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-
 <html lang="ko">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="facebookstyle.css" />
+<link rel="stylesheet" type="text/css" href="/MyUsed/member/MyPage.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/member/style.css"> -->
+
+<script src="/MyUsed/member/jquery-1.11.3.js"></script>
+<script src="/MyUsed/member/animate.js"></script>
 <head>
 
  		<script type="text/javascript">
         
-              function send(){     
-        
+              function send(){             
 
                    document.formId.method = "post"     // method 선택, get, post
                    document.formId.action = "/MyUsed/main/test.jsp";  // submit 하기 위한 페이지 
@@ -21,7 +23,51 @@
                   
               }
              
-             
+              /* 프로필 이미지 */
+              function openImageUpload() {
+      	        	imageUploadback.style.display = '';
+      	        	imageUpload.style.display = '';
+      	    	}
+
+              function closeImageUpload() {
+      	        	imageUploadback.style.display = 'none';
+      	        	imageUpload.style.display = 'none';      	        	
+      	    	}
+
+              function openImageHistory() {
+            	  	imagehistoryback.style.display = '';
+      	        	imagehistory.style.display = '';      	        	
+      	    	}
+
+              function closeImageHistory() {
+            	  	imagehistoryback.style.display = 'none';
+    	        	imagehistory.style.display = 'none';     	        	
+      	        	
+      	    	}
+              
+              /* 커버 이미지 */
+              
+              function openCoverImageUpload() {
+            	  	CoverUploadback.style.display = '';
+            	  	CoverUpload.style.display = '';
+      	    	}
+
+              function closeCoverImageUpload() {
+            	  	CoverUploadback.style.display = 'none';
+            	  	CoverUpload.style.display = 'none';      	        	
+      	    	}
+
+              function openCoverImageHistory() {
+            	  	Coverhistoryback.style.display = '';
+            	  	Coverhistory.style.display = '';      	        	
+      	    	}
+
+              function closeCoverImageHistory() {
+            	  	Coverhistoryback.style.display = 'none';
+            	  	Coverhistory.style.display = 'none';     	        	
+      	        	
+      	    	}
+              
          </script>
 
 
@@ -53,9 +99,13 @@
 		
 		
 	</style>
+	
+
 </head>
 
 <body>
+
+
 	<div id="layer_fixed">
 		<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
@@ -64,11 +114,15 @@
 			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
 			</a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="text" size="70"/>
+				
+			<!-- 친구찾기 -->
+				<input type="text" size="70" name="member"/>
 				<button type="submit"><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
+			
+			
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
-				<img src="/MyUsed/images/profile.png" width="15"  height="15">
+				<img src="/MyUsed/images/profile/${sessionproDTO.profile_pic}" width="15"  height="15">
 				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}">${sessionName}</a> | 
 				<a href="/MyUsed/MyUsed.nhn">홈</a> | 
 				<a href="/MyUsed/MyUsed.nhn">친구찾기</a>
@@ -77,6 +131,11 @@
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40"></a>
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35"></a>
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainView.png" width="40"  height="35"></a>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<!-- 추후 이미지로 바꾸기(페이스북처럼 드롭다운메뉴로) -->
+				<c:if test="${sessionScope.memId != null }">
+					<a href="/MyUsed/MyUsedLogout.nhn">로그아웃</a>
+				</c:if>
 			</td>
 			
 		</tr>
@@ -85,206 +144,6 @@
 
 
 
-<style type="text/css">
-#sidebannerR { position:absolute; height:5000px; top:50px; left:50%; margin-left:470px; width:200px; background:#EAEAEA; }
-#sidebannerL { position:fixed; top:50px; right:50%; margin-right:470px; width:200px; height:800px; background:#E9EAED; }
-#content { width:980px; height:5000px; margin:0 auto; background:#EAEAEA; }
-#coverImage { position:absolute; width:800px; height:220px; margin-right:10px; background:#FFFFFF; }
-#profileImage { 
-	position:absolute; 
-	width:160px; 
-	height:160px; 
-	margin-top:83px; 
-	margin-left:25px; 
-	background:#8C8C8C;
-	border:1px;
-	border-color:#353535;
-	
-	}
-#name { 
-	position:absolute; 
-	width:70px;
-	height:30px; 
-	margin-top:190px; 
-	margin-left:192px; 
-	text-align:center;
-	font-size:160%;
-	font-weight:bold;
-	}
-	
-/* #menu{ position:absolute; width:680px; height:40px; margin-top:223px ;margin-right:10px; background:#FFFFFF; } */
-#menu0{ position:absolute;
-		width:199px; 
-		height:40px;
-		margin-top:221px;
-		margin-right:0px; 
-		margin-left:0px; 
-		background:#FFFFFF; 
-		}
-#menu1{ position:absolute;
-		width:80px; 
-		height:40px;
-		margin-top:221px;
-		margin-right:10px; 
-		margin-left:200px;
-		background:#FFFFFF;
-		text-align:center;
-		padding-top:10px;
-		color:#1F50B5;
-		}
-#menu2{ position:absolute;
-		width:80px; 
-		height:40px;
-		margin-top:221px;
-		margin-right:10px; 
-		margin-left:281px;
-		background:#FFFFFF; 
-		text-align:center;
-		padding-top:10px;
-		color:#1F50B5;
-		}		
-#menu3{ position:absolute;
-		width:80px; 
-		height:40px;
-		margin-top:221px;
-		margin-right:10px; 
-		margin-left:362px;
-		background:#FFFFFF; 
-		text-align:center;
-		padding-top:10px;
-		color:#1F50B5;
-		}		
-#menu4{ position:absolute;
-		width:80px; 
-		height:40px;
-		margin-top:221px;
-		margin-right:10px; 
-		margin-left:443px;
-		background:#FFFFFF; 
-		text-align:center;
-		padding-top:10px;
-		color:#1F50B5;
-		}	
-#menu5{ position:absolute;
-		width:80px; 
-		height:40px;
-		margin-top:221px;
-		margin-right:10px; 
-		margin-left:524px;
-		background:#FFFFFF; 
-		text-align:center;
-		padding-top:10px;
-		color:#1F50B5;
-		}	
-#menu6{ position:absolute;
-		width:195px; 
-		height:40px;
-		margin-top:221px;
-		margin-right:10px; 
-		margin-left:605px;
-		background:#FFFFFF; 
-		}
-		
-		
-#knewpeople { position:absolute; 
-			  width:800px; 
-			  height:180px; 
-			  margin-top:275px; 
-			  margin-right:10px; 
-			  background:#FFFFFF; }
-			  
-			  
-#knewpeopletitle { position:absolute; 
-			  width:800px; 
-			  height:30px;  
-			  margin-top:0px; 
-			  margin-right:10px; 
-			  background:#BDBDBD;
-			  padding-top:6px; }
-
-#knewpeopleindex { position:relative; 
-			  width:110px; 
-			  height:140px;  
-			  margin-top:40px; 
-			  margin-left:10px;
-			  float:left;} 
-			  			  
-#knewpeopleimage { position:absolute; 
-			  width:110px; 
-			  height:110px;  
-			  background:#BDBDBD;}  
-		
-#knewpeoplename { position:absolute; 
-			  width:110px; 
-			  height:20px; 
-			  margin-top:115px;  
-			  text-align:center;
-			  font-weight:bold;}  
-			  
-			  
-			  
-#simpleinfo { position:absolute; 
-			  width:230px; 
-			  height:250px;  
-			  margin-top:470px; 
-			  margin-right:10px; 
-			  background:#FFFFFF;
-			  padding-top:6px; }
-			  
-#picture { position:absolute; 
-			  width:230px; 
-			  height:250px;  
-			  margin-top:735px; 
-			  margin-right:10px; 
-			  background:#FFFFFF;
-			  padding-top:6px; }
-								
-#article {  position:absolute; 
-			width:555px; 
-			height:250px;     
-			margin-top:736px; 
-			margin-right:10px;
-			margin-left:245px;
-			background:#FFFFFF;
-			padding-top:6px; }								
-								
-#writeform {  position:absolute; 
-			  width:555px; 
-			  height:250px;
-			  margin-top:470px; 
-			  margin-right:10px;
-			  margin-left:245px;
-			  background:#FFFFFF; }
-								
-#writeformtitle {  position:absolute; 
-			  width:555px; 
-			  height:40px;
-			  background:#F6F6F6;
-			  padding-top:6px; }
-			  
-#propic {  position:absolute; 
-			  width:100px; 
-			  height:150px;
-			  margin-top:45px; 
-			  background:#F6F6F6;
-			  padding-top:6px; }				
-			  
-#writearea {  position:absolute; 
-			  width:440px; 
-			  height:150px;
-			  margin-top:45px; 
-			  margin-left:108px;
-			  background:#F6F6F6;
-			  padding-top:6px; }
-								
-#bottom {  position:absolute; 
-			  width:555px; 
-			  height:50px;
-			  margin-top:198px; 
-			  background:#F6F6F6;
-			  padding-top:6px; }
-			  		
-</style>
 </head>
 
 <body>
@@ -342,6 +201,16 @@
 </div>
 <div id="content">
 	<div id="coverImage">
+		<img src="/MyUsed/images/cover/${coverDTO.cover_pic}" width="800" height="220"/>
+	
+		<div id="covertext">
+				
+        	<label for="cimage">커버 사진 업로드</label> | <label for="chistory">히스토리</label>
+   
+        	<input type="button" id="cimage" OnClick="javascript:openCoverImageUpload()" style='display: none;'>
+        	<input type="button" id="chistory" OnClick="javascript:openCoverImageHistory()" style='display: none;'>
+        	
+		</div>
 	
 	</div>
 		
@@ -350,12 +219,39 @@
 	<div id="menu2"><a href="/MyUsed/MyUsedMyPage.nhn">정보</a></div>	
 	<div id="menu3"><a href="/MyUsed/MyUsedMyPage.nhn">친구</a></div>	
 	<div id="menu4"><a href="/MyUsed/MyUsedMyPage.nhn">사진</a></div>	
-	<div id="menu5"><a href="/MyUsed/MyUsedMyPage.nhn">더 보기▼</a></div>
+	<div id="menu5">
+
+    <nav class="nav">
+	<ul class="gnb">
+	<li ><a href="#">더 보기▼</a>
+		<ul class="sub">
+	      	<li><a href="/MyUsed/MyUsed.nhn">aaaaaa</a></li>
+            <li><a href="/MyUsed/MyUsed.nhn">bbbbbb</a></li>
+            <li><a href="/MyUsed/MyUsed.nhn">cccccc</a></li>
+            <li><a href="/MyUsed/MyUsed.nhn">dddddd</a></li>
+        </ul>
+    </li>
+    </ul>
+    </nav> 
+
+	</div>
 	<div id="menu6"><!-- 공란 --></div>
 
+	<!-- 프로필 이미지 업로드 -->
+	<div id="profileImage" >
+	<img src="/MyUsed/images/profile/${proDTO.profile_pic}" width="160" height="160"/>
 	
-	<div id="profileImage">
 	
+		<div id="profiletext">
+		
+		
+        	<label for="image">프로필 업로드</label> | <label for="history">히스토리</label>
+   
+        	<input type="button" id="image" OnClick="javascript:openImageUpload()" style='display: none;'>
+        	<input type="button" id="history" OnClick="javascript:openImageHistory()" style='display: none;'>
+        	
+
+		</div>
 	
 	</div>	
 	
@@ -363,22 +259,27 @@
 		${name}
 	</div>
 	
+	<!-- 세션아이디의 num과(mynum) 해당페이지의 mem_num과 같은 사람일때만 보임 -->
+	<c:if test="${mem_num == mynum}">
 	<div id="knewpeople">
 		<div id="knewpeopletitle">알 수 도 있는 친구</div>
-		
-		<c:forEach var="knewFriend" items="${knewFriendList}">
-			<div id="knewpeopleindex">
+		<!-- 
+			<div id="knewpeopleindex"> -->
+			<c:forEach var="knewFriendList_image" items="${knewFriendList_image}" begin="0" end="5" >
 				<div id="knewpeopleimage">
-					<img src="/MyUsed/images/">
+					<img src="/MyUsed/images/profile/${knewFriendList_image.profile_pic}" width="110" height="110">
 				</div>
+			</c:forEach>
+			<c:forEach var="knewFriend" items="${knewFriendList}" begin="0" end="5" >
 				<div id="knewpeoplename">
 					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${knewFriend.mem_num}">
 					${knewFriend.name}
 					</a>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+			<!-- </div> -->
 	</div>
+	</c:if>
 	
 	<div id="simpleinfo">
 	소개
@@ -405,8 +306,6 @@
 	</div>
 	
 	
-	
-	
 	<%-- for문 걸어서 반복 --%>
 	<div id="article">
 	게시물
@@ -416,11 +315,161 @@
 </div>
 
 
+<!-- 프로필 이미지 -->
+
+<div id="imageUploadback" style='display: none;'>
+</div>
+<div id="imageUpload" style='display: none;'>
+	<div id="closebotton">
+		<label for="close">
+			<img src="/MyUsed/images/close.png" width="30" height="30">
+		</label>
+    </div>
+    
+   	<input type="button" id="close" OnClick="javascript:closeImageUpload()" style='display: none;'>
+   	<br />
+   	<center>
+   	
+   	<font size="4"><b>프로필 이미지 업로드</b></font>
+   	
+   	<hr width="80%">
+   	<form action="/MyUsed/MyUsedUploadPro.nhn" enctype="multipart/form-data" method="post" >
+		
+		<input type="file" value="이미지 찾기" name="profilepic" class="btn btn-success"> <br />
+		<input type="hidden" name="mem_num" value="${mem_num}">
+		
+		<script type="text/javascript">
+ 
+    
+    $('#profilepic').on('change', function() {
+        
+        ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+        
+        //배열에 추출한 확장자가 존재하는지 체크
+        if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+            resetFormElement($(this)); //폼 초기화
+            window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+        } else {
+            file = $('profilepic').prop("files")[0];
+            blobURL = window.URL.createObjectURL(file);
+            $('#imageview img').attr('src', blobURL);
+            $('#imageview').slideDown(); //업로드한 이미지 미리보기 
+            $(this).slideUp(); //파일 양식 감춤
+        }
+    });
+    $('#imageview a').bind('click', function() {
+        resetFormElement($('#profilepic')); //전달한 양식 초기화
+        $('#profilepic').slideDown(); //파일 양식 보여줌
+        $(this).parent().slideUp(); //미리 보기 영역 감춤
+        return false; //기본 이벤트 막음
+    });	
+  
+    function resetFormElement(e) {
+        e.wrap('<form>').closest('form').get(0).reset(); 
+        //리셋하려는 폼양식 요소를 폼(<form>) 으로 감싸고 (wrap()) , 
+        //요소를 감싸고 있는 가장 가까운 폼( closest('form')) 에서 Dom요소를 반환받고 ( get(0) ),
+        //DOM에서 제공하는 초기화 메서드 reset()을 호출
+        e.unwrap(); //감싼 <form> 태그를 제거
+    }
+    </script>
+		
+		<div id="imageview">
+		
+		</div>
+		
+		<br />
+        <input type="submit" value="프로필 업로드" class="btn btn-success" >
+	</form> 
+	</center>  	
+</div>
 	
 	
-	<br /><br /><br />
+<div id="imagehistoryback" style='display: none;'>
+</div>
+<div id="imagehistory" style='display: none;'>
+<div id="closebotton">
+		<label for="close1">
+			<img src="/MyUsed/images/close.png" width="30" height="30">
+		</label>
+    </div>
+    
+   	<input type="button" id="close1" OnClick="javascript:closeImageHistory()" style='display: none;'>
+   	<br />
+   	<center>
+   	
+   	<font size="4"><b>프로필 이미지 히스토리</b></font>
+   	
+   	<hr width="80%">
+   	
+   	<!-- 이미지 정렬 -->
+   	
+   	
+   	</center>
+</div>
 	
+
+
+<!-- 커버 이미지 -->
+
+
+<div id="CoverUploadback" style='display: none;'>
+</div>
+<div id="CoverUpload" style='display: none;'>
+	<div id="closebotton">
+		<label for="close2">
+			<img src="/MyUsed/images/close.png" width="30" height="30">
+		</label>
+    </div>
+    
+   	<input type="button" id="close2" OnClick="javascript:closeCoverImageUpload()" style='display: none;'>
+   	<br />
+   	<center>
+   	
+   	<font size="4"><b>커버 이미지 업로드</b></font>
+   	
+   	<hr width="80%">
+   	<form action="/MyUsed/MyUsedCoverUploadPro.nhn" enctype="multipart/form-data" method="post" >
+		
+		<input type="file" value="이미지 찾기" name="coverpic" class="btn btn-success"> <br />
+		<input type="hidden" name="mem_num" value="${mem_num}">
+		
 	
+		
+		<div id="imageview">
+		
+		</div>
+		
+		<br />
+        <input type="submit" value="커버 이미지 업로드" class="btn btn-success" >
+	</form> 
+	</center>  	
+</div>
+
+
+<div id="Coverhistoryback" style='display: none;'>
+</div>
+
+<div id="Coverhistory" style='display: none;'>
+<div id="closebotton">
+		<label for="close3">
+			<img src="/MyUsed/images/close.png" width="30" height="30">
+		</label>
+    </div>
+    
+   	<input type="button" id="close3" OnClick="javascript:closeCoverImageHistory()" style='display: none;'>
+   	<br />
+   	<center>
+   	
+   	<font size="4"><b>커버 이미지 히스토리</b></font>
+   	
+   	<hr width="80%">
+   	
+   	<!-- 이미지 정렬 -->
+   	
+   	
+   	</center>
+</div>
+		
 
 
 </body>

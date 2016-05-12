@@ -11,7 +11,7 @@
 	<sqlMap resource="/sql/createSQL.xml"/>
 	<sqlMap resource="/sql/deleteSQL.xml"/>
 	<sqlMap resource="/sql/procategSQL.xml"/>
-	
+	<sqlMap resource="/sql/profilePicSQL.xml"/>
 	
 	
 

@@ -431,7 +431,7 @@
 	
 
 	 
-<div id='div2_categ' style='display:none;' > 
+<div id='div2_categ' style='display:${view2};' > 
 	 <!--  일반상품 등록  -->
 	 	
 <table align="center"  width="550" height="30">
@@ -480,7 +480,7 @@
 		미포함(착불) <input type="radio" name="sendPay" value="no"  />
 		</font>
 		<br />
-		<input type="text" name="price" size="7" value="0" placeholder="상품가격"/>
+		<input type="text" name="price" size="7" value="0000" placeholder="상품가격"/>
 		<hr width="80%"  > 
 		
 	

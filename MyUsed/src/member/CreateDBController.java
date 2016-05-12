@@ -48,6 +48,20 @@ public class CreateDBController {
 		/** 일반 댓글(reple) 글쓰기 테이블 */
 		sqlMapClientTemplate.update("create.reple", map);
 		System.out.println("reple_"+num+" create");
+
+		/** 프로필사진 테이블&시퀀스 생성 */
+		sqlMapClientTemplate.update("create.profilepic", map);
+		System.out.println("profilepic_"+num+" create");
+		
+		sqlMapClientTemplate.update("create.profilepic_seq", map);
+		System.out.println("profilepic_"+num+"seq create");
+
+		/** 커버사진 테이블&시퀀스 생성 */
+		sqlMapClientTemplate.update("create.coverpic", map);
+		System.out.println("profilepic_"+num+" create");
+		
+		sqlMapClientTemplate.update("create.coverpic_seq", map);
+		System.out.println("coverpic_"+num+"seq create");
 		
 		/***************************************************/
 

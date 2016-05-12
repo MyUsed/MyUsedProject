@@ -42,7 +42,7 @@ public class BoardController {
 		
 		String Submit = request.getParameter("deposit");
 		System.out.println("현재 submit 상태 = "+Submit);
-		if(Submit.equals("update")){   // submit이 state일때 실행
+		if(Submit.equals("update")){   // submit이 update일때 실행
 		String content = dto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ; 
 		Map map = new HashMap();
 		map.put("num", num);
@@ -115,6 +115,7 @@ public class BoardController {
 			String categ1 = prodto.getCateg1();
 			String categ = categ0 +"/"+ categ1;
 			int price = prodto.getPrice();
+			
 			System.out.println(categ);
 			
 			Map promap = new HashMap();

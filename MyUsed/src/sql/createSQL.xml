@@ -59,7 +59,35 @@
 								reg date default sysdate
 								)
 	</statement>
+	
+	<!-- 프로필사진(profilepic) table -->
+	<statement id="profilepic" parameterClass="java.util.Map">
+		create table profilepic_#num#(
+        	pic_num number primary key not null,
+        	mem_num number not null,
+        	profile_pic varchar2(4000) not null,
+        	reg date not null
+		)
+	</statement>
 		
+	<statement id="profilepic_seq" parameterClass="java.util.Map">
+		create sequence sq_profilepic_#num#
+	</statement>	
+	
+		
+	<!-- 커버사진(coverpic) table -->
+	<statement id="coverpic" parameterClass="java.util.Map">
+		create table coverpic_#num#(
+        	pic_num number primary key not null,
+        	mem_num number not null,
+        	cover_pic varchar2(4000) not null,
+        	reg date not null
+		)
+	</statement>
+		
+	<statement id="coverpic_seq" parameterClass="java.util.Map">
+		create sequence sq_coverpic_#num#
+	</statement>	
 	
 	
 	

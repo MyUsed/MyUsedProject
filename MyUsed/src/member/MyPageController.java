@@ -18,6 +18,10 @@ public class MyPageController {
 	@Autowired
 	private SqlMapClientTemplate sqlMapClientTemplate;
 	private MemberDTO memDTO = new MemberDTO();
+	private ProfilePicDTO proDTO = new ProfilePicDTO();
+	private ProfilePicDTO sessionproDTO = new ProfilePicDTO();
+	private CoverPicDTO coverDTO = new CoverPicDTO();
+	private CoverPicDTO sessionCoverDTO = new CoverPicDTO();
 	
 	
 	@RequestMapping("/MyUsedMyPage.nhn")
@@ -90,13 +94,60 @@ public class MyPageController {
 		}
 		
 		
+		/** 알 수 도 있는 친구들의 프로필 사진 */
+		int friend_num;
+		Map friend_numMap = new HashMap();
+		List knewFriendList_image = new ArrayList();
+		for (int i = 0; i < knewFriendList.size() ; i++){
+			friend_num = ((FriendDTO) knewFriendList.get(i)).getMem_num();
+			
+			friend_numMap.put("mem_num", friend_num);
+
+			ProfilePicDTO friproDTO = new ProfilePicDTO();
+			friproDTO = (ProfilePicDTO) sqlMapClientTemplate.queryForObject("profile.newpic", friend_numMap);
+
+			knewFriendList_image.add(i, friproDTO);
+		}
+
+		for (int i = 0; i < knewFriendList_image.size() ; i++){
+			//System.out.println(knewFriendList_image.get(i));
+			System.out.println(((ProfilePicDTO)knewFriendList_image.get(i)).getProfile_pic());
+		}
 		
+		
+		
+		
+		/** 프로필 사진 */
+		// 해당 페이지 주인의 프로필사진
+		Map profileMap = new HashMap();
+		profileMap.put("mem_num", mem_num);
+		proDTO = (ProfilePicDTO) sqlMapClientTemplate.queryForObject("profile.newpic", profileMap);
+		
+		// 세션 아이디의 프로필사진
+		Map profileMap2 = new HashMap();
+		profileMap2.put("mem_num", memDTO.getNum());
+		sessionproDTO = (ProfilePicDTO) sqlMapClientTemplate.queryForObject("profile.newpic", profileMap);
+		
+		
+		/** 커버 사진 */
+		// 해당 페이지 주인의 커버사진
+		Map coverMap = new HashMap();
+		coverMap.put("mem_num", mem_num);
+		coverDTO =  (CoverPicDTO) sqlMapClientTemplate.queryForObject("profile.newCoverpic", coverMap);
+		
+	
+		
+
+		request.setAttribute("knewFriendList_image", knewFriendList_image);
+		request.setAttribute("mem_num", mem_num); // 세션아이디의 mem_num 아님/ 현재 페이지의 mem_num
+		request.setAttribute("proDTO", proDTO);
+		request.setAttribute("coverDTO", coverDTO);
+		request.setAttribute("sessionCoverDTO", sessionCoverDTO);
 		request.setAttribute("knewFriendList", knewFriendList);
-		
 		request.setAttribute("sessionName", memDTO.getName());
 		request.setAttribute("name", frimemDTO.getName());
 		request.setAttribute("num", frimemDTO.getNum());
-		request.setAttribute("mynum", memDTO.getNum());
+		request.setAttribute("mynum", memDTO.getNum());	// 세션아이디의 mem_num
 		request.setAttribute("friendList", friendList);
 		request.setAttribute("friendState0", friendState0);
 		request.setAttribute("friendState1", friendState1);

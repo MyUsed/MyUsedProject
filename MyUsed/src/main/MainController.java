@@ -48,9 +48,13 @@ public class MainController {
 			
 	      request.setAttribute("categList", categList);
 	      request.setAttribute("checked", "checked");
+	      
+	   
+	   
 	      if(request.getParameter("checked1")=="checked"){   // radio 버튼의 체크 설정 
 	    	  request.setAttribute("checked", "view");
-	    	  request.setAttribute("checked1", "checked");
+	    	  request.setAttribute("checked1", "checked");  
+	    	  
 	      }
 	      
 	  	  list = sqlMap.queryForList("main.boardView", null); // state 리스트

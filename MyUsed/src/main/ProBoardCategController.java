@@ -48,9 +48,13 @@ public class ProBoardCategController {
 		List categList = new ArrayList();	
 		categList = sqlMapClientTemplate.queryForList("procateg.selectCategGroup", categMap2);
 		
+		List prolist = new ArrayList();
+		prolist = sqlMapClientTemplate.queryForList("main.proboardView", null); 	// product 리스트
 		
+		request.setAttribute("prolist", prolist);
 		request.setAttribute("categList", categList);
 		request.setAttribute("categ0", categ0);
+		request.setAttribute("view2", "view"); // div2 가 보이게 
 		
 		return "/main/categindex.jsp";
 	}

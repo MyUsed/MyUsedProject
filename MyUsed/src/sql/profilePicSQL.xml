@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="profile">
+
+	<insert id="insertProPic"  parameterClass="java.util.Map">
+		insert into profilepic_$mem_num$ values(sq_profilepic_$mem_num$.nextval, #mem_num#, #profile_pic#, sysdate)
+	</insert>
+	
+	<select id="newpic" resultClass="member.ProfilePicDTO" parameterClass="java.util.Map">
+		select * from  profilepic_$mem_num$ where pic_num = (select max(pic_num) from profilepic_$mem_num$)
+	</select>
+	
+	<insert id="insertCoverPic"  parameterClass="java.util.Map">
+		insert into coverpic_$mem_num$ values(sq_coverpic_$mem_num$.nextval, #mem_num#, #cover_pic#, sysdate)
+	</insert>
+	
+	<select id="newCoverpic" resultClass="member.CoverPicDTO" parameterClass="java.util.Map">
+		select * from  coverpic_$mem_num$ where pic_num = (select max(pic_num) from coverpic_$mem_num$)
+	</select>
+
+</sqlMap>

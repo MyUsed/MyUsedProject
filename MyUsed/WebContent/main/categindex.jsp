@@ -201,6 +201,60 @@
 	
 </div>
 </form>
+
+
+<br /> <br />
+<c:forEach var="prolist" items="${prolist}">
+	
+ 	<table align="center"  width="550" height="180">
+		<tr	bgcolor="#FFFFFF">
+		<td>
+		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${prolist.mem_num}">( ${prolist.name} )</a> 님이 글을 게시하였습니다  
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<c:if test="${prolist.mem_num == memDTO.num}">
+		<a href="prodelete.nhn?num=${prolist.num}">게시글삭제</a>
+		</c:if>
+		
+		<hr width="100%" > 
+		</td>
+		</tr>
+		
+		<tr  bgcolor="#FFFFFF">
+		<td align="center">
+		
+		<c:if test="${prolist.pro_pic != null}"> 
+		<img src="/MyUsed/images/${prolist.pro_pic}" width="370" height="350"/> <br/>
+		</c:if>
+		
+		
+		 <font size="5" color="#1F51B7" >[${prolist.price}\] </font> <br /><br />
+		
+		<font size="3" color="#0042ED" >
+		-------------------------------- * 상세설명 * -------------------------------- 
+		</font>
+		 <br/>
+		${prolist.content}
+		
+		</td>
+		</tr>
+		
+		<tr bgcolor="#FFFFFF">
+		<td>
+		<hr width="100%"  > 
+		좋아요 / 댓글달기 / 공유하기 / 구매하기
+		</td>
+		</tr>
+
+	</table>
+ 	<br />	
+ 	
+
+<!--  상품 보기 페이지  -->	
+	 
+</c:forEach>
+
 	 
 	 
 <br /> <br />
