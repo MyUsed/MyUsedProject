@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="chat">
+
+	<typeAlias alias="dto" type="login.loginDTO"/>
+	
+		<select id="logincheck" resultClass="int" parameterClass="dto">
+			select count(*) from memberlist where id=#id# and password=#password#
+		</select>
+
+		<update id="on" parameterClass="String">
+			update memberlist set chatonoff = '1' where id = #id#
+		</update>
+		
+		<update id="off" parameterClass="String">
+			update memberlist set chatonoff = '0' where id = #id#
+		</update>
+		
+		<select id="oncount" resultClass="int" parameterClass="String">
+			select chatonoff from memberlist where id=#id#
+		</select>
+		
+		<select id="totalCount" resultClass="int">
+			select count(*) from memberlist where chatonoff='1'
+		</select>
+
+		<select id="onId" resultClass="dto">
+			select id from memberlist where chatonoff='1'
+		</select>
+		
+</sqlMap>
