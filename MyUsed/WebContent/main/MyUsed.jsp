@@ -255,17 +255,23 @@
 	 <table align="center"  width="550" height="30">
 	 <tr bgcolor="#FFFFFF">
 	 <td align="center" colspan="8">
-	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' checked>State
-     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'>Product
+	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' ${checked}>State
+     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'${checked1}>Product
 	 </td>
 	 </tr>
 	 </table>
 	
 	
-	<!--  일반게시글 등록  -->
+	
+	
+	
+	
+	
+	
+	<!--  --------------------------------------------- 일반 ---------------------------------------------------- -->
 	 
 	
-<div id='div1'>
+<div id='div1' style='display:${view};'>
 	 <table align="center"  width="550" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
@@ -277,7 +283,9 @@
 	<td align="center" colspan="8">
 	
 		<input type="file" name="upload" type="multipart/form-data" method="post" /> <br/>
-		<textarea rows = "5" cols = "73" name="content" placeholder="무슨 생각을 하고계신가요 ?"></textarea> <br/> 
+		<textarea rows="5" cols="73" name="content" placeholder="무슨 생각을 하고계신가요 ?"></textarea>
+	
+		<br/> 
 		
 		
 		<hr width="80%"  > 
@@ -400,7 +408,6 @@
 		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/> <br/>
 		</c:if>
 		${list.content}
-		
 		</td>
 		</tr>
 		
@@ -422,8 +429,7 @@
 	
 </div>
 	
-	
-	
+
 	 
 <div id='div2_categ' style='display:none;' > 
 	 <!--  일반상품 등록  -->
@@ -447,21 +453,34 @@
 	 
 </div>
 	 
-<div id='div2'  >
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 <!--  --------------------------------------------- 상품 ---------------------------------------------------- -->
+	 
+	 
+<div id='div2'  style='display:${view2};'  >
 	
 	<table align="center"  width="550" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
 	<br/>
 	
-		<textarea rows = "5" cols = "73" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
+		<textarea rows = "5" cols = "73" name="contents" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
 		<font size ="2" color="#3B5998">
 		* 배송료
 		포함(선불) <input type="radio" name="sendPay" value="yes" />
 		미포함(착불) <input type="radio" name="sendPay" value="no"  />
 		</font>
 		<br />
-		<input type="text" name="price" size="7" placeholder="상품가격"/>
+		<input type="text" name="price" size="7" value="0" placeholder="상품가격"/>
 		<hr width="80%"  > 
 		
 	
@@ -550,9 +569,7 @@
 	
 	
 	</table>
-	
-</div>
-	
+
 	
 	
 	 </form>
@@ -569,6 +586,9 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<c:if test="${prolist.mem_num == memDTO.num}">
+		<a href="prodelete.nhn?num=${prolist.num}">게시글삭제</a>
+		</c:if>
 		
 		<hr width="100%" > 
 		</td>
@@ -576,9 +596,11 @@
 		
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
-		<c:if test="${prolist.pro_pic != null}">
-		<img src="/MyUsed/images/${prolist.pro_pic}" width="370" height="500"/> <br/>
+		
+		<c:if test="${prolist.pro_pic != null}"> 
+		<img src="/MyUsed/images/${prolist.pro_pic}" width="370" height="350"/> <br/>
 		</c:if>
+		
 		
 		 <font size="5" color="#1F51B7" >[${prolist.price}\] </font> <br /><br />
 		
@@ -606,7 +628,9 @@
 	 
 </c:forEach>
 
-
+	
+</div>
+	
 
 
 

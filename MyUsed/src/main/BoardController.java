@@ -29,7 +29,7 @@ public class BoardController {
 	public String mainSubmit(MultipartHttpServletRequest request , MainboardDTO dto ,MainProboardDTO prodto , String sendPay ,String deposit){
 	
 		
-
+		System.out.println("--------- mainSubmit 실행 ---------");
 		 // << 접속한 아이디 의 num 가져오기 >> 
 		HttpSession session = request.getSession();
 		String sessionId = (String)session.getAttribute("memId");
@@ -41,13 +41,18 @@ public class BoardController {
 		
 		
 		String Submit = request.getParameter("deposit");
-		
-		if(Submit.equals("state")){   // submit이 state일때 실행
+		System.out.println("현재 submit 상태 = "+Submit);
+		if(Submit.equals("update")){   // submit이 state일때 실행
 		String content = dto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ; 
 		Map map = new HashMap();
 		map.put("num", num);
 		map.put("content",content);
 		map.put("name", name);
+		
+		
+		request.setAttribute("view", "view");	// div1이 보이게
+		request.setAttribute("view2", "none"); // div2가 안보이게 
+		request.setAttribute("checked", "checked");
 
 		// <<  num 값을받아  insert >>
 		if(request.getFile("image1").isEmpty()){	
@@ -93,19 +98,23 @@ public class BoardController {
 
 	}
 		
-		}else{ // product 가 submit 될때 실행 ;; 
+		}else if(Submit.equals("product")){ // product 가 submit 될때 실행 ;;
+			
+			request.setAttribute("view", "none");  // div1 이 안보이게 
+			request.setAttribute("view2", "view"); // div2 가 보이게 
+			request.setAttribute("checked1", "checked");
+			
 			System.out.println("product 실행");
 			String content = prodto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ;
 			
-			System.out.println(prodto.getContent());
-			System.out.println(prodto.getPrice());
-			System.out.println(name);
-			System.out.println(num);
-			System.out.println(request.getParameter("sendPay"));
+			
+			String SendPay = request.getParameter("sendPay"); // 배송료 포함인지 아닌지 받아옴 
+			request.setAttribute("SendPay", SendPay);
 			
 			String categ0 = prodto.getCateg0();
 			String categ1 = prodto.getCateg1();
 			String categ = categ0 +"/"+ categ1;
+			int price = prodto.getPrice();
 			System.out.println(categ);
 			
 			Map promap = new HashMap();
@@ -113,7 +122,7 @@ public class BoardController {
 			promap.put("name", name);
 			promap.put("content", content);
 			promap.put("categ", categ);
-			promap.put("price", prodto.getPrice());
+			promap.put("price", price);
 			
 			
 			if(request.getFile("pimage1").isEmpty()){ // 사진 선택을 하지 않으면 

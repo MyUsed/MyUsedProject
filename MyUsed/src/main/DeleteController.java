@@ -20,12 +20,7 @@ public class DeleteController {
 	public ModelAndView delete(int num){
 		ModelAndView mv = new ModelAndView();
 		
-		
-		// /////////////////////////////////// 테이블 join해서 문제해결 가능
-		
 		int mem_num = (int)sqlMap.queryForObject("delete.mem_num", num); // board_ (개인 board의 번호를 가져옴)
-		
-		
 		Map map = new HashMap();
 		map.put("mem_num", mem_num);
 		map.put("num", num);
@@ -47,5 +42,33 @@ public class DeleteController {
 		mv.setViewName("/main/Delete.jsp");
 		return mv;
 	}
+	
+	@RequestMapping("/prodelete.nhn")
+	public ModelAndView prodelete(int num){
+		ModelAndView mv = new ModelAndView();
+		
+		int promem_num = (int)sqlMap.queryForObject("delete.promem_num", num); // proboardlist 에서 개인의 mem_num을 꺼내옴 
+		Map promap = new HashMap();
+		promap.put("num", num);
+		promap.put("promem_num", promem_num);
+		
+		int proboard_num = (int)sqlMap.queryForObject("delete.proboard_num", promap); // proboard_#num# 의 게시글 번호를 가져옴
+		promap.put("proboard_num", proboard_num);
+		
+		sqlMap.delete("delete.proboardDelete", promap); // 개인 DB 내용 삭제
+		sqlMap.delete("delete.proboardlistDelete", num); // 전체 DB 내용 삭제
+		//sqlMap.delete("deletem.propicDelete", promap); // 개인 사진 DB 내용 삭제
+		
+		mv.setViewName("/main/Delete.jsp");
+		return mv;
+	}
 
+	
+	
+	
+	
+	
+	
+	
+	
 }

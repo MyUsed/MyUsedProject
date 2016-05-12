@@ -2,15 +2,16 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="delete">
 	
-	<!-- totalboard에서 개인의 table번호를 가져오는 쿼리 -->
+	<!-- boardlist에서 개인의 table번호를 가져오는 쿼리 -->
 	<select id="mem_num" resultClass="int" parameterClass="int">
 		select mem_num from boardlist where num = #num#
 	</select>
-	<!-- totalboard와 개인board의 조인으로 등록시간이 같은 것을 가져오는 쿼리 -->
+	<!-- boardlist와 개인board의 조인으로 등록시간이 같은 것을 가져오는 쿼리 -->
 	<select id="board_num" resultClass="int" parameterClass="java.util.Map">
 		select d.num from boardlist e , board_$mem_num$ d where e.reg = d.reg
 		and e.num = #num#
 	</select>
+	
 	
 	<!-- 일반board에서 게시글번호를받아 삭제하는 쿼리 -->
 	<delete id="boardDelete" parameterClass="java.util.Map">
@@ -25,6 +26,33 @@
 		delete from pic_$mem_num$ where num = #board_num#
 	</delete>
 	
+	
+	
+	
+	<!-- proboardlist에서 개인의 table번호를 가져오는 쿼리 -->
+	<select id="promem_num" resultClass="int" parameterClass="int">
+		select mem_num from proboardlist where num = #num#
+	</select>
+	<!-- proboardlist와 개인 proboard의 조인으로 등록시간이 같은 것을 가져오는 쿼리 -->
+	<select id="proboard_num" resultClass="int" parameterClass="java.util.Map">
+		select d.num from proboardlist e , proboard_$promem_num$ d where e.reg = d.reg
+		and e.num = #num#
+	</select>
+	
+	
+	
+	<!-- 일반board에서 게시글번호를받아 삭제하는 쿼리 -->
+	<delete id="proboardDelete" parameterClass="java.util.Map">
+		delete from proboard_$promem_num$ where num = #proboard_num#
+	</delete>
+	<!-- proboardlist에서 글번호를받아 삭제하는 쿼리 -->
+	<delete id="proboardlistDelete" parameterClass="int">
+		delete from proboardlist where num = #num#
+	</delete>
+	<!-- 개인사진 pic_DB에서 삭제하는 쿼리 -->
+	<delete id="propicDelete" parameterClass="java.util.Map">
+		delete from propic_$promem_num$ where num = #proboard_num#
+	</delete>
 
 	
 </sqlMap>

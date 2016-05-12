@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class MainProboardDTO {
 	
 	private int num;
-	private String content;
+	private String contents;
 	private String categ0;
 	private String categ1;
 	private String name;
@@ -19,7 +19,7 @@ public class MainProboardDTO {
 	
 	
 	public void setNum(int num) {	this.num = num;}
-	public void setContent(String content) {	this.content = content;}
+	public void setContent(String contents) {	this.contents = contents;}
 	public void setCateg0(String categ0) {this.categ0 = categ0;}
 	public void setCateg1(String categ1) {this.categ1 = categ1;}
 	public void setName(String name) {	this.name = name;}
@@ -32,7 +32,7 @@ public class MainProboardDTO {
 	
 	public String getMem_num() {return mem_num;}
 	public int getNum() {	return num;}
-	public String getContent() {	return content;}
+	public String getContent() {	return contents;}
 	public String getCateg0() {	return categ0;}
 	public String getCateg1() {	return categ1;}
 	public String getName() {	return name;}
