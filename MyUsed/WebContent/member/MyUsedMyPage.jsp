@@ -11,6 +11,7 @@
 <script src="/MyUsed/member/jquery-1.11.3.js"></script>
 <script src="/MyUsed/member/animate.js"></script>
 <head>
+<title>${name}</title>
 
  		<script type="text/javascript">
         
@@ -68,6 +69,18 @@
       	        	
       	    	}
               
+ 			/* 메시지 보기 */
+              function openMsg() {
+            	  	msgPop.style.display = '';
+            	  	arrow.style.display = '';
+      	    	}
+
+              function closeMsg() {
+            	  	msgPop.style.display = 'none';  
+            	  	arrow.style.display = 'none';    	        	
+      	    	}
+
+
          </script>
 
 
@@ -83,7 +96,7 @@
 			color: #242424;
 			font-size:12px;
 			position:fixed;
-			z-index:999;
+			z-index:900;
 			top:0px;
 			left:0px;
 			-webkit-box-shadow: 0 1px 2px 0 #777;
@@ -122,16 +135,24 @@
 			
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
-				<img src="/MyUsed/images/profile/${sessionproDTO.profile_pic}" width="15"  height="15">
+				<img src="/MyUsed/images/profile/${proDTO.profile_pic}" width="15"  height="15">
 				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}">${sessionName}</a> | 
 				<a href="/MyUsed/MyUsed.nhn">홈</a> | 
 				<a href="/MyUsed/MyUsed.nhn">친구찾기</a>
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40"></a>
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35"></a>
+				
+				<!-- 개인 알림  -->
+				<label for="msg">
+					<img src="/MyUsed/images/mainMessage.png" width="40"  height="35">
+				</label>
+				<input type="button" id="msg" OnClick="javascript:openMsg()" style='display: none;'>
+				
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainView.png" width="40"  height="35"></a>
+				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				
 				<!-- 추후 이미지로 바꾸기(페이스북처럼 드롭다운메뉴로) -->
 				<c:if test="${sessionScope.memId != null }">
 					<a href="/MyUsed/MyUsedLogout.nhn">로그아웃</a>
@@ -144,76 +165,65 @@
 
 
 
-</head>
 
 <body>
 <div id="sidebannerR">
-	<center>
- 	<font size="5">사이드고정R</font>
- 	<br />
- 	세션 : ${sessionScope.memId} 
- 	<br />
- 	<br />
- 	------------------------------------------<br />
- 	친구 신청 대기(state 0)<br />
- 	<c:forEach var="friendState0" items="${friendState0}">
- 		${friendState0.mem_num} |${friendState0.name}  |${friendState0.id} |${friendState0.categ}  <br />
- 	</c:forEach>
  	
+ 	<!-- 친구 목록(state 2) -->
+ 	<div id="friendlist_side"></div>
+ 
  	<br />
- 	------------------------------------------<br />
- 	거절된 친구 신청(state -1)<br />
- 	<c:forEach var="friendState_m1" items="${friendState_m1}">
- 		${friendState_m1.mem_num} |${friendState_m1.name}  |${friendState_m1.id} |${friendState_m1.categ}  
- 		<input type="button" value="확인" onClick="javascript:window.location='MyUsedRejectionFriend.nhn?agree=${0}&mem_num=${friendState_m1.mem_num}&num=${num}'">
- 		<br />
+ 	<div id="friendlist_img_line">
+ 	<c:forEach var="friprofileList" items="${friprofileList}">
+ 	<div id="friendlist_img">
+		<img src="/MyUsed/images/profile/${friprofileList.profile_pic}" width="49" height="49">
+ 	</div>
  	</c:forEach>
+ 	</div>
  	
- 	<br />
- 	------------------------------------------<br />
- 	나에게 들어온 친구신청(state 1)<br />
- 	<c:forEach var="friendState1" items="${friendState1}">
- 		${friendState1.mem_num} |${friendState1.name}  |${friendState1.id} |${friendState1.categ}  
- 		<input type="button" value="수락" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${0}&mem_num=${friendState1.mem_num}&num=${num}'">
- 		<input type="button" value="거절" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${1}&mem_num=${friendState1.mem_num}&num=${num}'">
- 		<br />
- 	</c:forEach>
- 	
- 	<br />
- 	------------------------------------------<br />
- 	친구 목록(state 2)<br />
+ 	<div id="friendlist_line">
  	<c:forEach var="friendState2" items="${friendState2}">
- 		${friendState2.mem_num} |${friendState2.name}  |${friendState2.id} |${friendState2.categ}  
+ 	<div id="friendlist">
+		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState2.mem_num}">
+ 			<font color="#000000">${friendState2.name}</font>
+ 		</a>  
  		<c:if test="${friendState2.onoff == 0}">
- 			<%--로그아웃 상태 --%>
+ 			<%--로그아웃 상태 --%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  			<font color="#FF0000">OFF</font>
  		</c:if>
  		<c:if test="${friendState2.onoff == 1}">
- 			<%--로그인 상태 --%>
+ 			<%--로그인 상태 --%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  			<font color="#2F9D27">ON</font>
  		</c:if>
  		<br />
+ 	</div>
  	</c:forEach>
+ 	</div>
  	
- 	</center>
 </div>
+
 <div id="sidebannerL">
 </div>
+
 <div id="content">
 	<div id="coverImage">
-		<img src="/MyUsed/images/cover/${coverDTO.cover_pic}" width="800" height="220"/>
+		<img src="/MyUsed/images/cover/${coverDTO.cover_pic}" width="798" height="220"/>
 	
 		<div id="covertext">
-				
-        	<label for="cimage">커버 사진 업로드</label> | <label for="chistory">히스토리</label>
-   
+			<font color="#FFFFFF">
+			<c:if test="${mynum == mem_num}">
+        		<label for="cimage">커버 사진 업로드</label> | 
+        	</c:if>
+        	<label for="chistory">히스토리</label>
+   			</font>
         	<input type="button" id="cimage" OnClick="javascript:openCoverImageUpload()" style='display: none;'>
         	<input type="button" id="chistory" OnClick="javascript:openCoverImageHistory()" style='display: none;'>
         	
 		</div>
 	
 	</div>
-		
+	<div id="menu">	
+	
 	<div id="menu0"><!-- 공란 -->	</div>
 	<div id="menu1"><a href="/MyUsed/MyUsedMyPage.nhn">타임라인</a></div>
 	<div id="menu2"><a href="/MyUsed/MyUsedMyPage.nhn">정보</a></div>	
@@ -236,48 +246,80 @@
 
 	</div>
 	<div id="menu6"><!-- 공란 --></div>
+	
+	</div>
 
 	<!-- 프로필 이미지 업로드 -->
-	<div id="profileImage" >
-	<img src="/MyUsed/images/profile/${proDTO.profile_pic}" width="160" height="160"/>
+	<div id="profileImageback" >
+		<center>
+		<div id="profileImage" >
+		<img src="/MyUsed/images/profile/${proDTO.profile_pic}" width="160" height="160"/>
 	
-	
-		<div id="profiletext">
-		
-		
-        	<label for="image">프로필 업로드</label> | <label for="history">히스토리</label>
-   
-        	<input type="button" id="image" OnClick="javascript:openImageUpload()" style='display: none;'>
-        	<input type="button" id="history" OnClick="javascript:openImageHistory()" style='display: none;'>
-        	
-
-		</div>
-	
-	</div>	
+			<div id="profiletext">
+				<font color="#FFFFFF">
+				<c:if test="${mynum == mem_num}">
+        			<label for="image">프로필 업로드</label> | 
+        		</c:if>
+        		<label for="history">히스토리</label>
+   				</font>
+        		<input type="button" id="image" OnClick="javascript:openImageUpload()" style='display: none;'>
+        		<input type="button" id="history" OnClick="javascript:openImageHistory()" style='display: none;'>
+			</div>
+		</div>	
+		</center>
+	</div>
 	
 	<div id="name">
-		${name}
+		<font color="#FFFFFF">${name}</font>
 	</div>
 	
 	<!-- 세션아이디의 num과(mynum) 해당페이지의 mem_num과 같은 사람일때만 보임 -->
 	<c:if test="${mem_num == mynum}">
 	<div id="knewpeople">
-		<div id="knewpeopletitle">알 수 도 있는 친구</div>
-		<!-- 
-			<div id="knewpeopleindex"> -->
-			<c:forEach var="knewFriendList_image" items="${knewFriendList_image}" begin="0" end="5" >
-				<div id="knewpeopleimage">
+		<div id="knewpeopletitle">
+			알 수 도 있는 친구
+			<div id="line">
+				<hr>
+			</div>
+		</div>
+		
+		<div id="knewpeopleindex">
+		<table>
+			<tr height="115" align="center">
+				<c:forEach var="knewFriendList_image" items="${knewFriendList_image}" begin="0" end="5" >
+				<td width="130">
+					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${knewFriendList_image.mem_num}">
 					<img src="/MyUsed/images/profile/${knewFriendList_image.profile_pic}" width="110" height="110">
-				</div>
-			</c:forEach>
-			<c:forEach var="knewFriend" items="${knewFriendList}" begin="0" end="5" >
-				<div id="knewpeoplename">
-					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${knewFriend.mem_num}">
-					${knewFriend.name}
 					</a>
-				</div>
+				</td>
+				</c:forEach>
+			</tr>
+			<tr height="22" align="center">
+			<c:forEach var="knewFriend" items="${knewFriendList}" begin="0" end="5" >
+				<td width="130">
+				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${knewFriend.mem_num}">
+					${knewFriend.name}
+				</a>
+				</td>
 			</c:forEach>
-			<!-- </div> -->
+			</tr>
+		</table>
+		</div>
+	</div>
+	</c:if>
+	
+<c:if test="${mem_num != mynum}">
+	<div id="knewpeople">
+		<div id="knewpeopletitle">
+			${name}님을 아세요?
+			<div id="line">
+				<hr>
+			</div>
+		</div>
+		
+		<div id="knewpeopleindex">
+		다른 친구들과 공유한 내용을 보려면 친구요청을 전송하세요!
+		</div>
 	</div>
 	</c:if>
 	
@@ -469,7 +511,60 @@
    	
    	</center>
 </div>
-		
+
+
+<!-- 메시지 -->
+<div id="arrow" style='display:none;'>
+	<img src="/MyUsed/images/arrow.png" width="25" height="20"> 
+</div>
+<div id="msgPop" style='display:none;'>
+    
+	<div id="closemsg">
+		<label for="close4">
+			<img src="/MyUsed/images/close.png" width="15" height="15">
+		</label>
+    </div>
+    
+   	<input type="button" id="close4" OnClick="javascript:closeMsg()" style='display: none;'>
+   	<br />
+   	<div id="msgtext">
+   		<font size="3"><b>메시지 확인</b></font>
+   	</div>
+   	<br />
+ 	<b>친구 신청 대기(state 0)</b>
+ 	<br />
+ 	<c:forEach var="friendState0" items="${friendState0}">
+ 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState0.mem_num}">
+ 			${friendState0.name} 
+ 		</a><br />
+ 	</c:forEach>
+ 	
+ 	<br />
+ 	
+ 	<b>거절된 친구 신청(state -1)</b><br />
+ 	<c:forEach var="friendState_m1" items="${friendState_m1}">
+ 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState_m1.mem_num}">
+ 			${friendState_m1.name} 
+ 		</a><br />
+ 		<input type="button" value="확인" onClick="javascript:window.location='MyUsedRejectionFriend.nhn?agree=${0}&mem_num=${friendState_m1.mem_num}&num=${num}'">
+ 		<br />
+ 	</c:forEach>
+ 	
+ 	<br />
+ 	<b>나에게 들어온 친구신청(state 1)</b><br />
+ 	<c:forEach var="friendState1" items="${friendState1}">
+ 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState1.mem_num}">
+ 			${friendState1.name}
+ 		</a><br />
+ 		<input type="button" value="수락" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${0}&mem_num=${friendState1.mem_num}&num=${num}'">
+ 		<input type="button" value="거절" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${1}&mem_num=${friendState1.mem_num}&num=${num}'">
+ 		<br />
+ 	</c:forEach>
+ 	
+ 	<br />
+   	
+</div>
+
 
 
 </body>

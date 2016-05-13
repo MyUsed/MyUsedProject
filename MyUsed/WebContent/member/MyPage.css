@@ -7,122 +7,146 @@
 			width:800px; 
 			height:220px; 
 			margin-right:10px; 
-			background:#FFFFFF;
+			background:#191919;
+			border:1px solid #BDBDBD;
 			}
 
 #covertext { 
 	position:absolute; 
-	width:190px; 
+	width:188px; 
 	height:25px; 
-	margin-top:-26px;
-	margin-left:612px; 
-	text-align:center;
+	margin-top:-20px;
+	margin-left:605px; 
+	text-align:right;
+	font-weight:bold;
+	font-size:90%;
+	text-shadow: 2px 1px 1px #191919;
 	z-index:50;
 	}
 
-
+#profileImageback { 
+	position:absolute; 
+	width:168px; 
+	height:168px; 
+	margin-top:83px; 
+	margin-left:25px; 
+	background:#FFFFFF;	
+	border-radius:5px;
+	box-shadow: 0px 1px 1px #A6A6A6;
+	}
 
 #profileImage { 
 	position:absolute; 
 	width:160px; 
 	height:160px; 
-	margin-top:83px; 
-	margin-left:25px; 
-	background:#8C8C8C;
-	border:1px;
-	border-color:#353535;	
+	margin-top:4px; 
+	margin-left:4px; 
+	background:#8C8C8C;	
 	}
 	
 #profiletext { 
 	position:absolute; 
-	width:160px; 
+	width:158px; 
 	height:25px; 
-	margin-top:-20px; 
-	text-align:center;
+	margin-top:-18px; 
+	text-align:right;
+	font-weight:bold;
+	font-size:90%;
+	text-shadow: 2px 1px 1px #191919;
 	z-index:50;
 	}
 	
 #name { 
 	position:absolute; 
-	width:70px;
-	height:30px; 
-	margin-top:190px; 
-	margin-left:192px; 
+	width:75px;
+	height:28px; 
+	margin-top:185px; 
+	margin-left:198px; 
 	text-align:center;
-	font-size:160%;
+	font-size:170%;
 	font-weight:bold;
+	text-shadow: 2px 2px 1px #191919;
 	}
-#menu0{ position:absolute;
-		width:199px; 
+
+#menu{ position:absolute;
+		width:800px; 
 		height:40px;
 		margin-top:221px;
 		margin-right:0px; 
 		margin-left:0px; 
-		background:#FFFFFF; 
+		border:1px solid #D5D5D5; 
+		}
+#menu0{ position:absolute;
+		width:199px; 
+		height:40px;
+		margin-right:0px; 
+		margin-left:0px; 
+		background:#FFFFFF;
+		border:1px solid #D5D5D5; 
 		}
 #menu1{ position:absolute;
 		width:80px; 
 		height:40px;
-		margin-top:221px;
 		margin-right:10px; 
 		margin-left:200px;
 		background:#FFFFFF;
 		text-align:center;
 		padding-top:10px;
 		color:#1F50B5;
+		border:1px solid #D5D5D5;
 		}
 #menu2{ position:absolute;
 		width:80px; 
 		height:40px;
-		margin-top:221px;
 		margin-right:10px; 
 		margin-left:281px;
 		background:#FFFFFF; 
 		text-align:center;
 		padding-top:10px;
 		color:#1F50B5;
+		border:1px solid #D5D5D5;
 		}		
 #menu3{ position:absolute;
 		width:80px; 
 		height:40px;
-		margin-top:221px;
 		margin-right:10px; 
 		margin-left:362px;
 		background:#FFFFFF; 
 		text-align:center;
 		padding-top:10px;
 		color:#1F50B5;
+		border:1px solid #D5D5D5;
 		}		
 #menu4{ position:absolute;
 		width:80px; 
 		height:40px;
-		margin-top:221px;
 		margin-right:10px; 
 		margin-left:443px;
 		background:#FFFFFF; 
 		text-align:center;
 		padding-top:10px;
 		color:#1F50B5;
+		border:1px solid #D5D5D5;
 		}	
 #menu5{ position:absolute;
 		width:80px; 
 		height:40px;
-		margin-top:221px;
 		margin-right:10px; 
 		margin-left:524px;
 		background:#FFFFFF; 
 		text-align:center;
 		padding-top:10px;
 		color:#1F50B5;
+		border:1px solid #D5D5D5;
 		z-index:100;
 		}	
 #menu6{ position:absolute;
 		width:195px; 
 		height:40px;
-		margin-top:221px;
 		margin-right:10px; 
 		margin-left:605px;
 		background:#FFFFFF; 
+		border:1px solid #D5D5D5;
 		}
 		
 		
@@ -131,42 +155,32 @@
 			  height:180px; 
 			  margin-top:275px; 
 			  margin-right:10px; 
-			  background:#FFFFFF; }
+			  background:#FFFFFF;
+			  border:1px solid #BDBDBD; }
 			  
+#line { position:absolute; 
+		width:790px; 
+		margin-top:-17px; 
+		height:2px;  }			  
 			  
 #knewpeopletitle { position:absolute; 
-			  width:800px; 
+			  width:799px; 
 			  height:30px;  
 			  margin-top:0px; 
 			  margin-right:10px; 
-			  background:#BDBDBD;
-			  padding-top:6px; }
+			  font-weight:bold;
+			  font-size:120%;
+			  padding-top:2px;
+			  padding-left:6px;
+			  text-shadow: 1px 1px 1px #BDBDBD; }
 
 #knewpeopleindex { position:absolute; 
-			  width:110px; 
+			  width:760px; 
 			  height:140px;  
-			  margin-top:40px; 
-			  margin-left:10px;
+			  margin-top:35px; 
+			  margin-left:20px;
 			  float:left;} 
-			  			  
-#knewpeopleimage { position:relative; 
-			  width:110px; 
-			  height:110px;  
-			  margin-top:40px; 
-			  margin-left:20px;
-			  background:#BDBDBD;
-			  float:left;}  
-		
-#knewpeoplename { position:relative; 
-			  width:110px; 
-			  height:20px; 
-			  margin-top:5px;  
-			  margin-left:20px;
-			  text-align:center;
-			  font-weight:bold;
-			  float:left;}  
-			  
-			  
+			  	
 			  
 #simpleinfo { position:absolute; 
 			  width:230px; 
@@ -174,6 +188,7 @@
 			  margin-top:470px; 
 			  margin-right:10px; 
 			  background:#FFFFFF;
+			  border:1px solid #BDBDBD;
 			  padding-top:6px; }
 			  
 #picture { position:absolute; 
@@ -182,6 +197,7 @@
 			  margin-top:735px; 
 			  margin-right:10px; 
 			  background:#FFFFFF;
+			  border:1px solid #BDBDBD;
 			  padding-top:6px; }
 								
 #article {  position:absolute; 
@@ -191,6 +207,7 @@
 			margin-right:10px;
 			margin-left:245px;
 			background:#FFFFFF;
+			border:1px solid #BDBDBD;
 			padding-top:6px; }								
 								
 #writeform {  position:absolute; 
@@ -199,10 +216,11 @@
 			  margin-top:470px; 
 			  margin-right:10px;
 			  margin-left:245px;
-			  background:#FFFFFF; }
+			  background:#FFFFFF;
+			  border:1px solid #BDBDBD; }
 								
 #writeformtitle {  position:absolute; 
-			  width:555px; 
+			  width:553px; 
 			  height:40px;
 			  background:#F6F6F6;
 			  padding-top:6px; }
@@ -223,7 +241,7 @@
 			  padding-top:6px; }
 								
 #bottom {  position:absolute; 
-			  width:555px; 
+			  width:553px; 
 			  height:50px;
 			  margin-top:198px; 
 			  background:#F6F6F6;
@@ -331,19 +349,79 @@
 			box-shadow: 2px 2px 1px #A6A6A6;
 			z-index:200; }			
 			
+
+#msgPop { position:absolute; 
+		width:350px; 
+		height:400px;
+		margin-top:-4950px;
+		margin-left:55%;
+		padding-left:20px;
+		font-size:90%;
+		background:#FFFFFF;
+		box-shadow: 2px 2px 1px #A6A6A6;
+		z-index:200; }	
+		
+#msgtext { position:relative; 
+		width:88%; 
+		height:24px;
+		margin-top:10px;
+		border-bottom:1px solid #D5D5D5;
+		font-size:90%; }		
+
+#closemsg{position:absolute; 
+			width:15px; 
+			height:15px;
+			margin-top:10px;
+			margin-left:305px;}
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+#arrow { position:absolute; 
+		width:25px; 
+		height:25px;
+		margin-top:-4961px;
+		margin-left:1009px;
+		z-index:999; }
+									
+#friendlist_img {position:relative;  
+		   width:50px; 
+		   height:50px; 
+		   margin-left:0px;
+		   margin-top:10px;
+		   border:1px solid #D5D5D5;
+		   text-align:left;
+		   }
+		   
+#friendlist_img_line {position:absolute;
+		   width:50px; 
+/* 		   height:50px; 
+		   margin-top:-115px; */
+		   text-align:left;
+		   }	
+									
+#friendlist {position:relative;  
+		   width:140px; 
+		   height:50px; 
+		   margin-top:10px;
+		   margin-left:55px;
+		   padding-top:15px;
+		   padding-left:5px;
+		   text-align:left;
+		   font-weight:bold;
+		   font-size: 85%;
+		   }			
 						
+#friendlist_line {position:absolute;    
+		   width:140px; 
+/* 		   height:50px; 
+		   margin-top:-115px; */
+		   text-align:left;
+		   }	
+		   	
+#friendlist_side {position:absolute;    
+		   width:5px; 
+		   height:90%; 
+		   margin-top:5px;
+		   margin-left:-16px;
+		   border-left:1px solid #D5D5D5;
+		   }					
 			
 			

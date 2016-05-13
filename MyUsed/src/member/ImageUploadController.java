@@ -39,8 +39,8 @@ public class ImageUploadController {
 		profileMap.put("profile_pic", orgName);
 		
 		sqlMapClientTemplate.insert("profile.insertProPic", profileMap);
-		File copy = new File("C:\\Users\\user1\\Documents\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\profile\\"+ orgName); // 업로드
-		//File copy = new File("D:\\kh\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\profile\\"+ orgName); // 업로드
+		//File copy = new File("C:\\Users\\user1\\Documents\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\profile\\"+ orgName); // 업로드
+		File copy = new File("D:\\kh\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\profile\\"+ orgName); // 업로드
 		System.out.println("insert Profile Image");
 		System.out.println(copy);
 		try {
@@ -76,8 +76,8 @@ public class ImageUploadController {
 		coverMap.put("cover_pic", orgName);
 		
 		sqlMapClientTemplate.insert("profile.insertCoverPic", coverMap);
-		File copy = new File("C:\\Users\\user1\\Documents\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\cover\\"+ orgName); // 업로드
-		//File copy = new File("D:\\kh\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\cover\\"+ orgName); // 업로드
+		//File copy = new File("C:\\Users\\user1\\Documents\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\cover\\"+ orgName); // 업로드
+		File copy = new File("D:\\kh\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\MyUsed\\images\\cover\\"+ orgName); // 업로드/(데탑)
 		System.out.println("insert Cover Image");
 		System.out.println(copy);
 		try {

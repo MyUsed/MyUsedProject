@@ -58,6 +58,11 @@ public class MyPageController {
 		List friendState_m1 = new ArrayList();
 		friendState_m1 = sqlMapClientTemplate.queryForList("friend.friendState_m1", map);
 		
+		/** 친구 카테고리 */
+		FriendCategDTO fricagDTO = new FriendCategDTO();
+	    List friendCateg = new ArrayList();
+	    friendCateg = sqlMapClientTemplate.queryForList("friend.friendCateg", null);
+		
 		/***** 알 수 도 있는 친구*****/
 		String sql = "";
 		
@@ -67,53 +72,69 @@ public class MyPageController {
 		List friNumList = new ArrayList();
 		friNumList = sqlMapClientTemplate.queryForList("friend.friendNumList", num_map);
 		int size = friNumList.size();
-		
 		System.out.println(size);
-		// 유니언을 하여 테이블을 이어붙인다 -> mem_num의 친구수만큼 반복(마지막줄은 union이 붙으면 안됨으로 따로 붙여줌)
-		for(int i = 0 ; i < friNumList.size()-1 ; i++){
-			sql += "select * from friendlist_"+friNumList.get(i)+" union ";
-		}
-		sql = sql + "select * from friendlist_"+friNumList.get(size-1);
 		
-		System.out.println(sql);
-
-		// 이어붙인 sql문의 일부를 Map을 이용해 sqlMap으로 가져간다
-		Map sqlmap = new HashMap();
-		sqlmap.put("sql", sql);
-		
-		// mem_num의 친구리스트(빈도순 정렬)
-		List knewFriendList = new ArrayList();
-		knewFriendList = sqlMapClientTemplate.queryForList("friend.all", sqlmap);
-
-		//리스트에 자기자신이 포함되어 있을 수 도 있으므로 찾아서 삭제해준다
-		FriendDTO friDTO = new FriendDTO();
-		for (int i = 0; i < knewFriendList.size() ; i++){
-			if(mem_num == ((FriendDTO) knewFriendList.get(i)).getMem_num()){
-				knewFriendList.remove(i);
+		// 친구의 수가 0보다 클때만
+		if(size > 0){
+			// 유니언을 하여 테이블을 이어붙인다 -> mem_num의 친구수만큼 반복(마지막줄은 union이 붙으면 안됨으로 따로 붙여줌)
+			for(int i = 0 ; i < friNumList.size()-1 ; i++){
+				sql += "select * from friendlist_"+friNumList.get(i)+" union ";
 			}
-		}
-		
-		
-		/** 알 수 도 있는 친구들의 프로필 사진 */
-		int friend_num;
-		Map friend_numMap = new HashMap();
-		List knewFriendList_image = new ArrayList();
-		for (int i = 0; i < knewFriendList.size() ; i++){
-			friend_num = ((FriendDTO) knewFriendList.get(i)).getMem_num();
+			sql = sql + "select * from friendlist_"+friNumList.get(size-1);
 			
-			friend_numMap.put("mem_num", friend_num);
+			System.out.println(sql);
 
-			ProfilePicDTO friproDTO = new ProfilePicDTO();
-			friproDTO = (ProfilePicDTO) sqlMapClientTemplate.queryForObject("profile.newpic", friend_numMap);
+			// 이어붙인 sql문의 일부를 Map을 이용해 sqlMap으로 가져간다
+			Map sqlmap = new HashMap();
+			sqlmap.put("sql", sql);
+			
+			// mem_num의 친구리스트(빈도순 정렬)
+			List knewFriendList = new ArrayList();
+			knewFriendList = sqlMapClientTemplate.queryForList("friend.all", sqlmap);
 
-			knewFriendList_image.add(i, friproDTO);
+			// 리스트에 자기자신이 포함되어 있을 수 도 있으므로 찾아서 삭제해준다
+			FriendDTO friDTO = new FriendDTO();
+			for (int i = 0; i < knewFriendList.size() ; i++){
+				if(mem_num == ((FriendDTO) knewFriendList.get(i)).getMem_num()){
+					knewFriendList.remove(i);
+				}
+			}
+			
+			// 리스트에 이미 친구로 등록된 친구가 추천되어있을 수 있으므로 찾아서 삭제해준다.
+			for(int i = 0; i < friendList.size() ; i++){
+				for(int j = 0; j < knewFriendList.size() ; j++){
+					// 모든 친구 리스트가 뽑힌 friendList와 자기 자신을 제거한 knewFriendList를 비교해서 동일한 mem_num이 있나 찾는다
+					if(((FriendDTO) friendList.get(i)).getMem_num() == ((FriendDTO) knewFriendList.get(j)).getMem_num()){
+						// 만약 있다면 knewFriendList에서 지워준다.
+						knewFriendList.remove(j);
+					}
+				}
+			}
+			
+			/** 알 수 도 있는 친구들의 프로필 사진 */
+			int friend_num;
+			Map friend_numMap = new HashMap();
+			List knewFriendList_image = new ArrayList();
+			for (int i = 0; i < knewFriendList.size() ; i++){
+				friend_num = ((FriendDTO) knewFriendList.get(i)).getMem_num();
+				
+				friend_numMap.put("mem_num", friend_num);
+
+				ProfilePicDTO friproDTO = new ProfilePicDTO();
+				friproDTO = (ProfilePicDTO) sqlMapClientTemplate.queryForObject("profile.newpic", friend_numMap);
+
+				knewFriendList_image.add(i, friproDTO);
+			}
+
+			for (int i = 0; i < knewFriendList_image.size() ; i++){
+				//System.out.println(knewFriendList_image.get(i));
+				System.out.println(((ProfilePicDTO)knewFriendList_image.get(i)).getProfile_pic());
+			}
+
+			request.setAttribute("knewFriendList_image", knewFriendList_image);
+			request.setAttribute("knewFriendList", knewFriendList);
+			
 		}
-
-		for (int i = 0; i < knewFriendList_image.size() ; i++){
-			//System.out.println(knewFriendList_image.get(i));
-			System.out.println(((ProfilePicDTO)knewFriendList_image.get(i)).getProfile_pic());
-		}
-		
 		
 		
 		
@@ -135,15 +156,40 @@ public class MyPageController {
 		coverMap.put("mem_num", mem_num);
 		coverDTO =  (CoverPicDTO) sqlMapClientTemplate.queryForObject("profile.newCoverpic", coverMap);
 		
+		
+		/** 친구 목록 프로필 사진뽑기 */
+		if(friendState2.size() > 0){
+			List friprofileList = new ArrayList();
+			for(int i = 0 ; i < friendState2.size() ; i++){
+				// 상태2인 친구 목록의 번호만 뽑기
+				int frinum = ((FriendDTO)friendState2.get(i)).getMem_num();
+				System.out.println(frinum);
+				
+				// 해당 번호를 가진 프로필 사진 테이블을 찾아 최근 사진 레코드를 리스트에 넣는다
+				Map frinumMap = new HashMap();
+				frinumMap.put("mem_num", frinum);
+				
+				ProfilePicDTO friproDTO = new ProfilePicDTO();
+				friproDTO = (ProfilePicDTO) sqlMapClientTemplate.queryForObject("profile.newpic", frinumMap);
+
+				friprofileList.add(i, friproDTO);				
+			}
+
+			for (int i = 0; i < friprofileList.size() ; i++){
+				//System.out.println(knewFriendList_image.get(i));
+				System.out.println(((ProfilePicDTO)friprofileList.get(i)).getProfile_pic());
+			}
+			request.setAttribute("friprofileList", friprofileList);
+		}
+		
 	
 		
+		
 
-		request.setAttribute("knewFriendList_image", knewFriendList_image);
 		request.setAttribute("mem_num", mem_num); // 세션아이디의 mem_num 아님/ 현재 페이지의 mem_num
 		request.setAttribute("proDTO", proDTO);
 		request.setAttribute("coverDTO", coverDTO);
 		request.setAttribute("sessionCoverDTO", sessionCoverDTO);
-		request.setAttribute("knewFriendList", knewFriendList);
 		request.setAttribute("sessionName", memDTO.getName());
 		request.setAttribute("name", frimemDTO.getName());
 		request.setAttribute("num", frimemDTO.getNum());
@@ -153,6 +199,7 @@ public class MyPageController {
 		request.setAttribute("friendState1", friendState1);
 		request.setAttribute("friendState2", friendState2);
 		request.setAttribute("friendState_m1", friendState_m1);
+	    request.setAttribute("friendCateg", friendCateg);
 		
 		return "/member/MyUsedMyPage.jsp";
 	}

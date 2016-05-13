@@ -51,6 +51,8 @@ public class CreateDBController {
 
 		/** 프로필사진 테이블&시퀀스 생성 */
 		sqlMapClientTemplate.update("create.profilepic", map);
+		map.put("mem_num", num);
+		sqlMapClientTemplate.insert("profile.insertDefaultPic", map);
 		System.out.println("profilepic_"+num+" create");
 		
 		sqlMapClientTemplate.update("create.profilepic_seq", map);
