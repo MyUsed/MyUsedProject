@@ -3,258 +3,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
- 
-
-sadsdfssssss
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-333333333333333333333333333333
-<html lang="ko">1
 <head>
-
- 		<script type="text/javascript">
-        
-              function send(){     
-        
-                   document.formId.method = "post"     // method 선택, get, post
-                   document.formId.action = "mainSubmit.nhn";  // submit 하기 위한 페이지 
-                   document.formId.submit();
-                   document.formId.image_preview();
-                  
-              }
-              
-              function fncChecked(num)
-              {
-               if(num == 1)
-               {
-                div1.style.display = '';
-                div2.style.display = 'none';
-                div2_categ.style.display = 'none';
-               }
-               else if(num == 2)
-               {
-                div1.style.display = 'none';
-                div2.style.display = '';  
-                div2_categ.style.display = '';
-               }
-               else
-               {
-                div1.style.display = 'none';
-                div2.style.display = 'none';
-               }
-              }
-              
-              
-              function openChat(){
-      			var url = "chat.nhn";
-      			window.open(url, "chat", "width=500, height=600, resizable=yes, location=no, status=no, toolbar=no, menubar=no, left=400, top=30");
-      			
-      		}
-              
-              
-   
-              
-             
-         </script>
-
-
-
-
-	
-	<title>MyUsed</title>
-	<style type="text/css">
-		#layer_fixed
-		{
-			height:50px;
-			width:120%;
-			color: #242424;
-			font-size:12px;
-			position:fixed;
-			z-index:999;
-			top:0px;
-			left:0px;
-			-webkit-box-shadow: 0 1px 2px 0 #777;
-			box-shadow: 0 1px 2px 0 #777;
-			background-color:#3B5998;
-		}
-		
-		input[type=text] {
- 		padding: 5px;
- 		text-align: center;
- 		margin: 0px;
-		}
-		
-		
-	</style>
+<link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="/MyUsed/main/script.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<title>MyUsed</title>
 </head>
-
-
-
-
-
-<body>
-	<div id="layer_fixed">
-	
-	<form action="/MyUsed/MyUsedSearchMember.nhn" method="post">
-	<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
-		<tr>
-			<td style="vertical-align:left; padding-left: 30px; padding-right: 80px;">
-			<a href="/MyUsed/MyUsed.nhn">
-			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
-			</a>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				
-			<!-- 친구찾기 -->
-				<input type="text" size="70" name="member"/>
-				<button type="submit"><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
-			
-			
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				
-				<img src="/MyUsed/images/profile.png" width="15"  height="15">
-				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${num}">${name}</a> | 
-				<a href="/MyUsed/MyUsed.nhn">홈</a> | 
-				<a href="/MyUsed/MyUsed.nhn">친구찾기</a>
-				
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40" title="친구"></a>
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35" title="채팅"></a>
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainView.png" width="40"  height="35" title="지구"></a>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<!-- 추후 이미지로 바꾸기(페이스북처럼 드롭다운메뉴로) -->
-				<c:if test="${sessionScope.memId != null }">
-					<a href="/MyUsed/MyUsedLogout.nhn">로그아웃</a>
-				</c:if>
-			</td>
-			
-		</tr>
-	</table>
-	</form>
-	</div>
-
-
-
-<style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:43%; margin-left:37%; width:20%; height:100%; background:#EAEAEA; }
-#sidebannerL { position:fixed; top:50px; right:50%; margin-right:35%; width:15%; height:100%; background:#E9EAED; }
-#contents { width:50%; height:150%; margin:0 auto; margin-left:13%;background:#EAEAEA; }
-#advertise {  position:fixed; width:22%; height:100%; left:61%; margin-right:30%;background:#EAEAEA; }
-</style>
-</head>
-
 <body>
 
-
-<div id="sidebannerR">
-	<center>
- 	<font size="5">사이드고정R</font>
-   	</center>
-</div>
-
-<div id="advertise" >
-<br /> <br /> <br />
-<center>
-	<table align="center" width="280" height="550">
-	<tr bgcolor="#FFFFFF">
-	<td align="center">
-		<hr width="90%" />
-	<a href="http://www.iei.or.kr/">
-	<img src="/MyUsed/images/adver.PNG" width="270" height="370"/>
-		<hr width="90%" />
-	</a>
-	<a href="http://www.iei.or.kr/"><u>국비지원 바로가기</u></a>
-	</td>
-	</tr>
-	</table>
-	
-	
-	
-</center>
-	
-</div>
+<div id="layer_fixed"><jsp:include page="layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
+<div id="sidebannerR"><jsp:include page="sidebannerR.jsp"/></div> <!-- 사이드배너 Right  -->
+<div id="advertise" ><jsp:include page="advertise.jsp"/></div>  <!-- 광고 페이지  -->
+<div id="sidebannerL"><jsp:include page="sidebannerL.jsp" /></div> <!-- 사이드배너 Left -->
 
 
-<div id="sidebannerL">
-  
- 	
- 	<br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/modify.png" width="20" height="20">&nbsp;프로필 수정</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/newSpeed.png" width="20" height="20">&nbsp;뉴스피드</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/categ.png" width="20" height="20">&nbsp;카테고리</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/chat.nhn"><img src="/MyUsed/images/chat.png" width="20" height="20">&nbsp;메세지</a>
-			<input type="button" id="button" value="자유 채팅방" onclick="openChat();"/>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friend.png" width="20" height="20">&nbsp;친구보기</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/picture.png" width="20" height="20">&nbsp;사진</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/favorite.png" width="20" height="20">&nbsp;즐겨찾기</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/address.png" width="20" height="20">&nbsp;주소</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/board.png" width="20" height="20">&nbsp;게시판</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/deliver.png" width="20" height="20">&nbsp;배송관리</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;좋아요</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/share.png" width="20" height="20">&nbsp;공유하기</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friendSearch.png" width="20" height="20">&nbsp;친구찾기</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/deposit.png" width="20" height="20">&nbsp;입금현황</a>
-   	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/option.png" width="20" height="20">&nbsp;설정</a>
-</div>
-
-  
- <!-- 상품 카테고리 -->
-  <script type="text/javascript">
-    $(document).ready(function(){		//onload이벤트같은것(시작하자마자 바로 동작)
-      $("#categ0").change(function(){	// 이렇게 안불러와짐........
-          callAjax();
-      });
-    });
-    function callAjax(){
-        $.ajax({
-	        type: "post",
-	        url : "/MyUsed/categindex.nhn",
-	        data: {	// url 페이지도 전달할 파라미터
-	        	categ0 : $('#categ0').val()
-	        },
-	        success: test,	// 페이지요청 성공시 실행 함수
-	        error: whenError	//페이지요청 실패시 실행함수
-     	});
-    }
-    function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
-        $("#div2").html(aaa);
-        console.log(resdata);
-    }
-    function whenError(){
-        alert("Error");
-    }
-  </script>
- 
-
-
-<div id="contents">
+<div id="contents">   <!-------------------------------- 메인 내용 ------------------------------------------>
 	<br /><br /><br />
 	
 	
@@ -269,13 +33,7 @@ sadsdfssssss
 	 </td>
 	 </tr>
 	 </table>
-	
-	
-	
-	
-	
-	
-	
+
 	
 	<!--  --------------------------------------------- 일반 ---------------------------------------------------- -->
 	 
@@ -313,17 +71,9 @@ sadsdfssssss
     <td align="center"  >
 <!-- 이미지 미리보기  -->
 
-<style>
-  body {
-    margin: 20px;
-    font-family: "맑은 고딕";
-}
-  #image_preview {
-    display:none;
-}
-  </style>
+
   
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ 
 
 
         <label for="image${i}">Image${i}</label>
@@ -423,9 +173,13 @@ sadsdfssssss
 		<tr bgcolor="#FFFFFF">
 		<td>
 		<hr width="100%"  > 
-		좋아요 / 댓글달기 / 공유하기 / 구매하기 
+		
+		좋아요 /<label for="reple" style="cursor:hand;">댓글달기</label> 
+		  <input type="button" id="reple" onclick='javascript:fncChecked(3);' style='display: none'> / 공유하기 / 구매하기 
 		</td>
 		</tr>
+	
+
 
 	</table>
  	<br />	
@@ -490,33 +244,20 @@ sadsdfssssss
 		</font>
 		<br />
 		<input type="text" name="price" size="7" value="0000" placeholder="상품가격"/>
-		<hr width="80%"  > 
-		
+		<hr width="80%"  > 	
 	
 	</td>
 	
 	</tr>
 	<tr bgcolor="#FFFFFF">
-	
 
-	
-	
 	
 		<c:forEach var="i" begin="1" end="8">
     <td align="center"  >
 <!-- 이미지 미리보기  -->
 
-<style>
-  body {
-    margin: 20px;
-    font-family: "맑은 고딕";
-}
-  #image_preview {
-    display:none;
-}
-  </style>
   
-  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+ 
 
 
         <label for="pimage${i}">Image${i}</label>
@@ -575,16 +316,10 @@ sadsdfssssss
 	 	<img src="/MyUsed/images/submit.PNG" onclick="javascript_:send();" />
 	 	</td>
 	</tr> 	
-	
-	
 	</table>
-
-	
-	
 	 </form>
 	 
 	 <br /> <br />
-	 
 
 <c:forEach var="prolist" items="${prolist}">
 	
@@ -639,37 +374,6 @@ sadsdfssssss
 
 	
 </div>
-	
-
-
-
-	 
-	 
-</div>
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
- 	
-
 </body>
 </html>
 

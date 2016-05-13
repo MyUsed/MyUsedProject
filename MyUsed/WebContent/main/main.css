@@ -1,0 +1,40 @@
+@CHARSET "EUC-KR";
+
+
+#sidebannerR { position:fixed; top:50px; left:43%; margin-left:37%; width:20%; height:100%; background:#EAEAEA; }
+#sidebannerL { position:fixed; top:50px; right:50%; margin-right:35%; width:15%; height:100%; background:#E9EAED; }
+#contents { width:50%; height:150%; margin:0 auto; margin-left:13%;background:#EAEAEA; }
+#advertise {  position:fixed; width:22%; height:100%; left:61%; margin-right:30%;background:#EAEAEA; }
+
+
+	#layer_fixed
+		{
+			height:50px;
+			width:120%;
+			color: #242424;
+			font-size:12px;
+			position:fixed;
+			z-index:999;
+			top:0px;
+			left:0px;
+			-webkit-box-shadow: 0 1px 2px 0 #777;
+			box-shadow: 0 1px 2px 0 #777;
+			background-color:#3B5998;
+		}
+		
+		input[type=text] {
+ 		padding: 5px;
+ 		text-align: center;
+ 		margin: 0px;
+		}
+		
+		 body {
+    margin: 20px;
+    font-family: "¸¼Àº °íµñ";
+			}
+ 	 #image_preview {
+  	  display:none;
+			}
+			
+			
+		
