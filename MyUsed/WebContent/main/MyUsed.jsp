@@ -139,7 +139,6 @@
 	
 	<br /> <br />
 	
-	
 
 
 <!--  상품 보기 페이지  -->	
@@ -174,22 +173,36 @@
 		<td>
 		<hr width="100%"  > 
 		
-		좋아요 /<label for="reple" style="cursor:hand;">댓글달기</label> 
+		좋아요 /<label for="reple">댓글달기</label> 
 		  <input type="button" id="reple" onclick='javascript:fncChecked(3);' style='display: none'> / 공유하기 / 구매하기 
 		</td>
 		</tr>
-	
 
 
 	</table>
+
+
+
  	<br />	
- 	
+ 	<div id='div3'>
+<table align="center"  width="550" height="180">
+<tr	bgcolor="#FFFFFF">
+<td>
+sdfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+s
+</td>
+</tr>
+</table>
+</div>
+		
 
 <!--  상품 보기 페이지  -->	
 	 
 </c:forEach>
-	 
-	
+
+
+
+
 </div>
 	
 
