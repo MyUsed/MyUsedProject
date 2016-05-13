@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
-<html lang="ko">
+<html lang="ko">1
 <head>
 
  		<script type="text/javascript">
