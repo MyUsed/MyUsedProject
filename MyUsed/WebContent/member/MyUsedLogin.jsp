@@ -235,7 +235,7 @@
 		<tr>
 			<td style="vertical-align:left; padding-left: 110px; padding-right: 0px;">
 			
-			<img src="/MyUsed/images/Mlogo2.png" width=170 height="50">
+			<a href="/MyUsed/MyUsedLogin.nhn"><img src="/MyUsed/images/Mlogo2.png" width=170 height="50"></a>
 			</td>
 			<td style="vertical-align:left; padding-left: 50px; padding-right: 0px;">
 				
@@ -293,8 +293,8 @@
 		</table>
 	
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:40%; margin-left:30px; width:800px; height:700px; background:#EAEAEA; overflow:auto; }
-#sidebannerL { position:fixed; top:50px; right:45%; margin-right:30px; width:800px; height:700px; background:#EAEAEA; }
+#sidebannerR { position:fixed; top:50px; left:50%; margin-left:35px; width:650px; height:700px; background:#EAEAEA; overflow:auto; }
+#sidebannerL { position:fixed; top:50px; right:45%; margin-right:20px; width:750px; height:700px; background:#EAEAEA; }
 
 </style> 
 </head>
@@ -367,9 +367,20 @@
    	</div>
 </div>
 <div id="sidebannerL">
+
+    <br /> <br />
+   
     <center>
- 	<font size="5">사이드고정L</font>
-   	</center>
+ 	<img src="/MyUsed/images/LoginMap.png" width="330" height="100"/> <br /><br />
+ 	
+ 	
+    <font size="5" color="#0E385F" face="Comic Sans MS">MyUsed 에서 전세계에 있는 지인들과<br/> 
+  		함께 자유롭게 거래하세요.</font>
+ 	
+ 	    
+ 	<img src="/MyUsed/images/LoginBox.png" width="550" height="300"/>
+ 		</center>
+   	
 </div>
 </body>
 
