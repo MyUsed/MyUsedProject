@@ -10,6 +10,10 @@
                    document.formId.image_preview();
                   
               }
+              
+          
+              
+        
  			
  			// -------------------------------------------- div 처리 ------------------------------------------
               
@@ -28,16 +32,7 @@
                 div2.style.display = '';  
                 div2_categ.style.display = '';
                }
-               
-               else if(num == 3)
-               {
-            	div1.style.display = '';
-            	div2.style.display = 'none';
-            	div2_categ.style.display = '';   
-            	div3.style.display = '';
-            	
-               }
-               
+      
                else
                {
                 div1.style.display = 'none';
@@ -45,6 +40,8 @@
                 
                }
               }
+              
+              
               
  			// ----------------------------------------------- 채팅 -----------------------------------------------
               

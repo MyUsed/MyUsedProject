@@ -12,6 +12,8 @@
 </head>
 <body>
 
+
+
 <div id="layer_fixed"><jsp:include page="layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 <div id="sidebannerR"><jsp:include page="sidebannerR.jsp"/></div> <!-- 사이드배너 Right  -->
 <div id="advertise" ><jsp:include page="advertise.jsp"/></div>  <!-- 광고 페이지  -->
@@ -120,6 +122,13 @@
         //DOM에서 제공하는 초기화 메서드 reset()을 호출
         e.unwrap(); //감싼 <form> 태그를 제거
     }
+    
+    
+    
+    
+	
+    
+    
     </script>
   
 </td>
@@ -139,12 +148,15 @@
 	
 	<br /> <br />
 	
-
+</form>
 
 <!--  상품 보기 페이지  -->	
-	
 
-<c:forEach var="list" items="${list}">
+
+
+<c:forEach var="list" items="${list}">	
+<form name="reple" action="reple.nhn" method="post" >
+
 	
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
@@ -173,33 +185,38 @@
 		<td>
 		<hr width="100%"  > 
 		
-		좋아요 /<label for="reple">댓글달기</label> 
-		  <input type="button" id="reple" onclick='javascript:fncChecked(3);' style='display: none'> / 공유하기 / 구매하기 
+		좋아요  / 공유하기 / 구매하기 
 		</td>
 		</tr>
-
+		
+		<tr bgcolor="#FFFFFF">
+		<td>
+		
+		
+		<input type="hidden" name="remem_num" value="${list.mem_num}"/>
+		<input type="hidden" name="renum" value="${list.num}" />
+		<input type="text" name="reple"  size="60" placeholder="댓글을 입력하세요..." />
+		<input type="image" src="/MyUsed/images/reple.PNG"  />
+		
+		
+		</td>
+		</tr>
+		<c:forEach var="replelist" items="${replelist}">
+		${replelist.content} <br />
+		</c:forEach>
 
 	</table>
 
 
 
  	<br />	
- 	<div id='div3'>
-<table align="center"  width="550" height="180">
-<tr	bgcolor="#FFFFFF">
-<td>
-sdfddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-s
-</td>
-</tr>
-</table>
-</div>
+
 		
 
 <!--  상품 보기 페이지  -->	
-	 
-</c:forEach>
 
+</form>	 
+</c:forEach>
 
 
 
@@ -330,7 +347,7 @@ s
 	 	</td>
 	</tr> 	
 	</table>
-	 </form>
+
 	 
 	 <br /> <br />
 

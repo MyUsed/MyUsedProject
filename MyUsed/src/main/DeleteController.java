@@ -34,6 +34,7 @@ public class DeleteController {
 		sqlMap.delete("delete.boardlistDelete", num); // 토탈 db 게시글 삭제
 		sqlMap.delete("delete.picDelete", map); // 개인 pic 사진 삭제
 		
+		
 		System.out.println("board의 회원 mem_num = "+mem_num);
 		System.out.println("개인board의 게시글 num = "+board_num);
 		

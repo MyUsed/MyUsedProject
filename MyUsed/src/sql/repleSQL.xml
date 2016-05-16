@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="reple">
+
+	
+	<!-- num 을 사용해서 개인 DB insert sql -->
+   <insert id="insert" parameterClass="java.util.Map">
+      insert into boardreple_$boardnum$ values(#mem_num#, #content#, #name# ,sysdate)
+   </insert>
+	
+	<!-- boardreple의 내용을 가져옴  -->
+	<select id="select" resultClass="main.RepleDTO" parameterClass="int">
+		select * from  boardreple_$renum$ a, boardlist b
+		where a.mem_num = b.mem_num and num = #renum#
+
+	</select>	
+	
+	
+	
+
+	
+	
+</sqlMap>

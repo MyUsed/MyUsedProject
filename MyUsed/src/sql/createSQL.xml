@@ -48,6 +48,16 @@
 								)
 	</statement>
 	
+	<statement id="boardreple" parameterClass="int">
+		create table boardreple_$boardnum$ (
+								mem_num number not null,
+								content varchar2(4000),
+								name varchar2(4000),
+								reg date default sysdate
+								)
+	</statement>
+	
+	
 	<!-- 친구목록(friendlist) table -->
 	<statement id="friendlist" parameterClass="java.util.Map">
 		create table friendlist_$num$ (

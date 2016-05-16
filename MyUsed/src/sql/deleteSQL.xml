@@ -17,7 +17,7 @@
 	<delete id="boardDelete" parameterClass="java.util.Map">
 		delete from board_$mem_num$ where num = #board_num#
 	</delete>
-	<!-- totalboard에서 글번호를받아 삭제하는 쿼리 -->
+	<!-- boardlist에서 글번호를받아 삭제하는 쿼리 -->
 	<delete id="boardlistDelete" parameterClass="int">
 		delete from boardlist where num = #num#
 	</delete>

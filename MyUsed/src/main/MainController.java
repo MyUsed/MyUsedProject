@@ -28,7 +28,8 @@ public class MainController {
 	
 	private List<MainboardDTO> list = new ArrayList<MainboardDTO>();;	
 	private List<MainProboardDTO> prolist = new ArrayList<MainProboardDTO>();; 
-
+	private List<RepleDTO> replelist = new ArrayList<RepleDTO>();;
+	
 	   @RequestMapping("/MyUsed.nhn")
 	   public ModelAndView main(HttpServletRequest request ){
 	      ModelAndView mv = new ModelAndView();
@@ -49,13 +50,15 @@ public class MainController {
 	      request.setAttribute("categList", categList);
 	      request.setAttribute("checked", "checked");
 	      
-	     
+	      int renum = (int)sqlMap.queryForObject("main.boardnum",null);
+	 
 	      
 	  	  list = sqlMap.queryForList("main.boardView", null); // state 리스트
 	  	  prolist = sqlMap.queryForList("main.proboardView", null); 	// product 리스트 
 	  	  
 	  	  mv.addObject("list", list);
 	  	  mv.addObject("prolist",prolist);
+	  	  mv.addObject("replelist",replelist);
 	  	  
 	  	  mv.addObject("memDTO" , memDTO);
 	      mv.setViewName("/main/MyUsed.jsp");

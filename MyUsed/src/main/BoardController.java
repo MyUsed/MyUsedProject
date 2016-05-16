@@ -60,6 +60,11 @@ public class BoardController {
 			System.out.println("일반 게시글 등록성공");
 			sqlMap.insert("main.insertboardlist", map);
 			System.out.println("토탈 게시글 등록성공");	
+			int boardnum = (int)sqlMap.queryForObject("main.boardnum", null); // 접속한 아이디로 num 가져오기 
+			System.out.println("게시글번호"+boardnum);
+			
+			sqlMap.insert("create.boardreple",boardnum); // 게시글 댓글 테이블 생성 
+			System.out.println("게시글댓글 DB 생성");
 		}else
 			
 			

@@ -9,6 +9,10 @@
    <select id="name" resultClass="String"  parameterClass="String">
       select name from memberlist where id = #sessionId#
    </select>
+     <!-- boardlist 에서 가장 높은 num을 구하기 위해서  -->
+   <select id="boardnum" resultClass="int">
+   		select max(num) from boardlist 
+   </select>
    
    
    <!-- num 을 사용해서 개인 DB insert sql -->
