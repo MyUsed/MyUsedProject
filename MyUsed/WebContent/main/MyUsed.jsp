@@ -185,7 +185,7 @@
 		<td>
 		<hr width="100%"  > 
 		
-		좋아요  / 공유하기 / 구매하기 
+		좋아요  / 공유하기 / <a href="reple.nhn?num=${list.num}&content=${list.content}&name=${list.name}"><img src="/MyUsed/images/reple.PNG"/></a>
 		</td>
 		</tr>
 		
@@ -193,17 +193,10 @@
 		<td>
 		
 		
-		<input type="hidden" name="remem_num" value="${list.mem_num}"/>
-		<input type="hidden" name="renum" value="${list.num}" />
-		<input type="text" name="reple"  size="60" placeholder="댓글을 입력하세요..." />
-		<input type="image" src="/MyUsed/images/reple.PNG"  />
-		
 		
 		</td>
 		</tr>
-		<c:forEach var="replelist" items="${replelist}">
-		${replelist.content} <br />
-		</c:forEach>
+		
 
 	</table>
 

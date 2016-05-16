@@ -10,9 +10,7 @@
 	
 	<!-- boardreple의 내용을 가져옴  -->
 	<select id="select" resultClass="main.RepleDTO" parameterClass="int">
-		select * from  boardreple_$renum$ a, boardlist b
-		where a.mem_num = b.mem_num and num = #renum#
-
+		select * from  boardreple_$num$
 	</select>	
 	
 	

@@ -22,8 +22,8 @@ public class RepleController {
 	
 	private List<RepleDTO> replelist = new ArrayList<RepleDTO>();;	
 	
-	@RequestMapping("/reple.nhn")
-	public ModelAndView reple(String reple,int renum,int remem_num, HttpServletRequest request){
+	@RequestMapping("/reples.nhn")
+	public ModelAndView reples(String reple,int renum,int remem_num, HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
 	
 		HttpSession session = request.getSession();
@@ -55,6 +55,22 @@ public class RepleController {
 		mv.addObject("replelist",replelist);
 		mv.addObject("reple",reple);
 		mv.setViewName("/main/test.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("/reple.nhn")
+	public ModelAndView reple(int num , String content ,String name){
+		ModelAndView mv = new ModelAndView();
+		System.out.println(num);
+		
+		
+		replelist = sqlMap.queryForList("reple.select", num);
+		
+		mv.addObject("replelist",replelist);
+		mv.addObject("name",name);
+		mv.addObject("content",content);
+		mv.addObject("num",num);
+		mv.setViewName("/main/reple.jsp");
 		return mv;
 	}
 	
