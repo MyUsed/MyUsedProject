@@ -1,17 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <style type="text/css">
 a{text-decoration:none}
 </style>
 
 <body bgcolor="#06090F">
 
-
-
 <br /> 
-
-
 
 
 <form action="replesubmit.nhn" method="post" >
@@ -70,7 +67,9 @@ ${content}  <br /><br />
 <font face="Comic Sans MS" size="3" color="#4565A1"> ${replelist.name} </font>
 </a>
  ${replelist.content} <br/>
- <font size="2" color="#9A9DA4">${replelist.reg}</font>
+ <font size="2" color="#9A9DA4">
+  <fmt:formatDate value="${replelist.reg}" type="both" /> 
+ </font>
 
 <br />
 </c:forEach>
@@ -82,7 +81,7 @@ ${content}  <br /><br />
 <td  bgcolor="#F6F7F9">
 <img  src="/MyUsed/images/default.jpg" width="35"  height="35"/> 
 <input style="padding:7px;" type="text" name="reple" size="35" placeholder="´ñ±ÛÀ» ÀÔ·ÂÇÏ¼¼¿ä..." />
-<input type="image" src="/MyUsed/images/replesubmit.PNG" width="30" height="20" title="´ñ±Û´Þ±â"/>
+<input type="image" src="/MyUsed/images/replesubmit.png" width="30" height="20" title="´ñ±Û´Þ±â"/>
 </td>
 </tr>
 
