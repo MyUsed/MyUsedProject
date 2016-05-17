@@ -51,7 +51,7 @@
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
 	
-		<input type="file" name="upload" type="multipart/form-data" method="post" /> <br/>
+		
 		<textarea rows="5" cols="73" name="content" placeholder="무슨 생각을 하고계신가요 ?"></textarea>
 	
 		<br/> 
@@ -175,7 +175,10 @@
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
 		<c:if test="${list.mem_pic != null}">
-		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/> <br/>
+		<a href="reple.nhn?num=${list.num}">
+		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/>
+		</a>
+		 <br/>
 		</c:if>
 		${list.content}
 		</td>
@@ -185,7 +188,7 @@
 		<td>
 		<hr width="100%"  > 
 		
-		좋아요  / 공유하기 / <a href="reple.nhn?num=${list.num}&content=${list.content}&name=${list.name}"><img src="/MyUsed/images/reple.PNG"/></a>
+		좋아요  / 공유하기 / <a href="reple.nhn?num=${list.num}"><img src="/MyUsed/images/replego.PNG"/></a>
 		</td>
 		</tr>
 		

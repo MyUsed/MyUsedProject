@@ -1,5 +1,7 @@
 package main;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,55 +24,63 @@ public class RepleController {
 	
 	private List<RepleDTO> replelist = new ArrayList<RepleDTO>();;	
 	
-	@RequestMapping("/reples.nhn")
-	public ModelAndView reples(String reple,int renum,int remem_num, HttpServletRequest request){
-		ModelAndView mv = new ModelAndView();
-	
-		HttpSession session = request.getSession();
-		String sessionId = (String)session.getAttribute("memId");
-		
-		
-		String name = (String)sqlMap.queryForObject("main.name",sessionId);
-		
-		System.out.println("댓글작성자 ="+name);
-		System.out.println("회원번호 = "+remem_num);
-		System.out.println("글번호 = "+renum);
-		System.out.println("댓글내용 = "+reple);
-		
-		Map map = new HashMap();
-		map.put("boardnum", renum); // 게시글번호
-		map.put("mem_num", remem_num); // 리플다는 회워번호
-		map.put("content", reple);  // 리플다는 내용
-		map.put("name", name); // 리플다는 회원이름
-		
-		sqlMap.insert("reple.insert",map); // 댓글 삽입 
-		System.out.println("댓글 삽입성공");
-		
-		
-		replelist = sqlMap.queryForList("reple.select", renum);
-		System.out.println("리스트 가져옴 ");
-		
-		
-		
-		mv.addObject("replelist",replelist);
-		mv.addObject("reple",reple);
-		mv.setViewName("/main/test.jsp");
-		return mv;
-	}
-	
 	@RequestMapping("/reple.nhn")
-	public ModelAndView reple(int num , String content ,String name){
+	public ModelAndView reple(int num){
 		ModelAndView mv = new ModelAndView();
 		System.out.println(num);
 		
+		Timestamp reg = (Timestamp)sqlMap.queryForObject("reple.boardreg",num); // 게시글 등록된 시간 가져오기
+		String name = (String)sqlMap.queryForObject("reple.boardname",num); // boardlist에서 글쓴이 이름 가져오기
+		int mem_num = (int)sqlMap.queryForObject("reple.mem_num",num); // 댓글다는 사람의 회원번호 가져오기
+		String content =(String)sqlMap.queryForObject("reple.content",num); // 게시글의 내용 가져오기 
+		String board_pic = (String)sqlMap.queryForObject("reple.pic",num); // 게시글의 사진 가져오기
 		
-		replelist = sqlMap.queryForList("reple.select", num);
+		replelist = sqlMap.queryForList("reple.select", num); // 댓글 가져오기 
+		
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 aa hh시 mm분");
+		String time = sdf.format(reg.getTime());
+		
+		System.out.println(time);
+		
+		
 		
 		mv.addObject("replelist",replelist);
 		mv.addObject("name",name);
 		mv.addObject("content",content);
 		mv.addObject("num",num);
+		mv.addObject("time",time);
+		mv.addObject("mem_num",mem_num);
+		mv.addObject("board_pic",board_pic);
 		mv.setViewName("/main/reple.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("/replesubmit.nhn")
+	public ModelAndView replesubmit(HttpServletRequest request , String reple , int boardnum , String content){
+		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
+		String sessionId = (String)session.getAttribute("memId");
+		int mem_num = (int)sqlMap.queryForObject("main.num",sessionId); // 댓글작성한 회원의 번호 가져오기
+		String re_name = (String)sqlMap.queryForObject("main.name",sessionId); // 댓글작성한 회원의 이름 
+		
+		System.out.println("세션ID = "+sessionId);
+		System.out.println("댓글내용 = "+reple);
+		System.out.println("댓글 작성한회원번호 = "+mem_num);
+		System.out.println("댓글 작성한회원이름 = "+re_name);
+		
+		System.out.println("게시글번호 ="+boardnum);
+		
+		Map map = new HashMap();
+		map.put("boardnum", boardnum); 
+		map.put("mem_num", mem_num);
+		map.put("content", reple);
+		map.put("name", re_name);
+		
+		sqlMap.insert("reple.insert",map);   // 댓글 삽입 
+		
+		
+		mv.setViewName("reple.nhn?num="+boardnum);
 		return mv;
 	}
 	

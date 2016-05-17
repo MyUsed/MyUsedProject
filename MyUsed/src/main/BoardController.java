@@ -54,12 +54,14 @@ public class BoardController {
 		request.setAttribute("view2", "none"); // div2가 안보이게 
 		request.setAttribute("checked", "checked");
 
+		
 		// <<  num 값을받아  insert >>
 		if(request.getFile("image1").isEmpty()){	
 			sqlMap.insert("main.addContent", map);
 			System.out.println("일반 게시글 등록성공");
 			sqlMap.insert("main.insertboardlist", map);
 			System.out.println("토탈 게시글 등록성공");	
+
 			int boardnum = (int)sqlMap.queryForObject("main.boardnum", null); // 접속한 아이디로 num 가져오기 
 			System.out.println("게시글번호"+boardnum);
 			
@@ -68,6 +70,7 @@ public class BoardController {
 		}else
 			
 			
+		
 			
 	for(int i=1;i<=8;i++){
 
@@ -89,7 +92,7 @@ public class BoardController {
 	
 	System.out.println(orgName);
 	System.out.println(copy);
-	
+	System.out.println("성공성공성공성공성공성공성공성공");
 	
 	request.setAttribute("orgName"+i, orgName);
 	request.setAttribute("copy", copy);
@@ -173,7 +176,14 @@ public class BoardController {
 			}
 			
 		}
+		
+		// 파일이 여러개 올라오면 만들어주는 댓글테이블 ( 상품 일반 모두 )
 	
+		int boardnums = (int)sqlMap.queryForObject("main.boardnum", null); // 접속한 아이디로 num 가져오기 
+		System.out.println("게시글번호"+boardnums);
+		
+		sqlMap.insert("create.boardreple",boardnums); // 게시글 댓글 테이블 생성 
+		System.out.println("게시글댓글 DB 생성");
 
 		return "MyUsed.nhn";
 	}

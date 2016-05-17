@@ -17,7 +17,7 @@
 			
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
-				<img src="/MyUsed/images/profile.png" width="15"  height="15">
+				<img src="/MyUsed/images/default.jpg" width="15"  height="15">
 				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${num}"><font color="#F6F6F6">${name}</a> | </font>
 				<a href="/MyUsed/MyUsed.nhn"><font color="#F6F6F6">홈</a> |</font> 
 				<a href="/MyUsed/MyUsed.nhn"><font color="#F6F6F6">친구찾기</a></font>
