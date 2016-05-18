@@ -75,7 +75,7 @@ public class RepleController {
 		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 프로필 사진을 가져옴
 
 		
-		
+		mv.addObject("session_num",session_num);
 		mv.addObject("boardproDTO",boardproDTO);
 		mv.addObject("proDTO",proDTO);
 		mv.addObject("piclist",piclist);

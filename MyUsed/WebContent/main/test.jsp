@@ -9,3 +9,4 @@ ${reple}
 <c:forEach var="replelist" items="${replelist}">
 ${replelist.content} <br />
 </c:forEach>
+

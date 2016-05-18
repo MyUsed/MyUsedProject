@@ -63,6 +63,25 @@ public class DeleteController {
 		mv.setViewName("/main/Delete.jsp");
 		return mv;
 	}
+	
+	@RequestMapping("/repleDelete.nhn")
+	public ModelAndView repleDelete(String content , String reg){
+		ModelAndView mv = new ModelAndView();
+		
+		System.out.println(content);
+		System.out.println(reg);
+		mv.setViewName("/MyUsed.nhn");
+		return mv;
+	}
+	
+	@RequestMapping("/picDelete.nhn")
+	public ModelAndView picdDelete(String mem_pic){
+		ModelAndView mv = new ModelAndView();
+		
+		System.out.println(mem_pic);
+		return mv;
+	}
+	
 
 	
 	

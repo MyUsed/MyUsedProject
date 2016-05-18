@@ -21,7 +21,7 @@ $(function(){
      top:"50%" , marginLeft: "250px" , marginTop: "-250px" ,
      padding:"10px 15px" ,
      background: "#000" ,
-     color: "#fff" , cursor:"pointer" 
+     color: "#fff" , cursor:"po1inter" 
  });
 
 $(".mbig figcaption").text("테스트입니다.").css({ 

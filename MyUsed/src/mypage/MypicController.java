@@ -29,7 +29,7 @@ public class MypicController {
 	@RequestMapping("/picture.nhn")
 	public ModelAndView picture(HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
-		
+			
 		HttpSession session = request.getSession();
 		String sessionId = (String)session.getAttribute("memId");
 		

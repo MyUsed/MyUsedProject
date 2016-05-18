@@ -167,6 +167,7 @@
 
 
 
+
 <body>
 <div id="sidebannerR">
  	
@@ -289,8 +290,10 @@
 					<td> 
 				<c:forEach var="piclist" items="${piclist}">
 			
-					<img src="/MyUsed/images/${piclist.mem_pic}" width="150" height="150"/>
-				
+					<img src="/MyUsed/images/${piclist.mem_pic}" onclick="" width="150" height="150"/>
+					<a href="picDelete.nhn?mem_pic=${piclist.mem_pic}" title="삭제하기">
+					<img src="/MyUsed/images/deleteIcon.PNG" width="15"  height="15"/>
+					</a>
 				</c:forEach>
 			</td>	
 				</tr>

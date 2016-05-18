@@ -77,7 +77,11 @@ ${content}  <br /><br />
 <a  href="/MyUsed/MyUsedMyPage.nhn?mem_num=${replelist.mem_num}"> 
 <font face="Comic Sans MS" size="3" color="#4565A1"> ${replelist.name} </font>
 </a>
- ${replelist.content} <br/>
+ ${replelist.content} 
+ <a href="repleDelete.nhn?content=${replelist.content}&reg=${replelist.reg}" >
+ <img src="/MyUsed/images/deleteIcon.PNG" align="right" width="15"  height="15" title="삭제하기"/>
+ </a>
+ <br/>
  <font size="2" color="#9A9DA4">
   <fmt:formatDate value="${replelist.reg}" type="both" /> 
  </font>
@@ -90,8 +94,10 @@ ${content}  <br /><br />
 </tr>
 <tr>
 <td  bgcolor="#F6F7F9">
-<img src="/MyUsed/images/profile/${proDTO.profile_pic}" width="40"  height="35"/> 
-<input style="padding:7px;" type="text" name="reple" size="40" placeholder="댓글을 입력하세요..." />
+<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${session_num}">
+<img src="/MyUsed/images/profile/${proDTO.profile_pic}" align="left" width="40"  height="35"/>
+</a>
+<input style="padding:7px;" type="text" name="reple" size="35" placeholder="댓글을 입력하세요..." />
 <input type="image" src="/MyUsed/images/submitReple.png" width="30" height="20" title="댓글달기"/>
 </td>
 </tr>
