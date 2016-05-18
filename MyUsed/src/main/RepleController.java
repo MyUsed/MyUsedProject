@@ -16,16 +16,21 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.ProfilePicDTO;
+
 @Controller
 public class RepleController {
 	
 	@Autowired	 // 컨트롤러로 부터 Date 객체를 자동으로 받아줌;
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 	
+	private ProfilePicDTO proDTO = new ProfilePicDTO();
+	private ProfilePicDTO boardproDTO = new ProfilePicDTO();
 	private List<RepleDTO> replelist = new ArrayList<RepleDTO>();;	
+	private List<MainpicDTO> piclist = new ArrayList<MainpicDTO>();;
 	
 	@RequestMapping("/reple.nhn")
-	public ModelAndView reple(int num){
+	public ModelAndView reple(int num,HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
 		System.out.println(num);
 		
@@ -38,13 +43,42 @@ public class RepleController {
 		replelist = sqlMap.queryForList("reple.select", num); // 댓글 가져오기 
 		
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 aa hh시 mm분");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 aa hh시 mm분"); // 시간을 뿌려주기위해 세팅
 		String time = sdf.format(reg.getTime());
 		
-		System.out.println(time);
+		// 사진을 전부 꺼내오는 작업
 		
 		
+		String mem_pic = (String)sqlMap.queryForObject("reple.mem_pic",num); // 메인사진의 이름을 가져오기
 		
+		Map remap = new HashMap();
+		
+		
+		remap.put("mem_num", mem_num);
+		remap.put("mem_pic", mem_pic);
+		if(mem_pic != null){
+		int pic_num = (int)sqlMap.queryForObject("reple.pic_num",remap); // 사진의 num을 가져오기
+		remap.put("pic_num", pic_num);
+		}
+		
+		piclist = sqlMap.queryForList("reple.all_pic",remap);
+		
+		
+	    HttpSession session = request.getSession();
+	    String sessionId = (String) session.getAttribute("memId");
+	    int session_num = (int)sqlMap.queryForObject("main.num",sessionId); // 회원번호 가져오기
+	    
+	    boardproDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", remap); // 프로필 사진을 가져옴
+	    
+	    Map picmap = new HashMap();
+		picmap.put("mem_num", session_num);  
+		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 프로필 사진을 가져옴
+
+		
+		
+		mv.addObject("boardproDTO",boardproDTO);
+		mv.addObject("proDTO",proDTO);
+		mv.addObject("piclist",piclist);
 		mv.addObject("replelist",replelist);
 		mv.addObject("name",name);
 		mv.addObject("content",content);

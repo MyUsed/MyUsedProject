@@ -76,10 +76,13 @@
 
   
  
-
-
-        <label for="image${i}">Image${i}</label>
-   
+<c:if test="${i==1}">
+<img src="/MyUsed/images/mainPic.PNG" width="15" height="15"/>
+</c:if>
+        <label for="image${i}">
+        <img src="/MyUsed/images/cameraIcon.PNG" width="25" height="25"/>
+        </label>
+   		
         <input type="file" name="image${i}" id="image${i}" style='display: none;'>
 	
    
@@ -178,7 +181,7 @@
 		<a href="reple.nhn?num=${list.num}">
 		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/>
 		</a>
-		 <br/>
+		 <br/> <br />
 		</c:if>
 		${list.content}
 		</td>

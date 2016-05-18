@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import member.FriendCategDTO;
 import member.MemberDTO;
+import member.ProfilePicDTO;
 
 @Controller
 public class MainController {
@@ -26,6 +27,7 @@ public class MainController {
 	@Autowired	 // 컨트롤러로 부터 Date 객체를 자동으로 받아줌;
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 	
+	private ProfilePicDTO proDTO = new ProfilePicDTO();
 	private List<MainboardDTO> list = new ArrayList<MainboardDTO>();;	
 	private List<MainProboardDTO> prolist = new ArrayList<MainProboardDTO>();; 
 	private List<RepleDTO> replelist = new ArrayList<RepleDTO>();;
@@ -56,6 +58,12 @@ public class MainController {
 	  	  list = sqlMap.queryForList("main.boardView", null); // state 리스트
 	  	  prolist = sqlMap.queryForList("main.proboardView", null); 	// product 리스트 
 	  	  
+	  	  
+	  	  Map picmap = new HashMap();
+	  	  picmap.put("mem_num",memDTO.getNum());
+		  proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 프로필 사진을 가져옴
+	  	  
+		  mv.addObject("proDTO",proDTO);
 	  	  mv.addObject("list", list);
 	  	  mv.addObject("prolist",prolist);
 	  	  mv.addObject("replelist",replelist);

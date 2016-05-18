@@ -22,7 +22,7 @@
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friend.png" width="20" height="20">&nbsp;친구보기</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/picture.png" width="20" height="20">&nbsp;사진</a>
+ 	<a href="/MyUsed/picture.nhn?mem_num"><img src="/MyUsed/images/picture.png" width="20" height="20">&nbsp;사진</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/favorite.png" width="20" height="20">&nbsp;즐겨찾기</a>

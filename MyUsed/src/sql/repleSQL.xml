@@ -39,6 +39,33 @@
    <select id="mem_num" resultClass="int" parameterClass="int">
       select mem_num from boardlist where num = #num#
    </select>
+   
+   
+   
+   
+   
+   
+	  <!-- 메인사진의 이름을  가져오는 sql -->
+   <select id="mem_pic" resultClass="String" parameterClass="int">
+      select mem_pic from boardlist where num = #num#
+   </select>
+   
+     <!-- 사진의 번호를  가져오는 sql -->
+   <select id="pic_num" resultClass="int" parameterClass="java.util.Map">
+      select num from pic_$mem_num$ where mem_pic = #mem_pic#
+   </select>
+   
+    <!-- 개인사진의 전부를  가져오는 sql -->
+   <select id="all_pic" resultClass="main.MainpicDTO" parameterClass="java.util.Map">
+      select * from pic_$mem_num$ where num = #pic_num#
+   </select>
+   
+    <!-- 자기자신의 사진을 전부 가져오는 sql -->
+    <select id="my_pic" resultClass="main.MainpicDTO" parameterClass="java.util.Map">
+    	select * from pic_$num$
+    </select>
+   
+   
 	
 
 	
