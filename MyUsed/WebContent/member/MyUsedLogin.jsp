@@ -372,9 +372,17 @@
    	</div>
 </div>
 <div id="sidebannerL">
-    <center>
- 	<font size="5">사이드고정L</font>
-   	</center>
+<br/> <br/>
+ 		<center>
+    <img src="/MyUsed/images/LoginMap.png" width="330" height="100"/> <br /><br />
+ 	
+  	
+     <font size="5" color="#0E385F" face="Comic Sans MS">MyUsed 에서 전세계에 있는 지인들과<br/> 
+ 		함께 자유롭게 거래하세요.</font>
+ 	
+ 	    
+  	<img src="/MyUsed/images/LoginBox.png" width="550" height="300"/>
+ 		</center>
 </div>
 </body>
 

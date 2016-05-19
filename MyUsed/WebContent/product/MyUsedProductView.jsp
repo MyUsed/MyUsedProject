@@ -121,7 +121,7 @@
 			<div id="proview">
 			<form id="pro_detile" name="pro_detile">
 				<div id="proview_img">
-					<img src="/MyUsed/images/${proList.pro_pic}" onclick="callAjax('${i.count}')">
+					<img src="/MyUsed/images/${proList.pro_pic}" onclick="callAjax('${i.count}')" style="width:200px; height:200px; border-top-left-radius:7px; border-top-right-radius:7px;">
 				</div>
 				<div id="proview_sub">
 					<font size="5" color="#3B5998">
@@ -143,7 +143,7 @@
 			<div id="proview">
 			<form id="pro_detile">
 				<div id="proview_img">
-					<img src="/MyUsed/images/${proList.pro_pic}" onclick="callAjax('${i.count+3}')">
+					<img src="/MyUsed/images/${proList.pro_pic}" onclick="callAjax('${i.count+3}')" style="width:200px; height:200px; border-top-left-radius:7px; border-top-right-radius:7px;">
 				</div>
 				<div id="proview_sub">
 					<font size="5" color="#3B5998">
@@ -164,7 +164,7 @@
 			<div id="proview">
 			<form id="pro_detile">
 				<div id="proview_img">
-					<img src="/MyUsed/images/${proList.pro_pic}" onclick="callAjax('${i.count+6}')">
+					<img src="/MyUsed/images/${proList.pro_pic}" onclick="callAjax('${i.count+6}')" style="width:200px; height:200px; border-top-left-radius:7px; border-top-right-radius:7px;">
 				</div>
 				<div id="proview_sub">
 					<font size="5" color="#3B5998">

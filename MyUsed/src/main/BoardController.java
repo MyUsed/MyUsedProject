@@ -176,6 +176,7 @@ public class BoardController {
 		
 		// 파일이 여러개 올라오면 만들어주는 댓글테이블 ( 상품 일반 모두 )
 	
+		
 		int boardnums = (int)sqlMap.queryForObject("main.boardnum", null); // 접속한 아이디로 num 가져오기 
 		System.out.println("게시글번호"+boardnums);
 		
