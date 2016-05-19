@@ -147,7 +147,7 @@ public class MyPageController {
 		// 세션 아이디의 프로필사진
 		Map profileMap2 = new HashMap();
 		profileMap2.put("mem_num", memDTO.getNum());
-		sessionproDTO = (ProfilePicDTO) sqlMapClientTemplate.queryForObject("profile.newpic", profileMap);
+		sessionproDTO = (ProfilePicDTO) sqlMapClientTemplate.queryForObject("profile.newpic", profileMap2);
 		
 		
 		/** 커버 사진 */
@@ -182,14 +182,28 @@ public class MyPageController {
 			request.setAttribute("friprofileList", friprofileList);
 		}
 		
-	
+		/** 프로필 사진 뽑아오기(세션아이디 아님) -> 프로필 사진 히스토리 */
+		Map hisMap = new HashMap();
+		hisMap.put("mem_num", mem_num);
+		List prohisList = new ArrayList();
+		prohisList = sqlMapClientTemplate.queryForList("profile.prohistory",hisMap);
+		
+		
+		/** 커버 사진 뽑아오기(세션아이디 아님) -> 커버 사진 히스토리 */
+		Map cohisrMap = new HashMap();
+		cohisrMap.put("mem_num", mem_num);
+		List coverhisList = new ArrayList();
+		coverhisList = sqlMapClientTemplate.queryForList("profile.coverhistory",hisMap);
 		
 		
 
+		request.setAttribute("coverhisList", coverhisList);
+		request.setAttribute("prohisList", prohisList);
 		request.setAttribute("mem_num", mem_num); // 세션아이디의 mem_num 아님/ 현재 페이지의 mem_num
 		request.setAttribute("proDTO", proDTO);
 		request.setAttribute("coverDTO", coverDTO);
 		request.setAttribute("sessionCoverDTO", sessionCoverDTO);
+		request.setAttribute("sessionproDTO", sessionproDTO);
 		request.setAttribute("sessionName", memDTO.getName());
 		request.setAttribute("name", frimemDTO.getName());
 		request.setAttribute("num", frimemDTO.getNum());

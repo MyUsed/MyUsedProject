@@ -87,9 +87,7 @@
 	<table align="center"  width="550" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
-	<br/>
-	
- 
+
 	<select name="categ1" id="categ1">
 		<option>--------2Â÷--------</option>
 		<c:forEach var="categ" items="${categList}">

@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="/MyUsed/main/script.js"></script>
+<script src="/MyUsed/main/animate.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <title>MyUsed</title>
 </head>
@@ -17,7 +18,7 @@
 <div id="layer_fixed"><jsp:include page="layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 <div id="sidebannerR"><jsp:include page="sidebannerR.jsp"/></div> <!-- 사이드배너 Right  -->
 <div id="advertise" ><jsp:include page="advertise.jsp"/></div>  <!-- 광고 페이지  -->
-<div id="sidebannerL"><jsp:include page="sidebannerL.jsp" /></div> <!-- 사이드배너 Left -->
+<div id="sidebannerL"><jsp:include page="sidebannerL.jsp"/></div> <!-- 사이드배너 Left -->
 
 
 <div id="contents">   <!-------------------------------- 메인 내용 ------------------------------------------>
@@ -77,7 +78,7 @@
   
  
 <c:if test="${i==1}">
-<img src="/MyUsed/images/mainPic.PNG" width="15" height="15"/>
+<img src="/MyUsed/images/mainPic.PNG" width="15" height="15" title="메인사진"/>
 </c:if>
         <label for="image${i}">
         <img src="/MyUsed/images/cameraIcon.PNG" width="25" height="25"/>
@@ -169,7 +170,7 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<c:if test="${list.mem_num == memDTO.num}">
-		<a href="delete.nhn?num=${list.num}">게시글삭제</a>
+		<a href="delete.nhn?num=${list.num}"><img src="/MyUsed/images/deleteIcon.PNG" style=""margin-right: 1em;" width="20" height="20" align="right" title="게시글 삭제"/></a>
 		</c:if>
 		<hr width="100%" > 
 		</td>

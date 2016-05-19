@@ -6,7 +6,6 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="facebookstyle.css" />
 <link rel="stylesheet" type="text/css" href="/MyUsed/member/MyPage.css" />
-<!-- <link rel="stylesheet" type="text/css" href="/member/style.css"> -->
 
 <script src="/MyUsed/member/jquery-1.11.3.js"></script>
 <script src="/MyUsed/member/animate.js"></script>
@@ -68,6 +67,18 @@
             	  	Coverhistory.style.display = 'none';     	        	
       	        	
       	    	}
+              
+              /* 프로필 이미지 상세보기 */
+              
+              function openviewProfile() {
+            	  viewProfileimg.style.display = '';      	        	
+    	    	}
+              function closeviewProfile() {
+            	  viewProfileimg.style.display = 'none';     	        		
+    	    	}
+            
+              
+              
               
  			/* 메시지 보기 */
               function openMsg() {
@@ -135,7 +146,7 @@
 			
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
-				<img src="/MyUsed/images/profile/${proDTO.profile_pic}" width="15"  height="15">
+				<img src="/MyUsed/images/profile/${sessionproDTO.profile_pic}" width="15"  height="15">
 				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}">${sessionName}</a> | 
 				<a href="/MyUsed/MyUsed.nhn">홈</a> | 
 				<a href="/MyUsed/MyUsed.nhn">친구찾기</a>
@@ -225,11 +236,11 @@
 	<div id="menu">	
 	
 	<div id="menu0"><!-- 공란 -->	</div>
-	<div id="menu1"><a href="/MyUsed/MyUsedMyPage.nhn">타임라인</a></div>
-	<div id="menu2"><a href="/MyUsed/MyUsedMyPage.nhn">정보</a></div>	
-	<div id="menu3"><a href="/MyUsed/MyUsedMyPage.nhn">친구</a></div>	
-	<div id="menu4"><a href="/MyUsed/MyUsedMyPage.nhn">사진</a></div>	
-	<div id="menu5"><a href="paperMain.nhn?mynum=${mem_num}">쪽지</a></div>
+	<div id="menu1"><a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}">타임라인</a></div>
+	<div id="menu2"><a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}">정보</a></div>	
+	<div id="menu3"><a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}">친구</a></div>	
+	<div id="menu4"><a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}">사진</a></div>	
+	<div id="menu5"><a href="paperMain.nhn?mynum=${mynum}">쪽지</a></div>	
 
 
 	<div id="menu6">
@@ -427,11 +438,13 @@
 	</center>  	
 </div>
 	
+<!-- 프로필 히스토리 -->
+
 	
 <div id="imagehistoryback" style='display: none;'>
 </div>
 <div id="imagehistory" style='display: none;'>
-<div id="closebotton">
+	<div id="closebotton">
 		<label for="close1">
 			<img src="/MyUsed/images/close.png" width="30" height="30">
 		</label>
@@ -442,15 +455,65 @@
    	<center>
    	
    	<font size="4"><b>프로필 이미지 히스토리</b></font>
+   	<script type="text/javascript">
+    	function openConfirmDelete(deletepro) {
+        	url = "/MyUsed/MyUsedDeleteAll.nhn?mem_num=" + deletepro.mem_num.value;
+        
+        	// 새로운 윈도우를 엽니다.
+        	open(url, "confirm", 
+        	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+    	}
+   	</script>
+   	<c:if test="${mem_num == mynum}">
+   		<div id="deletepro">
+   			<form name="deletepro">
+   				<input type="hidden" name="mem_num" value="${mem_num}">
+   				<label for="deleteALl">모두 삭제</label>
+   				<input type="button" id="deleteALl" OnClick="javascript:openConfirmDelete(this.form)" style='display: none;'>
+   			</form>   			
+   		</div>
+   	</c:if>
    	
    	<hr width="80%">
    	
-   	<!-- 이미지 정렬 -->
+   	<!-- 이미지 정렬  // 클릭하면 큰 이미지 나오는거 마저하기-->
+   	<table border="1" bordercolor="#FFFFFF" cellpadding="1">
+   		<tr height="115">
+   		<c:forEach begin="0" step="1" end="3" var="prohis" items="${prohisList}">
+   			<td width="115">
+   				<label for="viewProfile">
+   				<img src="/MyUsed/images/profile/${prohis.profile_pic}" width="115" height="115">
+   				</label>
+   				<input type="button" id="viewProfile" OnClick="javascript:openviewProfile()" style='display: none;'>
+	
+   				<div id="viewProfileimg" style='display: none;'>
+					<img src="/MyUsed/images/profile/${prohis.profile_pic}" width="400" height="400">
+				</div>
+   				
+			</td>
+		</c:forEach>
+		</tr>
+		
+   		<tr height="115">
+   		<c:forEach begin="4" step="1" end="7" var="prohis" items="${prohisList}">
+   			<td width="115">
+   				<img src="/MyUsed/images/profile/${prohis.profile_pic}" width="115" height="115">
+			</td>
+		</c:forEach>
+		</tr>
+		
+   		<tr height="115">
+   		<c:forEach begin="7" step="1" end="10" var="prohis" items="${prohisList}">
+   			<td width="115">
+   				<img src="/MyUsed/images/profile/${prohis.profile_pic}" width="115" height="115">
+			</td>
+		</c:forEach>
+		</tr>
    	
-   	
+   	</table>
    	</center>
 </div>
-	
+
 
 
 <!-- 커버 이미지 -->
@@ -505,11 +568,55 @@
    	<center>
    	
    	<font size="4"><b>커버 이미지 히스토리</b></font>
+   	<script type="text/javascript">
+    	function openConfirmDelete(deletepro) {
+        	// 아이디를 입력했는지 검사
+        	url = "/MyUsed/MyUsedDeleteCoverAll.nhn?mem_num=" + deletepro.mem_num.value;
+        
+        	// 새로운 윈도우를 엽니다.
+        	open(url, "confirm", 
+        	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+    	}
+   	</script>
+   	<c:if test="${mem_num == mynum}">
+   		<div id="deletepro">
+   			<form name="deletepro">
+   				<input type="hidden" name="mem_num" value="${mem_num}">
+   				<label for="deleteALl">모두 삭제</label>
+   				<input type="button" id="deleteALl" OnClick="javascript:openConfirmDelete(this.form)" style='display: none;'>
+   			</form>   			
+   		</div>
+   	</c:if>
    	
    	<hr width="80%">
    	
    	<!-- 이미지 정렬 -->
+   	<table border="1" bordercolor="#FFFFFF" cellpadding="1">
+   		<tr height="115">
+   		<c:forEach begin="0" step="1" end="3" var="coverhis" items="${coverhisList}">
+   			<td width="115">
+   				<img src="/MyUsed/images/profile/${coverhis.cover_pic}" width="115" height="115">
+			</td>
+		</c:forEach>
+		</tr>
+		
+   		<tr height="115">
+   		<c:forEach begin="4" step="1" end="7" var="coverhis" items="${coverhisList}">
+   			<td width="115">
+   				<img src="/MyUsed/images/profile/${coverhis.cover_pic}" width="115" height="115">
+			</td>
+		</c:forEach>
+		</tr>
+		
+   		<tr height="115">
+   		<c:forEach begin="7" step="1" end="10" var="coverhis" items="${coverhisList}">
+   			<td width="115">
+   				<img src="/MyUsed/images/profile/${coverhis.cover_pic}" width="115" height="115">
+			</td>
+		</c:forEach>
+		</tr>
    	
+   	</table>
    	
    	</center>
 </div>

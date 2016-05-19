@@ -1,8 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<script src="/MyUsed/main/animate.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 
 <body>
+
+
+
 
  	<br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
@@ -11,12 +19,44 @@
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/newSpeed.png" width="20" height="20">&nbsp;뉴스피드</a>
  	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/categ.png" width="20" height="20">&nbsp;카테고리</a>
+ 	
+ 	<!--상품 카테고리 별로 조회 -->
+ 	<nav class="nav">
+		<ul class="gnb">
+ 			<li><a href="#"><img src="/MyUsed/images/categ.png" width="20" height="20">&nbsp;카테고리</a>
+ 			<ul class="sub">
+	      		<li>
+	      			<table width="100%" height="300" border="0">
+	      				<tr height="25%">
+	      				<c:forEach begin="0" step="1" end="3" var="viewCateg" items="${viewCategList}">
+	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1">${viewCateg.categ}</a></td>
+	      				</c:forEach>
+	      				</tr>
+	      				<tr height="25%">
+	      				<c:forEach begin="4" step="1" end="7" var="viewCateg" items="${viewCategList}">
+	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1">${viewCateg.categ}</a></td>
+	      				</c:forEach>
+	      				</tr>
+	      				<tr height="25%">
+	      				<c:forEach begin="8" step="1" end="11" var="viewCateg" items="${viewCategList}">
+	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1">${viewCateg.categ}</a></td>
+	      				</c:forEach>
+	      				</tr>
+	      				<tr height="25%">
+	      				<c:forEach begin="12" step="1" end="15" var="viewCateg" items="${viewCategList}">
+	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1">${viewCateg.categ}</a></td>
+	      				</c:forEach>
+	      				</tr>
+	      			</table>	      		
+	      		</li>
+	      	</ul>
+    	</li>
+    	</ul>
+    </nav>
+    
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/chat.nhn"><img src="/MyUsed/images/chat.png" width="20" height="20">&nbsp;메세지</a>
-			<input type="button" id="button" value="자유 채팅방" onclick="openChat();"/>
+ 	<a href="/MyUsed/chat.nhn"><img src="/MyUsed/images/chat.png" width="20" height="20" onclick="openChat();">&nbsp;채팅방</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friend.png" width="20" height="20">&nbsp;친구보기</a>

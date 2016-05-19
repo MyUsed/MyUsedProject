@@ -14,6 +14,7 @@
 	<sqlMap resource="/sql/profilePicSQL.xml"/>
 	<sqlMap resource="/sql/repleSQL.xml"/>
 	<sqlMap resource="/sql/paperSQL.xml"/>
+	<sqlMap resource="/sql/productSQL.xml"/>
 	<!-- <sqlMap resource="/sql/chatSQL.xml"/> -->
 	
 

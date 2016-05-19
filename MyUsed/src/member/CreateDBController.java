@@ -17,9 +17,20 @@ public class CreateDBController {
 	
 	@RequestMapping("/createDB.nhn")
 	public String create(int num){
+		String result = "";
+		
 		System.out.println(num);
 		Map map = new HashMap();
 		map.put("num", num);
+		
+		// 해당 num이 naver회원일 경우 num_naver는 0이 아닌 수가 나옴.
+		String num_naver = (String) sqlMapClientTemplate.queryForObject("member.num_NaverId",map);
+		if(num_naver.equals("0")){
+			result = "/member/MyUsedJoinPro.jsp";
+		}else{
+			result = "/member/MyUsedNaverFirstLoginPro.jsp";
+		}
+		
 		
 		/** 친구 리스트 테이블&시퀀스 생성 */
 		sqlMapClientTemplate.update("friend.friendlistTable", map);
@@ -86,7 +97,7 @@ public class CreateDBController {
 		sqlMapClientTemplate.update("create.proreple", map);
 		System.out.println("proreple_"+num+" create");
 		
-		return "/member/MyUsedJoinPro.jsp";
+		return result;
 	}
 	
 			

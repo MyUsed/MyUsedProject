@@ -181,6 +181,8 @@ public class BoardController {
 		
 		sqlMap.insert("create.boardreple",boardnums); // 게시글 댓글 테이블 생성 
 		System.out.println("게시글댓글 DB 생성");
+		sqlMap.insert("create.boardreple_seq",boardnums);
+		System.out.println("게시글댓글 시퀀스 생성");
 
 		return "MyUsed.nhn";
 	}

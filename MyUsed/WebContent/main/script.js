@@ -79,5 +79,17 @@
                      alert("Error");
                  }
               
-   
+                 // ----------------------------------  삭제여부 확인 ---------------------------------------
+                 
+
+                 
+               	function deleteCheck(){
+               if(confirm("정말로 삭제하시겠습니까?") == true){
+
+               } 	else{
+               	event.preventDefault();
+             		  }
+               }
+      
+
               

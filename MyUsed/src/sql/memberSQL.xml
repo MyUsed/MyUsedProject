@@ -5,6 +5,11 @@
 	<insert id="insertMem"  parameterClass="member.MemberDTO">
 		insert into memberlist values(sq_memberlist.NEXTVAL, #id#, #name#, #password#, #birthdate#, #gender#, #grade#, #point#, #onoff#, #naverid#, #chatonoff# )
 	</insert>
+	
+	<!-- 해당 num이 네이버 회원이지 아닌지 판별 -->
+	<select id="num_NaverId" resultClass="String" parameterClass="java.util.Map">
+		select naverid from memberlist where num=#num#
+	</select>
 
 	<!-- 가입되어 있는 아이디인지 체크(네이버) -->
 	<select id="checkNaverId" resultClass="int" parameterClass="String">

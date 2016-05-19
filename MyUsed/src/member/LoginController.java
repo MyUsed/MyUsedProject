@@ -25,7 +25,6 @@ public class LoginController {
 	private SqlMapClientTemplate sqlMapClientTemplate;
 	private MemberDTO memDTO = new MemberDTO();
 	
-
 	/** 네이버 로그아웃 아직 안됨 */
 	@RequestMapping("/MyUsedLogout.nhn")
 	public String logout(HttpServletRequest request){
@@ -64,28 +63,31 @@ public class LoginController {
 			memDTO.setPassword(spw);
 			memDTO.setBirthdate(birthday);
 			memDTO.setGender(gender);
+			memDTO.setGrade(3);
+			memDTO.setPoint(0);
+			memDTO.setOnoff("0");	//0 비로그인/ 1 로그인
 			memDTO.setNaverid(id);
-			/* 수정 할 점1
-			 * 로그인할 때 네이버아이디로 최초가입한 아이디를 판별해
-			 * 네이버 로그인 회원이니 네이버 계정으로 로그인하라는 알림창 띄우기
-			 *  */
+			memDTO.setChatonoff("0");
 			
 
 			// 회원리스트 디비에 추가
 			sqlMapClientTemplate.insert("member.insertMem", memDTO);
 			
-			// 회원개인 디비 생성(아직 안됨)
-			//sqlMapClientTemplate.update("createMemInfo", id);
-
 			// 세션에 넣음(네이버에서 부여한 고유 id)
 			HttpSession session = request.getSession();
 			session.setAttribute("memId", email);
 			sqlMapClientTemplate.update("member.Log_on", email);	// 로그인상태를 on으로(onoff 컬럼 1)
 
-			
 			System.out.println("First LOGIN");
 			
-			result="/member/MyUsedNaverFirstLoginPro.jsp";
+			// 등록된 회원의 넙버를 가져온다.
+			int num = (Integer)sqlMapClientTemplate.queryForObject("member.findNum", memDTO);
+		
+			// creatDB로 num변수를 보낸다.
+			request.setAttribute("num", num);
+
+			//result="/member/MyUsedNaverFirstLoginPro.jsp";
+			result="/member/createDB.jsp";
 		}
 
 		return result;

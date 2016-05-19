@@ -20,9 +20,6 @@
     <script type="text/javascript" src="/MyUsed/member/naverLogin.js"></script>
  
 <script type="text/javascript">
-
-
-
     function generateState() {
         // CSRF 방지를 위한 state token 생성 코드
         // state token은 추후 검증을 위해 세션에 저장 되어야 합니다.
@@ -122,9 +119,7 @@
     }
 
 }
-    
-
- </script>	
+</script>	
  
  <script type="text/javascript">
  function checkIt() {
@@ -173,6 +168,16 @@
          return false;
      }
  }
+ function comfirmId() {
+     var userinput = eval("document.userinput");
+     var id = userinput.signup_id.value;
+     url = "/MyUsed/confirmId.nhn?id="+id.toString();
+     
+     // 새로운 윈도우를 엽니다.
+     open(url, "confirm", 
+ 	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=300, height=200");
+	
+ } 
  </script>
  
   <script type="text/javascript">
@@ -195,7 +200,7 @@
         		year : $('#year').val(),
         		month : $('#month').val(),
         		date : $('#date').val(),
-        		gender : $('#gender').val() 
+        		gender : $('#gender').val()
 	        }, 
 	        success: test,	// 페이지요청 성공시 실행 함수
 	        error: whenError	//페이지요청 실패시 실행함수
@@ -235,7 +240,7 @@
 		<tr>
 			<td style="vertical-align:left; padding-left: 110px; padding-right: 0px;">
 			
-			<a href="/MyUsed/MyUsedLogin.nhn"><img src="/MyUsed/images/Mlogo2.png" width=170 height="50"></a>
+			<img src="/MyUsed/images/Mlogo2.png" width=170 height="50">
 			</td>
 			<td style="vertical-align:left; padding-left: 50px; padding-right: 0px;">
 				
@@ -293,8 +298,9 @@
 		</table>
 	
 <style type="text/css">
-#sidebannerR { position:fixed; top:50px; left:50%; margin-left:35px; width:650px; height:700px; background:#EAEAEA; overflow:auto; }
-#sidebannerL { position:fixed; top:50px; right:45%; margin-right:20px; width:750px; height:700px; background:#EAEAEA; }
+#sidebannerR { position:fixed; top:50px; left:40%; margin-left:30px; width:800px; height:700px; background:#EAEAEA; overflow:auto; }
+#sidebannerL { position:fixed; top:50px; right:45%; margin-right:30px; width:800px; height:700px; background:#EAEAEA; }
+
 </style> 
 </head>
 
@@ -310,7 +316,7 @@
             <input class="signup_name" type="text" name="signup_lname" id="signup_lname" placeholder="성(姓)">
             <input class="signup_name" type="text" name="signup_fname" id="signup_fname" placeholder="이름(성은 제외)"> <br /> <br />
             <input class="signup_input" size="45" type="text" name="signup_id" id="signup_id" placeholder="이메일 또는 휴대폰 번호"> <br /> <br />
-            <input class="signup_input" size="45" type="text" name="signup_idchk" placeholder="이메일 또는 휴대폰 번호 재입력"> <br /> <br />
+            <input class="signup_input" size="45" type="text" name="signup_idchk" id="signup_idchk" placeholder="이메일 또는 휴대폰 번호 재입력" onkeyup="comfirmId()"> <br /> <br />
             <input class="signup_input" size="46" type="password" name="signup_pw" id="signup_pw" placeholder="새 비밀번호">
             <p style="font-size: 18px; color: #000; padding-top: 8px;">생일</p>
             <!-- small width -->
@@ -366,17 +372,9 @@
    	</div>
 </div>
 <div id="sidebannerL">
-<br/> <br/>
- 		<center>
-    <img src="/MyUsed/images/LoginMap.png" width="330" height="100"/> <br /><br />
- 	
-  	
-     <font size="5" color="#0E385F" face="Comic Sans MS">MyUsed 에서 전세계에 있는 지인들과<br/> 
- 		함께 자유롭게 거래하세요.</font>
- 	
- 	    
-  	<img src="/MyUsed/images/LoginBox.png" width="550" height="300"/>
- 		</center>
+    <center>
+ 	<font size="5">사이드고정L</font>
+   	</center>
 </div>
 </body>
 

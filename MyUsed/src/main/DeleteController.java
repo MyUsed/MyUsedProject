@@ -65,12 +65,21 @@ public class DeleteController {
 	}
 	
 	@RequestMapping("/repleDelete.nhn")
-	public ModelAndView repleDelete(String content , String reg){
+	public ModelAndView repleDelete(int seq_num , int boardnum){
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(content);
-		System.out.println(reg);
-		mv.setViewName("/MyUsed.nhn");
+		
+		System.out.println(seq_num);
+		
+		Map reMap = new HashMap();
+		reMap.put("seq_num", seq_num);
+		reMap.put("mem_num", boardnum);
+		sqlMap.delete("delete.RepleDelete",reMap); // 시퀀스번호로 댓글 삭제;
+		
+	
+		
+		
+		mv.setViewName("/reple.nhn?num="+boardnum);
 		return mv;
 	}
 	

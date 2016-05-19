@@ -18,11 +18,41 @@ public class JoinController {
 	private SqlMapClientTemplate sqlMapClientTemplate;
 	private MemberDTO memDTO = new MemberDTO();
 
+	/** 일반 회원가입-아이디 중복확인 */
+	@RequestMapping("/confirmId.nhn")
+	public String confirmId(HttpServletRequest request, String id){
+		System.out.println(id);
+		
+		int check = (Integer)sqlMapClientTemplate.queryForObject("member.checkId", id);
+	
+		request.setAttribute("check", check);
+		request.setAttribute("id", id);
+		return "/member/confirmId.jsp";
+	}
+	
+	/** 약관 동의 */
+	@RequestMapping("/MyUsedAgreement.nhn")
+	public String MyUsedAgreement(HttpServletRequest request, String signup_lname, String signup_fname,String signup_pw, String signup_id, String year, String month, String date, String gender){
 
+		System.out.println(gender);
+	
+		request.setAttribute("signup_lname", signup_lname);
+		request.setAttribute("signup_fname", signup_fname);
+		request.setAttribute("signup_pw", signup_pw);
+		request.setAttribute("signup_id", signup_id);
+		request.setAttribute("year", year);
+		request.setAttribute("month", month);
+		request.setAttribute("date", date);
+		request.setAttribute("gender", gender);
+
+		return "/member/MyUsedAgreement.jsp";
+	}
+	
+	
 	/** 일반 회원가입 */
 	@RequestMapping("/MyUsedJoinPro.nhn")
 	public String MyUsedJoinPro(HttpServletRequest request, String signup_lname, String signup_fname,String signup_pw, String signup_id, String year, String month, String date, String gender){
-
+		
 		String birthdate = year +"-"+ month +"-"+ date;
 		
 		memDTO.setId(signup_id);
@@ -49,30 +79,6 @@ public class JoinController {
 		//return "/member/MyUsedJoinPro.jsp";
 		return "/member/createDB.jsp";
 	}
-	
-	@RequestMapping("/MyUsedAgreement.nhn")
-	public String MyUsedAgreement(HttpServletRequest request, String signup_lname, String signup_fname,String signup_pw, String signup_id, String year, String month, String date, String gender){
 
-		String result = "";
-		int check = (Integer)sqlMapClientTemplate.queryForObject("member.checkId", signup_id);
-		if(check == 1){
-			// 동일한 아이디 있을 경우 가입 불가
-			result = "/member/MyUsedNotJoin.jsp";
-		}else{
-			// 동일한 아이디가 없을 경우 가입 약관
-			result = "/member/MyUsedAgreement.jsp";
-		}
-
-		request.setAttribute("signup_lname", signup_lname);
-		request.setAttribute("signup_fname", signup_fname);
-		request.setAttribute("signup_pw", signup_pw);
-		request.setAttribute("signup_id", signup_id);
-		request.setAttribute("year", year);
-		request.setAttribute("month", month);
-		request.setAttribute("date", date);
-		request.setAttribute("gender", gender);
-
-		return result;
-	}
 	
 }

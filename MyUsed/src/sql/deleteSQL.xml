@@ -29,6 +29,10 @@
 	<delete id="MypicDelete" parameterClass="java.util.Map">
 		delete from pic_$mem_num$ where mem_pic = #mem_pic#
 	</delete>
+	<!-- 개인reple테이블DB에서 seq_num기준으로 삭제하는 쿼리 -->
+	<delete id="RepleDelete" parameterClass="java.util.Map">
+		delete from boardreple_$mem_num$ where seq_num = #seq_num#
+	</delete>
 	
 	
 	

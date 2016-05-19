@@ -2,7 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
+<script src="/MyUsed/main/script.js"></script>
 <script src="/MyUsed/main/jquery-1.11.3.js"></script>
 <script src="/MyUsed/main/modal.js"></script>
 
@@ -14,7 +14,16 @@ figure,figcaption,img{ display:block; }
 .modal_gallery li{ list-style:none; float:left; width:150px; margin:3px;}
 .modal_gallery li img{ width:100%; cursor:pointer;}
 </style>
+<script>
+	function deleteCheck(){
+               if(confirm("정말로 삭제하시겠습니까?") == true){
 
+               } 	else{
+               	event.preventDefault();
+             		  }
+               }
+      
+	</script>
 
 
 <body bgcolor="#06090F">
@@ -78,8 +87,8 @@ ${content}  <br /><br />
 <font face="Comic Sans MS" size="3" color="#4565A1"> ${replelist.name} </font>
 </a>
  ${replelist.content} 
- <a href="repleDelete.nhn?content=${replelist.content}&reg=${replelist.reg}" >
- <img src="/MyUsed/images/deleteIcon.PNG" align="right" width="15"  height="15" title="삭제하기"/>
+ <a href="repleDelete.nhn?seq_num=${replelist.seq_num}&boardnum=${num}" onclick="javasciprt:deleteCheck()">
+ <img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 0.5em;" align="right" width="15"  height="15" title="삭제하기"/>
  </a>
  <br/>
  <font size="2" color="#9A9DA4">
@@ -97,7 +106,7 @@ ${content}  <br /><br />
 <a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${session_num}">
 <img src="/MyUsed/images/profile/${proDTO.profile_pic}" align="left" width="40"  height="35"/>
 </a>
-<input style="padding:7px;" type="text" name="reple" size="35" placeholder="댓글을 입력하세요..." />
+<input style="padding:7px;" type="text" name="reple" size="33" placeholder="댓글을 입력하세요..." />
 <input type="image" src="/MyUsed/images/submitReple.png" width="30" height="20" title="댓글달기"/>
 </td>
 </tr>

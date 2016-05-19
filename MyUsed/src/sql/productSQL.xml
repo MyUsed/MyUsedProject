@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="product">
+
+	<!-- 1차 카테고리에 해당하는 상품 목록들 -->
+	<select id="view_categ0" resultClass="main.MainProboardDTO" parameterClass="String">
+		select * from proboardlist where categ like '%'||#categ#||'%' order by num desc
+	</select>
+
+	<!-- 위의 1차 카테고리에 해당되는 2차 카테고리 목록  -->
+	<select id="categ1_List" resultClass="main.ProBoardCategDTO" parameterClass="String">
+		select * from proboard_categ where ca_level=1 and ca_group=(select ca_group from proboard_categ where categ like '%'||#categ#||'%' and ca_level=0)
+	</select>
+
+	<!-- 2차 카테고리에 해당하는 상품 목록들 -->
+	<select id="view_categ1" resultClass="main.MainProboardDTO" parameterClass="String">
+		select * from proboardlist where categ like '%'||#categ#||'%' order by num desc
+	</select>
+	
+	<!-- 상품을 클릭하면나오는 상세페이지에서 proboardlist -->
+	<select id="selectProNum" resultClass="main.MainProboardDTO" parameterClass="int">
+		select * from proboardlist where num = #num#
+	</select>
+	
+	<!-- proboardlist의 글쓴이를 통해 개인상품 테이블 찾음/num만 가져감 -->
+	<select id="findProboard" resultClass="int" parameterClass="java.util.Map">
+		select num from proboard_$mem_num$ where content=#content# and reg = #reg#
+	</select>
+	
+	<!-- 위 쿼리문에서 찾은 num으로 개인상품사진 테이블에서 사진들을 가져온다 -->
+	<select id="findPropic" resultClass="main.MainProboardDTO" parameterClass="java.util.Map">
+		select * from propic_$mem_num$ where num = #num#
+	</select>
+	
+	<!-- 글쓴이의 프로필사진 -->
+	<select id="propic" resultClass="String" parameterClass="java.util.Map">
+		select profile_pic from  profilepic_$mem_num$ where pic_num = (select max(pic_num) from profilepic_$mem_num$)
+	</select>
+	
+	
+</sqlMap>

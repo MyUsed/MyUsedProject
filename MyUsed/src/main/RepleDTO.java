@@ -4,8 +4,15 @@ import java.sql.Timestamp;
 
 public class RepleDTO {
 	
+	private int seq_num;
 	private int mem_num;
 	private String content;
+	public int getSeq_num() {
+		return seq_num;
+	}
+	public void setSeq_num(int seq_num) {
+		this.seq_num = seq_num;
+	}
 	private String name;
 	private Timestamp reg;
 	public int getMem_num() {

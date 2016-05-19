@@ -39,7 +39,7 @@ $(".mbg, .mbig, .mclose").hide();
 $(".modal_gallery li img").click(function(){ 
     $(".mbig img").attr("src", $(this).attr("src") );
     $(".mbig figcaption").text( $(this).attr("alt") );
-    $(".mbg, .mbig, .mclose").fadeIn("fast");
+    $(".mbg, .mbig, .mclose").fadeIn("slow");
 
     var img_w =  parseInt( $(".mbig img").css("width") ) / 2;
     var img_h =  parseInt( $(".mbig img").css("height") ) /2;
@@ -61,7 +61,7 @@ $(".modal_gallery li img").click(function(){
 */
 
    $(".mclose").click( function(){  
-       $(".mbg, .mbig, .mclose").fadeOut("fast");
+       $(".mbg, .mbig, .mclose").fadeOut("slow");
    });
 });
 

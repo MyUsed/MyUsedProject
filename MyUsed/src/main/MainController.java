@@ -44,6 +44,12 @@ public class MainController {
 	      request.setAttribute("name", memDTO.getName());
 	      request.setAttribute("num", memDTO.getNum());
 	      
+	      /** 카테고리 보기 */
+	      List viewCategList = new ArrayList();
+	      viewCategList = sqlMap.queryForList("procateg.viewCateg", null);
+	      request.setAttribute("viewCategList", viewCategList);
+	   
+	      
 	      /** 카테고리 추가  */
 	      ProBoardCategDTO categDTO0 = new ProBoardCategDTO();
 	      List categList = new ArrayList();
@@ -63,6 +69,7 @@ public class MainController {
 	  	  picmap.put("mem_num",memDTO.getNum());
 		  proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 프로필 사진을 가져옴
 	  	  
+		  
 		  mv.addObject("proDTO",proDTO);
 	  	  mv.addObject("list", list);
 	  	  mv.addObject("prolist",prolist);
