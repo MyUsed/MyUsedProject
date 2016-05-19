@@ -24,7 +24,7 @@
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40" title="친구"></a>
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35" title="채팅"></a>
+				<a href="paperMain.nhn?mynum=${num}"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35" title="채팅"></a>
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainView.png" width="40"  height="35" title="지구"></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<!-- 추후 이미지로 바꾸기(페이스북처럼 드롭다운메뉴로) -->

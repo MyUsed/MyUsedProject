@@ -13,6 +13,7 @@
 	<sqlMap resource="/sql/procategSQL.xml"/>
 	<sqlMap resource="/sql/profilePicSQL.xml"/>
 	<sqlMap resource="/sql/repleSQL.xml"/>
+	<sqlMap resource="/sql/paperSQL.xml"/>
 	<!-- <sqlMap resource="/sql/chatSQL.xml"/> -->
 	
 

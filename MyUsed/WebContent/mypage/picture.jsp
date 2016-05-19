@@ -72,6 +72,15 @@
             	  	arrow.style.display = 'none';    	        	
       	    	}
 
+              
+          	function deleteCheck(){
+          if(confirm("정말로 삭제하시겠습니까?") == true){
+
+          } 	else{
+          	event.preventDefault();
+        		  }
+          }
+ 
 
          </script>
 
@@ -290,8 +299,8 @@
 					<td> 
 				<c:forEach var="piclist" items="${piclist}">
 			
-					<img src="/MyUsed/images/${piclist.mem_pic}" onclick="" width="150" height="150"/>
-					<a href="picDelete.nhn?mem_pic=${piclist.mem_pic}" title="삭제하기">
+					<img src="/MyUsed/images/${piclist.mem_pic}"  width="150" height="150"/>
+					<a href="picDelete.nhn?mem_pic=${piclist.mem_pic}&mem_num=${mem_num}" onclick="javasciprt:deleteCheck()" title="삭제하기" >
 					<img src="/MyUsed/images/deleteIcon.PNG" width="15"  height="15"/>
 					</a>
 				</c:forEach>
@@ -299,11 +308,12 @@
 				</tr>
 	
 		</table>
+		
+
+
+
 		<div id="knewpeopleindex">
 	
-		
-		
-		
 		
 		
 		</div>

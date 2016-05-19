@@ -21,9 +21,13 @@
 	<delete id="boardlistDelete" parameterClass="int">
 		delete from boardlist where num = #num#
 	</delete>
-	<!-- 개인사진 pic_DB에서 삭제하는 쿼리 -->
+	<!-- 개인사진 pic_DB에서 num기준으로 삭제하는 쿼리 -->
 	<delete id="picDelete" parameterClass="java.util.Map">
 		delete from pic_$mem_num$ where num = #board_num#
+	</delete>
+	<!-- 개인사진 pic_DB에서 mem_pic기준으로 삭제하는 쿼리 -->
+	<delete id="MypicDelete" parameterClass="java.util.Map">
+		delete from pic_$mem_num$ where mem_pic = #mem_pic#
 	</delete>
 	
 	
@@ -49,10 +53,13 @@
 	<delete id="proboardlistDelete" parameterClass="int">
 		delete from proboardlist where num = #num#
 	</delete>
-	<!-- 개인사진 pic_DB에서 삭제하는 쿼리 -->
+	<!-- 개인상품사진 pic_DB에서 삭제하는 쿼리 -->
 	<delete id="propicDelete" parameterClass="java.util.Map">
 		delete from propic_$promem_num$ where num = #proboard_num#
 	</delete>
+	
+	
+	
 
 	
 </sqlMap>

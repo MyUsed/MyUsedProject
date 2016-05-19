@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+
+<sqlMap namespace="paper">
+
+	<typeAlias alias="dto" type="paper.PaperDTO"/>
+	
+		<select id="all" resultClass="dto" parameterClass="java.util.Map">
+			select * from message_r_$mynum$ order by state desc
+		</select>
+		
+		<insert id="send" parameterClass="java.util.Map">
+			insert into message_r_$memNum$ values(message_r_$memNum$_seq.NEXTVAL, #mynum#, #s_name#, #s_content#, 1, sysdate)
+		</insert>
+		
+		<select id="memberNum" resultClass="int" parameterClass="java.util.Map">
+			select num from memberlist where id=#r_id#
+		</select>
+
+		<delete id="delete" parameterClass="java.util.Map">
+			delete from message_r_$mynum$ where m_no=#m_no#
+		</delete>
+
+		<select id="memAll" resultClass="dto" parameterClass="java.util.Map">
+			select * from message_r_$mynum$ where m_no=#m_no#
+		</select>
+		
+		<select id="name" resultClass="String" parameterClass="String">
+			select name from memberlist where id=#id#
+		</select>
+		
+		<select id="paperCount" resultClass="int" parameterClass="java.util.Map">
+			select count(*) from message_r_$mynum$ where state=1
+		</select>
+		
+		<select id="stateCount" resultClass="int" parameterClass="java.util.Map">
+			select state from message_r_$mynum$ where m_no=#m_no#
+		</select>
+		
+		<update id="state" parameterClass="java.util.Map">
+			update message_r_$mynum$ set state=0 where m_no=#m_no#
+		</update>
+
+		<select id="FriendId" resultClass="dto" parameterClass="java.util.Map">
+			select * from friendlist_$mynum$
+		</select>
+</sqlMap>

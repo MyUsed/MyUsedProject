@@ -75,10 +75,17 @@ public class DeleteController {
 	}
 	
 	@RequestMapping("/picDelete.nhn")
-	public ModelAndView picdDelete(String mem_pic){
+	public ModelAndView picdDelete(String mem_pic,int mem_num){
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println(mem_pic);
+		System.out.println("사진명 = "+mem_pic);
+		Map deleteMap = new HashMap();
+		deleteMap.put("mem_pic", mem_pic);
+		deleteMap.put("mem_num", mem_num);
+		
+		sqlMap.delete("delete.MypicDelete",deleteMap); // 사진 DB에서 사진 삭제;
+		
+		mv.setViewName("picture.nhn");
 		return mv;
 	}
 	

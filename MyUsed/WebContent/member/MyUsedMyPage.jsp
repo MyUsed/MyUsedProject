@@ -229,8 +229,10 @@
 	<div id="menu2"><a href="/MyUsed/MyUsedMyPage.nhn">정보</a></div>	
 	<div id="menu3"><a href="/MyUsed/MyUsedMyPage.nhn">친구</a></div>	
 	<div id="menu4"><a href="/MyUsed/MyUsedMyPage.nhn">사진</a></div>	
-	<div id="menu5">
+	<div id="menu5"><a href="paperMain.nhn?mynum=${mem_num}">쪽지</a></div>
 
+
+	<div id="menu6">
     <nav class="nav">
 	<ul class="gnb">
 	<li ><a href="#">더 보기▼</a>
@@ -245,7 +247,7 @@
     </nav> 
 
 	</div>
-	<div id="menu6"><!-- 공란 --></div>
+	
 	
 	</div>
 
