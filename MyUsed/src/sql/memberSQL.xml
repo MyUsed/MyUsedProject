@@ -2,6 +2,21 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="member">
 
+	<statement id="paperTable" parameterClass="java.util.Map">
+		create table message_r_$mynum$(
+			m_no number(10) primary key,
+			s_num number(10),
+			s_name varchar2(100),
+			s_content varchar2(4000),
+			state number(10),
+			reg date default sysdate
+			)
+	</statement>
+
+	<statement id="paperSeq" parameterClass="java.util.Map">
+		create sequence message_r_$mynum$_seq nocache
+	</statement>
+	
 	<insert id="insertMem"  parameterClass="member.MemberDTO">
 		insert into memberlist values(sq_memberlist.NEXTVAL, #id#, #name#, #password#, #birthdate#, #gender#, #grade#, #point#, #onoff#, #naverid#, #chatonoff# )
 	</insert>

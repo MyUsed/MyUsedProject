@@ -31,6 +31,10 @@ public class CreateDBController {
 			result = "/member/MyUsedNaverFirstLoginPro.jsp";
 		}
 		
+		map.put("mynum", num);
+		
+		sqlMapClientTemplate.insert("member.paperTable", map);	// 쪽지테이블 생성
+		sqlMapClientTemplate.insert("member.paperSeq", map);	// 쪽지시퀀스 생성
 		
 		/** 친구 리스트 테이블&시퀀스 생성 */
 		sqlMapClientTemplate.update("friend.friendlistTable", map);

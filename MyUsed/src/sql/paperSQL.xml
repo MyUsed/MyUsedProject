@@ -3,9 +3,9 @@
 
 <sqlMap namespace="paper">
 
-	<typeAlias alias="dto" type="paper.PaperDTO"/>
+
 	
-		<select id="all" resultClass="dto" parameterClass="java.util.Map">
+		<select id="all" resultClass="paper.PaperDTO" parameterClass="java.util.Map">
 			select * from message_r_$mynum$ order by state desc
 		</select>
 		
@@ -21,7 +21,7 @@
 			delete from message_r_$mynum$ where m_no=#m_no#
 		</delete>
 
-		<select id="memAll" resultClass="dto" parameterClass="java.util.Map">
+		<select id="memAll" resultClass="paper.PaperDTO" parameterClass="java.util.Map">
 			select * from message_r_$mynum$ where m_no=#m_no#
 		</select>
 		
@@ -41,7 +41,7 @@
 			update message_r_$mynum$ set state=0 where m_no=#m_no#
 		</update>
 
-		<select id="FriendId" resultClass="dto" parameterClass="java.util.Map">
+		<select id="FriendId" resultClass="paper.PaperDTO" parameterClass="java.util.Map">
 			select * from friendlist_$mynum$
 		</select>
 </sqlMap>

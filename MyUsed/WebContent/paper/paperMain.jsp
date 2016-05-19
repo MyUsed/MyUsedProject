@@ -2,6 +2,9 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<script src="/MyUsed/main/script.js"></script>
+<link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <!-- 전체체크박스 -->
 <script>
 	function CheckAll(){
@@ -51,6 +54,14 @@
 	}
 </script>
 
+<div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
+<div id="sidebannerR"><jsp:include page="/main/sidebannerR.jsp"/></div> <!-- 사이드배너 Right  -->
+<div id="advertise" ><jsp:include page="/main/advertise.jsp"/></div>  <!-- 광고 페이지  -->
+<div id="sidebannerL"><jsp:include page="/main/sidebannerL.jsp" /></div> <!-- 사이드배너 Left -->
+
+
+<div id="contents">
+<br/><br/><br/><br/><br/>
 <form name="paper" method="post" action="paperDelete.nhn?mynum=${mynum}" onsubmit="return confirmB()">
 	<center>
 	    <table width="600">
@@ -66,7 +77,7 @@
 	    			<input type="button" value="쪽지쓰기" onclick="javascript:window.location='paperForm.nhn?mynum=${mynum}'"/>
 	    		</td>
 	    		
-				<td align="right">안 읽은 쪽지 ${paperCount}개</td>
+				<td colspan="2" align="right">안 읽은 쪽지 ${paperCount}개</td>
 				
 			</tr>
 			
@@ -77,8 +88,8 @@
 		    	<tr>
 		    		<td align="center" width="5%"><input type="checkbox" name="checkall" onclick="CheckAll()"/></td>
 		    		<td width="25%">보낸사람</td>
-		    		<td width="60%">내용</td>
-		    		<td width="10%">날짜</td>
+		    		<td width="45%">내용</td>
+		    		<td width="25%">날짜</td>
 		    	</tr>
 	    				
 	    	<c:forEach var="list" items="${list}">
@@ -86,20 +97,25 @@
 	    			<td align="center"><input type="checkbox" name="check" value="${list.m_no}" onclick="CheckOne()"/></td>
 	    			<td><a href="paperForm.nhn?mynum=${mynum}&name=${list.s_name}">${list.s_name}</a></td>
 	    			<td><a href="paperView.nhn?m_no=${list.m_no}">
+	    			
+	    			
+	    			<c:if test="${list.state == 1}">
+	    				(1)
+	    			</c:if>
+	    			
 	    			<!-- list.s_content의 길이가 15보다 크면 14번째 자리 + ... 로 출력 -->
 	    			<c:if test="${fn:length(list.s_content) > 15}">
-	    				${fn:substring(list.s_content,0,14)}...
+	    				${fn:substring(list.s_content,0,14)}... 
 	    			</c:if>
+	    			
 					<!-- list.s_content의 길이가 15보다 작으면 정상적으로 출력 -->
 					<c:if test="${fn:length(list.s_content) < 15}">
 	    				${list.s_content}
 	    			</c:if>
 					</a>
-	    				<c:if test="${list.state == 1}">
-	    					(1)
-	    				</c:if>
+	    					
 	    			</td>
-	    			<td>${list.reg}</td>
+	    			<td><font size="2">${list.reg}</font></td>
 	    		</tr>
 	    	</c:forEach>
 	    	
@@ -114,3 +130,4 @@
 	    </table>
     </center>
 </form>
+</div>
