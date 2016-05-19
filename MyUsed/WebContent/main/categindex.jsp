@@ -14,7 +14,7 @@
               function send(){     
         
                    document.formId2.method = "post"     // method 선택, get, post
-                   document.formId2.action = "mainSubmit.nhn";  // submit 하기 위한 페이지 
+                   document.formId2.action = "proSubmit.nhn";  // submit 하기 위한 페이지 
                    document.formId2.submit();
                    document.formId2.image_preview();
                   
@@ -76,7 +76,7 @@
 </head>
  	
  	
-<form name="formId2" enctype="multipart/form-data" action="mainSubmit.nhn" method="post" >
+<form name="formId2" enctype="multipart/form-data" action="proSubmit.nhn" method="post" >
 	 
 	 
 
@@ -191,7 +191,7 @@
 </tr>
 	<tr bgcolor="#FFFFFF" align="center"	>
 		<td colspan="8">
-	 	<img src="/MyUsed/images/submit.PNG" onclick="javascript_:send();" />
+	 	<img src="proSubmit.nhn" onclick="javascript_:send();" />
 	 	</td>
 	</tr> 	
 	
