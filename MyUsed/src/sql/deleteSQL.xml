@@ -57,10 +57,22 @@
 	<delete id="proboardlistDelete" parameterClass="int">
 		delete from proboardlist where num = #num#
 	</delete>
-	<!-- 개인상품사진 pic_DB에서 삭제하는 쿼리 -->
-	<delete id="propicDelete" parameterClass="java.util.Map">
-		delete from propic_$promem_num$ where num = #proboard_num#
+	<!-- proboardlist에서 pro_pic을 가져오는 쿼리 -->
+	<select id="pro_pic" resultClass="String"  parameterClass="int" >
+		select pro_pic from proboardlist where num = #num#
+	</select>
+	<!-- pro개인테이블 에서 글번호가져오는 쿼리 -->
+	<select id="propic_num" resultClass="int" parameterClass="java.util.Map" >
+		select num from propic_$promem_num$ where pro_pic = #pro_pic# 
+	</select>
+	<!-- pro개인테이블 에서 사진을 전체 삭제하는 쿼리 -->
+	<delete id="delete_propic"  parameterClass="java.util.Map" >
+		delete from propic_$promem_num$ where num = #propic_num#
 	</delete>
+	
+	
+
+	
 	
 	
 	

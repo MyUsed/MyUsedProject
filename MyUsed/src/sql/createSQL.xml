@@ -108,7 +108,14 @@
 	
 	
 	
+	
+	
+	
+	
 	<!-- ================================================================================================= -->
+	<!-- ========================================== 상품 create 테이블 ======================================= -->
+	<!-- ================================================================================================= -->
+	
 	
 	
 	
@@ -159,6 +166,23 @@
 								likes number,
 								reg date default sysdate
 								)
+	</statement>
+	
+		
+	<!-- 일반pro댓글table  생성 -->
+	<statement id="proboardreple" parameterClass="int">
+		create table proboardreple_$proboardnum$ (
+								seq_num number primary key not null,
+								mem_num number not null,
+								content varchar2(4000),
+								name varchar2(4000),
+								reg date default sysdate
+								)
+	</statement>
+	
+	<!-- pro댓글시퀀스 생성 -->
+	<statement id="proboardreple_seq" parameterClass="int">
+	create sequence proboardreple_$proboardnum$seq
 	</statement>
 	
 	

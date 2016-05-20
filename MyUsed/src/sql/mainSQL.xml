@@ -62,6 +62,12 @@
 	select * from proboardlist order by num desc                       
    </select>
    
+    <!-- proboardlist 에서 가장 높은 num을 구하기 위해서  -->
+   <select id="proboardMax" resultClass="int">
+   		select max(num) from proboardlist 
+   </select>
+   
+   
    
    
 

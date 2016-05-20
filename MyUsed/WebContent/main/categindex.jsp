@@ -77,7 +77,7 @@
 	
 	<table align="center"  width="550" height="200">
 	<tr bgcolor="#FFFFFF">
-	<td align="center" colspan="8">
+	<td align="left" colspan="8">
 
 	<select name="categ1" id="categ1">
 		<option>--------2차--------</option>
@@ -93,6 +93,7 @@
 
 
 		<textarea rows = "5" cols = "73" name="content" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
+		<center>
 		<font size ="2" color="#3B5998">
 		* 배송료
 		포함(선불) <input type="radio" name="sendPay" value="yes" />
@@ -101,7 +102,7 @@
 		<br />
 		<input type="text" name="price" size="7" placeholder="상품가격"/>
 		<hr width="80%"  > 
-		
+		</center>
 	
 	</td>
 	
@@ -128,8 +129,13 @@
   
   <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
+<c:if test="${i==1}">
+<img src="/MyUsed/images/mainPic.PNG" width="15" height="15" title="메인사진"/>
+</c:if>
 
-        <label for="pimage${i}">Image${i}</label>
+        <label for="pimage${i}">
+		<img src="/MyUsed/images/box.PNG" width="25" height="25" title="상품사진"/>
+		</label>
    
         <input type="file" name="pimage${i}" id="pimage${i}" style='display: none;'>
 	
@@ -180,9 +186,9 @@
 
 
 </tr>
-	<tr bgcolor="#FFFFFF" align="center"	>
+	<tr bgcolor="#FFFFFF" align="center">
 		<td colspan="8">
-	 	<input type="submit" value="확인" />
+	 	<input type="image" src="/MyUsed/images/submit.PNG" title="게시"/>
 	 	</td>
 	</tr> 	
 	
@@ -199,12 +205,13 @@
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
 		<td>
-		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${prolist.mem_num}">( ${prolist.name} )</a> 님이 글을 게시하였습니다  
+		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${prolist.mem_num}"><font face="Comic Sans MS">( ${prolist.name} )</font></a>
+		<font face="Comic Sans MS" size="2" color="#A6A6A6" > 님이 상품을 게시하였습니다</font>  
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<c:if test="${prolist.mem_num == memDTO.num}">
-		<a href="prodelete.nhn?num=${prolist.num}">게시글삭제</a>
+		<a href="prodelete.nhn?num=${prolist.num}"><img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 1em;" width="20" height="20" align="right" title="게시글 삭제"/></a>
 		</c:if>
 		
 		<hr width="100%" > 

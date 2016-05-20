@@ -56,9 +56,24 @@ public class DeleteController {
 		int proboard_num = (int)sqlMap.queryForObject("delete.proboard_num", promap); // proboard_#num# 의 게시글 번호를 가져옴
 		promap.put("proboard_num", proboard_num);
 		
+		String pro_pic = (String)sqlMap.queryForObject("delete.pro_pic",num);
 		sqlMap.delete("delete.proboardDelete", promap); // 개인 DB 내용 삭제
 		sqlMap.delete("delete.proboardlistDelete", num); // 전체 DB 내용 삭제
-		//sqlMap.delete("deletem.propicDelete", promap); // 개인 사진 DB 내용 삭제
+		
+		System.out.println("proboard_num = "+num);
+		
+		
+		System.out.println("사진명 = "+pro_pic);
+		
+		if(pro_pic != null){
+		promap.put("pro_pic", pro_pic);
+		int propic_num = (int)sqlMap.queryForObject("delete.propic_num",promap);
+		promap.put("propic_num", propic_num);
+		sqlMap.delete("delete.delete_propic",promap); // 사진 전체삭제 개인테이블에서
+		System.out.println("사진삭제 성공");
+		}
+		
+		
 		
 		mv.setViewName("/main/Delete.jsp");
 		return mv;

@@ -62,6 +62,10 @@ public class ProBoardController {
 		System.out.println("insert상품일반 DB 성공");
 		sqlMap.insert("main.insertproboardlist", promap); // 전체 상품 DB 등록
 		System.out.println("insert상품전체 DB 성공");
+		
+	
+
+		
 		}else{
 		
 		
@@ -97,11 +101,18 @@ public class ProBoardController {
 		
 		}
 		
+		
 		}
 		
 
-
+		int proboardnum = (int)sqlMap.queryForObject("main.proboardMax", null); // 접속한 아이디로 num 가져오기 
+		System.out.println("게시글번호"+proboardnum);
 		
+		sqlMap.insert("create.proboardreple",proboardnum); // 게시글 댓글 테이블 생성 
+		System.out.println("pro게시글댓글 DB 생성");
+		sqlMap.insert("create.proboardreple_seq",proboardnum);
+		System.out.println("pro게시글댓글 시퀀스 생성");
+
 		mv.setViewName("/MyUsed.nhn");
 		return mv;
 		

@@ -81,7 +81,7 @@
 <img src="/MyUsed/images/mainPic.PNG" width="15" height="15" title="메인사진"/>
 </c:if>
         <label for="image${i}">
-        <img src="/MyUsed/images/cameraIcon.PNG" width="25" height="25"/>
+        <img src="/MyUsed/images/cameraUp.PNG" width="25" height="25" title="사진"/>
         </label>
    		
         <input type="file" name="image${i}" id="image${i}" style='display: none;'>
@@ -143,7 +143,7 @@
 </tr>
 	<tr bgcolor="#FFFFFF" align="center"	>
 		<td colspan="8">
-	 	<img src="/MyUsed/images/submit.PNG" onclick="javascript_:send();" />
+	 	<img src="/MyUsed/images/submit.PNG" onclick="javascript_:send();" title="등록하기" />
 	 	</td>
 	</tr> 	
 	
@@ -165,7 +165,8 @@
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
 		<td>
-		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${list.mem_num}">( ${list.name} )</a> 님이 글을 게시하였습니다  
+		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${list.mem_num}"><font face="Comic Sans MS">( ${list.name} )</font></a>
+		<font face="Comic Sans MS" size="2" color="#A6A6A6" > 님이 글을 게시하였습니다</font>  
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -229,8 +230,8 @@
 	 	
 <table align="center"  width="550" height="30">
 <tr bgcolor="#FFFFFF">
-	<td align="center">
-	<font size="2" color="#3B5998" >상품 등록</font> 
+	<td align="left">
+	<center><font size="2" color="#3B5998">상품 등록</font> </center>
 		  <hr width="80%"  > 
 	<select name="categ0" id="categ0">
 		<option>--------1차--------</option>
@@ -238,7 +239,7 @@
 			<option>${categ.categ}</option>
 		</c:forEach>
 	</select>
-	<input id="button" type="button" value="확인" onClick="callAjax()">
+	<input id="button" type="image" src="/MyUsed/images/agree.PNG" width="15" height="" value="확인" onClick="callAjax()">
 	<br />
 	</td>
 </tr>
@@ -288,9 +289,13 @@
 
   
  
+<c:if test="${i==1}">
+<img src="/MyUsed/images/mainPic.PNG" width="15" height="15" title="메인사진"/>
+</c:if>
 
-
-        <label for="pimage${i}">Image${i}</label>
+        <label for="pimage${i}">
+		<img src="/MyUsed/images/box.PNG" width="25" height="25" title="상품사진"/>
+		</label>
    
         <input type="file" name="pimage${i}" id="pimage${i}" style='display: none;'>
 	
@@ -356,12 +361,13 @@
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
 		<td>
-		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${prolist.mem_num}">( ${prolist.name} )</a> 님이 글을 게시하였습니다  
+		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${prolist.mem_num}"><font face="Comic Sans MS" >( ${prolist.name} )</font></a>
+		<font face="Comic Sans MS" size="2" color="#A6A6A6" > 님이 상품을 게시하였습니다  </font>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<c:if test="${prolist.mem_num == memDTO.num}">
-		<a href="prodelete.nhn?num=${prolist.num}">게시글삭제</a>
+		<a href="prodelete.nhn?num=${prolist.num}"><img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 1em;" width="20" height="20" align="right" title="게시글 삭제"/></a>
 		</c:if>
 		
 		<hr width="100%" > 
@@ -372,7 +378,10 @@
 		<td align="center">
 		
 		<c:if test="${prolist.pro_pic != null}"> 
-		<img src="/MyUsed/images/${prolist.pro_pic}" width="370" height="350"/> <br/>
+		<a href="ProductDetailView.nhn?num=${prolist.num}">
+		<img src="/MyUsed/images/${prolist.pro_pic}" width="370" height="350"/> 
+		</a>
+		<br/>
 		</c:if>
 		
 		

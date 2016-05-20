@@ -65,10 +65,7 @@
  	<a href="/MyUsed/picture.nhn"><img src="/MyUsed/images/picture.png" width="20" height="20">&nbsp;사진</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/favorite.png" width="20" height="20">&nbsp;즐겨찾기</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/address.png" width="20" height="20">&nbsp;주소</a>
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/address.png" width="20" height="20">&nbsp;주소록</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/board.png" width="20" height="20">&nbsp;게시판</a>
@@ -77,10 +74,7 @@
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/deliver.png" width="20" height="20">&nbsp;배송관리</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;좋아요</a>
- 	<br /><br />
- 	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/share.png" width="20" height="20">&nbsp;공유하기</a>
+ 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;찜하기</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friendSearch.png" width="20" height="20">&nbsp;친구찾기</a>
