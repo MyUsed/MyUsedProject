@@ -22,8 +22,12 @@ public class ProBoardController {
 		
 	@RequestMapping("/proSubmit.nhn")
 	public ModelAndView proboardSubmit(MultipartHttpServletRequest request , MainProboardDTO prodto ){
+		
+		
+		
 		ModelAndView mv = new ModelAndView();
-		System.out.println("probard실행");
+		
+		System.out.println("=========  probard실행  ========= ");
 		
 		String content = prodto.getContent().replaceAll("\r\n","<br>"); // textarea에서 띄어쓰기 처리 ;
 		
@@ -42,6 +46,7 @@ public class ProBoardController {
 		String sessionId = (String)session.getAttribute("memId");
 		int num = (int)sqlMap.queryForObject("main.num", sessionId); // 접속한 아이디로 num 가져오기 
 		String name = (String)sqlMap.queryForObject("main.name", sessionId); // 접속한 아이디로 이름 가져오기 
+		
 		
 
 		Map promap = new HashMap();
@@ -95,8 +100,7 @@ public class ProBoardController {
 		}
 		
 
-	
-	
+
 		
 		mv.setViewName("/MyUsed.nhn");
 		return mv;

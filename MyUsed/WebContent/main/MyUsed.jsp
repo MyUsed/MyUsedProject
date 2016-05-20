@@ -266,7 +266,7 @@
 	<td align="center" colspan="8">
 	<br/>
 	
-		<textarea rows = "5" cols = "73" name="contents" placeholder="상품에 대한 설명을 써주세요"></textarea> <br/> 
+		<textarea rows = "5" cols = "73" name="contents" placeholder="상품에 대한 설명을 써주세요" onkeyup="alarm('카테고리를 선택하고 작성하세요!')"></textarea> <br/> 
 		<font size ="2" color="#3B5998">
 		* 배송료
 		포함(선불) <input type="radio" name="sendPay" value="yes" />

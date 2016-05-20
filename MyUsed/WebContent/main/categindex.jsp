@@ -11,15 +11,6 @@
 
  		<script type="text/javascript">
         
-              function send(){     
-        
-                   document.formId2.method = "post"     // method 선택, get, post
-                   document.formId2.action = "proSubmit.nhn";  // submit 하기 위한 페이지 
-                   document.formId2.submit();
-                   document.formId2.image_preview();
-                  
-              }
-              
               function fncChecked(num)
               {
                if(num == 1)
@@ -191,7 +182,7 @@
 </tr>
 	<tr bgcolor="#FFFFFF" align="center"	>
 		<td colspan="8">
-	 	<img src="proSubmit.nhn" onclick="javascript_:send();" />
+	 	<input type="submit" value="확인" />
 	 	</td>
 	</tr> 	
 	
@@ -235,7 +226,7 @@
 		</font>
 		 <br/>
 		${prolist.content}
-		
+			
 		</td>
 		</tr>
 		

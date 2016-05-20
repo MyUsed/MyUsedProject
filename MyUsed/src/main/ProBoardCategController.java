@@ -35,7 +35,9 @@ public class ProBoardCategController {
 
 	@RequestMapping("/categindex.nhn")
 	public String categindex(HttpServletRequest request, String categ0,String deposit){
+		System.out.println("=================== ajax½ÇÇà =======================");
 		Map categMap = new HashMap();
+	
 		categMap.put("categ", categ0);
 		categMap.put("ca_level", 0);
 		int ca_group = (Integer)sqlMapClientTemplate.queryForObject("procateg.findgroup", categMap);
