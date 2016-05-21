@@ -225,39 +225,5 @@ public class ProductController {
 		return "/product/MyUsedProductView.jsp";
 	}
 	
-	@RequestMapping("/ProductDetailView.nhn")
-	public String ProductDetailView(HttpServletRequest request, int num){
-		
-		System.out.println(num);	// 상품글번호
-		
-		// 상품 글번호를 이용해서 proboarlist에서 정보를 뽑아옴(모든 상품 글 리스트)
-		MainProboardDTO productDTO = new MainProboardDTO();
-		productDTO = (MainProboardDTO) sqlMapClientTemplate.queryForObject("product.selectProNum",num);
-		
-		/** 상품 사진 전체 불러오기!
-		* proboardlist에서의 mem_num을 이용하여 개인 상품글 테이블을 검색한 후
-		* proboardlist의 content와 reg와 일치하는 개인 상품글을 찾아 해당 상품의 num을 찾는다.
-		* 해당 상품의 num을 이용하여 개인 상품 사진 테이블에서 이미지들을 찾아온다.
-		*/
-		Map mem_numMap = new HashMap();
-		mem_numMap.put("mem_num", productDTO.getMem_num());
-		mem_numMap.put("content", productDTO.getContent());
-		mem_numMap.put("reg", productDTO.getReg());
-		int proNum = (Integer)sqlMapClientTemplate.queryForObject("product.findProboard", mem_numMap);
-		mem_numMap.put("num", proNum);
-		
-		List propicList = new ArrayList();
-		propicList = sqlMapClientTemplate.queryForList("product.findPropic", mem_numMap);
-		
-		
-		/** 해당 상품 글쓴이의 프로필 사진 */
-		String profilepic = (String) sqlMapClientTemplate.queryForObject("product.propic", mem_numMap);
-
-		request.setAttribute("profilepic", profilepic);
-		request.setAttribute("propicList", propicList);
-		request.setAttribute("productDTO", productDTO);
-		
-		return "/product/ProductDetailView.jsp";
-	}
 	
 }

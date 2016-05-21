@@ -91,7 +91,7 @@ $(document).ready(function(){
    	
    	<!-- 대표이미지 (추후 경로 수정)-->
    	<div id="detailimg">
-   		<img src="/MyUsed/images/profile/${productDTO.pro_pic}" width="478" height="328">
+   		<img src="/MyUsed/images/${productDTO.pro_pic}" width="478" height="328">
    	</div>
    	
    	<!-- 다른 이미지 -->
@@ -100,7 +100,7 @@ $(document).ready(function(){
    		<tr>
    		<c:forEach begin="0" step="1" end="3" var="propic" items="${propicList}">
    			<td>
-   				<img src="/MyUsed/images/profile/${propic.pro_pic}" width="118" height="78">
+   				<img src="/MyUsed/images/${propic.pro_pic}" width="118" height="78">
    			</td>
    		</c:forEach>
    		</tr>
@@ -108,7 +108,7 @@ $(document).ready(function(){
    		<tr>
    		<c:forEach begin="4" step="1" end="7" var="propic" items="${propicList}">
    			<td>
-   				<img src="/MyUsed/images/profile/${propic.pro_pic}" width="118" height="78">
+   				<img src="/MyUsed/images/${propic.pro_pic}" width="118" height="78">
    			</td>
    		</c:forEach>
    		</tr>
@@ -120,7 +120,7 @@ $(document).ready(function(){
 		<tr height="50" align="left">
 			<td style="padding:0 0 0 10px;">
 			<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${productDTO.mem_num}"> 
-				<img src="/MyUsed/images/profile/${profilepic}" width="40"  height="40"></a>
+				<img src="/MyUsed/images/${profilepic}" width="40"  height="40"></a>
 			<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${productDTO.mem_num}"> 
 				<font size="3" color="#4565A1"><strong>${productDTO.name}</strong></font>
 			</a>
