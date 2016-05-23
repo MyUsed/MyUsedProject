@@ -98,6 +98,26 @@ public class DeleteController {
 		return mv;
 	}
 	
+	@RequestMapping("/prorepleDelete.nhn")
+	public ModelAndView prorepleDelete(int seq_num , int boardnum){
+		ModelAndView mv = new ModelAndView();
+		
+		
+		System.out.println(seq_num);
+		
+		Map reMap = new HashMap();
+		reMap.put("seq_num", seq_num);
+		reMap.put("proboardnum", boardnum);
+		sqlMap.delete("delete.proRepleDelete",reMap); // 시퀀스번호로 댓글 삭제;
+		
+	
+		
+		
+		mv.setViewName("ProductDetailView.nhn?num="+boardnum);
+		return mv;
+	}
+	
+	
 	@RequestMapping("/picDelete.nhn")
 	public ModelAndView picdDelete(String mem_pic,int mem_num){
 		ModelAndView mv = new ModelAndView();

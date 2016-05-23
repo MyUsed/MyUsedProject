@@ -136,6 +136,60 @@ input[type=text] {
 		   margin-left:-16px;
 		   border-left:1px solid #D5D5D5;
 		   }	
+		   
+
+
+
+#detailViewback { position:fixed; 
+			width:500%; 
+			height:700%;  
+			margin-top:0px;
+			margin-left:-10%;
+			background:#06090F;
+			filter:alpha(opacity=50); opacity:0.3; -moz-opacity:0.1;
+			z-index:150; }
+
+#detailView { position:fixed; 
+			width:900px; 	
+			height:550px;
+			margin-top:65px;
+			margin-left:15%;
+			text-align:center;
+			background:#FFFFFF;
+			border-radius:15px;
+			box-shadow: 2px 2px 1px #A6A6A6;
+			z-index:200; }
+			
+#detailimg { position:relative; 
+			width:480px; 
+			height:330px;
+			margin-top:11px;
+			margin-left:20px;
+			border:1px solid #000000;
+			z-index:200; }	
+			
+#detailimgs { position:relative; 
+			width:480px; 
+			height:160px;
+			margin-top:10px;
+			margin-left:20px;
+			border:1px solid #000000;
+			z-index:200; }	
+			
+#detailcontent { position:absolute;
+			width:360px; 
+			margin-top:-499px;
+			margin-left:520px;
+			border:1px solid #000000;
+			z-index:200; }	
+			
+#closebotton{position:absolute; 
+			width:30px; 
+			height:30px;
+			margin-top:10px;
+			margin-left:860px;}
+		
+
 
 
 

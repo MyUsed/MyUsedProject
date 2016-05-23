@@ -105,6 +105,22 @@
 		create sequence sq_coverpic_$num$
 	</statement>
 	
+	<!-- 개인주소(address) table/sequence  -->
+	<statement id="address" parameterClass="java.util.Map">	
+		create table address_$num$ (
+								seq_num number not null primary key,
+								name varchar2(4000),
+								ph number,
+								addrnum number,
+								addr varchar2(4000),
+								addrr varchar2(4000),
+								reg date default sysdate
+							 	)
+	</statement>
+	<statement id="address_seq" parameterClass="java.util.Map">
+		create sequence addressseq_$num$
+	</statement>	
+	
 	
 	
 	
@@ -133,7 +149,7 @@
 							     )
 	</statement>
 	<statement id="proboard_seq" parameterClass="java.util.Map">
-		create sequence proboard_$num$seq nocache
+		create sequence proboard_$num$seq
 	</statement>
 	
 	<!-- 상품 사진(propic) table -->
@@ -182,11 +198,10 @@
 	
 	<!-- pro댓글시퀀스 생성 -->
 	<statement id="proboardreple_seq" parameterClass="int">
-	create sequence proboardreple_$proboardnum$seq
+	create sequence proboardreple_$proboardnum$seq 
 	</statement>
 	
 	
-
 
 
 

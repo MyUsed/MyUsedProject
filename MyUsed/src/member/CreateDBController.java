@@ -101,6 +101,14 @@ public class CreateDBController {
 		sqlMapClientTemplate.update("create.proreple", map);
 		System.out.println("proreple_"+num+" create");
 		
+		/** 林家(address) 林家抛捞喉 **/
+		sqlMapClientTemplate.update("create.address",map);
+		System.out.println("address_"+num+" create");
+		
+		sqlMapClientTemplate.update("create.address_seq",map);
+		System.out.println("address_seq"+num+" create");
+	
+		
 		return result;
 	}
 	

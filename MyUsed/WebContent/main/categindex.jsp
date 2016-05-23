@@ -134,7 +134,7 @@
 </c:if>
 
         <label for="pimage${i}">
-		<img src="/MyUsed/images/box.PNG" width="25" height="25" title="상품사진"/>
+		<img src="/MyUsed/images/box.PNG" width="25" height="25" style='cursor:pointer;' title="상품사진"/>
 		</label>
    
         <input type="file" name="pimage${i}" id="pimage${i}" style='display: none;'>
@@ -188,7 +188,7 @@
 </tr>
 	<tr bgcolor="#FFFFFF" align="center">
 		<td colspan="8">
-	 	<input type="image" src="/MyUsed/images/submit.PNG" title="게시"/>
+	 	<input type="image" src="/MyUsed/images/submit.PNG" border="0" style='cursor:pointer;' title="등록하기"/>
 	 	</td>
 	</tr> 	
 	

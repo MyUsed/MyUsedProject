@@ -4,63 +4,29 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/MyUsed/product/ProductView.css" />
+<link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
+
+<head>
+
+
+
 <title>상품</title>
 
-<style type="text/css">
+<div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 
-#detailViewback { position:fixed; 
-			width:100%; 
-			height:600%;  
-			margin-top:50px;
-			background:#EAEAEA;
-			filter:alpha(opacity=70); opacity:0.7; -moz-opacity:0.3;
-			z-index:199; }
+	<script>
+	function deleteCheck(){
+               if(confirm("정말로 삭제하시겠습니까?") == true){
 
-#detailView { position:fixed; 
-			width:900px; 
-			height:550px;
-			margin-top:65px;
-			margin-left:15%;
-			text-align:center;
-			background:#FFFFFF;
-			border-radius:15px;
-			box-shadow: 2px 2px 1px #A6A6A6;
-			z-index:200; }
-			
-#detailimg { position:relative; 
-			width:480px; 
-			height:330px;
-			margin-top:11px;
-			margin-left:20px;
-			border:1px solid #000000;
-			z-index:200; }	
-			
-#detailimgs { position:relative; 
-			width:480px; 
-			height:160px;
-			margin-top:10px;
-			margin-left:20px;
-			border:1px solid #000000;
-			z-index:200; }	
-			
-#detailcontent { position:absolute;
-			width:360px; 
-			margin-top:-499px;
-			margin-left:520px;
-			border:1px solid #000000;
-			z-index:200; }	
-			
-#closebotton{position:absolute; 
-			width:30px; 
-			height:30px;
-			margin-top:10px;
-			margin-left:860px;}
-		
-
-</style>
+               } 	else{
+               	event.preventDefault();
+             		  }
+               }
+      
+	</script>
 
 <script type="text/javascript">
 $(document).ready(function(){	
@@ -72,7 +38,7 @@ $(document).ready(function(){
 </script>
 
 </head>
-<body>
+<body bgcolor="#06090F">
 
 
 <div id="detailViewback">
@@ -96,7 +62,9 @@ $(document).ready(function(){
    	
    	<!-- 다른 이미지 -->
    	<div id="detailimgs">
+   	
    	<table border="1" width="480" height="160">
+   	
    		<tr>
    		<c:forEach begin="0" step="1" end="3" var="propic" items="${propicList}">
    			<td>
@@ -116,6 +84,10 @@ $(document).ready(function(){
     </div>
     
     <div id="detailcontent">
+    <form action="proreplesubmit.nhn" method="post" >
+    
+    <input type="hidden" name="proboardnum" value="${num}"/>
+    
 	<table align="right" width="360" height="497" border="1">
 		<tr height="50" align="left">
 			<td style="padding:0 0 0 10px;">
@@ -126,8 +98,11 @@ $(document).ready(function(){
 			</a>
 				<font size="1">쪽지보내기</font>
 			</td >
-			<td align="right" style="padding:0 10px 0 0;">
-			<font size="2" color="#9A9DA4">${productDTO.reg}</font>
+			<td align="right" style="padding:0 10px 0 0;">			
+			 <font size="2" color="#9A9DA4">
+  			<fmt:formatDate value="${productDTO.reg}" type="both" /> 
+ 			</font>
+			
 			</td>
 		</tr>
  		
@@ -138,33 +113,43 @@ $(document).ready(function(){
  		</tr>
  		
  		<tr height="30">
-			<td align="left" style="padding:0 0 0 20px;" bgcolor="#F6F7F9" colspan="2">
-				좋아요 / 댓글 / 공유
+			<td align="right" style="padding:0 0 0 20px;" bgcolor=#EBE8FF colspan="2">
+				<font face="Comic Sans MS" size="5" color="#4565A1"><strong>${productDTO.price} 원 </strong> </font>
+				<a href="/MyUsed/productOrder.nhn">
+				<img src="/MyUsed/images/buyIcon.PNG" width="50" height="50" />
+				</a>
 			</td>
 		</tr>
 		
 		<tr>
-			<td style="padding:0 0 0 20px;" bgcolor="#F6F7F9" colspan="2">	
-				<p style='overflow: auto; width: 400; height: 330'>
-				<c:forEach var="replelist" items="${replelist}"> 
-					<a  href="/MyUsed/MyUsedMyPage.nhn?mem_num=${replelist.mem_num}"> 
-						<font face="Comic Sans MS" size="3" color="#4565A1"> ${replelist.name} 댓글쓴이</font>
+			<td align="left" style="padding:0 0 0 20px;" bgcolor="#F6F7F9" colspan="2">	
+				<p style='overflow:auto; width:330px; height:250px'>
+				<c:forEach var="proreplelist" items="${proreplelist}"> 
+					<a  href="/MyUsed/MyUsedMyPage.nhn?mem_num=${proreplelist.mem_num}"> 
+						<font face="Comic Sans MS" size="3" color="#4565A1"> ${proreplelist.name}</font>
 					</a>
- 					${replelist.content} 댓글내용<br/>
- 					<font size="2" color="#9A9DA4">${replelist.reg}</font>
+ 					${proreplelist.content}
+ 					<a href="prorepleDelete.nhn?seq_num=${proreplelist.seq_num}&boardnum=${num}" onclick="javasciprt:deleteCheck()">
+ 	<img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 0.5em;" align="right" width="15"  height="15" title="삭제하기"/>
+ 					</a>
+ 					<br/>
+ 					 <font size="2" color="#9A9DA4">
+  				<fmt:formatDate value="${proreplelist.reg}" type="both" /> 
+ 					</font>
 					<br />
 				</c:forEach>
 				</p>
 			</td>
 		</tr>
 		<tr height="50">
-			<td  bgcolor="#F6F7F9" colspan="2">
-				<img  src="/MyUsed/images/default.jpg" width="35"  height="35"/> 
+			<td bgcolor="#F6F7F9" colspan="2">
+				<img src="/MyUsed/images/profile/${proDTO.profile_pic}" align="left" width="40"  height="35"/>
 					<input style="padding:7px;" type="text" name="reple" size="30" placeholder="댓글을 입력하세요..." />
-				<input type="image" src="/MyUsed/images/replesubmit.PNG" width="30" height="20"/>
+				<input type="image" src="/MyUsed/images/submitReple.png" width="30" height="20" title="댓글달기"/>
 			</td>
 		</tr>
 	</table>
+	</form>
     </div>	
     
 </div>

@@ -66,6 +66,42 @@
     </select>
    
    
+   
+   
+   
+   
+   
+   
+   <!-- proreple 처리  -->
+   
+   <!-- proboardlist의 reg를 가져옴  -->
+	<select id="proboardreg" resultClass="java.sql.Timestamp" parameterClass="int">
+		select reg from proboardlist where num = #num#
+	</select>	
+	
+	<!-- proboardlist의 이름을 가져옴  -->
+	<select id="proboardname" resultClass="String" parameterClass="int">
+		select name from proboardlist where num = #num#
+	</select>	
+		  <!-- 게시글을 작성한사람의 회원번호를 가져오는 sql -->
+   <select id="promem_num" resultClass="int" parameterClass="int">
+      select mem_num from proboardlist where num = #num#
+   </select>
+   
+   <!-- proboardreple의 내용을 가져옴  -->
+	<select id="proselect" resultClass="main.RepleDTO" parameterClass="int">
+		select * from  proboardreple_$num$ order by reg desc
+	</select>	
+	
+   <insert id="proinsert" parameterClass="java.util.Map">
+      insert into proboardreple_$proboardnum$ values(proboardreple_$proboardnum$seq.NEXTVAL,#mem_num#, #content#, #name# ,sysdate)
+   </insert>
+	
+   
+   
+   
+   
+   
 	
 
 	

@@ -71,7 +71,7 @@ public class RepleController {
 	    boardproDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", remap); // 프로필 사진을 가져옴
 	    
 	    Map picmap = new HashMap();
-		picmap.put("mem_num", session_num);  
+		picmap.put("mem_num", session_num);   
 		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 프로필 사진을 가져옴
 
 		
@@ -117,6 +117,35 @@ public class RepleController {
 		mv.setViewName("reple.nhn?num="+boardnum);
 		return mv;
 	}
+	
+	@RequestMapping("proreplesubmit.nhn")
+	public ModelAndView proreplesubmit(HttpServletRequest request , String reple , int proboardnum){
+		ModelAndView mv = new ModelAndView();
+		
+		HttpSession session = request.getSession();
+		String sessionId = (String)session.getAttribute("memId");
+		int mem_num = (int)sqlMap.queryForObject("main.num",sessionId); // 댓글작성한 회원의 번호 가져오기
+		String re_name = (String)sqlMap.queryForObject("main.name",sessionId); // 댓글작성한 회원의 이름 
+		
+
+		System.out.println("세션ID = "+sessionId);
+		System.out.println("댓글내용 = "+reple);
+		System.out.println("댓글 작성한회원번호 = "+mem_num);
+		System.out.println("댓글 작성한회원이름 = "+re_name);
+		
+		Map promap = new HashMap();
+		promap.put("proboardnum", proboardnum); 
+		promap.put("mem_num", mem_num);
+		promap.put("content", reple);
+		promap.put("name", re_name);
+		
+		
+		sqlMap.insert("reple.proinsert",promap);   // 댓글 삽입 
+		
+		mv.setViewName("ProductDetailView.nhn?num="+proboardnum);
+		return mv;
+	}
+	
 	
 	
 

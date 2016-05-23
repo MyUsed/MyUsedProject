@@ -81,7 +81,7 @@
 <img src="/MyUsed/images/mainPic.PNG" width="15" height="15" title="메인사진"/>
 </c:if>
         <label for="image${i}">
-        <img src="/MyUsed/images/cameraUp.PNG" width="25" height="25" title="사진"/>
+        <img src="/MyUsed/images/cameraUp.PNG" width="25" height="25" style='cursor:pointer;' title="사진"/>
         </label>
    		
         <input type="file" name="image${i}" id="image${i}" style='display: none;'>
@@ -143,7 +143,7 @@
 </tr>
 	<tr bgcolor="#FFFFFF" align="center"	>
 		<td colspan="8">
-	 	<img src="/MyUsed/images/submit.PNG" onclick="javascript_:send();" title="등록하기" />
+	 	<img src="/MyUsed/images/submit.PNG" style='cursor:pointer;' onclick="javascript_:send();" title="등록하기" />
 	 	</td>
 	</tr> 	
 	
@@ -294,7 +294,7 @@
 </c:if>
 
         <label for="pimage${i}">
-		<img src="/MyUsed/images/box.PNG" width="25" height="25" title="상품사진"/>
+		<img src="/MyUsed/images/box.PNG" width="25" height="25" style='cursor:pointer;' title="상품사진"/>
 		</label>
    
         <input type="file" name="pimage${i}" id="pimage${i}" style='display: none;'>
@@ -348,7 +348,7 @@
 </tr>
 	<tr bgcolor="#FFFFFF" align="center"	>
 		<td colspan="8">
-	 	<img src="/MyUsed/images/submit.PNG" onclick="javascript_:send();" />
+	 	<img src="/MyUsed/images/submit.PNG" style='cursor:pointer;' title="등록하기" onclick="javascript_:send();" />
 	 	</td>
 	</tr> 	
 	</table>
@@ -399,7 +399,8 @@
 		<tr bgcolor="#FFFFFF">
 		<td>
 		<hr width="100%"  > 
-		좋아요 / 댓글달기 / 공유하기 / 구매하기
+		좋아요 /<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/replego.PNG"/></a>/ 공유하기 / 
+			<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/buyIcon.PNG" width="30" height="30" /></a>
 		</td>
 		</tr>
 

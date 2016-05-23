@@ -74,7 +74,8 @@ public class ProBoardController {
 		String orgName = mf.getOriginalFilename();
 		promap.put("pro_pic",orgName);
 		if(i==1){
-			sqlMap.insert("main.addProContent", promap); // 상품 일반 DB 등록
+
+
 			int proboard_num = (int)sqlMap.queryForObject("main.proboard_num", num);
 			promap.put("proboard_num", proboard_num);
 			sqlMap.insert("main.insertproboardlist", promap); // 전체 상품 DB 등록

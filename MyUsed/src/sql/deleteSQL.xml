@@ -47,6 +47,13 @@
 		and e.num = #num#
 	</select>
 	
+		<!-- 개인reple테이블DB에서 seq_num기준으로 삭제하는 쿼리 -->
+	<delete id="proRepleDelete" parameterClass="java.util.Map">
+		delete from proboardreple_$proboardnum$ where seq_num = #seq_num#
+	</delete>
+	
+	
+	
 	
 	
 	<!-- 일반board에서 게시글번호를받아 삭제하는 쿼리 -->

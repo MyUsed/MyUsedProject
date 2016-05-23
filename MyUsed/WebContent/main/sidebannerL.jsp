@@ -65,7 +65,7 @@
  	<a href="/MyUsed/picture.nhn"><img src="/MyUsed/images/picture.png" width="20" height="20">&nbsp;사진</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/address.png" width="20" height="20">&nbsp;주소록</a>
+ 	<a href="/MyUsed/address.nhn"><img src="/MyUsed/images/address.png" width="20" height="20">&nbsp;주소록</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/board.png" width="20" height="20">&nbsp;게시판</a>
