@@ -118,7 +118,7 @@
 							 	)
 	</statement>
 	<statement id="address_seq" parameterClass="java.util.Map">
-		create sequence addressseq_$num$
+		create sequence address_$num$seq
 	</statement>	
 	
 	

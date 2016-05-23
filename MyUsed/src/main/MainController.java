@@ -33,7 +33,7 @@ public class MainController {
 	private List<RepleDTO> replelist = new ArrayList<RepleDTO>();;
 	
 	   @RequestMapping("/MyUsed.nhn")
-	   public ModelAndView main(HttpServletRequest request ){
+	   public ModelAndView main(HttpServletRequest request){
 	      ModelAndView mv = new ModelAndView();
 	  
 	      HttpSession session = request.getSession();

@@ -11,6 +11,9 @@
 <link rel="stylesheet" type="text/css" href="/MyUsed/product/ProductView.css" />
 <link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
 <body>
+
+
+    
 <div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 <div id="detailViewback"></div>
 
@@ -18,23 +21,27 @@
 <div id="detailView">
 	
 
-   	
-   	<!-- 대표이미지 (추후 경로 수정)-->
+
    	<div id="detailimg">
   	<br/>
+  	<form action="addrInsert.nhn" method="post" >
+  			
+  			<input type="hidden" name="num" value="${num}"/>
+  	
   			<font face="Comic Sans MS" size="2" color="#4565A1"><strong>* 배송받을 주소 *</strong></font> <br/><br/>
    			<input type="text" id="sample6_postcode" name ="addrNum" placeholder="우편번호">
 			<img src="/MyUsed/images/AddressSearch.PNG" onclick="sample6_execDaumPostcode()" width="33" height="33" border="0" style='cursor:pointer;' title="우편번호찾기"><br />
 			<input type="text" id="sample6_address" name="addr" placeholder="주소" size="50"><br /><br/>
 			<input type="text" id="sample6_address2" name="addrr" placeholder="상세주소" size="60"> <br/> <br/>
 			
-			<input type="text" name="name" placeholder="받으실분"/>
-			<input type="text" name="ph" placeholder="핸드폰번호 [-제외]"/>
-	
-		
+			<input type="text" id="name" name="name" placeholder="받으실분"/>
+			<input type="text" id="ph" name="ph" placeholder="핸드폰번호 [-제외]"/> <br />
+			<input type="submit" value="추가" >
+	</form>
+			
    	</div>
-   	
-   	<!-- 다른 이미지 -->
+
+	
    	<div id="detailimgs">
    	
    	<table border="1" width="480" height="160">

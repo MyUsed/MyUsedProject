@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="address">
+
+		<!-- num 을 사용해서 개인 DB insert sql -->
+   <insert id="insert" parameterClass="java.util.Map">
+      insert into address_$num$ values(address_$num$seq.NEXTVAL,#name#, #ph#, #addrNum# ,#addr#,#addrr#,sysdate)
+   </insert>
+
+
+
+</sqlMap>
