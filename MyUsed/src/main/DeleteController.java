@@ -133,6 +133,22 @@ public class DeleteController {
 		return mv;
 	}
 	
+	@RequestMapping("/addressDelete.nhn")
+	public ModelAndView addressDelete(int seq_num,int num){
+		ModelAndView  mv = new ModelAndView ();
+		
+		Map deletemap = new HashMap();
+		deletemap.put("seq_num", seq_num);
+		deletemap.put("num", num);
+		sqlMap.delete("delete.delete_address",deletemap); // seq_num을 받아서 주소록에서 삭제;
+		
+		System.out.println("================ 삭제완료 ================ ");
+		
+		mv.setViewName("/address.nhn");
+		return mv;
+		
+	}
+	
 
 	
 	

@@ -71,7 +71,13 @@
 	    	</tr>
 	    
 	    	<tr align="center">
-	    		<td><input type="submit" value="삭제"/></td>
+	    		<td>
+	    			<input type="submit" value="삭제"/>
+	    		</td>
+	    		
+	    		<td align="left">
+	    			<input type="button" value="보낸쪽지함 " onclick="javascript:window.location='paperCollection.nhn?mynum=${mynum}'"/>
+	    		</td>
 	    		
 	    		<td>
 	    			<input type="button" value="쪽지쓰기" onclick="javascript:window.location='paperForm.nhn?mynum=${mynum}'"/>
@@ -104,12 +110,12 @@
 	    			</c:if>
 	    			
 	    			<!-- list.s_content의 길이가 15보다 크면 14번째 자리 + ... 로 출력 -->
-	    			<c:if test="${fn:length(list.s_content) > 15}">
-	    				${fn:substring(list.s_content,0,14)}... 
+	    			<c:if test="${fn:length(list.s_content) > 14}">
+	    				${fn:substring(list.s_content,0,13)}... 
 	    			</c:if>
 	    			
 					<!-- list.s_content의 길이가 15보다 작으면 정상적으로 출력 -->
-					<c:if test="${fn:length(list.s_content) < 15}">
+					<c:if test="${fn:length(list.s_content) < 14}">
 	    				${list.s_content}
 	    			</c:if>
 					</a>

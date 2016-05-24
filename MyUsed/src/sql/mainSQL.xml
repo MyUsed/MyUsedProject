@@ -13,6 +13,10 @@
    <select id="boardnum" resultClass="int">
    		select max(num) from boardlist 
    </select>
+   	<!-- memberlist 에서 num을 받아 정보를 가져오는 sql -->
+   <select id="userInfo" resultClass="member.MemberDTO" parameterClass="int">
+   		select * from memberlist where num = #mem_num#
+   </select>
    
    
    <!-- num 을 사용해서 개인 DB insert sql -->

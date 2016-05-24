@@ -9,6 +9,7 @@ public class PaperDTO {
 	private String id, name;
 	private String reg;
 	
+
 	
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}

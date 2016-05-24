@@ -3,8 +3,6 @@
 
 <sqlMap namespace="paper">
 
-
-	
 		<select id="all" resultClass="paper.PaperDTO" parameterClass="java.util.Map">
 			select * from message_r_$mynum$ order by state desc
 		</select>
@@ -44,4 +42,21 @@
 		<select id="FriendId" resultClass="paper.PaperDTO" parameterClass="java.util.Map">
 			select * from friendlist_$mynum$
 		</select>
+		
+		<insert id="sendCollection" parameterClass="java.util.Map">
+			insert into message_s_$mynum$ values(message_s_$mynum$_seq.NEXTVAL, #memNum#, #r_id#, #s_content#, sysdate)
+		</insert>
+		
+		<select id="Collection" resultClass="paper.PaperRDTO" parameterClass="int">
+			select * from message_s_$mynum$ order by reg desc
+		</select>
+		
+		<select id="memRAll" resultClass="paper.PaperRDTO" parameterClass="java.util.Map">
+			select * from message_s_$mynum$ where m_no=#m_no#
+		</select>
+		
+		<delete id="Rdelete" parameterClass="java.util.Map">
+			delete from message_s_$mynum$ where m_no=#m_no#
+		</delete>
+		
 </sqlMap>

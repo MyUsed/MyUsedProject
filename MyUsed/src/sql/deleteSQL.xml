@@ -77,6 +77,11 @@
 		delete from propic_$promem_num$ where num = #propic_num#
 	</delete>
 	
+	<!-- 개인주소록에서 주소 삭제 쿼리 -->
+	<delete id="delete_address" parameterClass="java.util.Map">
+		delete from address_$num$ where seq_num = #seq_num#
+	</delete>
+	
 	
 
 	

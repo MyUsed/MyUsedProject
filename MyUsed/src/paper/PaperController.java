@@ -73,7 +73,6 @@ public class PaperController {
 	@RequestMapping("paperSend.nhn")	// 쪽지 보냈을 때
 	public ModelAndView paperSend(PaperDTO dto, int mynum, String r_content, String r_name, HttpSession session){
 		ModelAndView mv = new ModelAndView();
-		System.out.println("r_content");
 		Map map = new HashMap();
 		String sessionId = (String)session.getAttribute("memId");
 		map.put("mynum", mynum);	// 쪽지 보낸 회원 고유 번호
@@ -83,6 +82,7 @@ public class PaperController {
 		map.put("s_content", r_content);	// 받을 쪽지 내용
 		map.put("s_name", sessionId);	// 보낸 사람 아이디
 		SqlMapClientTemplate.insert("paper.send", map);	// 쪽지 받을 회원 DB에 insert
+		SqlMapClientTemplate.insert("paper.sendCollection", map);	// 보낸쪽지함 DB에 insert
 		
 		mv.addObject("mynum", mynum);
 		mv.setViewName("/paper/paperSend.jsp");
@@ -109,7 +109,6 @@ public class PaperController {
 		Map map = new HashMap();
 		String sessionId = (String)session.getAttribute("memId");
 		map.put("r_id", sessionId);	// sessionId
-		
 		int mynum = (int)SqlMapClientTemplate.queryForObject("paper.memberNum", map);	// 회원 고유 번호 가져오기
 		map.put("mynum", mynum);	// 회원 고유 번호
 		map.put("m_no", m_no);		// 쪽지 글 번호
@@ -154,6 +153,83 @@ public class PaperController {
 		mv.addObject("list", list);
 		mv.setViewName("/paper/paperFriendList.jsp");
 		return mv;
-		
 	}
+	
+	@RequestMapping("paperCollection.nhn")	// 보낸 쪽지함
+	public ModelAndView paperCollection(int mynum, HttpServletRequest request){
+		ModelAndView mv = new ModelAndView();
+		
+		String pagecurrent = request.getParameter("currentPage");	// 현재페이지의 parameter값을 담는 변수
+		int currentPage = 1;	// 현재페이지
+		int totalCount = 0;		// 전체 게시글 수
+		int blockCount = 10;	// 한 페이지 게시글 수
+		int blockPage = 5;		// 5페이지까지 생성되면 6부터 다시생 성
+		int lastCount = 0;		// 페이지 마다 끝 게시글
+		String pagingHtml;
+		
+		if(pagecurrent != null){	// 현재페이지 parameter를 담은 변수가 null이 아니면
+			currentPage = Integer.parseInt(pagecurrent);	// 현재페이지에 대입
+		}
+		else{	
+			currentPage = 1;	// 현재페이지가 null이면 1
+		}
+		
+		List list = SqlMapClientTemplate.queryForList("paper.Collection", mynum);
+		
+		totalCount = list.size();	// list의 사이즈만큼 totalCount에 대입
+		pagingRAction page = new pagingRAction(currentPage, totalCount, blockCount, blockPage, mynum);
+		pagingHtml = page.getPagingHtml().toString();	// 문자로 변환
+		lastCount = totalCount;	
+		
+		if (page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		
+		 list = list.subList(page.getStartCount(), lastCount);
+		
+		mv.addObject("mynum", mynum);
+		mv.addObject("list", list);
+		mv.addObject("pagingHtml", pagingHtml);
+		mv.setViewName("/paper/paperCollection.jsp");
+		return mv;
+	}
+	
+		@RequestMapping("paperRView.nhn")
+		public ModelAndView paperRView(int m_no, int mynum, PaperRDTO rdto){
+			ModelAndView mv = new ModelAndView();
+			Map map = new HashMap();
+			map.put("mynum", mynum);
+			map.put("m_no", m_no);
+			rdto = (PaperRDTO)SqlMapClientTemplate.queryForObject("paper.memRAll", map);
+			mv.addObject("rdto", rdto);
+			mv.addObject("mynum", mynum);
+			mv.addObject("m_no", m_no);
+			mv.setViewName("/paper/paperRView.jsp");
+			return mv;
+		}
+		
+		@RequestMapping("paperRDelete.nhn")	// 보낸 전체 및 낱개 쪽지 삭제
+		public ModelAndView paperRDelete(int check[], int mynum){
+			Map map = new HashMap();
+			for (int i = 0; i < check.length; i++) {	//check된 개수 만큼 동작
+				map.put("m_no", check[i]);	// 글번호(check[i])를  m_no로 map에 넣어줌
+				map.put("mynum", mynum);
+				SqlMapClientTemplate.delete("paper.Rdelete", map);	// 쪽지 삭제
+			}
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("mynum", mynum);
+			mv.setViewName("/paper/paperRDelete.jsp");
+			return mv;
+		}
+		
+		@RequestMapping("paperViewRDelete.nhn")
+		public ModelAndView paperViewRDelete(int mynum, int m_no){
+			ModelAndView mv = new ModelAndView();
+			Map map = new HashMap();
+			map.put("mynum", mynum);
+			map.put("m_no", m_no);
+			SqlMapClientTemplate.delete("paper.Rdelete", map);
+			mv.addObject("mynum", mynum);
+			mv.setViewName("/paper/paperRDelete.jsp");
+			return mv;
+		}
 }

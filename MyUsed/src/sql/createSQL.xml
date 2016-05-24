@@ -61,7 +61,7 @@
 	
 	<!-- 댓글시퀀스 생성 -->
 	<statement id="boardreple_seq" parameterClass="int">
-	create sequence boardreple_$boardnum$seq
+	create sequence boardreple_$boardnum$seq nocache
 	</statement>
 	
 	<!-- 친구목록(friendlist) table -->
@@ -87,7 +87,7 @@
 	</statement>
 		
 	<statement id="profilepic_seq" parameterClass="java.util.Map">
-		create sequence sq_profilepic_$num$
+		create sequence sq_profilepic_$num$ nocache
 	</statement>	
 	
 		
@@ -102,7 +102,7 @@
 	</statement>
 		
 	<statement id="coverpic_seq" parameterClass="java.util.Map">
-		create sequence sq_coverpic_$num$
+		create sequence sq_coverpic_$num$ nocache
 	</statement>
 	
 	<!-- 개인주소(address) table/sequence  -->
@@ -118,7 +118,7 @@
 							 	)
 	</statement>
 	<statement id="address_seq" parameterClass="java.util.Map">
-		create sequence address_$num$seq
+		create sequence address_$num$seq nocache
 	</statement>	
 	
 	
@@ -149,7 +149,7 @@
 							     )
 	</statement>
 	<statement id="proboard_seq" parameterClass="java.util.Map">
-		create sequence proboard_$num$seq
+		create sequence proboard_$num$seq nocache
 	</statement>
 	
 	<!-- 상품 사진(propic) table -->
@@ -198,7 +198,7 @@
 	
 	<!-- pro댓글시퀀스 생성 -->
 	<statement id="proboardreple_seq" parameterClass="int">
-	create sequence proboardreple_$proboardnum$seq 
+	create sequence proboardreple_$proboardnum$seq nocache
 	</statement>
 	
 	

@@ -4,12 +4,20 @@ import java.sql.Timestamp;
 
 public class AddressDTO {
 	
+	private int seq_num;
 	private String name;
 	private int ph;
 	private int addrNum;
 	private String addr;
 	private String addrr;
 	private Timestamp reg;
+	
+	public int getSeq_num() {
+		return seq_num;
+	}
+	public void setSeq_num(int seq_num) {
+		this.seq_num = seq_num;
+	}
 	public String getName() {
 		return name;
 	}

@@ -6,6 +6,15 @@
    <insert id="insert" parameterClass="java.util.Map">
       insert into address_$num$ values(address_$num$seq.NEXTVAL,#name#, #ph#, #addrNum# ,#addr#,#addrr#,sysdate)
    </insert>
+   
+   <select id="select" resultClass="mypage.AddressDTO" parameterClass="int">
+   	  select * from address_$num$ order by seq_num desc
+   </select>
+   
+   <select id="oneselect" resultClass="mypage.AddressDTO" parameterClass="int">
+   	  select * from address_$num$ where seq_num = (select max(seq_num) from address_$num$)
+   </select>
+   
 
 
 
