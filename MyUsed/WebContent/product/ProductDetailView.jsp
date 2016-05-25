@@ -11,6 +11,27 @@
 
 <head>
 
+<script type="text/javascript">
+function bigImage(pic){
+	$.ajax({
+			type : "post",
+			url : "/MyUsed/ProBigImage.nhn",
+			data : { // url 페이지도 전달할 파라미터
+				pic : pic
+			},
+			success : Pic, // 페이지요청 성공시 실행 함수
+			error : whenError
+		//페이지요청 실패시 실행함수
+		});
+	}
+	function Pic(view) { // 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+		$("#detailimg").html(view);
+		console.log(resdata);
+	}
+	function whenError() {
+		alert("Error");
+	}
+</script>
 
 
 <title>상품</title>
@@ -45,6 +66,7 @@ $(document).ready(function(){
 
 </div>
 
+
 <div id="detailView">
 	<div id="closebotton">
 		<label for="close">
@@ -60,6 +82,7 @@ $(document).ready(function(){
    		<img src="/MyUsed/images/${productDTO.pro_pic}" width="478" height="328">
    	</div>
    	
+   	
    	<!-- 다른 이미지 -->
    	<div id="detailimgs">
    	
@@ -68,7 +91,7 @@ $(document).ready(function(){
    		<tr>
    		<c:forEach begin="0" step="1" end="3" var="propic" items="${propicList}">
    			<td>
-   				<img src="/MyUsed/images/${propic.pro_pic}" width="118" height="78">
+   				<img src="/MyUsed/images/${propic.pro_pic}" onclick="javascript:bigImage('${prohis.profile_pic}')" style="cursor:pointer;"  width="118" height="78">
    			</td>
    		</c:forEach>
    		</tr>

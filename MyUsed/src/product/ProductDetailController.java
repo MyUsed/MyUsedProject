@@ -83,5 +83,12 @@ public class ProductDetailController {
 		return "/product/ProductDetailView.jsp";
 	}
 	
+	@RequestMapping("/ProBigImage.nhn")
+	public String ProBigimage(HttpServletRequest request, String pic){	
+		request.setAttribute("pic", pic);
+		return "/main/ProBigImage.jsp";
+	}
+
+	
 
 }

@@ -39,3 +39,33 @@ function sample6_execDaumPostcode() {
             }
         }).open();
     }
+
+
+/** 이미지 크게 보기*/
+/*function bigImage(pic){
+    $.ajax({
+        type: "post",
+        url : "/MyUsed/BigViewImage.nhn",
+        data: {	// url 페이지도 전달할 파라미터
+        	pic : pic
+        },
+        success: Pic,	// 페이지요청 성공시 실행 함수
+        error: whenError	//페이지요청 실패시 실행함수
+ 	});
+}
+function Pic(view){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+    $("#detailimg").html(view);
+    console.log(resdata);
+}
+function whenError(){
+    alert("Error");
+}
+*/
+
+function closeImageHistory() {
+	imagehistoryback.style.display = 'none';
+	imagehistory.style.display = 'none';
+	$('#viewImage').detach();
+    window.location.reload();
+
+}
