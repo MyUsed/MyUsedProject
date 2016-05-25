@@ -97,7 +97,11 @@
       insert into proboardreple_$proboardnum$ values(proboardreple_$proboardnum$seq.NEXTVAL,#mem_num#, #content#, #name# ,sysdate)
    </insert>
 	
-   
+   <select id="proSelectWithPic" resultClass="main.RepleDTO" parameterClass="String">
+   		select reple.seq_num, reple.mem_num, reple.content, reple.name, reple.reg, propic.profile_pic  from proboardreple_101 reple , (
+   			$sql$
+   			) propic where reple.mem_num = propic.mem_num order by reple.reg desc 
+   </select>
    
    
    

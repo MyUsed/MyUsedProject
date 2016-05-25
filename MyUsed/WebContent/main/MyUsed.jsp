@@ -402,7 +402,7 @@
 		
 		<c:if test="${prolist.pro_pic != null}"> 
 		<a href="ProductDetailView.nhn?num=${prolist.num}">
-		<img src="/MyUsed/images/${prolist.pro_pic}" width="370" height="350"/> 
+		<img src="/MyUsed/images/${prolist.pro_pic}" width="370" height="350" /> 
 		</a>
 		<br/>
 		</c:if>

@@ -14,6 +14,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import friend.FriendDTO;
 import main.MainProboardDTO;
 import main.RepleDTO;
 import member.ProfilePicDTO;
@@ -41,7 +42,22 @@ public class ProductDetailController {
 		
 		proreplelist = sqlMap.queryForList("reple.proselect", num); // 댓글 가져오기 
 		
+		String sql = "";
+		// 댓글이 0보다 클 때
+		if(proreplelist.size() > 0){
+			for(int i = 0 ; i < proreplelist.size() ; i++){
+				System.out.println(((RepleDTO)proreplelist.get(i)).getMem_num());
+				sql += "select * from profilepic_"+((RepleDTO)proreplelist.get(i)).getMem_num()+" where pic_num = (select max(pic_num) from profilepic_"+((RepleDTO)proreplelist.get(i)).getMem_num()+") union ";
+			}
+			sql += "select * from profilepic_"+((RepleDTO)proreplelist.get(proreplelist.size()-1)).getMem_num()+" where pic_num = (select max(pic_num) from profilepic_"+((RepleDTO)proreplelist.get(proreplelist.size()-1)).getMem_num()+")";
+		}
+		System.out.println(sql);
+		
+		proreplelist = sqlMap.queryForList("reple.proSelectWithPic", sql);
+		
+		
 		request.setAttribute("proreplelist",proreplelist);
+		
 
 		// 상품 글번호를 이용해서 proboarlist에서 정보를 뽑아옴(모든 상품 글 리스트)
 		MainProboardDTO productDTO = new MainProboardDTO();
@@ -86,7 +102,7 @@ public class ProductDetailController {
 	@RequestMapping("/ProBigImage.nhn")
 	public String ProBigimage(HttpServletRequest request, String pic){	
 		request.setAttribute("pic", pic);
-		return "/main/ProBigImage.jsp";
+		return "/product/ProBigImage.jsp";
 	}
 
 	

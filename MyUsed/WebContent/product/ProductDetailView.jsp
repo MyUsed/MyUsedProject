@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/MyUsed/product/ProductView.css" />
 <link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
-
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <head>
 
 <script type="text/javascript">
@@ -91,7 +91,7 @@ $(document).ready(function(){
    		<tr>
    		<c:forEach begin="0" step="1" end="3" var="propic" items="${propicList}">
    			<td>
-   				<img src="/MyUsed/images/${propic.pro_pic}" onclick="javascript:bigImage('${prohis.profile_pic}')" style="cursor:pointer;"  width="118" height="78">
+   				<img src="/MyUsed/images/${propic.pro_pic}" onclick="javascript:bigImage('${propic.pro_pic}')" style="cursor:pointer;"  width="118" height="78">
    			</td>
    		</c:forEach>
    		</tr>
@@ -99,7 +99,7 @@ $(document).ready(function(){
    		<tr>
    		<c:forEach begin="4" step="1" end="7" var="propic" items="${propicList}">
    			<td>
-   				<img src="/MyUsed/images/${propic.pro_pic}" width="118" height="78">
+   				<img src="/MyUsed/images/${propic.pro_pic}" onclick="javascript:bigImage('${propic.pro_pic}')" style="cursor:pointer;"  width="118" height="78">
    			</td>
    		</c:forEach>
    		</tr>
@@ -149,11 +149,12 @@ $(document).ready(function(){
 				<p style='overflow:auto; width:330px; height:250px'>
 				<c:forEach var="proreplelist" items="${proreplelist}"> 
 					<a  href="/MyUsed/MyUsedMyPage.nhn?mem_num=${proreplelist.mem_num}"> 
+						<img src="/MyUsed/images/profile/${proreplelist.profile_pic}" style="width:20px; height:20px;">
 						<font face="Comic Sans MS" size="3" color="#4565A1"> ${proreplelist.name}</font>
 					</a>
  					${proreplelist.content}
  					<a href="prorepleDelete.nhn?seq_num=${proreplelist.seq_num}&boardnum=${num}" onclick="javasciprt:deleteCheck()">
- 	<img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 0.5em;" align="right" width="15"  height="15" title="삭제하기"/>
+ 	<img src="/MyUsed/images/deleteIcon.PNG" style="margin-top:6px; margin-right: 0.5em;" align="right" width="15"  height="15" title="삭제하기" />
  					</a>
  					<br/>
  					 <font size="2" color="#9A9DA4">
@@ -166,7 +167,7 @@ $(document).ready(function(){
 		</tr>
 		<tr height="50">
 			<td bgcolor="#F6F7F9" colspan="2">
-				<img src="/MyUsed/images/profile/${proDTO.profile_pic}" align="left" width="40"  height="35"/>
+				<img src="/MyUsed/images/profile/${proDTO.profile_pic}" align="left" width="40"  height="35" style="margin-left:10px;"/>
 					<input style="padding:7px;" type="text" name="reple" size="30" placeholder="댓글을 입력하세요..." />
 				<input type="image" src="/MyUsed/images/submitReple.png" width="30" height="20" title="댓글달기"/>
 			</td>
