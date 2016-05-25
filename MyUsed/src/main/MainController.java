@@ -17,7 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import member.FriendCategDTO;
+import friend.FriendCategDTO;
+import friend.FriendDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
 
@@ -29,6 +30,7 @@ public class MainController {
 	
 	private ProfilePicDTO proDTO = new ProfilePicDTO();
 	private List<MainboardDTO> list = new ArrayList<MainboardDTO>();;	
+	private ProfilePicDTO sessionproDTO = new ProfilePicDTO();
 	private List<MainProboardDTO> prolist = new ArrayList<MainProboardDTO>();; 
 	private List<RepleDTO> replelist = new ArrayList<RepleDTO>();;
 	
@@ -57,6 +59,46 @@ public class MainController {
 			
 	      request.setAttribute("categList", categList);
 	      request.setAttribute("checked", "checked");
+	      
+	   // 세션 아이디의 프로필사진
+		  Map profileMap2 = new HashMap();
+		  profileMap2.put("mem_num", memDTO.getNum());
+		  sessionproDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", profileMap2);
+		  request.setAttribute("sessionproDTO", sessionproDTO);
+		  
+		  
+
+		  	/** 친구 목록 리스트(state2) */
+		  	Map map = new HashMap();
+		  	map.put("num", memDTO.getNum());
+		  	List friendState2 = new ArrayList();
+		  	friendState2 = sqlMap.queryForList("friend.friendState2", map);
+		  	
+		  	/** 친구 목록 프로필 사진뽑기 */
+			if(friendState2.size() > 0){
+				List friprofileList = new ArrayList();
+				for(int i = 0 ; i < friendState2.size() ; i++){
+					// 상태2인 친구 목록의 번호만 뽑기
+					int frinum = ((FriendDTO)friendState2.get(i)).getMem_num();
+					System.out.println(frinum);
+					
+					// 해당 번호를 가진 프로필 사진 테이블을 찾아 최근 사진 레코드를 리스트에 넣는다
+					Map frinumMap = new HashMap();
+					frinumMap.put("mem_num", frinum);
+					
+					ProfilePicDTO friproDTO = new ProfilePicDTO();
+					friproDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", frinumMap);
+
+					friprofileList.add(i, friproDTO);				
+				}
+
+				for (int i = 0; i < friprofileList.size() ; i++){
+					//System.out.println(knewFriendList_image.get(i));
+					System.out.println(((ProfilePicDTO)friprofileList.get(i)).getProfile_pic());
+				}
+				request.setAttribute("friprofileList", friprofileList);//친구목록 프로필 사진
+				request.setAttribute("friendState2", friendState2);	//친구목록 불러오는 리스트
+			}
 	      
 	      int renum = (int)sqlMap.queryForObject("main.boardnum",null);
 	 

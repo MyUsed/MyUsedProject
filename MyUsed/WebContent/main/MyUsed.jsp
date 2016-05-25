@@ -185,7 +185,30 @@
 		</a>
 		 <br/> <br />
 		</c:if>
+		<!-- 일반 게시글 해시태그 -->	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var content = document.getElementById('listcontent_${list.num}').innerHTML;
+		var splitedArray = content.split(' ');
+		var linkedContent = '';
+		for(var word in splitedArray)
+		{
+		  word = splitedArray[word];
+		   if(word.indexOf('#') == 0)
+		   {
+				var url = '"'+'/MyUsed/tegSearch.nhn?word='+word.split('#')+'"';
+			    word = '<a href='+url+'>'+word+'</a>';
+		   }
+		   linkedContent += word+' ';
+		}
+		document.getElementById('listcontent_${list.num}').innerHTML = ' '+linkedContent; 
+	});
+	</script>
+		
+		
+		<div id="listcontent_${list.num}">
 		${list.content}
+		</div>
 		</td>
 		</tr>
 		
@@ -390,8 +413,30 @@
 		<font size="3" color="#0042ED" >
 		-------------------------------- * 상세설명 * -------------------------------- 
 		</font>
+		<!-- 상품 게시글 해시태그 -->	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var content = document.getElementById('procontent').innerHTML;
+		var splitedArray = content.split(' ');
+		var linkedContent = '';
+		for(var word in splitedArray)
+		{
+		  word = splitedArray[word];
+		   if(word.indexOf('#') == 0)
+		   {
+				var url = '"'+'/MyUsed/protegSearch.nhn?word='+word.split('#')+'"';
+			    word = '<a href='+url+'>'+word+'</a>';
+		   }
+		   linkedContent += word+' ';
+		}
+		document.getElementById('procontent').innerHTML = linkedContent; 
+	});
+	</script>
+		
 		 <br/>
+		 <div id="procontent">
 		${prolist.content}
+		</div>
 		
 		</td>
 		</tr>

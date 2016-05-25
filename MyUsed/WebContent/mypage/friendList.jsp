@@ -2,61 +2,15 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<style>
-
-			
-/*****模备格废******/
-										
-#friendlist_img {position:relative;  
-		   width:50px; 
-		   height:50px; 
-		   margin-left:0px;
-		   margin-top:10px;
-		   border:1px solid #D5D5D5;
-		   text-align:left;
-		   }
-		   
-#friendlist_img_line {position:absolute;
-		   width:50px; 
-/* 		   height:50px; 
-		   margin-top:-115px; */
-		   text-align:left;
-		   }	
-									
-#friendlist {position:relative;  
-		   width:140px; 
-		   height:50px; 
-		   margin-top:10px;
-		   margin-left:55px;
-		   padding-top:15px;
-		   padding-left:5px;
-		   text-align:left;
-		   font-weight:bold;
-		   font-size: 85%;
-		   }			
-						
-#friendlist_line {position:absolute;    
-		   width:140px; 
-/* 		   height:50px; 
-		   margin-top:-115px; */
-		   text-align:left;
-		   }	
-		   	
-#friendlist_side {position:absolute;    
-		   width:5px; 
-		   height:90%; 
-		   margin-top:5px;
-		   margin-left:-16px;
-		   border-left:1px solid #D5D5D5;
-		   }	
-
-</style>
-
 <html lang="ko">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="facebookstyle.css" />
+<link rel="stylesheet" type="text/css" href="/MyUsed/mypage/MyPage.css" />
 
+<script src="/MyUsed/member/jquery-1.11.3.js"></script>
+<script src="/MyUsed/member/animate.js"></script>
 <body>
-<div style="margin-left:70px;">
+	
  	<!-- 模备 格废(state 2) -->
  	<div id="friendlist_side"></div>
  
@@ -88,6 +42,6 @@
  	</c:forEach>
  	</div>
  	
-</div>
+
 </body>
 </html>

@@ -40,6 +40,11 @@
 	select * from boardlist order by num desc                       
    </select>
    
+   <select id="tegSearch" resultClass="main.MainboardDTO" parameterClass="String">
+   		select * from boardlist where content like '%'||#content#||'%' order by num desc
+   </select>
+   
+   
    
    
  

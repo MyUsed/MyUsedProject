@@ -22,27 +22,27 @@
 		insert into friendlist_$num$ values(#mem_num# , #id#, #name# ,#state# ,#categ#, sysdate)
 	</insert>
 	
-	<select id="allFriend" resultClass="member.FriendDTO" parameterClass="java.util.Map">
+	<select id="allFriend" resultClass="friend.FriendDTO" parameterClass="java.util.Map">
 		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num
 	</select>
 	
-	<select id="friendState0" resultClass="member.FriendDTO" parameterClass="java.util.Map">
+	<select id="friendState0" resultClass="friend.FriendDTO" parameterClass="java.util.Map">
 		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num and state=0
 	</select>
 	
-	<select id="friendState1" resultClass="member.FriendDTO" parameterClass="java.util.Map">
+	<select id="friendState1" resultClass="friend.FriendDTO" parameterClass="java.util.Map">
 		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num and state=1
 	</select>
 	
-	<select id="friendState2" resultClass="member.FriendDTO" parameterClass="java.util.Map">
+	<select id="friendState2" resultClass="friend.FriendDTO" parameterClass="java.util.Map">
 		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num and state=2
 	</select>
 	
-	<select id="friendState_m1" resultClass="member.FriendDTO" parameterClass="java.util.Map">
+	<select id="friendState_m1" resultClass="friend.FriendDTO" parameterClass="java.util.Map">
 		select * from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num and state=-1
 	</select>
 	
-	<select id="friendCateg" resultClass="member.FriendCategDTO">
+	<select id="friendCateg" resultClass="friend.FriendCategDTO">
 		select * from friend_categ
 	</select>
 	
@@ -63,19 +63,29 @@
 	<select id="friendNumList" resultClass="int" parameterClass="java.util.Map">
 		select mem_num from friendlist_$num$ 
 	</select>
-	
-	
-<!-- 	<resultMap id="dtoMap" class="member.FriendDTO">
-		<result property="mem_num" column="mem_num"/>
-		<result property="name" column="name"/>
-		<result property="state" column="count"/>
-	</resultMap> -->
+
 
 	<!-- 알 수 도 있는 친구(mem_num의 친구의 친구 리스트) -->
-	<select id="all" resultClass="member.FriendDTO" parameterClass="java.util.Map">
-		select mem_num,name,count(name) count from ( $sql$ ) where state=2 group by name, mem_num order by count desc
+	<select id="all" resultClass="friend.FriendDTO" parameterClass="java.util.Map">
+		select mem_num,name,id,count(name) count from ( $sql$ ) where state=2 group by name,id, mem_num order by count desc
+	</select>
+	
+	
+	<!-- 친구목록 +친구의 프로필 사진 -->
+	<select id="friendproPic" resultClass="friend.FriendDTO" parameterClass="java.util.Map">
+		select friendlist_$num$.mem_num, id, name, state, categ, profile_pic from friendlist_$num$, 
+		 ( $friendpic_sql$ ) profilepiclist where friendlist_$num$.mem_num = profilepiclist.mem_num
 	</select>
 
+	<!-- 친구 삭제 -->
+	<delete id="deleteMyFriend" parameterClass="java.util.Map">
+		delete from friendlist_$num$ where mem_num = #mem_num#
+	</delete>
+	
+	<!-- 친구 카테고리 변경 -->
+	<update id="ModifyFriend" parameterClass="java.util.Map">
+		update friendlist_$num$ set categ = #categ# where mem_num=#mem_num#
+	</update>
 	
 
 </sqlMap>

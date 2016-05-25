@@ -107,7 +107,6 @@ public class CreateDBController {
 		
 		sqlMapClientTemplate.update("create.address_seq",map);
 		System.out.println("address_seq"+num+" create");
-	
 		
 		return result;
 	}

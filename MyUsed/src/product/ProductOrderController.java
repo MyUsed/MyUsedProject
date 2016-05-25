@@ -28,7 +28,7 @@ public class ProductOrderController {
 	private List<MemberDTO> memlist = new ArrayList<MemberDTO>();; 
 	private ProfilePicDTO proDTO = new ProfilePicDTO();
 	@RequestMapping("productOrder.nhn")
-	public ModelAndView productOrder(HttpServletRequest request, int mem_num ,int price){
+	public ModelAndView productOrder(HttpServletRequest request, int mem_num,int price){
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("선택한 상품의 회원 번호는 = "+mem_num);
@@ -54,10 +54,11 @@ public class ProductOrderController {
 		String profilepic = (String) sqlMap.queryForObject("product.propic", mem_numMap);
 		
 		
+				
 		mv.addObject("mem_num",mem_num);
 		mv.addObject("profilepic",profilepic);
 		mv.addObject("proDTO",proDTO);
-		mv.addObject("price",price);
+		mv.addObject("price", price);
 		mv.addObject("num",num);
 		mv.addObject("addresslist",addresslist);
 		mv.addObject("memlist",memlist);
@@ -66,11 +67,41 @@ public class ProductOrderController {
 		return mv;
 	}
 	
+	@RequestMapping("/orderDetail.nhn")
+	public ModelAndView oderDetail(int seq_num,int num,int price){
+		ModelAndView mv = new ModelAndView ();
+		
+		System.out.println("주소넘버 = "+seq_num);
+		System.out.println("회원넘버 = "+num);
+		
+		Map adrMap = new HashMap();
+		adrMap.put("num", num);
+		adrMap.put("seq_num", seq_num);
+		
+		AddressDTO addresslist = new AddressDTO();
+		addresslist = (AddressDTO)sqlMap.queryForObject("address.seq_numSelect",adrMap);
+		
+		
+		 // 프로필 사진을 띄우기 위한 처리 
+	    Map picmap = new HashMap();
+		picmap.put("mem_num", num);   
+		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); 
+		
+		mv.addObject("proDTO",proDTO);
+		mv.addObject("price",price);
+		mv.addObject("addresslist",addresslist);
+		mv.setViewName("/product/OrderDetail.jsp");
+		return mv;
+		
+	}
+	
+	
 	@RequestMapping("/addrInsertOrder.nhn")
-	public ModelAndView addressInsert(AddressDTO addrDTO,int num){
+	public ModelAndView addressInsert(AddressDTO addrDTO,int mem_num,int num,int price){
 		ModelAndView mv = new ModelAndView();
 		
-		System.out.println("회원번호 = "+num);
+		System.out.println("회원번호 = "+mem_num);
+		
 		
 		Map map = new HashMap();
 		map.put("num", num);
@@ -83,7 +114,7 @@ public class ProductOrderController {
 		sqlMap.insert("address.insert",map);
 		System.out.println("주소 등록완료");
 		
-		mv.setViewName("/productOrder.nhn?mem_num"+num);
+		mv.setViewName("redirect:/productOrder.nhn?mem_num="+mem_num+"&price="+price);
 		return mv;
 	}
 	

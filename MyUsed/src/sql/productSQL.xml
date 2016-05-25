@@ -16,10 +16,15 @@
 	<select id="view_categ1" resultClass="main.MainProboardDTO" parameterClass="String">
 		select * from proboardlist where categ like '%'||#categ#||'%' order by num desc
 	</select>
-	
+
 	<!-- 상품을 클릭하면나오는 상세페이지에서 proboardlist -->
 	<select id="selectProNum" resultClass="main.MainProboardDTO" parameterClass="int">
 		select * from proboardlist where num = #num#
+	</select>
+	
+	<!-- 상품을 클릭하면나오는 상세페이지에서 proboardlist -->
+	<select id="selectProNum2" resultClass="main.MainProboardDTO" parameterClass="int">
+		select * from proboardlist where num = #mem_num#
 	</select>
 	
 	<!-- proboardlist의 글쓴이를 통해 개인상품 테이블 찾음/num만 가져감 -->

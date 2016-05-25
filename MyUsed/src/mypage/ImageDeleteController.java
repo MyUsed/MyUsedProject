@@ -1,4 +1,4 @@
-package member;
+package mypage;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -11,6 +11,20 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/MyUsed/mypage/address.css" />
 <link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
+
+<script type="text/javascript">
+function adrNum(){
+ var sample = document.getElementsByName('address');
+ for(var i=0;i<sample.length;i++){
+  if(sample[i].checked == true){
+   
+   location.href="/MyUsed/orderDetail.nhn?seq_num="+sample[i].value+"&num="+${num}+"&price="+${price};
+  }
+ }
+}
+</script>
+
+
 <body>
 
 <div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
@@ -26,8 +40,10 @@
   	<br/>
   	
   		<form action="addrInsertOrder.nhn" method="post" >
-  	
+  		
+  			<input type="hidden" name="price" value="${price}"/> 
   			<input type="hidden" name="num" value="${num}"/>
+  			<input type="hidden" name="mem_num" value="${mem_num}"/>
   			
   			<font face="Comic Sans MS" size="3" color="#4565A1"><strong>* 배송받을 주소 *</strong></font> <br/><br/>
    			<input type="text" id="sample6_postcode" name ="addrNum" placeholder="우편번호">
@@ -55,7 +71,7 @@
    			
    		<c:forEach var="addresslist" items="${addresslist}" varStatus="i">
    		<tr>
-   		<td><input name="address"${i.count} type="radio" value="${addresslist.name}"></td>
+   		<td><input name="address" type="radio" value="${addresslist.seq_num}"></td>
     	<td>${addresslist.name} </td>
     	<td>${addresslist.ph}</td>
     	<td>${addresslist.addrNum} </td>
@@ -105,8 +121,9 @@
     		<font face="Comic Sans MS" size="5" color="#4565A1"><strong>${price} 원</strong></font>
     	
     	</c:forEach>
- 
-    		<input type="button" value="전송"  onclick="address()"/>
+ 	
+    		<img src="/MyUsed/images/orderIcon.PNG" style='cursor:pointer;' onclick="javascript_:adrNum();" title="주문하기"/>
+
      </div>
     
     

@@ -67,7 +67,10 @@ public class ProBoardController {
 
 		
 		}else{
-		
+			sqlMap.insert("main.addProContent", promap); // 상품 일반 DB 등록
+			System.out.println("insert상품일반 DB 성공");
+			sqlMap.insert("main.insertproboardlist", promap); // 전체 상품 DB 등록
+			System.out.println("insert상품전체 DB 성공");
 		
 		for(int i=1;i<=8;i++){
 		MultipartFile mf = request.getFile("pimage"+i); // 파일을 받는 MultipartFile 클래스  (원본)

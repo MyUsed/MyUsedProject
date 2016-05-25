@@ -96,6 +96,28 @@
                 function alarm(aa){
             		alert(aa);
             	}
+                
+                
+                //------------------------------친구찾기 페이지------------------------------------------------
+                function callAjax_friend(mem_num){
+                    $.ajax({
+            	        type: "post",
+            	        url : "/MyUsed/MyUsedFriend.nhn",
+            	        data: {	// url 페이지도 전달할 파라미터
+            	        	mem_num : mem_num
+            	        },
+            	        success: test,	// 페이지요청 성공시 실행 함수
+            	        error: whenError	//페이지요청 실패시 실행함수
+                 	});
+                }
+                function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+                    $("#contents").html(aaa);
+                    console.log(resdata);
+                }
+                function whenError(){
+                    alert("Error");
+                }
+
       
 
               

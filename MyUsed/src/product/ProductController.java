@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import main.MainProboardDTO;
 import main.ProBoardCategDTO;
-import member.FriendDTO;
+import friend.FriendDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
 

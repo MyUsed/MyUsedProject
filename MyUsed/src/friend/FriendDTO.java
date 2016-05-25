@@ -1,4 +1,4 @@
-package member;
+package friend;
 
 import java.sql.Timestamp;
 
@@ -13,6 +13,8 @@ public class FriendDTO {
 	
 	private String onoff;//조인했을때
 	private int count;	//친구의 친구 찾을 때 필요
+
+	private String profile_pic;	// 친구의 프로필 사진 불러오기위해
 	
 	
 	
@@ -36,6 +38,11 @@ public class FriendDTO {
 	
 	public int getCount() {		return count;	}
 	public void setCount(int count) {		this.count = count;	}
+	
+
+	public String getProfile_pic(){		return profile_pic;	}
+	public void setProfile_pic(String profile_pic) 	{		this.profile_pic = profile_pic;	}
+	
 	
 	
 	

@@ -26,25 +26,33 @@
  			<li><a href="#"><img src="/MyUsed/images/categ.png" width="20" height="20">&nbsp;카테고리</a>
  			<ul class="sub">
 	      		<li>
-	      			<table width="100%" height="300" border="0">
+	      			<table width="95%" height="300" border="0" align="right">
 	      				<tr height="25%">
 	      				<c:forEach begin="0" step="1" end="3" var="viewCateg" items="${viewCategList}">
-	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1">${viewCateg.categ}</a></td>
+	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1" onmouseover="this.style.textDecoration='none'">
+	      						${viewCateg.categ}
+	      					</a></td>
 	      				</c:forEach>
 	      				</tr>
 	      				<tr height="25%">
 	      				<c:forEach begin="4" step="1" end="7" var="viewCateg" items="${viewCategList}">
-	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1">${viewCateg.categ}</a></td>
+	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1" onmouseover="this.style.textDecoration='none'">
+	      						${viewCateg.categ}
+	      					</a></td>
 	      				</c:forEach>
 	      				</tr>
 	      				<tr height="25%">
 	      				<c:forEach begin="8" step="1" end="11" var="viewCateg" items="${viewCategList}">
-	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1">${viewCateg.categ}</a></td>
+	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1" onmouseover="this.style.textDecoration='none'">
+	      						${viewCateg.categ}
+	      					</a></td>
 	      				</c:forEach>
 	      				</tr>
 	      				<tr height="25%">
 	      				<c:forEach begin="12" step="1" end="15" var="viewCateg" items="${viewCategList}">
-	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1">${viewCateg.categ}</a></td>
+	      					<td align="left"><a href="/MyUsed/MyUsedProductView.nhn?categ=${viewCateg.categ}&currentPage=1" onmouseover="this.style.textDecoration='none'">
+	      						${viewCateg.categ}
+	      					</a></td>
 	      				</c:forEach>
 	      				</tr>
 	      			</table>	      		
@@ -77,7 +85,7 @@
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;찜하기</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friendSearch.png" width="20" height="20">&nbsp;친구찾기</a>
+ 	<a onclick="javascript:callAjax_friend('${num}')" style="cursor:pointer;"><img src="/MyUsed/images/friendSearch.png" width="20" height="20">&nbsp;친구찾기</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/deposit.png" width="20" height="20">&nbsp;입금현황</a>

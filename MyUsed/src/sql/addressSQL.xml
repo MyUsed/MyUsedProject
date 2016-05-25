@@ -6,13 +6,18 @@
    <insert id="insert" parameterClass="java.util.Map">
       insert into address_$num$ values(address_$num$seq.NEXTVAL,#name#, #ph#, #addrNum# ,#addr#,#addrr#,sysdate)
    </insert>
-   
+   		<!-- 회원의 주소목록을 가져오는 쿼리  -->
    <select id="select" resultClass="mypage.AddressDTO" parameterClass="int">
    	  select * from address_$num$ order by seq_num desc
    </select>
-   
+   		<!--  가장 최신의 주소록을 가져오는 쿼리 -->
    <select id="oneselect" resultClass="mypage.AddressDTO" parameterClass="int">
    	  select * from address_$num$ where seq_num = (select max(seq_num) from address_$num$)
+   </select>
+   
+   <!--  seq_num을 받아 주소록을 가져오는 쿼리 -->
+   <select id="seq_numSelect" resultClass="mypage.AddressDTO" parameterClass="java.util.Map">
+   	  select * from address_$num$ where seq_num = #seq_num#
    </select>
    
 

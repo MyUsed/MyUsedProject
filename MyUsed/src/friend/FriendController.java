@@ -1,5 +1,4 @@
-package member;
-
+package friend;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,6 +14,8 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import member.MemberDTO;
+
 @Controller
 public class FriendController {
 	
@@ -29,6 +30,8 @@ public class FriendController {
 	@RequestMapping("/MyUsedAddFriend.nhn")
 	public String addFriend(HttpServletRequest request, int num, int mem_num, String id, String fri_categ){
 		String result = "";
+		
+		System.out.println(num+"/"+mem_num+"/"+id+"/"+fri_categ);
 		
 		/** 로그인한 사용자의 이름 가져오기(세션아이디 이용) */
 		HttpSession session = request.getSession();
@@ -49,7 +52,7 @@ public class FriendController {
 		int amongFriend = (Integer)sqlMapClientTemplate.queryForObject("friend.amongFriend", frimap);
 		if(amongFriend == 1){
 			
-			result = "/member/MyUsedAlreadyFriend.jsp";
+			result = "/friend/MyUsedAlreadyFriend.jsp";
 			
 		}else{
 
@@ -80,7 +83,7 @@ public class FriendController {
 			
 			sqlMapClientTemplate.insert("friend.addFriend", map2);
 			
-			result = "/member/MyUsedAddFriend.jsp";
+			result = "/friend/MyUsedAddFriend.jsp";
 			
 		}
 		
@@ -128,7 +131,7 @@ public class FriendController {
 			
 		}
 		request.setAttribute("num", num);
-		return "/member/MyUsedAgreeFriend.jsp";
+		return "/friend/MyUsedAgreeFriend.jsp";
 	}
 	
 	/** 상대방이 거절 눌렀을 경우 나의 테이블에서 삭제 */
@@ -143,42 +146,9 @@ public class FriendController {
 		sqlMapClientTemplate.delete("friend.deleteFriend", map);
 
 		
-		return "/member/MyUsedAgreeFriend.jsp";
+		return "/friend/MyUsedAgreeFriend.jsp";
 	}
-	
-/*	
-	@RequestMapping("/testfriend.nhn")
-	public String test(HttpServletRequest request ){
-		String sql = "";
-		
-		Map map = new HashMap();
-		map.put("num", 7);
-		
-		List friNumList = new ArrayList();
-		friNumList = sqlMapClientTemplate.queryForList("friend.friendNumList", map);
-		int size = friNumList.size();
-		System.out.println(size);
-		for(int i = 0 ; i < friNumList.size()-1 ; i++){
-			sql += "select * from friendlist_"+friNumList.get(i)+" union ";
-		}
-		sql = sql + "select * from friendlist_"+friNumList.get(size-1);
-		
-		System.out.println(sql);
 
-
-		Map sqlmap = new HashMap();
-		sqlmap.put("sql", sql);
-		
-		List all = new ArrayList();
-		all = sqlMapClientTemplate.queryForList("friend.all", sqlmap);
-		
-		
-		request.setAttribute("all", all);
-		
-		return "/member/test.jsp";
-	}*/
-
-	
 	
 	
 	

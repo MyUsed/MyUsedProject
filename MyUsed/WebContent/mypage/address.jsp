@@ -42,6 +42,7 @@
   	<form action="addrInsert.nhn" method="post" >
   			
   			<input type="hidden" name="num" value="${num}"/>
+  			
   	
   			<font face="Comic Sans MS" size="3" color="#4565A1"><strong>* 林家废 包府  *</strong></font> <br/><br/>
    			<input type="text" id="sample6_postcode" name ="addrNum" placeholder="快祈锅龋">

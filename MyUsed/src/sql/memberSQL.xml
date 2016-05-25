@@ -76,5 +76,16 @@
 		select onoff from friendlist_$num$, memberlist where friendlist_$num$.mem_num = memberlist.num
 	</select>
 	
+	<select id="All_image" resultClass="mypage.PictureDTO" parameterClass="int">
+		select * from 
+			(select mem_pic pic, reg from pic_$num$
+			 union 
+			select pro_pic pic, reg from propic_$num$
+			 union 
+			select profile_pic pic, reg from profilepic_$num$ where pic_num > 0
+			 union 
+			select cover_pic pic, reg from coverpic_$num$)
+ 		order by reg desc
+	</select>
 
 </sqlMap>

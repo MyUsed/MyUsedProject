@@ -1,4 +1,4 @@
-package member;
+package friend;
 
 public class FriendCategDTO {
 	
