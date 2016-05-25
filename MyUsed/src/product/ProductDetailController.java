@@ -42,6 +42,7 @@ public class ProductDetailController {
 		
 		proreplelist = sqlMap.queryForList("reple.proselect", num); // 댓글 가져오기 
 		
+		/*
 		String sql = "";
 		// 댓글이 0보다 클 때
 		if(proreplelist.size() > 0){
@@ -55,6 +56,7 @@ public class ProductDetailController {
 		
 		proreplelist = sqlMap.queryForList("reple.proSelectWithPic", sql);
 		
+		*/
 		
 		request.setAttribute("proreplelist",proreplelist);
 		
