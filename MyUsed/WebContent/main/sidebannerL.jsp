@@ -82,7 +82,7 @@
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/deliver.png" width="20" height="20">&nbsp;배송관리</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;찜하기</a>
+ 	<a href="choiceMain.nhn?mynum=${num}"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;찜하기</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a onclick="javascript:callAjax_friend('${num}')" style="cursor:pointer;"><img src="/MyUsed/images/friendSearch.png" width="20" height="20">&nbsp;친구찾기</a>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="choice">
+
+	<select id="mynum" resultClass="int" parameterClass="String">
+		select num from memberlist where id=#id#
+	</select>
+
+	<select id="categ" resultClass="String" parameterClass="int">
+		select categ from proboardlist where num=#num#
+	</select>
+	
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into choice_$mynum$ values(choice_$mynum$_seq.NEXTVAL, #num#, #content#, #price#, #pro_pic#, #mem_num#, #mem_name#, sysdate)
+	</insert>
+
+	<select id="all" resultClass="choice.choiceDTO" parameterClass="int">
+		select * from choice_$mynum$ order by reg desc
+	</select>
+	
+	<select id="num" resultClass="int" parameterClass="java.util.Map">
+		select num from choice_$mynum$ where c_no=#c_no#
+	</select>
+	
+	<select id="numcount" resultClass="int" parameterClass="java.util.Map">
+		select count(num) from choice_$mynum$ where num=#num#
+	</select>
+	
+	<select id="pro_pic" resultClass="String" parameterClass="int">
+		select pro_pic from proboardlist where num=#pro_num#
+	</select>
+
+	<select id="count" resultClass="int" parameterClass="int">
+		select count(*) from choice_$mynum$
+	</select>
+
+	<delete id="delete" parameterClass="java.util.Map">
+		delete from choice_$mynum$ where c_no=#c_no#
+	</delete>
+</sqlMap>

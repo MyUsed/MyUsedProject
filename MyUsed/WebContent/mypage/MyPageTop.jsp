@@ -62,8 +62,8 @@
 		<div id="menu1" onclick="menuMove('/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}')" onmouseover="mouseOver1()" onmouseout="mouseOut1()">
 			타임라인
 		</div>
-		<div id="menu2" onclick="menuMove('/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}')" onmouseover="mouseOver2()" onmouseout="mouseOut2()">
-			정보
+		<div id="menu2" onclick="javascript:window.location='choiceMain.nhn?mynum=${mynum}'" onmouseover="mouseOver2()" onmouseout="mouseOut2()">
+			찜
 		</div>	
 		<div id="menu3" onclick="moveFriendMenu('${mem_num}')" onmouseover="mouseOver3()" onmouseout="mouseOut3()">
 			친구

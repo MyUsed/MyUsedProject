@@ -363,6 +363,39 @@
         e.unwrap(); //감싼 <form> 태그를 제거
     }
     </script>
+    
+<script type="text/javascript">
+/* 찜하기 ajax */
+    function choiceAjax(coun){
+        $.ajax({
+	        type: "post",
+	        url : "choiceInsert.nhn",
+	        data: {	// url 페이지도 전달할 파라미터
+	        	num : $('#num'+coun).val(),
+       			mem_num : $('#mem_num'+coun).val(),
+       			mem_name : $('#mem_name'+coun).val(),
+       			price : $('#price'+coun).val(),
+       			pro_pic : $('#pro_pic'+coun).val(),
+       			content : $('#content'+coun).val(),
+	        },
+	        success: choice,	// 페이지요청 성공시 실행 함수
+	        error: whenError	//페이지요청 실패시 실행함수
+     	});
+    }
+    function choice(choice){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+    	if(confirm("이 게시물을 찜하시겠습니까?") == true){
+        	$("#ajaxChoice").html(choice);
+        	console.log(resdata);
+    	}
+        else{
+			return false;
+		}
+    }
+    function whenError(){
+        alert("Error");
+    }
+</script>
+    
 </td>
 </c:forEach>
 <!-- 이미지 미리보기  -->
@@ -379,7 +412,7 @@
 	 
 	 <br /> <br />
 
-<c:forEach var="prolist" items="${prolist}">
+<c:forEach var="prolist" items="${prolist}" varStatus="i">
 	
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
@@ -444,8 +477,19 @@
 		<tr bgcolor="#FFFFFF">
 		<td>
 		<hr width="100%"  > 
-		좋아요 /<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>/ 공유하기 / 
+		
+		
+		좋아요 /<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>/ 
+		<input type="button" id="choiceB${i.count}" onclick="choiceAjax('${i.count}')" value="찜하기"/>
+		<input type="hidden" name="num" id="num${i.count}" value="${prolist.num}" />
+		<input type="hidden" name="mem_num" id="mem_num${i.count}" value="${prolist.mem_num}" />
+		<input type="hidden" name="mem_name" id="mem_name${i.count}" value="${prolist.name}" />
+		<input type="hidden" name="price" id="price${i.count}" value="${prolist.price}" />
+		<input type="hidden" name="pro_pic" id="pro_pic${i.count}" value="${prolist.pro_pic}" />
+		<input type="hidden" name="content" id="content${i.count}" value="${prolist.content}" /> / 
 			<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/buyIcon.PNG" width="35" height="35" /></a>
+			<div id="ajaxChoice"></div>
+			
 		</td>
 		</tr>
 
