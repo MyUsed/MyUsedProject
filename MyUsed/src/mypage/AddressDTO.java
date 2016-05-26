@@ -6,7 +6,7 @@ public class AddressDTO {
 	
 	private int seq_num;
 	private String name;
-	private int ph;
+	private String ph;
 	private int addrNum;
 	private String addr;
 	private String addrr;
@@ -24,10 +24,10 @@ public class AddressDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPh() {
+	public String getPh() {
 		return ph;
 	}
-	public void setPh(int ph) {
+	public void setPh(String ph) {
 		this.ph = ph;
 	}
 	public int getAddrNum() {

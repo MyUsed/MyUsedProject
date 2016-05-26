@@ -10,6 +10,7 @@ public class MainProboardDTO {
 	private String categ1;
 	private String name;
 	private int likes;
+	private int reples;
 	private int price;
 	private Timestamp reg;
 	
@@ -18,6 +19,20 @@ public class MainProboardDTO {
 	
 	
 	
+	
+	
+	public String getContents() {
+		return contents;
+	}
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+	public int getReples() {
+		return reples;
+	}
+	public void setReples(int reples) {
+		this.reples = reples;
+	}
 	public void setNum(int num) {	this.num = num;}
 	public void setContent(String contents) {	this.contents = contents;}
 	public void setCateg0(String categ0) {this.categ0 = categ0;}

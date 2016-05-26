@@ -57,7 +57,8 @@
 		<font size="5" color="#4374D9"> ${addresslist.addr}</font> <br />
 		<br />
 		<font size="5" color="#4374D9"> ${addresslist.addrr}</font> <br />
-		
+								
+		<font size="5" color="#4374D9">( ${addresslist.ph} )</font> <br />
 
  	
 

@@ -108,6 +108,10 @@ public class MainController {
 		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 프로필
 																					// 사진을
 																					// 가져옴
+		
+		
+		
+		
 
 		mv.addObject("proDTO", proDTO);
 		mv.addObject("list", list);

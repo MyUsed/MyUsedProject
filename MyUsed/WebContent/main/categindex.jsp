@@ -66,9 +66,27 @@
 	</style>
 </head>
  	
+ 	<br /><br />
  	
 <form name="formId2" enctype="multipart/form-data" action="proSubmit.nhn" method="post" >
+	 <table align="center"  width="550" height="30">
+	 <tr bgcolor="#FFFFFF">
+	 <td align="center" colspan="8">
+	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' ${checked}>State
+     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'checked>Product
+	 </td>
+	 </tr>
 	 
+	
+<tr bgcolor="#FFFFFF">
+	<td align="left">
+	<center><font size="2" color="#3B5998">상품 등록</font> </center>
+		  <hr width="80%"  > 
+	
+	<br />
+	</td>
+</tr>
+</table> 
 	 
 
 	 <!--  일반상품 등록  -->

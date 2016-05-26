@@ -21,11 +21,11 @@
    
    <!-- num 을 사용해서 개인 DB insert sql -->
    <insert id="addContent" parameterClass="java.util.Map">
-      insert into board_$num$ values(board_$num$seq.NEXTVAL, #content#, #name# , default ,sysdate)
+      insert into board_$num$ values(board_$num$seq.NEXTVAL, #content#, #name# , default ,default, #num#, sysdate)
    </insert>
    <!-- num 을 사용해서 전체 DB insert sql -->
    <insert id="insertboardlist" parameterClass="java.util.Map">
-      insert into boardlist values(boardlist_seq.NEXTVAL, #content#, #mem_pic# , #name# , default ,#num#,sysdate)
+      insert into boardlist values(boardlist_seq.NEXTVAL, #content#, #mem_pic# , #name# , default ,default,#num#,sysdate)
    </insert>
    <!-- board_num 에서 가장 높은 num을 구하기 위해서  -->
    <select id="board_num" resultClass="int"  parameterClass="int">
@@ -52,11 +52,11 @@
 
 	<!-- num 을 사용해서 개인 pro DB insert sql -->
    <insert id="addProContent" parameterClass="java.util.Map">
-      insert into proboard_$num$ values(proboard_$num$seq.NEXTVAL,  #content#, #categ#, #name# , default ,#price#,sysdate)
+      insert into proboard_$num$ values(proboard_$num$seq.NEXTVAL,  #content#, #categ#, #name# , default ,default,#num#,#price#,sysdate)
    </insert>
    <!-- 전체proboardlist에 insert sql  -->
    <insert id="insertproboardlist" parameterClass="java.util.Map">
-      insert into proboardlist values(proboardlist_seq.NEXTVAL, #content#, #categ# , #name# , default ,#price#, #pro_pic#, #num#, sysdate)
+      insert into proboardlist values(proboardlist_seq.NEXTVAL, #content#, #categ# , #name# , default , default, #price#, #pro_pic#, #num#, sysdate)
    </insert>
     <!-- proboard_num 에서 가장 높은 num을 구하기 위해서  -->
    <select id="proboard_num" resultClass="int"  parameterClass="int">

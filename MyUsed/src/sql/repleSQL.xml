@@ -7,6 +7,11 @@
    <insert id="insert" parameterClass="java.util.Map">
       insert into boardreple_$boardnum$ values(boardreple_$boardnum$seq.NEXTVAL,#mem_num#, #content#, #name# ,sysdate)
    </insert>
+   <!-- 전체 boardlist에서 댓글값을 증가 시키는 sql  -->
+   <update id="update" parameterClass="int">
+   	   update boardlist set reples = reples+1 where num = #boardnum#
+   </update>
+   
 	
 	<!-- boardreple의 내용을 가져옴  -->
 	<select id="select" resultClass="main.RepleDTO" parameterClass="int">
@@ -64,6 +69,19 @@
     <select id="my_pic" resultClass="main.MainpicDTO" parameterClass="java.util.Map">
     	select * from pic_$num$
     </select>
+    
+    <!-- 댓글 개수를 가져오는 sql -->
+    <select id="count" resultClass="int" parameterClass="int">
+    	select count(*) from boardreple_$num$
+    </select>
+    
+    
+    <!--pro댓글 개수를 가져오는 sql -->
+    <select id="procount" resultClass="int" parameterClass="int">
+    	select count(*) from proboardreple_$num$
+    </select>
+   
+   
    
    
    
@@ -92,10 +110,15 @@
 	<select id="proselect" resultClass="main.RepleDTO" parameterClass="int">
 		select * from  proboardreple_$num$ order by reg desc
 	</select>	
-	
+	<!-- 상품 댓글을 insert시키는 sql -->
    <insert id="proinsert" parameterClass="java.util.Map">
       insert into proboardreple_$proboardnum$ values(proboardreple_$proboardnum$seq.NEXTVAL,#mem_num#, #content#, #name# ,sysdate)
    </insert>
+	
+	<!-- 전체 proboardlist 댓글 수를 증가 시키는 sql -->
+	<update id="proupdate" parameterClass="int">
+   	   update proboardlist set reples = reples+1 where num = #proboardnum#
+    </update>
 	
    <select id="proSelectWithPic" resultClass="main.RepleDTO" parameterClass="String">
    		select reple.seq_num, reple.mem_num, reple.content, reple.name, reple.reg, propic.profile_pic  from proboardreple_101 reple , (

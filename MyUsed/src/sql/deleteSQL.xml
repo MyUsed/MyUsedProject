@@ -33,6 +33,11 @@
 	<delete id="RepleDelete" parameterClass="java.util.Map">
 		delete from boardreple_$mem_num$ where seq_num = #seq_num#
 	</delete>
+	<!-- 전체 boarlist에서 댓글 갯수 감소 -->
+	<update id="listRepleDelete" parameterClass="int">
+		update boardlist set reples = reples-1 where num = #boardnum#
+	</update>
+	
 	
 	
 	
@@ -51,6 +56,13 @@
 	<delete id="proRepleDelete" parameterClass="java.util.Map">
 		delete from proboardreple_$proboardnum$ where seq_num = #seq_num#
 	</delete>
+	
+		<!-- 전체 proboarlist에서 댓글 갯수 감소 -->
+	<update id="prolistRepleDelete" parameterClass="int">
+		update proboardlist set reples = reples-1 where num = #boardnum#
+	</update>
+	
+	
 	
 	
 	

@@ -91,7 +91,11 @@ public class ProductDetailController {
 	    Map picmap = new HashMap();
 		picmap.put("mem_num", session_num);   
 		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 댓글단 프로필 사진을 가져옴
-
+		
+		int procount = (int)sqlMap.queryForObject("reple.procount",num);
+		
+		request.setAttribute("procount", procount);
+		request.setAttribute("session_num", session_num);
 		request.setAttribute("profilepic", profilepic);
 		request.setAttribute("propicList", propicList);
 		request.setAttribute("productDTO", productDTO);

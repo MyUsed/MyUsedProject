@@ -10,6 +10,8 @@
 								content varchar2(4000),
 								name varchar2(4000),
 								likes number default 0,
+								reples number default 0,
+								mem_num number,
 								reg date default sysdate
 							 	)
 	</statement>
@@ -110,7 +112,7 @@
 		create table address_$num$ (
 								seq_num number not null primary key,
 								name varchar2(4000),
-								ph number,
+								ph varchar2(4000),
 								addrnum number,
 								addr varchar2(4000),
 								addrr varchar2(4000),
@@ -144,6 +146,8 @@
 								categ varchar2(4000),
 								name varchar2(4000),
 								likes number default 0,
+								reples number default 0,
+								mem_num number,
 								price number,
 								reg date default sysdate
 							     )

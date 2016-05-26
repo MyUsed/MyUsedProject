@@ -216,10 +216,10 @@
 		<td>
 		<hr width="100%"  > 
 		
-		좋아요  / 공유하기 / <a href="reple.nhn?num=${list.num}"><img src="/MyUsed/images/replego.PNG"/></a>
+		좋아요  / 공유하기 / <a href="reple.nhn?num=${list.num}"><img src="/MyUsed/images/reple.PNG" width="25" height="20"/><font size="2" color="#9A9DA4">댓글 ${list.reples}개</font></a>
 		</td>
 		</tr>
-		
+				
 		<tr bgcolor="#FFFFFF">
 		<td>
 		
@@ -408,7 +408,7 @@
 		</c:if>
 		
 		
-		 <font size="5" color="#1F51B7" >[${prolist.price}\] </font> <br /><br />
+		 <font size="5" color="#1F51B7" >${prolist.price}</font> <br /><br />
 		
 		<font size="3" color="#0042ED" >
 		-------------------------------- * 상세설명 * -------------------------------- 
@@ -444,8 +444,8 @@
 		<tr bgcolor="#FFFFFF">
 		<td>
 		<hr width="100%"  > 
-		좋아요 /<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/replego.PNG"/></a>/ 공유하기 / 
-			<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/buyIcon.PNG" width="30" height="30" /></a>
+		좋아요 /<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>/ 공유하기 / 
+			<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/buyIcon.PNG" width="35" height="35" /></a>
 		</td>
 		</tr>
 

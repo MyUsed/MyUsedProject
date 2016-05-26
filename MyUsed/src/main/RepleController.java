@@ -75,6 +75,11 @@ public class RepleController {
 		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // ÇÁ·ÎÇÊ »çÁøÀ» °¡Á®¿È
 
 		
+		// ´ñ±Û °¹¼ö¸¦ °¡Á®¿È
+		
+		int count = (int)sqlMap.queryForObject("reple.count",num);
+		
+		mv.addObject("count",count);
 		mv.addObject("session_num",session_num);
 		mv.addObject("boardproDTO",boardproDTO);
 		mv.addObject("proDTO",proDTO);
@@ -86,6 +91,7 @@ public class RepleController {
 		mv.addObject("time",time);
 		mv.addObject("mem_num",mem_num);
 		mv.addObject("board_pic",board_pic);
+		
 		mv.setViewName("/main/reple.jsp");
 		return mv;
 	}
@@ -112,6 +118,7 @@ public class RepleController {
 		map.put("name", re_name);
 		
 		sqlMap.insert("reple.insert",map);   // ´ñ±Û »ðÀÔ 
+		sqlMap.update("reple.update",boardnum); // ÀüÃ¼ boardlist¿¡ reple Ãß°¡;
 		
 		
 		mv.setViewName("reple.nhn?num="+boardnum);
@@ -141,6 +148,7 @@ public class RepleController {
 		
 		
 		sqlMap.insert("reple.proinsert",promap);   // ´ñ±Û »ðÀÔ 
+		sqlMap.update("reple.proupdate",proboardnum); // ÀüÃ¼ boardlist¿¡ reple Ãß°¡;
 		
 		mv.setViewName("ProductDetailView.nhn?num="+proboardnum);
 		return mv;

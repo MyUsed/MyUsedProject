@@ -51,7 +51,7 @@
 			<input type="text" id="sample6_address2" name="addrr" placeholder="상세주소" size="60"> <br/> <br/>
 			
 			<input type="text" id="name" name="name" placeholder="받으실분"/>
-			<input type="text" id="ph" name="ph" placeholder="핸드폰번호 [-제외]"/> <br /><br/>
+			<input type="text" id="ph" name="ph" placeholder="핸드폰번호 [-포함]"/> <br /><br/>
 			<input type="image" src="/MyUsed/images/checkIcon.png" width="50" height="50" title="추가">
 	</form>
 			

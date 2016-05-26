@@ -6,6 +6,7 @@ public class MainboardDTO {
 	 
 	private int num;
 	private String likes;
+	private int reples;
 	private int mem_num;
 	private String content;
 	private String categ;
@@ -17,6 +18,14 @@ public class MainboardDTO {
 	
 	
 	
+	
+	
+	public int getReples() {
+		return reples;
+	}
+	public void setReples(int reples) {
+		this.reples = reples;
+	}
 	public void setNum(int num) {this.num = num;}
 	public void setLikes(String likes) {this.likes = likes;}
 	public void setMem_num(int mem_num) {this.mem_num = mem_num;}

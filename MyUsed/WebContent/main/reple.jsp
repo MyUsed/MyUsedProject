@@ -72,7 +72,7 @@ ${content}  <br /><br />
 <tr >
 <td  bgcolor="#F6F7F9">
 	  <hr width="99%"  > 
-좋아요 / 댓글 / 공유
+좋아요 /<font size="2" color="#9A9DA4"> 댓글 ${count}개 </font>/ 공유
 	  <hr width="99%"  > 
 </td>
 
@@ -87,9 +87,14 @@ ${content}  <br /><br />
 <font face="Comic Sans MS" size="3" color="#4565A1"> ${replelist.name} </font>
 </a>
  ${replelist.content} 
+ 
+ <c:if test="${session_num == replelist.mem_num}">
  <a href="repleDelete.nhn?seq_num=${replelist.seq_num}&boardnum=${num}" onclick="javasciprt:deleteCheck()">
  <img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 0.5em;" align="right" width="15"  height="15" title="삭제하기"/>
  </a>
+ </c:if>
+ 
+ 
  <br/>
  <font size="2" color="#9A9DA4">
   <fmt:formatDate value="${replelist.reg}" type="both" /> 

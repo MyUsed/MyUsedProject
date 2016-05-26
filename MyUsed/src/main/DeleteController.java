@@ -90,6 +90,7 @@ public class DeleteController {
 		reMap.put("seq_num", seq_num);
 		reMap.put("mem_num", boardnum);
 		sqlMap.delete("delete.RepleDelete",reMap); // 시퀀스번호로 댓글 삭제;
+		sqlMap.update("delete.listRepleDelete",boardnum); // boardlist에서 댓글 갯수 감소
 		
 	
 		
@@ -109,7 +110,7 @@ public class DeleteController {
 		reMap.put("seq_num", seq_num);
 		reMap.put("proboardnum", boardnum);
 		sqlMap.delete("delete.proRepleDelete",reMap); // 시퀀스번호로 댓글 삭제;
-		
+		sqlMap.delete("delete.prolistRepleDelete",boardnum); // boardlist에서 댓글 갯수 감소
 	
 		
 		

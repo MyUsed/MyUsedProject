@@ -136,6 +136,7 @@ $(document).ready(function(){
  		</tr>
  		
  		<tr height="30">
+ 		<td style="padding:0 0 0 0px;"  bgcolor=#EBE8FF ><font size="2" color="#9A9DA4" ><strong>댓글 ${procount}개</strong></font></td>
 			<td align="right" style="padding:0 0 0 20px;" bgcolor=#EBE8FF colspan="2">
 				<font face="Comic Sans MS" size="5" color="#4565A1"><strong>${productDTO.price} 원 </strong> </font>
 				<a href="/MyUsed/productOrder.nhn?mem_num=${productDTO.mem_num}&price=${productDTO.price}">
@@ -153,9 +154,13 @@ $(document).ready(function(){
 						<font face="Comic Sans MS" size="3" color="#4565A1"> ${proreplelist.name}</font>
 					</a>
  					${proreplelist.content}
+ 					
+ 					<c:if test="${session_num == proreplelist.mem_num}">
  					<a href="prorepleDelete.nhn?seq_num=${proreplelist.seq_num}&boardnum=${num}" onclick="javasciprt:deleteCheck()">
  	<img src="/MyUsed/images/deleteIcon.PNG" style="margin-top:6px; margin-right: 0.5em;" align="right" width="15"  height="15" title="삭제하기" />
  					</a>
+ 					</c:if>
+ 					
  					<br/>
  					 <font size="2" color="#9A9DA4">
   				<fmt:formatDate value="${proreplelist.reg}" type="both" /> 
