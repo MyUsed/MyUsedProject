@@ -479,15 +479,18 @@
 		<hr width="100%"  > 
 		
 		
-		¡¡æ∆ø‰ /<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">¥Ò±€ ${prolist.reples}∞≥</font></a>/ 
-		<input type="button" id="choiceB${i.count}" onclick="choiceAjax('${i.count}')" value="¬Ú«œ±‚"/>
+		¡¡æ∆ø‰ 
+		<input type="image" src="/MyUsed/images/chiceIcon.png" width="20" height="20" id="choiceB${i.count}" onclick="choiceAjax('${i.count}')" title="¬Ú«œ±‚"/>
 		<input type="hidden" name="num" id="num${i.count}" value="${prolist.num}" />
 		<input type="hidden" name="mem_num" id="mem_num${i.count}" value="${prolist.mem_num}" />
 		<input type="hidden" name="mem_name" id="mem_name${i.count}" value="${prolist.name}" />
 		<input type="hidden" name="price" id="price${i.count}" value="${prolist.price}" />
 		<input type="hidden" name="pro_pic" id="pro_pic${i.count}" value="${prolist.pro_pic}" />
-		<input type="hidden" name="content" id="content${i.count}" value="${prolist.content}" /> / 
-			<a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/buyIcon.PNG" width="35" height="35" /></a>
+		<input type="hidden" name="content" id="content${i.count}" value="${prolist.content}" /> 
+		
+		 <a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">¥Ò±€ ${prolist.reples}∞≥</font></a>
+		
+			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="35" height="35" /></a>
 			<div id="ajaxChoice"></div>
 			
 		</td>

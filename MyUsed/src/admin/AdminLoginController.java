@@ -29,9 +29,10 @@ public class AdminLoginController {
 		Map map = new HashMap();
 		map.put("id", id);
 		map.put("pw", pw);
+		System.out.println("입력받은 id = "+ id);
 		
-		
-		
+		int check = (int)sqlMap.queryForObject("adminLogin.checkId",id);
+		System.out.println("아이디가 있는지여부 = "+check);
 		mv.setViewName("/admin/AdminPage.jsp");	
 		return mv;
 }
