@@ -17,7 +17,7 @@
 	<sqlMap resource="/sql/productSQL.xml"/>
 	<sqlMap resource="/sql/addressSQL.xml"/>
 	<sqlMap resource="/sql/choiceSQL.xml"/>
-	<sqlMap resource="/sql/adminLoginSQL.xml"/>
+	<sqlMap resource="/sql/adminSQL.xml"/>
 	<!-- <sqlMap resource="/sql/chatSQL.xml"/> -->
 	
 

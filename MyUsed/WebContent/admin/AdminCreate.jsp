@@ -1,0 +1,45 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<strong>* 관리자 계정 생성 *</strong> <br/> <br />
+	
+	
+	<form action="AdminCreate.nhn" method="post">
+	
+	<select name="grade">
+		<option>-관리자등급-</option>
+		<option>Master</option>
+		<option>팀장</option>
+		<option>과장</option>
+		<option>대리</option>
+	</select>
+	<select name="part">
+		<option>-부서-</option>
+		<option>회원관리</option>
+		<option>페이지관리</option>
+		<option>게시글관리</option>
+		<option>배송관리</option>
+		<option>광고관리</option>
+		<option>고객센터관리</option>
+	</select>
+	
+	<br/>
+	<input type="text" name="id"  placeholder="ID"/> <br/>
+	<input type="text" name="pw"  placeholder="PASSWORD"/> <br/>
+	<input type="text" name="name"  placeholder="NAME"/> <br/> <br/>
+	<input type="submit" value="생성하기"/>
+	
+	</form>
+	
+
+
+
+</body>
+</html>

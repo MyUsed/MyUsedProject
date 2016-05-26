@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="admin">
+	
+	
+	<!-- id가 들어있는지 확인하는 sql  -->
+	<select id="checkId" resultClass="int" parameterClass="java.util.Map">
+		select count(*) from adminlist where id=#id# and pw=#pw#
+	</select>
+	
+	 <!-- 개인사진 db에 저장하기 위해  -->
+   	<insert id="adminCreate" parameterClass="admin.AdminListDTO">
+      insert into adminlist values(adminlist_seq.NEXTVAL, #id#, #pw#, #name#, #grade#, #part#, sysdate)
+   	</insert>
+   	
+   	<select id="adminSelect" resultClass="admin.AdminListDTO">
+   	  select * from adminlist order by seq_num desc
+   	</select>
+
+
+</sqlMap>
