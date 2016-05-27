@@ -13,9 +13,25 @@
       insert into adminlist values(adminlist_seq.NEXTVAL, #id#, #pw#, #name#, #grade#, #part#, sysdate)
    	</insert>
    	
+   	<!-- 관리자 정보를 가져오는 sql -->
    	<select id="adminSelect" resultClass="admin.AdminListDTO">
    	  select * from adminlist order by seq_num desc
    	</select>
+   	
+   	<!-- 관리자 게정 삭제 하는 sql -->
+   	<delete id="adminDelete" parameterClass="String">
+   	  delete from adminlist where id = #id#
+   	</delete>
+   	
+   	<!-- 계정 하나의 정보를 가져오는 sql -->
+   	<select id="adminMemSelect" parameterClass="int" resultClass="admin.AdminListDTO">
+   		select * from adminlist where seq_num = #seq_num#
+   	</select>
+   	
+   	<!-- admin의 정보수정  -->
+   	<update id="updateAdmin" parameterClass="java.util.Map">
+   		update adminlist set grade = #grade# , part = #part# where seq_num=#seq_num#
+   	</update>
 
 
 </sqlMap>

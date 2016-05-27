@@ -37,7 +37,7 @@
 	</td></tr>
 	<tr><td>
 	<strong>- 광고관리</strong> <br/>
-			광고등록 <br/>
+			<a href="/MyUsed/admin_banner/insertBanner.jsp">광고등록</a> <br/>
 			광고수정 <br/>
 			광고삭제 <br/>
 			광고심사 <br/>

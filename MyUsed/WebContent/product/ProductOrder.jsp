@@ -17,7 +17,6 @@ function adrNum(){
  var sample = document.getElementsByName('address');
  for(var i=0;i<sample.length;i++){
   if(sample[i].checked == true){
-   
    location.href="/MyUsed/orderDetail.nhn?seq_num="+sample[i].value+"&num="+${num}+"&price="+${price};
   }
  }
@@ -48,7 +47,7 @@ function adrNum(){
   			<font face="Comic Sans MS" size="3" color="#4565A1"><strong>* 배송받을 주소 *</strong></font> <br/><br/>
    			<input type="text" id="sample6_postcode" name ="addrNum" placeholder="우편번호">
 			<img src="/MyUsed/images/AddressSearch.PNG" onclick="sample6_execDaumPostcode()" width="33" height="33" border="0" style='cursor:pointer;' title="우편번호찾기"><br />
-			<input type="text" id="sample6_address" name="addr" placeholder="주소" size="50"><br />
+			<input type="text" id="sample6_address" name="addr" placeholder="주소"                                                  size="50"><br />
 			<input type="text" id="sample6_address2" name="addrr" placeholder="상세주소" size="50">
 
 			<input type="text" id="name" name="name" placeholder="받으실분"/>
