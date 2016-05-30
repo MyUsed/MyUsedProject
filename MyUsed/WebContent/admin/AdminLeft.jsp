@@ -37,10 +37,10 @@
 	</td></tr>
 	<tr><td>
 	<strong>- 광고관리</strong> <br/>
-			<a href="/MyUsed/admin_banner/insertBanner.jsp">광고등록</a> <br/>
+			<a href="/MyUsed/insertBanner.nhn">광고등록</a> <br/>
 			광고수정 <br/>
 			광고삭제 <br/>
-			광고심사 <br/>
+			<a href="/MyUsed/applyBanner.nhn">광고심사</a> <br/>
 	</td></tr>
 	<tr><td>
 	<strong>- 고객센터관리</strong> <br/>

@@ -2,8 +2,9 @@
 
 	// 관리자 계정 생성 Ajax
 	function createAjax(){
-    	
+		$('#AdminSearchReturn').attr('style', 'display:none');
 		$('#adminlist').attr('style', 'display:block');
+		
 		
         $.ajax({
 	        type: "post",
@@ -91,6 +92,12 @@
     }
     
    
+
+ 
+   
+   
+    
+    
     
     
 

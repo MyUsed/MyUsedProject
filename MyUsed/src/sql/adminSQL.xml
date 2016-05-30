@@ -32,6 +32,30 @@
    	<update id="updateAdmin" parameterClass="java.util.Map">
    		update adminlist set grade = #grade# , part = #part# where seq_num=#seq_num#
    	</update>
+   	
+   	<!-- admin 등급 검색  -->
+   	<select id="searchGrade" parameterClass="String" resultClass="admin.AdminListDTO">
+   		select * from adminlist where grade = #grade# order by seq_num desc
+   	</select>
+   	  	<!-- admin part 검색  -->
+   	<select id="searchPart" parameterClass="String" resultClass="admin.AdminListDTO">
+   		select * from adminlist where part = #part# order by seq_num desc
+   	</select>
+   	 	<!-- admin part 검색  -->
+   	<select id="GradePart" parameterClass="java.util.Map" resultClass="admin.AdminListDTO">
+   		select * from adminlist where part = #part# and grade = #grade# order by seq_num desc
+   	</select>
+   		<!-- admin id 검색  -->
+   	<select id="searchAdminId" parameterClass="String" resultClass="admin.AdminListDTO">
+   		select * from adminlist where id like '%'||#search#||'%' order by seq_num desc
+   	</select>
+   			<!-- admin name 검색  -->
+   	<select id="searchAdminName" parameterClass="String" resultClass="admin.AdminListDTO">
+   		select * from adminlist where name like '%'||#search#||'%' order by seq_num desc
+   	</select>
+
+
+
 
 
 </sqlMap>

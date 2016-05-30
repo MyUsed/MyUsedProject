@@ -20,7 +20,9 @@ public class AdminMemberController {
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 
 	AdminListDTO adminDTO = new AdminListDTO();
-	private List<AdminListDTO> list = new ArrayList<AdminListDTO>();;	
+	private List<AdminListDTO> list = new ArrayList<AdminListDTO>();;
+	private List<AdminListDTO> partlist = new ArrayList<AdminListDTO>();;
+	private List<AdminListDTO> GradePartlist = new ArrayList<AdminListDTO>();;	
 	
 	
 	@RequestMapping("/AdminMember.nhn")
@@ -110,6 +112,37 @@ public class AdminMemberController {
 	}
 	
 	
+	@RequestMapping("/AdminSearch.nhn")
+	public ModelAndView adminSearch(String grade , String part , String search, String ser){
+		ModelAndView mv = new ModelAndView();
+		
+		
+	
+		Map map = new HashMap();
+		map.put("grade", grade);
+		map.put("part", part);
+		list = sqlMap.queryForList("admin.GradePart",map);
+		
+		if(part.equals("null")){
+			list = sqlMap.queryForList("admin.searchGrade",grade);				
+		}
+		if(grade.equals("null")){
+			list = sqlMap.queryForList("admin.searchPart",part);
+		}
+		
+		if(ser.equals("id")){
+			list = sqlMap.queryForList("admin.searchAdminId",search);
+		}
+		
+		if(ser.equals("name")){
+			list = sqlMap.queryForList("admin.searchAdminName",search);
+		}
+		
+		
+		mv.addObject("list",list);
+		mv.setViewName("/admin/AdminSearch.jsp");
+		return mv;
+	}
 	
 	
 	

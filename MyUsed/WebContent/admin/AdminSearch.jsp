@@ -5,48 +5,32 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-
-
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>검색 결과</title>
 </head>
 <body>
-	<h2> * 관리자 등급조정 * </h2>
 
-	<!-- 등급 조정  -->
-	<div id="AdminupdateReturn"></div>
-	
-	<br/>
-	
-	 <table border="1" >
-	
-	 <tr align="center">
+<h4><strong>- 검색결과 - </strong></h4>
+
+
+<table bgcolor="#EAEAEA" border="1" >
+ 	<tr align="center" >
    		<td><strong>ID</strong></td><td><strong>PW</strong></td><td><strong>NAME</strong></td>
-   		<td><strong>GRADE</strong></td><td><strong>PART</strong></td><td><strong>DATE</strong></td><td><strong>조정</strong></td>
-   		</tr>
-  		
-	 	<c:forEach var="list" items="${list}" varStatus="i">
+   		<td><strong>GRADE</strong></td><td><strong>PART</strong></td><td><strong>DATE</strong></td>
+   	</tr>
+   	
+   	 <c:forEach var="list" items="${list}">
 	 <tr>
-	 		
 	 		<td>${list.id}</td> 
 	 		<td>${list.pw}</td>
 	 		<td>${list.name}</td> 
 	 		<td>${list.grade}</td>
-	 		<td>${list.part}</td>	
+	 		<td>${list.part}</td>
 	 		<td><fmt:formatDate value="${list.reg}" type="date" /></td>
-	 		<c:if test="${list.seq_num != 1}"><td><input type="button" value="수정" onclick="AdiminupdateAjax(${list.seq_num});"/></td></c:if>
 	  </tr>
-	  
-	 	</c:forEach>
+	  </c:forEach>
 	
-	 
-	 </table>
-	
-		
-	
-	
-	
-	
-	
-	
-	
+</table>
+
 </body>
 </html>

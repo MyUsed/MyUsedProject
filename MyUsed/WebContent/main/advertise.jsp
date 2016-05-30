@@ -16,6 +16,11 @@
 	<a href="http://www.iei.or.kr/"><u>국비지원 바로가기</u></a>
 	</td>
 	</tr>
+	<tr bgcolor="#FFFFFF">
+	<td align="right">
+		<a href="/MyUsed/adver.nhn"><font size="1">광고신청/접수</font></a>
+	</td>
+	</tr>
 	</table>
 	
 	

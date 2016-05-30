@@ -67,9 +67,7 @@ public class AdminLoginController {
 	@RequestMapping("/Admin.nhn")
 	public ModelAndView adminPage(){
 		ModelAndView mv = new ModelAndView();	
-		
-		
-		
+
 		mv.setViewName("/admin/AdminPage.jsp");	
 		return mv;
 	}
