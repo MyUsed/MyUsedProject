@@ -1,6 +1,8 @@
 package admin;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +24,7 @@ public class AdminBannerController {
 	
 	private ProfilePicDTO proDTO = new ProfilePicDTO();
 	private ProfilePicDTO boardproDTO = new ProfilePicDTO();
+	private List<BannerApplyDTO> bannerlist = new ArrayList<BannerApplyDTO>();;
 	
 	
 	@RequestMapping("/adver.nhn")
@@ -39,12 +42,31 @@ public class AdminBannerController {
 		return mv;
 	}
 	
+	// 신청된 베너 전체보기
 	@RequestMapping("/applyBanner.nhn")
 	public ModelAndView applybanner(){
 		ModelAndView mv = new ModelAndView();
+		
+		bannerlist = sqlMap.queryForList("admin.selectApply",null);
+		
+		mv.addObject("bannerlist",bannerlist);
 		mv.setViewName("/admin_banner/applyBanner.jsp");
 		return mv;
 	}
+	
+	// 상세보기 
+	@RequestMapping("/applyDetail.nhn")
+	public ModelAndView applyDetail(int seq_num){
+		ModelAndView mv = new ModelAndView();
+		BannerApplyDTO applyDTO = new BannerApplyDTO();
+		applyDTO = (BannerApplyDTO)sqlMap.queryForObject("admin.detailApply",seq_num);
+		
+		
+		mv.addObject("applyDTO",applyDTO);
+		mv.setViewName("/admin_banner/applyDetail.jsp");
+		return mv;
+	}
+	
 	@RequestMapping("/insertBanner.nhn")
 	public ModelAndView insertbanner(){
 		ModelAndView mv = new ModelAndView();

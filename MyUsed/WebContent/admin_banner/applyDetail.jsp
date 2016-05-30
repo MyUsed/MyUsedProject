@@ -15,26 +15,46 @@
 <!-- ------------------------------------------------------------------------- -->
 <center>
 	
-	<h2>* 접수된 광고목록 *</h2>
+	<h2>* ${applyDTO.hostname} *</h2>
 	
 	
+		<table width="800" height="500">
+		
+			<tr>
+			<td colspan="2" height="10" align="center">
+				<strong>광고 정보</strong>
+			</td>
+			</tr>
+			<tr>
+			
+			<td rowspan="2" align="center">
+			<img src="${applyDTO.img}" width="250" height="400"/>
+			</td>
+			<td align="center">
+			<strong>${applyDTO.hostname}</strong><br/>
+		    ${applyDTO.name} <br/>
+		    ${applyDTO.ph}<br/>
+		    ${applyDTO.email}<br/>
+
+		    <a href="http://${applyDTO.url}">http://${applyDTO.url}</a>
+			</td>
+			
+			</tr>
+			<tr>
+			
+			<td align="center">
+						<strong> 내용 </strong> <br /><br/><br/>
+				${applyDTO.content}
+			
+			</td>
+			
+			
+			</tr>
+			
+		</table>
 	
 		
 	
-	<table border="1">
-		<tr align="center" bgcolor="#EAEAEA">
-		<td><strong>업체명</strong></td><td><strong>성함</strong></td><td><strong>URL</strong></td>
-		<td><strong>IMG</strong></td><td><strong>신청일</strong></td>
-		</tr>
-		<tr>
-		<c:forEach var="bannerlist" items="${bannerlist}">
-		<td><strong>${bannerlist.hostname}</strong></td><td>${bannerlist.name}</td><td><a href="http://${bannerlist.url}">${bannerlist.url}</a></td>
-		<td><a href="applyDetail.nhn?seq_num=${bannerlist.seq_num}"><img src="${bannerlist.img}" width="50" height="80" /></a></td>
-		<td><fmt:formatDate value="${bannerlist.reg}" type="date"/></td>
-		</c:forEach>
-		</tr>
-	
-	</table>
 	
 
 </center>

@@ -49,10 +49,21 @@
    	<select id="searchAdminId" parameterClass="String" resultClass="admin.AdminListDTO">
    		select * from adminlist where id like '%'||#search#||'%' order by seq_num desc
    	</select>
-   			<!-- admin name 검색  -->
+   		<!-- admin name 검색  -->
    	<select id="searchAdminName" parameterClass="String" resultClass="admin.AdminListDTO">
    		select * from adminlist where name like '%'||#search#||'%' order by seq_num desc
    	</select>
+   	
+   		<!-- bannerapply 목록을 꺼내는 쿼리 -->
+   	<select id="selectApply" resultClass="admin.BannerApplyDTO">
+   		select * from bannerapply order by seq_num desc
+   	</select>
+   		<!-- bannerapply 디테일을 꺼내는 쿼리 -->
+   	<select id="detailApply" resultClass="admin.BannerApplyDTO" parameterClass="int">
+   		select * from bannerapply where seq_num = #seq_num#
+   	</select>
+   	
+   	
 
 
 

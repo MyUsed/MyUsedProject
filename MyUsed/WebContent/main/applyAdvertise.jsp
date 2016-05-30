@@ -50,9 +50,8 @@
        		 <img src="/MyUsed/images/cameraUp.PNG" width="35" height="35" style='cursor:pointer;' title="사진"/>
         		</label>
    		  		<input type="file" name="image" id="image" style='display: none;'>
-		    <script type="text/javascript">
+    <script type="text/javascript">
 
-    
     $('#image').on('change', function() {
         
         ext = $(this).val().split('.').pop().toLowerCase(); //확장자
@@ -83,8 +82,7 @@
         //DOM에서 제공하는 초기화 메서드 reset()을 호출
         e.unwrap(); //감싼 <form> 태그를 제거
     }
-    
-    
+
     </script>
 		    
 			</td>
