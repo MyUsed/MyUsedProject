@@ -64,8 +64,30 @@
    	</select>
    	
    	
-
-
+   		<!-- 광고 신청접수 삽입 -->
+   	<insert id="insertApply" parameterClass="admin.BannerApplyDTO">
+   		insert into bannerapply values(bannerapply_seq.NEXTVAL , #hostname# , #name#, #url#, 
+   		#img#, #content#, #ph#, #email#, default, sysdate )
+   	</insert>
+   		<!-- 광고 등록 -->
+   	<insert id="insertBanner" parameterClass="java.util.Map">
+   		insert into bannerlist values(bannerlist_seq.NEXTVAL,#url#,#img#,#content#,default,sysdate)
+   	</insert>
+		<!-- 상태 업데이트  -->
+	<update id="updateState" parameterClass="int">
+		update bannerapply set state = state+1 where seq_num = #seq_num#
+	</update>
+		<!-- delete 업데이트 -->
+	<delete id="deleteApply" parameterClass="int">
+		delete from bannerapply where seq_num = #seq_num#
+	</delete>
+	
+	  <!-- 현재 진행중인 광고 꺼내기 -->
+   <select id="bannerIng" resultClass="admin.BannerApplyDTO">
+    select * from bannerlist where seq_num = (select max(seq_num)from bannerlist) 
+   </select>
+   
+	
 
 
 

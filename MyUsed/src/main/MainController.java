@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.BannerApplyDTO;
 import friend.FriendCategDTO;
 import friend.FriendDTO;
 import member.MemberDTO;
@@ -109,10 +110,14 @@ public class MainController {
 																					// »çÁøÀ»
 																					// °¡Á®¿È
 		
+		// ±¤°í °¡Á®¿È 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)sqlMap.queryForObject("main.bannerSelect",null);
 		
 		
 		
-
+		
+		mv.addObject("banner",banner);
 		mv.addObject("proDTO", proDTO);
 		mv.addObject("list", list);
 		mv.addObject("prolist", prolist);

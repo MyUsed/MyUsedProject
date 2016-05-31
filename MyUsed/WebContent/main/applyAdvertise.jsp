@@ -97,7 +97,7 @@
 			
 			  
    		  
-			<textarea name="" rows="5" cols="35" placeholder="내용" ></textarea> <br /> <br />
+			<textarea name="content" rows="5" cols="35" placeholder="내용" ></textarea> <br /> <br />
 			
 			Http://<input type="text" name="url" style="padding:2px"  placeholder="URL" size="24" />  <br/> 
 			</td>
@@ -108,6 +108,7 @@
 			
 			<td colspan="2" align="center">
 			<input type="image" src="/MyUsed/images/okIcon.png" style='cursor:pointer;' width="50" height="50" title="등록하기" />
+
 			</td>
 			
 			

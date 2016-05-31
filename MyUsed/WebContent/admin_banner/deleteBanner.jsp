@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>광고 심사 페이지</title>
+<title>광고 삭제 페이지</title>
 </head>
 <body>
 
@@ -15,7 +15,7 @@
 <!-- ------------------------------------------------------------------------- -->
 <center>
 	
-	<h2>* 접수된 광고목록 *</h2>
+	<h2>* 삭제할 광고목록 *</h2>
 	
 	
 	
@@ -24,7 +24,7 @@
 	<table border="1">
 		<tr align="center" bgcolor="#EAEAEA">
 		<td><strong>업체명</strong></td><td><strong>성함</strong></td><td><strong>URL</strong></td>
-		<td><strong>IMG</strong></td><td><strong>신청일</strong></td><td><strong>승인여부</strong></td>
+		<td><strong>IMG</strong></td><td><strong>신청일</strong></td><td><strong>승인여부</strong></td><td>삭제여부</td>
 		</tr>
 		<c:forEach var="bannerlist" items="${bannerlist}">
 		<tr align="center">
@@ -39,14 +39,18 @@
 			<img src="/MyUsed/images/pass.PNG" width="50" height="50">
 		</c:if>
 		</td>
+		<td>
+		<a href="deleteApply.nhn?seq_num=${bannerlist.seq_num}">
+		<strong title="삭제하기">DELETE</strong>
+		</a>
+		</td>
 		</tr>
-		
 		</c:forEach>
 	
 	</table>
-	<br />
-	${pagingHtml}
+	<br/>
 	
+		${pagingHtml}
 
 </center>
 

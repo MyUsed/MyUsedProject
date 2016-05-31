@@ -9,11 +9,11 @@
 	<tr bgcolor="#FFFFFF">
 	<td align="center">
 		<hr width="90%" />
-	<a href="http://www.iei.or.kr/">
-	<img src="/MyUsed/images/adver.PNG" width="270" height="370"/>
+	<a href="http://${banner.url}">
+	<img src="/MyUsed/images/${banner.img}" width="250" height="400"/>
 		<hr width="90%" />
 	</a>
-	<a href="http://www.iei.or.kr/"><u>국비지원 바로가기</u></a>
+	
 	</td>
 	</tr>
 	<tr bgcolor="#FFFFFF">

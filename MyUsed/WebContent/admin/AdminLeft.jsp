@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -38,8 +39,8 @@
 	<tr><td>
 	<strong>- 광고관리</strong> <br/>
 			<a href="/MyUsed/insertBanner.nhn">광고등록</a> <br/>
-			광고수정 <br/>
-			광고삭제 <br/>
+			<a href="/MyUsed/updateBanner.nhn">광고수정</a><br/>
+			<a href="/MyUsed/deleteBanner.nhn">광고삭제</a> <br/>
 			<a href="/MyUsed/applyBanner.nhn">광고심사</a> <br/>
 	</td></tr>
 	<tr><td>

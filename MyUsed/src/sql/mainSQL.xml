@@ -73,7 +73,12 @@
    
     <!-- proboardlist 에서 가장 높은 num을 구하기 위해서  -->
    <select id="proboardMax" resultClass="int">
-   		select max(num) from proboardlist 
+   	select max(num) from proboardlist 
+   </select>
+   
+   <!-- 광고 업데이트 -->
+   <select id="bannerSelect" resultClass="admin.BannerApplyDTO">
+    select url,img from bannerlist where seq_num = (select max(seq_num)from bannerlist) 
    </select>
    
    
