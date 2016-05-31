@@ -69,7 +69,7 @@ public class deletePagingAction {
 				pagingHtml.append("</font></b>");
 			} else {
 				pagingHtml
-				.append("&nbsp;<a href=deleteBanner.nhn?currentPage=");
+				.append("&nbsp;<a href='deleteBanner.nhn?currentPage=");
 				pagingHtml.append(i);
 				pagingHtml.append("'>");
 				pagingHtml.append(i);
