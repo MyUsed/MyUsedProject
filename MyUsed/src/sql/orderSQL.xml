@@ -23,9 +23,26 @@
 									sysdate
 									)
 	</insert>
-	
+	 	<!-- orderlist 전체 꺼내는 쿼리 -->
 	<select id="selectOrderlist" resultClass="product.orderlistDTO">
 		select * from orderlist order by seq_num desc
 	</select>
+	
+		<!-- 시퀀스로 orderlist 찾아 꺼내는 쿼리  -->
+	<select id="noticeOrderlist" resultClass="product.orderlistDTO" parameterClass="int">
+		select * from orderlist where seq_num = #seq_num#
+	</select>
+	
+		<!-- 입금확인을 처리하기위한 state 업데이트 -->
+	<update id="updateState" parameterClass="int">
+		update orderlist set state = state+1 where seq_num = #seq_num#
+	</update>
+		
+		<!-- notice 테이블에 값 삽입 -->
+	<insert id="insertNotice" parameterClass="java.util.Map">
+		insert into notice_$num$ values(notice_$num$seq.NEXTVAL,#board_num#,#pro_num#,#call_memnum#,#call_name#,#categ#,#state#,sysdate)	
+	</insert>
+	
+	
 	
 </sqlMap>

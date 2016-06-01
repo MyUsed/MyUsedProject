@@ -1,7 +1,9 @@
 package trade;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
@@ -39,6 +41,31 @@ public class tradeApplyController {
 		
 		mv.addObject("orderlist",orderlist);
 		mv.setViewName("/admin_trade/tradeDeposit.jsp");
+		return mv;
+	}
+	
+	@RequestMapping("insertNotice.nhn")
+	public ModelAndView inserDeposit(int seq_num){
+		ModelAndView mv = new ModelAndView();
+		System.out.println("전달받은 seq_num = "+seq_num);
+		
+		sqlMap.update("order.updateState",seq_num); // seq_num 번호인 orderlist 입금완료 처리 
+		orderlistDTO orderDTO = new orderlistDTO();
+		orderDTO = (orderlistDTO)sqlMap.queryForObject("order.noticeOrderlist",seq_num); // 시퀀스기준으로 뽑아오는 orderlist정보
+		
+		
+		Map map = new HashMap();
+		map.put("num", orderDTO.getSell_memnum()); // notice_(번호) 를 넣어줌 (판매자번호)
+		map.put("board_num", null);
+		map.put("pro_num",orderDTO.getSell_pronum()); // 상품번호 
+		map.put("call_memnum",orderDTO.getBuy_memnum()); // 구매회원번호
+		map.put("call_name",orderDTO.getBuy_name()); // 구매자
+		map.put("categ","product");
+		map.put("state", 1);
+		
+		sqlMap.insert("order.insertNotice",map); // notice 테이블에 값 삽입
+		
+		mv.setViewName("tradeDeposit.nhn");
 		return mv;
 	}
 	
