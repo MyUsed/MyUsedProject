@@ -104,9 +104,14 @@ public class CreateDBController {
 		/** 주소(address) 주소테이블 **/
 		sqlMapClientTemplate.update("create.address",map);
 		System.out.println("address_"+num+" create");
-		
 		sqlMapClientTemplate.update("create.address_seq",map);
 		System.out.println("address_seq"+num+" create");
+		
+		/** 알람(notice) 테이블**/
+		sqlMapClientTemplate.update("create.notice",map);
+		System.out.println("notice_"+num+" create");
+		sqlMapClientTemplate.update("create.notice_seq",map);
+		System.out.println("notice_seq"+num+" create");
 		
 		return result;
 	}

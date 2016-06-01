@@ -84,7 +84,11 @@
 	
 	  <!-- 현재 진행중인 광고 꺼내기 -->
    <select id="bannerIng" resultClass="admin.BannerApplyDTO">
-    select * from bannerlist where seq_num = (select max(seq_num)from bannerlist) 
+    	select * from bannerlist where seq_num = (select max(seq_num)from bannerlist) 
+   </select>
+   	   <!-- 광고 신청갯구 꺼내기 -->
+   <select id="bannerCount" resultClass="int" >
+   		select count(*) from bannerApply
    </select>
    
 	

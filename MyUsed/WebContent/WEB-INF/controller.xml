@@ -22,6 +22,8 @@
 	<context:component-scan base-package="friend"/>
 	<context:component-scan base-package="admin"/>
 	<context:component-scan base-package="choice"/>
+	<context:component-scan base-package="trade"/>
+	
 	
 	<!-- <bean id="vertxSample" class="com.spring.vertx.controller.VertxSample"/> -->
 	

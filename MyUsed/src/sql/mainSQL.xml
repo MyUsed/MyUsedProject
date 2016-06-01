@@ -52,11 +52,11 @@
 
 	<!-- num 을 사용해서 개인 pro DB insert sql -->
    <insert id="addProContent" parameterClass="java.util.Map">
-      insert into proboard_$num$ values(proboard_$num$seq.NEXTVAL,  #content#, #categ#, #name# , default ,default,#num#,#price#,sysdate)
+      insert into proboard_$num$ values(proboard_$num$seq.NEXTVAL,  #content#, #categ#, #name# , default ,default,#num#,#price#, #sendpay# ,sysdate)
    </insert>
    <!-- 전체proboardlist에 insert sql  -->
    <insert id="insertproboardlist" parameterClass="java.util.Map">
-      insert into proboardlist values(proboardlist_seq.NEXTVAL, #content#, #categ# , #name# , default , default, #price#, #pro_pic#, #num#, sysdate)
+      insert into proboardlist values(proboardlist_seq.NEXTVAL, #content#, #categ# , #name# , default , default, #price#, #sendpay#,#pro_pic#, #num#, sysdate)
    </insert>
     <!-- proboard_num 에서 가장 높은 num을 구하기 위해서  -->
    <select id="proboard_num" resultClass="int"  parameterClass="int">
@@ -66,7 +66,7 @@
    <insert id="addProPic" parameterClass="java.util.Map">
       insert into propic_$num$ values(#proboard_num#, #pro_pic#, #name# , sysdate)
    </insert>
-     <!-- selct로 boardlist출력 -->
+     <!-- select로 boardlist출력 -->
    <select id="proboardView" resultClass="main.MainProboardDTO" >
 	select * from proboardlist order by num desc                       
    </select>

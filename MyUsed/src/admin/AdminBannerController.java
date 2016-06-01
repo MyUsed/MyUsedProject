@@ -69,7 +69,7 @@ public class AdminBannerController {
 	public ModelAndView applybanner(String currentPage){
 		ModelAndView mv = new ModelAndView();
 		
-		bannerlist = sqlMap.queryForList("admin.selectApply",null);
+		bannerlist = sqlMap.queryForList("admin.selectApply",null);	
 		
 		totalCount = bannerlist.size();
 		if(currentPage != null){

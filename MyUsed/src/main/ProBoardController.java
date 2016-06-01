@@ -35,6 +35,7 @@ public class ProBoardController {
 		String SendPay = request.getParameter("sendPay"); // 배송료 포함인지 아닌지 받아옴 
 		request.setAttribute("SendPay", SendPay);
 		
+		
 		String categ0 = prodto.getCateg0();
 		String categ1 = prodto.getCateg1();
 		String categ = categ0 +"/"+ categ1;
@@ -55,6 +56,7 @@ public class ProBoardController {
 		promap.put("content", content);
 		promap.put("categ", categ);
 		promap.put("price", price);
+		promap.put("sendpay", SendPay);
 		
 		
 		if(request.getFile("pimage1").isEmpty()){ // 사진 선택을 하지 않으면 
@@ -69,8 +71,6 @@ public class ProBoardController {
 		}else{
 			sqlMap.insert("main.addProContent", promap); // 상품 일반 DB 등록
 			System.out.println("insert상품일반 DB 성공");
-			sqlMap.insert("main.insertproboardlist", promap); // 전체 상품 DB 등록
-			System.out.println("insert상품전체 DB 성공");
 		
 		for(int i=1;i<=8;i++){
 		MultipartFile mf = request.getFile("pimage"+i); // 파일을 받는 MultipartFile 클래스  (원본)

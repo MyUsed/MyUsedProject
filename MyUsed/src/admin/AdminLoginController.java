@@ -68,6 +68,10 @@ public class AdminLoginController {
 	public ModelAndView adminPage(){
 		ModelAndView mv = new ModelAndView();	
 
+		// 건수를 나타내기 위해 
+		int bannerCount = (int)sqlMap.queryForObject("admin.bannerCount",null);
+		System.out.println(bannerCount);
+		mv.addObject("bannerCount",bannerCount);
 		mv.setViewName("/admin/AdminPage.jsp");	
 		return mv;
 	}

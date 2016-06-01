@@ -42,5 +42,16 @@
 		select profile_pic from  profilepic_$mem_num$ where pic_num = (select max(pic_num) from profilepic_$mem_num$)
 	</select>
 	
+	<!-- 상품글번호를 이용해 정보를 빼옴 -->
+	<select id="proInfoSelect" resultClass="main.MainProboardDTO" parameterClass="int">
+		select * from proboardlist where num = #num#
+	</select>
+	
+		<!-- 상품글번호를 이용해 categ를 빼옴 -->
+	<select id="proCategInfoSelect" resultClass="String" parameterClass="int">
+		select categ from proboardlist where num = #num#
+	</select>
+	
+	
 	
 </sqlMap>

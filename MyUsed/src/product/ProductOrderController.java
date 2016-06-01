@@ -28,10 +28,11 @@ public class ProductOrderController {
 	private List<MemberDTO> memlist = new ArrayList<MemberDTO>();; 
 	private ProfilePicDTO proDTO = new ProfilePicDTO();
 	@RequestMapping("productOrder.nhn")
-	public ModelAndView productOrder(HttpServletRequest request, int mem_num,int price){
+	public ModelAndView productOrder(HttpServletRequest request, int mem_num,int price ,int pronum){
 		ModelAndView mv = new ModelAndView();
 		
 		System.out.println("선택한 상품의 회원 번호는 = "+mem_num);
+		System.out.println("선택한 상품게시판 번호는 = "+pronum);
 		
 		HttpSession session = request.getSession();
 		String sessionId = (String)session.getAttribute("memId");
@@ -54,7 +55,7 @@ public class ProductOrderController {
 		String profilepic = (String) sqlMap.queryForObject("product.propic", mem_numMap);
 		
 		
-				
+		mv.addObject("pronum",pronum);
 		mv.addObject("mem_num",mem_num);
 		mv.addObject("profilepic",profilepic);
 		mv.addObject("proDTO",proDTO);
@@ -68,18 +69,52 @@ public class ProductOrderController {
 	}
 	
 	@RequestMapping("/orderDetail.nhn")
-	public ModelAndView oderDetail(int seq_num,int num,int price){
+	public ModelAndView oderDetail(int seq_num,int num,int price,int mem_num ,int pronum){
 		ModelAndView mv = new ModelAndView ();
 		
+		System.out.println("판매게시글번호 = "+pronum);
+		System.out.println("판매자회원넘버 = "+mem_num);
 		System.out.println("주소넘버 = "+seq_num);
-		System.out.println("회원넘버 = "+num);
+		System.out.println("구매자회원넘버 = "+num);
+		
+		MainProboardDTO proboardDTO = new MainProboardDTO();
+		proboardDTO = (MainProboardDTO)sqlMap.queryForObject("product.proInfoSelect",pronum); // 판매글 정보 
+		String categ = (String)sqlMap.queryForObject("product.proCategInfoSelect",pronum); // 해당상품 카테고리 가져오기
+		MemberDTO sellDTO = new MemberDTO();
+		sellDTO = (MemberDTO)sqlMap.queryForObject("member.selectDTOforNum",mem_num); // 판매자 회원정보
+		MemberDTO buyDTO = new MemberDTO();
+		buyDTO = (MemberDTO)sqlMap.queryForObject("member.selectDTOforNum",num); // 구매자 회원정보
 		
 		Map adrMap = new HashMap();
 		adrMap.put("num", num);
 		adrMap.put("seq_num", seq_num);
 		
 		AddressDTO addresslist = new AddressDTO();
-		addresslist = (AddressDTO)sqlMap.queryForObject("address.seq_numSelect",adrMap);
+		addresslist = (AddressDTO)sqlMap.queryForObject("address.seq_numSelect",adrMap); // 주소정보
+		
+		
+		Map orderMap = new HashMap();
+		orderMap.put("buy_memnum", buyDTO.getNum());
+		orderMap.put("buy_id", buyDTO.getId());
+		orderMap.put("buy_name",buyDTO.getName());
+		orderMap.put("sell_pronum",pronum);
+		orderMap.put("sell_memnum",sellDTO.getNum());
+		orderMap.put("sell_id", sellDTO.getId());
+		orderMap.put("sell_name",sellDTO.getName());
+		orderMap.put("sell_categ",categ);
+		orderMap.put("sell_propic",proboardDTO.getPro_pic());
+		orderMap.put("send_name",addresslist.getName());
+		orderMap.put("send_ph",addresslist.getPh());
+		orderMap.put("send_adrnum",addresslist.getAddrNum());
+		orderMap.put("send_addr",addresslist.getAddr());
+		orderMap.put("send_addrr",addresslist.getAddrr());
+		orderMap.put("buy_price",proboardDTO.getPrice());
+		
+		sqlMap.insert("order.insertOrderlist",orderMap); // orderlist에 삽입
+		
+		
+		
+		
 		
 		
 		 // 프로필 사진을 띄우기 위한 처리 

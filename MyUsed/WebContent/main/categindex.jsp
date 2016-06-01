@@ -114,8 +114,8 @@
 		<center>
 		<font size ="2" color="#3B5998">
 		* 배송료
-		포함(선불) <input type="radio" name="sendPay" value="yes" />
-		미포함(착불) <input type="radio" name="sendPay" value="no"  />
+		포함(선불) <input type="radio" name="sendPay" value="(포함)" />
+		미포함(착불) <input type="radio" name="sendPay" value="(미포함)"  />
 		</font>
 		<br />
 		<input type="text" name="price" size="7" placeholder="상품가격"/>

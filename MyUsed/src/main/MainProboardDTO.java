@@ -12,6 +12,7 @@ public class MainProboardDTO {
 	private int likes;
 	private int reples;
 	private int price;
+	private String sendpay;
 	private Timestamp reg;
 	
 	private String pro_pic;
@@ -55,6 +56,13 @@ public class MainProboardDTO {
 	public int getPrice() {	return price;}
 	public Timestamp getReg() {	return reg;}
 	public String getPro_pic() {return pro_pic;}
+	public String getSendpay() {
+		return sendpay;
+	}
+	public void setSendpay(String sendpay) {
+		this.sendpay = sendpay;
+	}
+	
 	
 	
 	

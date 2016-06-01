@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="order">
+	
+	<insert id="insertOrderlist" parameterClass="java.util.Map">
+		insert into orderlist values(orderlist_seq.NEXTVAL, 
+									#buy_memnum#,
+									#buy_id#,
+									#buy_name#,
+									#sell_pronum#,
+									#sell_memnum#,
+									#sell_id#,
+									#sell_name#,
+									#sell_categ#,
+									#sell_propic#,
+									#send_name#,
+									#send_ph#,
+									#send_adrnum#,
+									#send_addr#,
+									#send_addrr#,
+									#buy_price#,
+									default,
+									sysdate
+									)
+	</insert>
+	
+	<select id="selectOrderlist" resultClass="product.orderlistDTO">
+		select * from orderlist order by seq_num desc
+	</select>
+	
+</sqlMap>

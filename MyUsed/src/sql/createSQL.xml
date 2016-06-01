@@ -123,6 +123,23 @@
 		create sequence address_$num$seq nocache
 	</statement>	
 	
+	<!-- 개인알람(notice) table/sequence -->
+	<statement id="notice" parameterClass="java.util.Map">	
+		create table notice_$num$ (
+								seq_num number not null primary key,
+								board_num number,
+								pro_num number,
+								call_memnum number,
+								call_name varchar2(4000),
+								categ varchar2(4000),
+								state number default 0,
+								reg date default sysdate
+							 	)
+	</statement>
+	<statement id="notice_seq" parameterClass="java.util.Map">
+		create sequence notice_$num$seq nocache
+	</statement>	
+	
 	
 	
 	
@@ -149,6 +166,7 @@
 								reples number default 0,
 								mem_num number,
 								price number,
+								sendpay varchar2(4000),
 								reg date default sysdate
 							     )
 	</statement>

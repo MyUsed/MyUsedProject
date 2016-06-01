@@ -30,14 +30,19 @@
 			게시글삭제 <br/>
 	</td></tr>
 	<tr><td>
-	<strong>- 배송관리</strong> <br/>
-			입금상태 <br/>
-			거래내역 <br/>
+	<strong>- 거래관리</strong> <br/>
+			<a href="/MyUsed/tradeApply.nhn">거래신청</a> <br/>
+			<a href="/MyUsed/tradeDeposit.nhn">입금상태</a> <br/>
 			배송상태 <br/>
 			송장번호조회<br/>
 	</td></tr>
 	<tr><td>
-	<strong>- 광고관리</strong> <br/>
+	<strong>- 광고관리</strong> 
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		<c:if test="${bannerCount != null}">
+	<a href="/MyUsed/applyBanner.nhn"><font size="2" color="red">${bannerCount}건</font></a>
+		</c:if> <br/>
 			<a href="/MyUsed/insertBanner.nhn">광고등록</a> <br/>
 			<a href="/MyUsed/updateBanner.nhn">광고수정</a><br/>
 			<a href="/MyUsed/deleteBanner.nhn">광고삭제</a> <br/>
