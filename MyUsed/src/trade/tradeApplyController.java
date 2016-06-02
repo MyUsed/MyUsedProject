@@ -22,6 +22,9 @@ public class tradeApplyController {
 		
 	private List<orderlistDTO> orderlist = new ArrayList<orderlistDTO>();;
 	
+	
+	
+	
 	@RequestMapping("/tradeApply.nhn")
 	public ModelAndView tradeApply(){
 		ModelAndView mv = new ModelAndView();
@@ -56,7 +59,7 @@ public class tradeApplyController {
 		
 		Map map = new HashMap();
 		map.put("num", orderDTO.getSell_memnum()); // notice_(번호) 를 넣어줌 (판매자번호)
-		map.put("board_num", null);
+		map.put("board_num", 0);
 		map.put("pro_num",orderDTO.getSell_pronum()); // 상품번호 
 		map.put("call_memnum",orderDTO.getBuy_memnum()); // 구매회원번호
 		map.put("call_name",orderDTO.getBuy_name()); // 구매자

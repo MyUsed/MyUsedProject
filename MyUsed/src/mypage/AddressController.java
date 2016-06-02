@@ -27,7 +27,7 @@ public class AddressController {
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 	
 	private List<AddressDTO> addresslist = new ArrayList<AddressDTO>();;
-	private List<AddressDTO> fianllist = new ArrayList<AddressDTO>();;
+	private AddressDTO fianllist = new AddressDTO();;
 	private ProfilePicDTO proDTO = new ProfilePicDTO();
 	@RequestMapping("/address.nhn")
 	public ModelAndView address(HttpServletRequest request){
@@ -39,7 +39,7 @@ public class AddressController {
 		
 		
 		addresslist = sqlMap.queryForList("address.select",num); // address_$num$의 결과를 list로 담아줌
-		fianllist = sqlMap.queryForList("address.oneselect",num); // 최신의 주소목록 가져오기
+		fianllist = (AddressDTO)sqlMap.queryForObject("address.oneselect",num); // 최신의 주소목록 가져오기
 		
 		
 		

@@ -22,6 +22,7 @@ import friend.FriendCategDTO;
 import friend.FriendDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
+import trade.noticeDTO;
 
 @Controller
 public class MainController {
@@ -34,6 +35,8 @@ public class MainController {
 	private ProfilePicDTO sessionproDTO = new ProfilePicDTO();
 	private List<MainProboardDTO> prolist = new ArrayList<MainProboardDTO>();; 
 	private List<RepleDTO> replelist = new ArrayList<RepleDTO>();;
+	private List<noticeDTO> noticelist = new ArrayList<noticeDTO>();;
+	
 	
 	   @RequestMapping("/MyUsed.nhn")
 	   public ModelAndView main(HttpServletRequest request){
@@ -116,7 +119,11 @@ public class MainController {
 		
 		
 		
+		noticelist = sqlMap.queryForList("main.AllNoticeSelect",picmap);
 		
+		
+		
+		mv.addObject("noticelist",noticelist);
 		mv.addObject("banner",banner);
 		mv.addObject("proDTO", proDTO);
 		mv.addObject("list", list);

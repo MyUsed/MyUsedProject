@@ -118,6 +118,31 @@
                     alert("Error");
                 }
 
+                
+                // ----------------------------------- 알림 스크립트 ------------------------------------------------
+                function openMsg() {
+                	
+                	msgPop.style.display = '';
+                	arrow.style.display = '';
+                }
+
+                function closeMsg() {
+                	msgPop.style.display = 'none';
+                	arrow.style.display = 'none';
+                }
+                
+                // ---------------------------------   알림 새창 띄우기 -----------------------------------------------
+                
+                /* 친구추가 새창 열기 */
+                function tradeCheck(){
+                	alert("123");
+                   // url = "/MyUsed/AddFriend.nhn?mem_num=";
+                    
+                    open(url, "confirm", 
+                	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=200");
+                }
+
+                
       
 
               

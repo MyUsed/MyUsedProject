@@ -27,7 +27,15 @@
 	<select id="selectOrderlist" resultClass="product.orderlistDTO">
 		select * from orderlist order by seq_num desc
 	</select>
-	
+		<!-- 회원번호를 기준으로 최신 주문내역 가져오기 -->
+	<select id="buyOrderlist" resultClass="product.orderlistDTO" parameterClass="int">
+		select * from orderlist where buy_memnum = #mem_num# and seq_num = (select max(seq_num) from orderlist)
+	</select>
+		<!-- 개인의 구매내역을 가져옴  -->
+	<select id="butOrderAll" resultClass="product.orderlistDTO" parameterClass="int">
+		select * from orderlist where buy_memnum = #mem_num# order by seq_num desc
+	</select>
+
 		<!-- 시퀀스로 orderlist 찾아 꺼내는 쿼리  -->
 	<select id="noticeOrderlist" resultClass="product.orderlistDTO" parameterClass="int">
 		select * from orderlist where seq_num = #seq_num#

@@ -29,7 +29,7 @@
 		
 		<c:forEach var="orderlist" items="${orderlist}">
 		<tr align="center">
-		<td>${orderlist.buy_memnum}</td><td>${orderlist.buy_id}</td><td>${orderlist.buy_name}</td><td bgcolor="#FFEF85">${orderlist.buy_price}</td>
+		<td>${orderlist.buy_memnum}</td><td>${orderlist.buy_id}</td><td>${orderlist.buy_name}</td><td bgcolor="#FFEF85"><strong>${orderlist.buy_price}</strong></td>
 		<td><c:if test="${orderlist.state == 0}"><font color="blue">입금전</font></c:if>
 			<c:if test="${orderlist.state == 1}"><font color="red">입금완료</font></c:if>
 		</td>

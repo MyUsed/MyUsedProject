@@ -21,7 +21,68 @@
 <div id="sidebannerL"><jsp:include page="sidebannerL.jsp"/></div> <!-- 사이드배너 Left -->
 
 
+
+
+
+
 <div id="contents">   <!-------------------------------- 메인 내용 ------------------------------------------>
+
+
+	
+	
+	
+	
+	
+<!------------------------------------------------------- 알림 메시지 --------------------------------------------------->
+<div id="arrow" style='display:none;'>
+	<img src="/MyUsed/images/arrow.png" width="0" height="0"> 
+</div>
+<div id="msgPop" style='display:none;'>
+    <br/>
+	<div id="closemsg">
+		<label for="close4" style="cursor:pointer;">
+			<img src="/MyUsed/images/close.png" width="15" height="15">
+		</label>
+    </div>
+    
+   	<input type="button" id="close4" OnClick="javascript:closeMsg()" style='display: none;'>
+   	<br />
+   	<div id="msgtitle">
+   		<font size="3"><b>알림 확인</b></font>
+   	</div>
+   	
+   	<div id="msgtext">
+   	
+   	
+   		<c:forEach var="noticelist" items="${noticelist}">
+   			
+   			(<strong> <a href="MyUsedMyPage.nhn?mem_num=${noticelist.call_memnum}">${noticelist.call_name}</a> </strong>) 
+   			
+   			<a Onclick="javascript:tradeCheck()" style="cursor:pointer;">
+   			<b>님이 거래요청 하였습니다.</b> 
+   			</a>
+   			<br /> &nbsp;
+   			<font size="2" color="#9A9DA4">
+  			<fmt:formatDate value="${noticelist.reg}" type="both" /> 
+ 			</font>
+   			<hr width="90%" />
+   		</c:forEach>
+   	
+   		
+   	
+   	
+   	
+   	
+ 	</div>
+   	
+</div>
+	
+	
+	
+	
+	
+	
+<!-- --------------------------------------------------------------------------------------------------------------- -->	
 	<br /><br /><br />
 	
 	
@@ -503,6 +564,7 @@
 <!--  상품 보기 페이지  -->	
 	 
 </c:forEach>
+
 
 	
 </div>

@@ -39,7 +39,7 @@
    <select id="boardView" resultClass="main.MainboardDTO" >
 	select * from boardlist order by num desc                       
    </select>
-   
+   	<!-- 내용 검색 쿼리 -->
    <select id="tegSearch" resultClass="main.MainboardDTO" parameterClass="String">
    		select * from boardlist where content like '%'||#content#||'%' order by num desc
    </select>
@@ -79,6 +79,10 @@
    <!-- 광고 업데이트 -->
    <select id="bannerSelect" resultClass="admin.BannerApplyDTO">
     select url,img from bannerlist where seq_num = (select max(seq_num)from bannerlist) 
+   </select>
+   
+   <select id="AllNoticeSelect" resultClass="trade.noticeDTO" parameterClass="java.util.Map">
+   	select * from notice_$mem_num$ where state = 1
    </select>
    
    

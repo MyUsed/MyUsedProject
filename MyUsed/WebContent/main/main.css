@@ -91,5 +91,37 @@
 		
 		
 
+#msgPop { position:fixed; 
+		width:350px; 
+		height:400px;
+		margin-left:45%;
+		padding-left:10px;
+		
+		font-size:90%;
+		background:#FFFFFF;
+		box-shadow: 1px 3px 1px #A6A6A6;
+		border:1px solid #EAEAEA;
+		z-index:500; }	
+		
+#msgtitle { position:fixed; 
+		width:300px; 
+		height:24px;
+		margin-top:10px;
+		border-bottom:1px solid #D5D5D5;}		
+
+#msgtext { position:fixed; 
+		width:340px; 
+		height:300px;
+		margin-top:50px;
+		font-size:100%; }		
+
+#closemsg{position:fixed; 
+			width:15px; 
+			height:15px;
+			margin-top:10px;
+			margin-left:305px;}
+
+		
+
 			
 		

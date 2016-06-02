@@ -49,7 +49,7 @@ function adrNum(){
    	<table border="1" width="840" height="160">
    		
    			
-   		<tr>
+   		<tr bgcolor="#BDBDBD">
    		<td><strong>선택</strong></td><td><strong>이름</strong></td><td><strong>전화번호</strong></td><td><strong>우편번호</strong></td>
    		<td><strong>주소</strong></td><td><strong>상세주소</strong></td><td><strong>삭제</strong></td>
    		</tr>

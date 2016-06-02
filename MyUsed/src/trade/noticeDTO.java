@@ -9,9 +9,11 @@ public class noticeDTO {
 	private int pro_num;
 	private int call_memnum;
 	private String call_name;
-	private String call_categ;
+	private String categ;
 	private int state;
 	private Timestamp reg;
+	
+	
 	public int getSeq_num() {
 		return seq_num;
 	}
@@ -42,11 +44,11 @@ public class noticeDTO {
 	public void setCall_name(String call_name) {
 		this.call_name = call_name;
 	}
-	public String getCall_categ() {
-		return call_categ;
+	public String getCateg() {
+		return categ;
 	}
-	public void setCall_categ(String call_categ) {
-		this.call_categ = call_categ;
+	public void setCateg(String categ) {
+		this.categ = categ;
 	}
 	public int getState() {
 		return state;
@@ -60,6 +62,7 @@ public class noticeDTO {
 	public void setReg(Timestamp reg) {
 		this.reg = reg;
 	}
+	
 	
 	
 	

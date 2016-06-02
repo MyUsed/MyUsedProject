@@ -55,9 +55,9 @@ function whenError(){
 				
 				<!-- 개인 알림  -->
 				<label for="msg">
-					<img src="/MyUsed/images/mainView.png" width="40" height="35"  title="지구">
+					<img src="/MyUsed/images/mainView.png" width="40" height="35"  title="알림" style='cursor:pointer;'>
 				</label>
-				<input type="button" id="msg" OnClick="javascript:openMsg()" style='display: none;'>
+				<input type="button" id="msg" OnClick="javascript:openMsg();" style='display: none;' >
 				
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
