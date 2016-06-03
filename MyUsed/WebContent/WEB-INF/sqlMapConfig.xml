@@ -19,6 +19,8 @@
 	<sqlMap resource="/sql/choiceSQL.xml"/>
 	<sqlMap resource="/sql/adminSQL.xml"/>
 	<sqlMap resource="/sql/orderSQL.xml"/>
+	<sqlMap resource="/sql/memDeleteSQL.xml"/>
+	<sqlMap resource="/sql/reportAccSQL.xml"/>
 	<!-- <sqlMap resource="/sql/chatSQL.xml"/> -->
 	
 

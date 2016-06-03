@@ -141,6 +141,138 @@
                     open(url, "confirm", 
                 	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=200");
                 }
+                
+                
+                //----------------뉴스피드 페이지(일반)-------------------------------------------------------
+
+                function callAjax_newsfeed(mem_num){
+                    $.ajax({
+            	        type: "post",
+            	        url : "/MyUsed/newsfeed.nhn",
+            	        data: {	// url 페이지도 전달할 파라미터
+            	        	mem_num : mem_num
+            	        },
+            	        success: test_news,	// 페이지요청 성공시 실행 함수
+            	        error: whenError_news	//페이지요청 실패시 실행함수
+                 	});
+                }
+                function test_news(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+                    $("#contents").html(aaa);
+                    console.log(resdata);
+                }
+                function whenError_news(){
+                    alert("Error");
+                }
+
+                //-----------------뉴스피드 일반/상품 열고닫기------------------------------------------
+                
+                function openstate(){
+                    $('#newsfeed').attr('style', "display:block;");
+                    $('#newsfeed_pro').attr('style', "display:none;");
+                }
+
+                function openproduct(){
+                    $('#newsfeed').attr('style', "display:none;");
+                    $('#newsfeed_pro').attr('style', "display:block;");
+                }
+                
+                
+              //----------------- 친구 목록 실시간 --------------------------------------------------------
+                $(document).ready(function(){
+                	window.setInterval('myfriendlist()', 5000); //5초마다한번씩 함수를 실행한다..!! 
+                });
+                function myfriendlist(){
+                	 $.ajax({
+                	        type: "post",
+                	        url : "/MyUsed/FriendList.nhn",
+                	        success: list,	// 페이지요청 성공시 실행 함수
+                	        error: whenError	//페이지요청 실패시 실행함수
+                  	});
+                }
+                function list(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+                    $("#sidebannerR").html(aaa);
+                }
+                function whenError(){
+                    alert("FriendListError");
+                }
+                
+                //----------------친구보기 페이지(일반)-------------------------------------------------------
+
+                function callAjax_viewFriend(){
+                    $.ajax({
+            	        type: "post",
+            	        url : "/MyUsed/MyUsedfriendList.nhn",
+            	        success: viewFri,	// 페이지요청 성공시 실행 함수
+            	        error: whenError_news	//페이지요청 실패시 실행함수
+                 	});
+                }
+                function viewFri(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+                    $("#contents").html(aaa);
+                    console.log(resdata);
+                }
+                function whenError_news(){
+                    alert("Error");
+                }
+
+                
+                //----------------친구보기 페이지(일반)-------------------------------------------------------
+
+                function callAjax_profile(){
+                    $.ajax({
+            	        type: "post",
+            	        url : "/MyUsed/ModifyProfile.nhn",
+            	        success: profile,	// 페이지요청 성공시 실행 함수
+            	        error: whenErrorprofile	//페이지요청 실패시 실행함수
+                 	});
+                }
+                function profile(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+                    $("#contents").html(aaa);
+                    console.log(resdata);
+                }
+                function whenErrorprofile(){
+                    alert("Error");
+                }
+
+                               
+                //----------------사진보기 페이지(일반)-------------------------------------------------------
+
+                function callAjax_picture(){
+                    $.ajax({
+            	        type: "post",
+            	        url : "/MyUsed/AllPicture.nhn",
+            	        success: picture,	// 페이지요청 성공시 실행 함수
+            	        error: whenErrorpicture	//페이지요청 실패시 실행함수
+                 	});
+                }
+                function picture(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+                    $("#contents").html(aaa);
+                    console.log(resdata);
+                }
+                function whenErrorpicture(){
+                    alert("Error");
+                }
+
+                     
+               //---------------검색------------------------------------------
+                function searchword(){
+                    $.ajax({
+                        type: "post",
+                        url : "/MyUsed/MyUsedSearchMember.nhn",
+                        data: {	// url 페이지도 전달할 파라미터
+                        	sword : $('#sword').val()
+                        },
+                        success: search,	// 페이지요청 성공시 실행 함수
+                        error: searchError	//페이지요청 실패시 실행함수
+                 	});
+                }
+                function search(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+                    $("#contents").html(aaa);
+                    console.log(resdata);
+                }
+                function searchError(){
+                    alert("searchError");
+                }
+
 
                 
       

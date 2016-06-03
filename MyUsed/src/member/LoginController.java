@@ -102,42 +102,48 @@ public class LoginController {
 		loginmap.put("id", id);
 		loginmap.put("password", pw);
 		
-		int naver = (Integer) sqlMapClientTemplate.queryForObject("member.joinedNaverId", id);
-		System.out.println(naver);
-		if(naver == 0){			//네이버 아이디가 아닐경우
-			
-			int check = (Integer)sqlMapClientTemplate.queryForObject("member.loginCheck", loginmap);
-			if(check == 1){
-				// 가입된 아이디가 있으면 세션에 넣음
-				HttpSession session = request.getSession();
-				session.setAttribute("memId", id);
-				sqlMapClientTemplate.update("member.Log_on", id);	// 로그인상태를 on으로(onoff 컬럼 1)
+		/**  
+		 * 1.아이디가 디비에 있는지 검색한 후 
+		 * 2.아이디가 디비에 있으면 ~~님 맞으세요? 창 띄우고 다시 로그인/비번찾기
+		 * 3.아이디가 디비에 없으면 로그인창 띄우고 계정가입(입력된 이메일과 일치하는 계정이 없습니다. 계정을 가입하세요.)
+		 * */
 
-				
-				result = "/member/MyUsedLoginPro.jsp";
-			}else{
-				/**  
-				 * 아이디가 디비에 있는지 검색한 후 
-				 * 디비에 있으면 ~~님 맞으세요? 창 띄우고 다시 로그인/비번찾기
-				 * 디비에 없으면 로그인창 띄우고 계정가입(입력된 이메일과 일치하는 계정이 없습니다. 계정을 가입하세요.)
-				 * */
-				int checkId = (Integer)sqlMapClientTemplate.queryForObject("member.checkId", id);
-				if(checkId == 1){
+		// 디비에 아이디가 있는지 없는지 판단 후
+		int checkId = (Integer)sqlMapClientTemplate.queryForObject("member.checkId", id);
+		if(checkId == 1){	//있는 경우
+			// 해당 아이디가 네이버 아이디인지 아닌지 판단
+			int naver = (Integer) sqlMapClientTemplate.queryForObject("member.joinedNaverId", id);
+			System.out.println(naver);
+			if(naver == 0){			//네이버 아이디가 아닐경우
+				// 아이디 비번을 넣어 일치하는지 확인
+				int check = (Integer)sqlMapClientTemplate.queryForObject("member.loginCheck", loginmap);
+				if(check == 1){
+					// map으로 넣은 아이디 비번이 일치하면 아이디를 세션에 넣음
+					HttpSession session = request.getSession();
+					session.setAttribute("memId", id);
+					sqlMapClientTemplate.update("member.Log_on", id);	// 로그인상태를 on으로(onoff 컬럼 1)
+
+					result = "/member/MyUsedLoginPro.jsp";
+					
+				}else{	// 아이디 비번이 일치하지 않는 경우(비번이 틀리면)
 					String name = (String) sqlMapClientTemplate.queryForObject("member.selectName", id);
 
 					request.setAttribute("name", name);
 					request.setAttribute("id", id);
-				
-					result = "/member/MyUsedLoginReconfirm.jsp";
-					}else{
-						request.setAttribute("id", id);
-						result = "/member/MyUsedLoginOnly.jsp";
-					}
+
+					result = "/member/MyUsedLoginReconfirm.jsp";	//~~님이세요? 나오는거
+				}
+			}else{
+				result = "/member/MyUsedLoginFailed.jsp";	// 해당 아이디는 네이버 계정이므로~ 나오는거
 			}
+			
+			
 		}else{
-			result = "/member/MyUsedLoginFailed.jsp";
+			request.setAttribute("id", id);
+			result = "/member/MyUsedLoginOnly.jsp";	// 아예 다시 로그인(디비에 아이디 없는경우ㄴ)
+			
+			
 		}
-		
 		return result;
 	}
 

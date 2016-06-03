@@ -12,12 +12,14 @@
 
 
 
+ 	
  	<br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/modify.png" width="20" height="20">&nbsp;프로필 수정</a>
+ 	<a onclick="javascript:callAjax_profile()" style="cursor:pointer;"><img src="/MyUsed/images/modify.png" width="20" height="20">&nbsp;프로필 수정</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/newSpeed.png" width="20" height="20">&nbsp;뉴스피드</a>
+ 	<a onclick="javascript:callAjax_newsfeed('${num}')"  style="cursor:pointer;">
+ 	<img src="/MyUsed/images/newSpeed.png" width="20" height="20">&nbsp;뉴스피드</a>
  	<br /><br />
  	
  	<!--상품 카테고리 별로 조회 -->
@@ -67,10 +69,10 @@
  	<a href="/MyUsed/chat.nhn"><img src="/MyUsed/images/chat.png" width="20" height="20" onclick="openChat();">&nbsp;채팅방</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/friend.png" width="20" height="20">&nbsp;친구보기</a>
+ 	<a onclick="javascript:callAjax_viewFriend()" style="cursor:pointer;"><img src="/MyUsed/images/friend.png" width="20" height="20">&nbsp;친구보기</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/picture.nhn"><img src="/MyUsed/images/picture.png" width="20" height="20">&nbsp;사진</a>
+ 	<a onclick="javascript:callAjax_picture()" style="cursor:pointer;"><img src="/MyUsed/images/picture.png" width="20" height="20">&nbsp;사진</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="/MyUsed/address.nhn"><img src="/MyUsed/images/address.png" width="20" height="20">&nbsp;주소록</a>

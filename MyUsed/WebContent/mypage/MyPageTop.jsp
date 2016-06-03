@@ -9,11 +9,21 @@
 
 <script src="/MyUsed/member/jquery-1.11.3.js"></script>
 <script src="/MyUsed/member/animate.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		if('${mem_num}' != '${mynum}'){
+	    	$('#menu5').attr('style', 'display:none;');
+	    	$('#menu6').attr('style','width:275px;margin-left:524px;');
+		}
+	});
+</script>
 <body>
 
 
 	<div id="coverImage">
-		<img src="/MyUsed/images/cover/${coverDTO.cover_pic}" width="798" height="220"/>
+		<c:if test="${coverDTO.cover_pic != null}">
+			<img src="/MyUsed/images/cover/${coverDTO.cover_pic}" width="798" height="220"/>
+		</c:if>
 	
 		<div id="covertext">
 			<font color="#FFFFFF">
@@ -59,10 +69,10 @@
 	<div id="menu">	
 	
 		<div id="menu0"><!-- 공란 -->	</div>
-		<div id="menu1" onclick="menuMove('/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}')" onmouseover="mouseOver1()" onmouseout="mouseOut1()">
+		<div id="menu1" onclick="menuMove('/MyUsed/MyUsedMyPage.nhn?mem_num=${mem_num}')" onmouseover="mouseOver1()" onmouseout="mouseOut1()">
 			타임라인
 		</div>
-		<div id="menu2" onclick="javascript:window.location='choiceMain.nhn?mynum=${mynum}'" onmouseover="mouseOver2()" onmouseout="mouseOut2()">
+		<div id="menu2" onclick="javascript:window.location='choiceMain.nhn?mynum=${mem_num}'" onmouseover="mouseOver2()" onmouseout="mouseOut2()">
 			찜
 		</div>	
 		<div id="menu3" onclick="moveFriendMenu('${mem_num}')" onmouseover="mouseOver3()" onmouseout="mouseOut3()">
@@ -79,7 +89,12 @@
 				<ul class="gnb">
 					<li ><a href="#">더 보기▼</a>
 						<ul class="sub">
-	      					<li><a href="/MyUsed/MyUsed.nhn">aaaaaa</a></li>
+							<c:if test="${mynum != mem_num}">
+	      					<li><a onclick="javascript:reportAccount('${mem_num}')" style="cursor:pointer;">계정 신고</a></li>
+	      					</c:if>
+							<c:if test="${mynum == mem_num}">
+	      					<li><a onclick="javascript:reportAccount('${mem_num}')" style="cursor:pointer;">계정 탈퇴</a></li>
+	      					</c:if>
             				<li><a href="/MyUsed/MyUsed.nhn">bbbbbb</a></li>
             				<li><a href="/MyUsed/MyUsed.nhn">cccccc</a></li>
             				<li><a href="/MyUsed/MyUsed.nhn">dddddd</a></li>

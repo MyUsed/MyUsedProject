@@ -237,6 +237,8 @@ function moveFriendMenu(mem_num){
  	});
 }
 function move(menu){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+	$('#list').attr('style','display:none;');
+	$('#prolist').attr('style', 'display:none;');
     $("#mypageBottom").html(menu);
     console.log(resdata);
 }
@@ -258,6 +260,8 @@ function movePictureMenu(mem_num){
  	});
 }
 function move(menu){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+	$('#list').attr('style','display:none;');
+	$('#prolist').attr('style', 'display:none;');
     $("#mypageBottom").html(menu);
     console.log(resdata);
 }
@@ -307,8 +311,6 @@ function openPic(pic) {
 
 function closePic() {
     $('#picView img').slideUp(); //미리 보기 영역 감춤
-    
-
 }
 
 /*마이페이지에서 홈의 친구찾기 페이지로*/
@@ -332,10 +334,49 @@ function whenError(){
 }
 
 
+/* 마이페이지에서 일반 글쓰기/ 상품 글쓰기 */
+function writestate(){
+    $('#form1').attr('style', "display:block;");	// 일반 글쓰기 폼
+    $('#form2').attr('style', "display:none;");		// 상품 글쓰기 폼
+    $('#list').attr('style', "display:block;");		// 일반글 리스트
+    $('#prolist').attr('style', "display:none;");	// 상품글 리스트
+}
+
+function writeproduct(){
+    $('#form1').attr('style', "display:none;");
+    $('#form2').attr('style', "display:block;");
+    $('#list').attr('style', "display:none;");
+    $('#prolist').attr('style', "display:block;");
+}
+
+/* 친구 목록 실시간 */
+$(document).ready(function(){
+	window.setInterval('myfriendlist()', 5000); //5초마다한번씩 함수를 실행한다..!! 
+});
+function myfriendlist(){
+	 $.ajax({
+	        type: "post",
+	        url : "/MyUsed/FriendList.nhn",
+	        success: list,	// 페이지요청 성공시 실행 함수
+	        error: whenError	//페이지요청 실패시 실행함수
+  	});
+}
+function list(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+    $("#sidebannerR").html(aaa);
+}
+function whenError(){
+    alert("FriendListError");
+}
 
 
-
-
+/* 계정 신고 새창열기 */
+function reportAccount(mem_num){
+    url = "/MyUsed/ReportAccount.nhn?mem_num="+mem_num;
+    
+    // 새로운 윈도우를 엽니다.
+    open(url, "confirm", 
+	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=270");
+}
 
 
 

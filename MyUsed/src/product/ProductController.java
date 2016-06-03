@@ -225,5 +225,16 @@ public class ProductController {
 		return "/product/MyUsedProductView.jsp";
 	}
 	
+	@RequestMapping("/TotalCateg.nhn")
+	public String TotalCateg(HttpServletRequest request){
+
+		/** 전체 카테고리 목록 뽑기 */
+		List viewCategList = new ArrayList();
+		viewCategList = sqlMapClientTemplate.queryForList("procateg.viewCateg", null);
+		request.setAttribute("viewCategList", viewCategList);
+		
+		return "/product/allCateg.jsp";
+	}
+	
 	
 }

@@ -128,11 +128,66 @@ $(document).ready(function(){
 			
 			</td>
 		</tr>
+		
+		
+		<!-- 해시태크 링크 -->
+ 		<script type="text/javascript">
+ 		$(document).ready(function(){
+		var content = document.getElementById('procontent_${productDTO.num}').innerHTML;
+		console.log(content);
+		var splitedArray = content.split(' ');	// 공백을 기준으로 자름
+		console.log(">>>1>>>",splitedArray);
+		var resultArray = [];	//최종 결과를 담을 배열을 미리 선언함
+		
+		// 공백을 기준으로 잘린 배열의 요소들을 검색함
+		for(var i = 0; i < splitedArray.length ; i++){
+			console.log(i+' : ',splitedArray[i].indexOf('<br>'));
+			
+			// 그 중 <br>이 포함되어있는 배열의 요소가 있다면
+			if(splitedArray[i].indexOf('<br>') > -1){
+				
+				// <br> 기준으로 잘라 임시 배열인 array에 넣는다 -> 이때 array의 길이는 2개 일 수 밖에 없음
+				var array = splitedArray[i].split('<br>');
+				console.log(i+'번째에서 <br> 출연 : ',array);
+				// 이때 <br>이 #이 붙은 단어의 앞에 있을 수 도있고 뒤에 있을 수도 있기 때문에 indexOf를 이용해 위치를 판단한다.
+				if(splitedArray[i].indexOf('<br>') < splitedArray[i].indexOf('#')){	//br이 앞에 있을경우
+					resultArray[i] = array[0]+'<br>';	// array의 첫번째 요소에 <br>을 붙여준다
+					resultArray[i+1] = array[1];
+					i++;	//resultArray의 크기가 1 늘어났음으로 i를 ++해줌
+					console.log('///resultArray 찍어봄(br앞) : ',resultArray);
+				}else{	//br이 뒤에 있을경우
+					resultArray[i] = array[0];
+					resultArray[i+1] = '<br>'+array[1];	// array의 두번째 요소에 <br>을 붙여준다
+					i++;	//resultArray의 크기가 1 늘어났음으로 i를 ++해줌
+					console.log('///resultArray 찍어봄(br뒤) : ',resultArray);
+				}
+			// <br>이 포함되지않은 요소들은 그냥 resultArray에 넣어준다.
+			}else{
+				resultArray[i] = splitedArray[i];
+				console.log('<br>없는 착한 요소///resultArray 찍어봄 : ',resultArray);
+			}
+		}
+		console.log(">>>2>>>",resultArray);
+		var linkedContent = '';
+		for(var word in resultArray)
+		{
+		  word = resultArray[word];
+		   if(word.indexOf('#') == 0)
+		   {
+				var url = '"'+'/MyUsed/ProductTegSearch.nhn?currentPage=1&word='+word.split('#')+'"';
+			    word = '<a href='+url+'>'+word+'</a>';
+		   }
+		   linkedContent += word+' ';
+		}
+		document.getElementById('procontent_${productDTO.num}').innerHTML = linkedContent; 
+	});
+	</script>
+		
  		
 		<tr>
 			<td style="padding:0 0 0 20px;" colspan="2">
- 			${productDTO.content} 
- 			</td>
+				<div id="procontent_${productDTO.num}">${productDTO.content}</div>
+			</td>
  		</tr>
  		
  		<tr height="30">

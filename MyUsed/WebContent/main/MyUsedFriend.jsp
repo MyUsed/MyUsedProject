@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div style="width:90%;height:3000px; margin-left:5%; background-color:#EAEAEA;">
-<br /><br /><br /><br />
+<br /><br />
 
 <div id="newrequest" style="background-color:#FFFFFF">
 	<div id="knewpeopletitle">

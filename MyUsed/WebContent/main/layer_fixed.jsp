@@ -23,11 +23,17 @@ function whenError(){
     alert("Error");
 }
 
+function enter(){
+	if(event.keyCode = 13){
+		searchword();
+	}
+}
+
 
 
 </script>
 
-<form action="/MyUsed/MyUsedSearchMember.nhn" method="post">
+
 	<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
 			<td style="vertical-align:left; padding-left: 30px; padding-right: 80px;">
@@ -37,8 +43,8 @@ function whenError(){
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 			<!-- 模备茫扁 -->
-				<input type="text" size="70" name="member"/>
-				<button type="submit"><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
+				<input type="text" size="70" name="sword" id="sword" onkeypress="enter()"/>
+				<button onclick="searchword()" ><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
 			
 			
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -48,6 +54,8 @@ function whenError(){
 				<a href="/MyUsed/MyUsed.nhn" onmouseover="this.style.textDecoration='none'"><font color="#F6F6F6">权 |</font></a>
 				<label for="friend"><font color="#F6F6F6" style="font-weight:lighter; cursor:pointer;">模备茫扁</font></label>
 				<input type="button" id="friend" onclick="javascript:callAjax_friend('${num}')" style="display:none;">
+				
+				
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40" title="模备"></a>
@@ -69,4 +77,4 @@ function whenError(){
 			
 		</tr>
 	</table>
-	</form>
+	

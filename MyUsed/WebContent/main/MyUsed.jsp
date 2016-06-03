@@ -9,14 +9,39 @@
 <script src="/MyUsed/main/script.js"></script>
 <script src="/MyUsed/main/animate.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
 <title>MyUsed</title>
+
+<script type="text/javascript">
+//----------------- 친구 목록 실시간 --------------------------------------------------------
+$(document).ready(function(){
+	window.setInterval('myfriendlist()', 5000); //5초마다한번씩 함수를 실행한다..!! 
+});
+function myfriendlist(){
+	 $.ajax({
+	        type: "post",
+	        url : "/MyUsed/FriendList.nhn",
+	        success: list,	// 페이지요청 성공시 실행 함수
+	        error: whenError	//페이지요청 실패시 실행함수
+  	});
+}
+function list(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+    $("#sidebannerR").html(aaa);
+}
+function whenError(){
+    alert("FriendListError");
+} 
+</script>
+
+
 </head>
 <body>
 
 
 
 <div id="layer_fixed"><jsp:include page="layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
-<div id="sidebannerR"><jsp:include page="sidebannerR.jsp"/></div> <!-- 사이드배너 Right  -->
+<div id="sidebannerR"><jsp:include page="/mypage/friendList.jsp"/></div> <!-- 사이드배너 Right  -->
 <div id="advertise" ><jsp:include page="advertise.jsp"/></div>  <!-- 광고 페이지  -->
 <div id="sidebannerL"><jsp:include page="sidebannerL.jsp"/></div> <!-- 사이드배너 Left -->
 

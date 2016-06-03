@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!-- <html>
 <head>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 
@@ -51,4 +51,31 @@
 </div>
 
 </body>
-</html>
+</html> -->
+
+	
+<script language='JavaScript'>
+
+document.write('<st'+'yle>');
+document.write('td {font-size:12px; font-family:굴림; text-decoration:none; }');
+document.write('A:link,A:active,A:visited{text-decoration:none;font-size:12PX;color:#333333;}');
+document.write('A:hover {text-decoration:none; color:ff9900}');
+document.write('font { font-size: 9pt; }');
+document.write('.cnj_input { border-style:solid;border-left-width:8;border-right-width:1;border-top-width:1;border-bottom-width:1;border-color:#ffcc00;text-align:center;}');
+document.write('.cnj_input2 {border-width:1; border-color:rgb(204,204,204); border-style:solid;cursor:hand;}');
+document.write('.cnj_input3 { border-width:1; border-style:solid; border-color:#000000; color:#0084D4; background-color:white;cursor:hand;}');
+document.write('.cnj_input4 { scrollbar-face-color: #FFCC33;scrollbar-shadow-color:  #ffffff;scrollbar-highlight-color: #F3f3f3;scrollbar-3dlight-color: #ffffff;scrollbar-darkshadow-color: #F3f3f3;scrollbar-track-color: #ffffff;scrollbar-arrow-color: #f9f9f9;cursor:hand; }');
+document.write('</st'+'yle>');
+function cnj_key_chk(){
+      var f =  document.cnjform; 
+      f.cnj_key.value=""+ String.fromCharCode(event.keyCode) + "";
+      f.cnj_text.value=String.fromCharCode(event.keyCode) + " ==> " + event.keyCode;
+      event.returnValue=false;
+}
+</script>
+<center>
+<form name="cnjform">
+키입력 : <input type="text" name="cnj_key"  size="2" onkeydown="cnj_key_chk()" class="cnj_input">
+키코드 : <input type="text" name="cnj_text" size="20"  class="cnj_input" readonly>
+</form>
+</center>

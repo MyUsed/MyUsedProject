@@ -35,7 +35,7 @@
 		select count(*) from memberlist where id=#id#
 	</select>
 
-	<!-- 가입된 아이디인지 체크(일반) -->
+	<!-- 가입된 아이디인지 체크(일반/아이디 비밀번호) -->
 	<select id="loginCheck" resultClass="int" parameterClass="java.util.Map">
 		select count(*) from memberlist where id=#id# and password=#password#
 	</select>
@@ -54,6 +54,10 @@
 	
 	<select id="searchMember" resultClass="member.MemberDTO" parameterClass="String">
 		select * from memberlist where name like '%'||#name#||'%' order by num desc
+	</select>
+	
+	<select id="searchMemNpic" resultClass="member.MemberDTO" parameterClass="String">
+		select * from memberlist, ( $sql$ ) pic where memberlist.num = pic.mem_num
 	</select>
 
 	<select id="joinedNaverId" resultClass="int" parameterClass="String">
@@ -86,6 +90,10 @@
 			 union 
 			select cover_pic pic, reg from coverpic_$num$)
  		order by reg desc
+	</select>
+	
+	<select id="judmem_num" resultClass="int" parameterClass="int">
+		select count(*) from memberlist where num=#mem_num#
 	</select>
 
 </sqlMap>

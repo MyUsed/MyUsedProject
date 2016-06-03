@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="memDelete">
+
+	<select id="friendlist" resultClass="friend.FriendDTO" parameterClass="int">
+		select * from friendlist_$num$
+	</select> 
+	
+	<delete id="delFriend" parameterClass="java.util.Map">
+		delete friendlist_$fri_num$ where mem_num=#mem_num#
+	</delete>
+
+	<statement id="delPersonalTable" parameterClass="String" >
+		drop table $tablename$
+	</statement>
+	
+	<statement id="delPersonalSq" parameterClass="String" >
+		drop sequence $sqname$
+	</statement>
+	
+	<delete id="delmemlist" parameterClass="int">
+		delete memberlist where num=#num#
+	</delete>
+
+</sqlMap>

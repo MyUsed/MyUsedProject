@@ -29,19 +29,19 @@
 		   height:50px; 
 		   margin-top:10px;
 		   margin-left:55px;
-		   padding-top:15px;
+		   padding-top:33px;
 		   padding-left:5px;
 		   text-align:left;
 		   font-weight:bold;
 		   font-size: 85%;
 		   }			
 						
-#friendlist_line {position:absolute;    
+/* #friendlist_line {position:absolute;    
 		   width:140px; 
-/* 		   height:50px; 
-		   margin-top:-115px; */
+		   height:50px; 
+		   margin-top:-115px;
 		   text-align:left;
-		   }	
+		   }	 */
 		   	
 #friendlist_side {position:absolute;    
 		   width:5px; 
@@ -50,6 +50,41 @@
 		   margin-left:-16px;
 		   border-left:1px solid #D5D5D5;
 		   }	
+	
+			
+#friendlist_all { position:absolute; 
+			  width:800px; 
+			  height:650px; 
+			  margin-top:195px;
+			  margin-right:10px; 
+			  background:#FFFFFF;
+			  border:1px solid #BDBDBD; }
+			  
+			  			  
+#friendlist_line { position:absolute; 
+		width:790px; 
+		margin-top:-17px; 
+		height:2px;  }			  
+			  
+#friendlist_title { position:absolute; 
+			  width:799px; 
+			  height:30px;  
+			  margin-top:0px; 
+			  margin-right:10px; 
+			  font-weight:bold;
+			  font-size:120%;
+			  padding-top:2px;
+			  padding-left:6px;
+			  text-shadow: 1px 1px 1px #BDBDBD; }
+
+#friendlist_index { position:absolute; 
+			  width:760px; 
+			  height:650px;  
+			  margin-top:35px; 
+			  margin-left:20px;
+			  float:left;} 
+			  
+
 
 </style>
 

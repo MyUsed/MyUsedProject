@@ -3,15 +3,31 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
+<head>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="facebookstyle.css" />
-<link rel="stylesheet" type="text/css" href="/MyUsed/mypage/MyPage.css" />
+
 
 <script src="/MyUsed/member/jquery-1.11.3.js"></script>
 <script src="/MyUsed/member/animate.js"></script>
-<body>
+<style type="text/css">
+#sidebannerR { position:fixed; 
+		top:50px; 
+		height:500%; 
+		left:86%; 
+		width:14%;
+		margin-left:0%;  
+		padding-left:1%;
+		background:#EAEAEA; 
+		z-index:100;
+	}
+
 	
- 	<!-- 模备 格废(state 2) -->
+
+</style>
+
+</head>
+<body>
+<!-- 模备 格废(state 2) -->
  	<div id="friendlist_side"></div>
  
  	<br />
@@ -42,6 +58,5 @@
  	</c:forEach>
  	</div>
  	
-
 </body>
 </html>

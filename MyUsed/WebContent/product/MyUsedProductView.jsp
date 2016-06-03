@@ -33,6 +33,26 @@
    function whenError(){
        alert("Error");
    }
+   
+   
+   /** 전체 상품 카테고리 보기 */
+   function callTotalCateg(){
+       $.ajax({
+	        type: "post",
+	        url : "/MyUsed/TotalCateg.nhn",
+	        success: callCateg,	// 페이지요청 성공시 실행 함수
+	        error: Error	//페이지요청 실패시 실행함수
+    	});
+   }
+   function callCateg(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+       $("#sidebannerL").html(aaa);
+       console.log(resdata);
+   }
+   function Error(){
+       alert("Error");
+   }
+   
+   
 </script>
 
 </head>
@@ -190,11 +210,11 @@
 </center>	
 </div>
 
-
 <div id="sidebannerL">
 	<br />
-	<font size="2" color="#000000"><b>	
-	<a href="/MyUsed/MyUsedProductView.nhn?categ=${categ}&currentPage=1">${categ}</a>
+	<font size="2" color="#000000"><b>
+	<a onclick="callTotalCateg()" style="cursor:pointer;">전체</a>	
+	<a href="/MyUsed/MyUsedProductView.nhn?categ=${categ}&currentPage=1">>${categ}</a>
 	<c:if test="${categ2 != null}">
 		<a href="/MyUsed/MyUsedProductView2.nhn?categ=${categ}&categ2=${categ2}&currentPage=1">>${categ2}</a>
 	</c:if>
@@ -209,7 +229,7 @@
 </div>
 
 
-<div id="sidebannerR">
+<div id="sidebannerR"><jsp:include page="/mypage/friendList.jsp"/>
  	
  	<!-- 친구 목록(state 2) -->
  	<div id="friendlist_side"></div>

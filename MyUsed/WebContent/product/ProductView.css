@@ -18,15 +18,8 @@ input[type=text] {
  	text-align: center;
  	margin: 0px;}
 
-#sidebannerR { position:fixed; 
-		top:50px; 
-		left:43%; 
-		margin-left:42%; 
-		width:15%; 
-		height:100%; 
-		background:#EAEAEA;
-		padding:10px;
-		/* border:1px solid #000000; */ }
+
+		
 #sidebannerL { position:fixed; 
 			top:50px; 
 			right:50%; 
@@ -41,7 +34,7 @@ input[type=text] {
 			
 #contents {  position:absolute;
 			top:50px; 
-			width:57%; 
+			width:61%; 
 			height:300%; 
 			margin:0 auto; 
 			margin-left:13%;
@@ -50,16 +43,16 @@ input[type=text] {
 			
 #advertise {  position:fixed; 
 			top:50px; 
-			width:15%; 
+			width:14%; 
 			height:100%; 
-			left:61%; 
-			margin-left:9%;
+			left:72%; 
+			margin-left:0%;
 			background:#EAEAEA; 
 			/* border:1px solid #000000; */}
 
 
 #subject{position:absolute;
-	width:700px;
+	width:730px;
 	height:50px;
 	margin-top:-17px;
 	margin-left:35px;
@@ -137,6 +130,7 @@ input[type=text] {
 		   border-left:1px solid #D5D5D5;
 		   }	
 		   
+
 
 
 

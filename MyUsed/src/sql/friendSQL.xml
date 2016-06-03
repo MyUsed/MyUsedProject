@@ -87,5 +87,19 @@
 		update friendlist_$num$ set categ = #categ# where mem_num=#mem_num#
 	</update>
 	
+	<!-- 이름으로 디비 검색 -->
+	<select id="searchfriName" resultClass="friend.FriendDTO" parameterClass="java.util.Map">
+		select * from friendlist_$num$ where state=2 and name=#name#
+	</select>
+	
+	<!-- 알림 디비에 넣기 -->
+	<insert id="insertTegNotice" parameterClass="java.util.Map">
+		insert into notice_$num$(seq_num,board_num,call_memnum,call_name,categ,state,reg) 
+		values(notice_$num$seq.nextval, #board_num#, #call_memnum#, #call_name#, #categ#, 1 ,sysdate)	
+	</insert>
+	
+	<select id="testfriend" resultClass="mypage.noticeDTO">
+		select * from notice_11
+	</select>
 
 </sqlMap>

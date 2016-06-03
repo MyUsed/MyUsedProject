@@ -14,6 +14,8 @@ public class MemberDTO {
 	private String naverid;
 	private String chatonoff;
 	
+	private String profile_pic;	//조인햇을때 
+	
 	public int getNum() 		{		return num;			}
 	public String getId() 		{		return id;			}
 	public String getName() 	{		return name;		}
@@ -25,6 +27,7 @@ public class MemberDTO {
 	public int getPoint() {		return point;	}
 	public String getOnoff() {		return onoff;	}
 	public String getChatonoff() {		return chatonoff;	}
+	public String getProfile_pic() {		return profile_pic;	}
 	
 	public void setNum(int num) 			   {		this.num = num;				}
 	public void setId(String id) 			   {		this.id = id;				}
@@ -37,6 +40,7 @@ public class MemberDTO {
 	public void setPoint(int point) {		this.point = point;	}
 	public void setOnoff(String onoff) {		this.onoff = onoff;	}
 	public void setChatonoff(String chatonoff) {		this.chatonoff = chatonoff;	}
+	public void setProfile_pic(String profile_pic) {		this.profile_pic = profile_pic;	}
 	
 	
 }

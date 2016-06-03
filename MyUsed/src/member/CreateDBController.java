@@ -75,7 +75,7 @@ public class CreateDBController {
 
 		/** 커버사진 테이블&시퀀스 생성 */
 		sqlMapClientTemplate.update("create.coverpic", map);
-		System.out.println("profilepic_"+num+" create");
+		System.out.println("coverpic_"+num+" create");
 		
 		sqlMapClientTemplate.update("create.coverpic_seq", map);
 		System.out.println("coverpic_"+num+"seq create");
@@ -104,14 +104,9 @@ public class CreateDBController {
 		/** 주소(address) 주소테이블 **/
 		sqlMapClientTemplate.update("create.address",map);
 		System.out.println("address_"+num+" create");
+		
 		sqlMapClientTemplate.update("create.address_seq",map);
 		System.out.println("address_seq"+num+" create");
-		
-		/** 알람(notice) 테이블**/
-		sqlMapClientTemplate.update("create.notice",map);
-		System.out.println("notice_"+num+" create");
-		sqlMapClientTemplate.update("create.notice_seq",map);
-		System.out.println("notice_seq"+num+" create");
 		
 		return result;
 	}

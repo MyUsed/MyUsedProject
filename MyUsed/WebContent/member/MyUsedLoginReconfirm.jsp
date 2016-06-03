@@ -286,7 +286,7 @@
 			<img src="/MyUsed/images/profile.png" width="100" height="100">
 			<br /><br />
 			<font size="3">
-			${name}으로 로그인 <br/>
+			${name}(으)로 로그인 <br/>
 			</font>
 			<font size="2" color="#4374D9">
 			${id} - 회원님이 아닌가요? <br /><br />

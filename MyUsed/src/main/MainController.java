@@ -135,39 +135,7 @@ public class MainController {
 		return mv;
 	   }   
 	   
-	   
-	   @RequestMapping("/MyUsedSearchMember.nhn")
-	   public ModelAndView MyUsedSearchMember(HttpServletRequest request, String member){
-	      ModelAndView mv = new ModelAndView();
-	      /** 로그인한 사용자의 이름 가져오기(세션아이디 이용) */
-	      HttpSession session = request.getSession();
-	      String sessionId = (String) session.getAttribute("memId");
-	      MemberDTO memDTO = new MemberDTO();
-	      memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
-	      
-	      System.out.println(memDTO.getName()+memDTO.getNum());
-	      
-	      /** 회원검색 -> 동명이인이 많아질 경우 검색 우선순위 정하는것 생각해보기 */
-	      System.out.println(member); //검색한 이름
-	      List searchList = new ArrayList();
-	      searchList = sqlMap.queryForList("member.searchMember", member);
-	      
-	      FriendCategDTO fricagDTO = new FriendCategDTO();
-	      List friendCateg = new ArrayList();
-	      friendCateg = sqlMap.queryForList("friend.friendCateg", null);
-	      
 
-	      
-	      request.setAttribute("name", memDTO.getName());
-	      request.setAttribute("num", memDTO.getNum());
-	      request.setAttribute("member", member);
-	      request.setAttribute("searchList", searchList);
-	      request.setAttribute("friendCateg", friendCateg);
-	      
-	      mv.setViewName("/main/MyUsedSearchMember.jsp");
-	      return mv;
-	   }   
-	   
 	
 	@RequestMapping("/MyUsedLogin.nhn")
 	public ModelAndView login(){

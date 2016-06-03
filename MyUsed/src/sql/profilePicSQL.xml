@@ -52,6 +52,15 @@
 		delete from coverpic_$mem_num$
 	</delete>
 	
+	
+	<!-- 일반사진 출력 -->
+	<select id="selectpic" resultClass="main.MainpicDTO" parameterClass="java.util.Map">
+		select * from pic_$mem_num$ order by reg desc
+	</select>
 		
+	<!-- 상품사진 출력 -->
+	<select id="selectpropic" resultClass="main.MainProboardDTO" parameterClass="java.util.Map">
+		select * from propic_$mem_num$ order by reg desc
+	</select>
 
 </sqlMap>

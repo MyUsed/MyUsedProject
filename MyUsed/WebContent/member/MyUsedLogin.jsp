@@ -268,7 +268,7 @@
 
         <div id="navbar" class="navbar-collapse collapse">
 
-          <form class="navbar-form navbar-left" action="/MyUsed/MyUsedLoginPro.nhn">
+          <form class="navbar-form navbar-left" action="/MyUsed/MyUsedLoginPro.nhn" method="post">
           
 
             <div class="form-group">

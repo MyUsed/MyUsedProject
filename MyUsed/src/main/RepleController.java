@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import friend.FriendDTO;
 import member.ProfilePicDTO;
 
 @Controller
@@ -121,6 +122,37 @@ public class RepleController {
 		sqlMap.update("reple.update",boardnum); // 전체 boardlist에 reple 추가;
 		
 		
+
+		/** @태그 달린 거 찾아서 notice 테이블에 넣음 */
+		String repleArray[] = reple.split(" ");	// 댓글 내용을 공백을 기준으로 자른다.
+		
+		for(int i = 0 ; i < repleArray.length ; i++){
+			if(repleArray[i].indexOf("@") == 0){	// 자른 배열의 요소 중 첫글자가 @로 시작되는 요소를 찾는다.
+				String name = repleArray[i].substring(1, repleArray[i].length());	// @를 자른다.
+				
+				/** 댓글을 작성한 사람의 친구 목록해서 일치하는 이름을 찾아 해당 정보를 DTO에 넣음 */
+				Map frimap = new HashMap();
+				frimap.put("num", mem_num);		// 댓글 작성한 회원의 num
+				frimap.put("name", name);	// 태그하려는 친구의 이름
+				
+				FriendDTO tegFriDTO = new FriendDTO();
+				tegFriDTO = (FriendDTO) sqlMap.queryForObject("friend.searchfriName", frimap);
+				
+				Map notice = new HashMap();
+				notice.put("num", tegFriDTO.getMem_num());		// 태그하려는 친구의 넘버
+				notice.put("board_num", boardnum);				// 태그된 글 번호
+				notice.put("call_memnum", mem_num);				// 태그한 사람 번호
+				notice.put("call_name", re_name);				// 태그한 사람 이름
+				notice.put("categ", "board");					// 알림 분류(board)
+				
+				sqlMap.insert("friend.insertTegNotice", notice);	// 개인 알림 테이블에 insert한다.
+				
+			}
+		}
+		
+		
+		
+		
 		mv.setViewName("reple.nhn?num="+boardnum);
 		return mv;
 	}
@@ -149,6 +181,9 @@ public class RepleController {
 		
 		sqlMap.insert("reple.proinsert",promap);   // 댓글 삽입 
 		sqlMap.update("reple.proupdate",proboardnum); // 전체 boardlist에 reple 추가;
+		
+		
+		
 		
 		mv.setViewName("ProductDetailView.nhn?num="+proboardnum);
 		return mv;

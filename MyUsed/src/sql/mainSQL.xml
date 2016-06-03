@@ -40,10 +40,10 @@
 	select * from boardlist order by num desc                       
    </select>
    	<!-- 내용 검색 쿼리 -->
-   <select id="tegSearch" resultClass="main.MainboardDTO" parameterClass="String">
+<!--    <select id="tegSearch" resultClass="main.MainboardDTO" parameterClass="String">
    		select * from boardlist where content like '%'||#content#||'%' order by num desc
    </select>
-   
+    -->
    
    
    
@@ -85,6 +85,38 @@
    	select * from notice_$mem_num$ where state = 1
    </select>
    
+   
+   
+   <!-- 해시태그(일반) -->   
+   <select id="tegSearch" resultClass="main.MainboardDTO" parameterClass="String">
+   		select * from boardlist where content like '%'||#content#||'%' order by num desc
+   </select>
+   
+   <!-- 해시태그(상품) -->
+   <select id="protegSearch" resultClass="main.MainProboardDTO" parameterClass="String">
+   		select * from proboardlist where content like '%'||#content#||'%' order by num desc
+   </select>
+   
+   <!-- 뉴스피드(일반) -->
+   <select id="newsfeed" resultClass="main.MainboardDTO" parameterClass="String">
+   		select * from ( $sql$ ) order by reg desc
+   </select>
+   
+   <!-- 뉴스피드(상품) -->
+   <select id="pro_newsfeed" resultClass="main.MainProboardDTO" parameterClass="String">
+   		select num, content contents, categ, name, likes, price, reg from 
+   		 ( $prosql$ ) order by reg desc
+   </select>
+   
+   <!-- 개인 상태 글(마이페이지에서) -->
+   <select id="per_board" resultClass="main.MainboardDTO" parameterClass="int">
+   		 select*from boardlist where mem_num=#mem_num# order by reg desc
+   </select>
+   
+   <!-- 개인 상품 글(마이페이지에서) -->
+   <select id="per_proboard" resultClass="main.MainProboardDTO" parameterClass="int">
+   		select*from proboardlist where mem_num=#mem_num# order by reg desc
+   </select>
    
    
    

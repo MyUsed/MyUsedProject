@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="report">
+	<!-- 미리 지정한 신고 사유 -->
+	<select id="selectReasons" resultClass="mypage.reportReasonsDTO">
+		select * from report_reasons
+	</select>
+	
+	<!-- 신고 내역 접수 -->
+	<insert id="insertReport" parameterClass="java.util.Map">
+		insert into report_mem values(report_mem_sq.nextval, #mem_num#, #name#, #reason#, sysdate)
+	</insert>
+	
+	<!-- 포인트 -1해줌 -->
+	<update id="updatePoint" parameterClass="int">
+		update memberlist set point = point-1 where num=#mem_num#
+	</update>
+	
+	<!-- 
+	
+create table report_mem(
+        num number primary key not null,
+        mem_num number not null, 
+        name varchar2(100) not null,
+        reason varchar2(4000) not null,
+        reg date
+)
+
+create sequence report_mem_sq start with 1 increment by 1 nocache
+
+
+create table report_reasons(
+        re_num number primary key not null,
+        re_reason varchar2(4000) not null
+)
+
+create sequence report_reasons_sq start with 1 increment by 1 nocache
+	
+	 -->
+	
+	
+</sqlMap>

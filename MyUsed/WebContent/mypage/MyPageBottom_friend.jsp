@@ -9,22 +9,37 @@
 
 <script src="/MyUsed/member/jquery-1.11.3.js"></script>
 <script src="/MyUsed/member/animate.js"></script>
+
+<c:if test="${knewFriendList == null}">
+	<style>
+		#knewpeople { position:absolute; height:110px;}		
+		#friendlist_all { position:absolute; margin-top:120px; height:150px;}			
+		/* #article {  position:absolute;  }				 */
+	</style>
+</c:if>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		if('${mem_num}' != '${mynum}'){
+	    	$('#knewpeople').attr('style', 'display:none;');
+	    	$('#friendlist_all').attr('style','margin-top:0px;');
+		}
+	});
+</script>
+
 <body>
 
 <!-- 친구 -->
 
-
-<c:if test="${mem_num == mynum}">
-	<div id="knewpeople">
-		<div id="knewpeopletitle">
-			알 수 도 있는 친구
-			<div id="line">
-				<hr>
-			</div>
-		</div>
+<div id="knewpeople">
+	<div id="knewpeopletitle">
+		알 수 도 있는 친구
+		<div id="line"><hr></div>
+	</div>
 		
-		<div id="knewpeopleindex">
+	<div id="knewpeopleindex">
 		<table>
+		<c:if test="${knewFriendList != null}">
 			<tr height="115" align="center">
 				<c:forEach var="knewFriendList_image" items="${knewFriendList_image}" begin="0" end="5" >
 				<td width="130">
@@ -40,13 +55,25 @@
 				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${knewFriend.mem_num}">
 					${knewFriend.name}
 				</a>
+				<img src="/MyUsed/images/AddFriend.png" onclick="addFriend('${knewFriend.mem_num}')" style="width:20px; height:20px; margin-top:-4px; cursor:pointer;">
 				</td>
 			</c:forEach>
 			</tr>
+		</c:if>
+		
+		<c:if test="${knewFriendList == null}">
+			<tr>
+				<td valign="middle">
+					<font style="font-size:110%; font-weight:bold;">
+						알 수 도 있는 친구를 검색해보세요!
+					</font>
+				</td>
+			</tr>
+		</c:if>
+		
 		</table>
-		</div>
 	</div>
-</c:if>
+</div>
 
 <div id="friendlist_all">
 	<div id="friendlist_title">
@@ -58,14 +85,13 @@
 	
 	<c:if test="${friendpicList == null}">	
 	<div id="friendlist_index">
-		등록된 친구가 없습니다. <br />
-		<c:if test="${mem_num == mynum}">
-			알 수 도있는 친구를 찾아보세요! <br />
-			친구찾기
-		</c:if>
+		<br />
+		<font style="font-size:110%; font-weight:bold;">
+			알 수 도 있는 친구를 검색해보세요!
+		</font><br />
 		<c:if test="${mem_num != mynum}">
-			${name}님을 아세요? <br />
-			친구로 등록하시겠습니까?
+			<b>${name}님을 아세요? <a onclick="addFriend('${mem_num}')" style="cursor:pointer;">
+			친구로 등록</a>하시겠습니까?</b>
 			<!-- 서로 친구가 아닌 경우만 -->
 		</c:if>
 	</div>
