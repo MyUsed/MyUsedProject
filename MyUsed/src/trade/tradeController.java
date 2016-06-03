@@ -83,6 +83,14 @@ public class tradeController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("/tradeCall.nhn")
+	public ModelAndView tradecall(){
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("/admin_trade/tradeInfo.jsp");
+		return mv;
+	}
 
 	
 	

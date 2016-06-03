@@ -133,14 +133,18 @@
                 
                 // ---------------------------------   알림 새창 띄우기 -----------------------------------------------
                 
-                /* 친구추가 새창 열기 */
+                
+                /* 알람 정보  새창 열기 */
                 function tradeCheck(){
-                	alert("123");
-                   // url = "/MyUsed/AddFriend.nhn?mem_num=";
+                	
+                    url = "/MyUsed/tradeCall.nhn";
                     
                     open(url, "confirm", 
                 	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=200");
                 }
+                
+                
+                
                 
                 
                 //----------------뉴스피드 페이지(일반)-------------------------------------------------------

@@ -44,6 +44,9 @@
 		</c:forEach>
 	
 	</table>
+	
+	<br />	
+	${pagingHtml}
 		
 </center>		
 	
