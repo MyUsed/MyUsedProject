@@ -83,6 +83,7 @@ public class PaperController {
 	@RequestMapping("paperSend.nhn")	// 쪽지 보냈을 때
 	public ModelAndView paperSend(PaperDTO dto, int mynum, String r_content, String r_name, HttpSession session){
 		ModelAndView mv = new ModelAndView();
+		System.out.println("rr_content="+r_content);
 
 		Map map = new HashMap();
 			String sessionId = (String)session.getAttribute("memId");

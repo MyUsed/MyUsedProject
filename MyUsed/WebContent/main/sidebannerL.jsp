@@ -66,7 +66,7 @@
     
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/chat.nhn"><img src="/MyUsed/images/chat.png" width="20" height="20" onclick="openChat();">&nbsp;채팅방</a>
+ 	<a href="javascript:;" onclick="openChat();"><img src="/MyUsed/images/chat.png" width="20" height="20" onclick="openChat();">&nbsp;채팅방</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a onclick="javascript:callAjax_viewFriend()" style="cursor:pointer;"><img src="/MyUsed/images/friend.png" width="20" height="20">&nbsp;친구보기</a>

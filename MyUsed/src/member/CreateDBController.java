@@ -33,8 +33,14 @@ public class CreateDBController {
 		
 		map.put("mynum", num);
 		
-		sqlMapClientTemplate.insert("member.paperTable", map);	// 쪽지테이블 생성
-		sqlMapClientTemplate.insert("member.paperSeq", map);	// 쪽지시퀀스 생성
+		sqlMapClientTemplate.insert("create.paperSTable", map);	// 보낸쪽지테이블 생성
+		sqlMapClientTemplate.insert("create.paperSSeq", map);	// 보낸쪽지시퀀스 생성
+		
+		sqlMapClientTemplate.insert("create.paperRTable", map);	// 받은쪽지테이블 생성
+		sqlMapClientTemplate.insert("create.paperRSeq", map);	// 받은쪽지시퀀스 생성
+		
+		sqlMapClientTemplate.insert("create.choice", map);		// 찜테이블 생성
+		sqlMapClientTemplate.insert("create.choice_seq", map);	// 찜시퀀스 생성
 		
 		/** 친구 리스트 테이블&시퀀스 생성 */
 		sqlMapClientTemplate.update("friend.friendlistTable", map);
@@ -107,6 +113,13 @@ public class CreateDBController {
 		
 		sqlMapClientTemplate.update("create.address_seq",map);
 		System.out.println("address_seq"+num+" create");
+		
+
+		/** 알람(notice) 테이블**/
+		sqlMapClientTemplate.update("create.notice",map);
+		System.out.println("notice_"+num+" create");
+		sqlMapClientTemplate.update("create.notice_seq",map);
+		System.out.println("notice_seq"+num+" create");
 		
 		return result;
 	}

@@ -61,7 +61,7 @@
 <!-- 총접속자수 나타내는 함수 -->
   <script type="text/javascript">
     $(document).ready(function(){
-    	window.setInterval('countAjax()', 200); //0.2초마다한번씩 함수를 실행
+    	window.setInterval('countAjax()', 3000); //3초마다한번씩 함수를 실행
     });
     function countAjax(){
     	 $.ajax({
@@ -82,7 +82,7 @@
 <!-- 접속자의 ID 나타내는 함수 -->
 <script type="text/javascript">
     $(document).ready(function(){
-    	window.setInterval('namelistAjax()', 200); //0.2초마다한번씩 함수를 실행
+    	window.setInterval('namelistAjax()', 3000); //3초마다한번씩 함수를 실행
     });
     function namelistAjax(){
     	 $.ajax({
@@ -110,7 +110,7 @@
 		<center>
 		<table>
 			<tr>
-				<td align="center"><div id="countReturn"></div></td>
+				<td align="center"><div id="countReturn">총 접속자 수:0명</div></td>
 			</tr>
 		
 			<tr>

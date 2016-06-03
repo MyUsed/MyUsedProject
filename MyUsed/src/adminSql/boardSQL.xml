@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="adminBoard">
+	
+	<select id="memid" resultClass="String" parameterClass="String">
+		select id from memberlist where id=#id_search# 
+	</select>
+	
+	<select id="memnum" resultClass="int" parameterClass="String">
+		select num from memberlist where id=#memid#
+	</select>
+	
+	<select id="list" resultClass="main.MainboardDTO" parameterClass="int">
+		select * from boardlist where mem_num=#memnum# 
+	</select>
+	
+	<select id="listCount" resultClass="int" parameterClass="int">
+		select count(*) from boardlist where mem_num=#memnum# 
+	</select>
+	
+	<select id="prolist" resultClass="main.MainProboardDTO" parameterClass="int">
+		select * from proboardlist where mem_num=#memnum# 
+	</select>
+	
+	<select id="prolistCount" resultClass="int" parameterClass="int">
+		select count(*) from proboardlist where mem_num=#memnum# 
+	</select>
+	
+	<select id="all" resultClass="main.MainboardDTO" parameterClass="int">
+		select * from boardlist where num=#b_num#
+	</select>
+
+	<delete id="boardDelete" parameterClass="int">
+		delete from boardlist where num=#num#	
+	</delete>
+	
+	<delete id="proboardDelete" parameterClass="int">
+		delete from proboardlist where num=#num#	
+	</delete>
+	
+	<select id="proall" resultClass="main.MainProboardDTO" parameterClass="int">
+		select * from proboardlist where num=#pro_num#
+	</select>
+
+	<select id="boardReple" resultClass="admin.AdminBoardRepleDTO" parameterClass="int">
+		select * from boardreple_$num$
+	</select>
+
+	<select id="proReple" resultClass="admin.AdminBoardRepleDTO" parameterClass="int">
+		select * from proboardreple_$num$
+	</select>
+	
+	<delete id="proRepleDelete" parameterClass="java.util.Map">
+		delete from proboardreple_$num$ where seq_num=#seq_num#
+	</delete>
+	
+	<delete id="boardRepleDelete" parameterClass="java.util.Map">
+		delete from boardreple_$num$ where seq_num=#seq_num#
+	</delete>
+	
+	<select id="boardRepleCount" resultClass="int" parameterClass="int">
+		select count(*) from boardreple_$b_num$
+	</select>
+
+	<select id="proRepleCount" resultClass="int" parameterClass="int">
+		select count(*) from proboardreple_$pro_num$
+	</select>
+	
+</sqlMap>
+	
+	
+

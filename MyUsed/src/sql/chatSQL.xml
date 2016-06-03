@@ -25,7 +25,15 @@
 		</select>
 
 		<select id="onName" resultClass="dto">
-			select name from memberlist where chatonoff='1'
+			select * from memberlist where chatonoff='1'
+		</select>
+		
+		<select id="me" resultClass="String" parameterClass="String">
+			select name from memberlist where id=#id#
+		</select>
+		
+		<select id="mynum" resultClass="int" parameterClass="String">
+			select num from memberlist where id=#id#
 		</select>
 		
 </sqlMap>

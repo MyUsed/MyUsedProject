@@ -25,9 +25,7 @@
 	</td></tr>
 	<tr><td>
 	<strong>- 게시글관리</strong> <br/>
-			게시글보기 <br/>
-			게시글수정 <br/>
-			게시글삭제 <br/>
+			<a href="admin_boardMain.nhn">게시글검색</a> <br/>
 	</td></tr>
 	<tr><td>
 	<strong>- 거래관리</strong> <br/>

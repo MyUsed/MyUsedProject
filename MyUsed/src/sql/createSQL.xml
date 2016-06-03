@@ -2,6 +2,55 @@
 <!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
 <sqlMap namespace="create">
 	
+	<!-- 보낸쪽지함(paper) 테이블,시퀀스 -->
+	<statement id="paperSTable" parameterClass="java.util.Map">
+		create table message_s_$mynum$(
+			m_no number(10) primary key,
+			r_num number(10),
+			r_name varchar2(100),
+			r_content varchar2(4000),
+			reg date default sysdate
+			)
+	</statement>
+
+	<statement id="paperSSeq" parameterClass="java.util.Map">
+		create sequence message_s_$mynum$_seq nocache
+	</statement>
+
+	<!-- 받은쪽지함(paper) 테이블,시퀀스 -->
+	<statement id="paperRTable" parameterClass="java.util.Map">
+		create table message_r_$mynum$(
+			m_no number(10) primary key,
+			s_num number(10),
+			s_name varchar2(100),
+			s_content varchar2(4000),
+			state number(10),
+			reg date default sysdate
+			)
+	</statement>
+
+	<statement id="paperRSeq" parameterClass="java.util.Map">
+		create sequence message_r_$mynum$_seq nocache
+	</statement>
+	
+	<!-- 개인찜하기(choice) table/sequence -->
+	<statement id="choice" parameterClass="java.util.Map">
+		create table choice_$num$(
+	        c_no number(10) primary key,
+	        num number(10),
+	        content varchar2(4000),
+	        price number(10),
+	        pro_pic varchar2(100),
+	        mem_num number(10),
+	        mem_name varchar2(100),
+	        reg date
+	        )
+	</statement>
+	<statement id="choice_seq" parameterClass="java.util.Map">
+		create sequence choice_$num$_seq nocache
+	</statement>
+	
+	
 	
 	<!-- 개인글쓰기(board) table/sequence  -->
 	<statement id="board" parameterClass="java.util.Map">	

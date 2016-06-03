@@ -50,17 +50,21 @@ public class chatController {
 	}
 	
 	@RequestMapping("namelist.nhn")
-	public ModelAndView namelist(){
+	public ModelAndView namelist(HttpSession session){
 		ModelAndView mv = new ModelAndView();
+		String sessionId = (String)session.getAttribute("memId");
+		String name = (String)SqlMapClientTemplate.queryForObject("chat.me", sessionId);	// 회원의 이름 가져오기
+		int mynum = (int)SqlMapClientTemplate.queryForObject("chat.mynum", sessionId);		// 회원 고유번호 가져오기
 		List list = SqlMapClientTemplate.queryForList("chat.onName", null);	// 채팅방에 들어와있는 사람의 name 
 		mv.addObject("list", list);
+		mv.addObject("name", name);
+		mv.addObject("mynum", mynum);
 		mv.setViewName("/views/namelist.jsp");
 		return mv;
 	}
 	
 	@RequestMapping("chatExit.nhn")
 	public String chatExit(HttpSession session){
-		System.out.println("exit");
 		String sessionId = (String)session.getAttribute("memId");
 		SqlMapClientTemplate.update("chat.off", sessionId);
 		return "/views/chatExit.jsp";
