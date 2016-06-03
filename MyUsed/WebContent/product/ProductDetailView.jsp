@@ -138,10 +138,18 @@ $(document).ready(function(){
  		<tr height="30">
  		<td style="padding:0 0 0 0px;"  bgcolor=#EBE8FF ><font size="2" color="#9A9DA4" ><strong>댓글 ${procount}개</strong></font></td>
 			<td align="right" style="padding:0 0 0 20px;" bgcolor=#EBE8FF colspan="2">
+			
+			<c:if test="${productDTO.sendpay != null}">
 				<font face="Comic Sans MS" size="5" color="#4565A1"><strong>${productDTO.price} 원 </strong> </font>
 				<a href="/MyUsed/productOrder.nhn?mem_num=${productDTO.mem_num}&price=${productDTO.price}&pronum=${num}">
 				<img src="/MyUsed/images/buyIcon.PNG" width="50" height="50" />
 				</a>
+			</c:if>
+			<c:if test="${productDTO.sendpay == null}">
+				<font face="Comic Sans MS" size="3" color="#4565A1"><strong>거래중 </strong> </font>&nbsp;&nbsp;&nbsp;&nbsp;
+			</c:if>
+			
+				
 			</td>
 		</tr>
 		

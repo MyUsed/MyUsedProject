@@ -53,6 +53,16 @@ public class tradeApplyController {
 		System.out.println("전달받은 seq_num = "+seq_num);
 		
 		sqlMap.update("order.updateState",seq_num); // seq_num 번호인 orderlist 입금완료 처리 
+		int pro_num = (int)sqlMap.queryForObject("order.selectProNum",seq_num); // orderlist 에서 게시글 번호를 꺼내옴
+		sqlMap.update("order.updateProboardlist",pro_num); // proboardlist의 sendpay상태를 0으로 만들어서 거래중 처리
+		int mem_num = (int)sqlMap.queryForObject("order.selectMem_num",pro_num); // 판매회원번호를 가져옴 
+		
+		Map updateMap = new HashMap();
+		updateMap.put("pro_num", pro_num);
+		updateMap.put("mem_num", mem_num);
+		sqlMap.update("order.updateProboard",updateMap); // 개인 proboard의 상태를 업데이트 거래중처리를위해
+		
+		
 		orderlistDTO orderDTO = new orderlistDTO();
 		orderDTO = (orderlistDTO)sqlMap.queryForObject("order.noticeOrderlist",seq_num); // 시퀀스기준으로 뽑아오는 orderlist정보
 		

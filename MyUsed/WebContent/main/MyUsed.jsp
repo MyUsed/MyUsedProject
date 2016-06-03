@@ -501,9 +501,14 @@
 		<br/>
 		</c:if>
 		
+		<c:if test="${prolist.sendpay != null}"> 
 		<font size="2" color="#8C8C8C">* 배송료${prolist.sendpay}</font> <br/>
-		 <font size="5" color="#1F51B7" > ${prolist.price} </font> <br /><br />
-		
+		<font size="5" color="#1F51B7" >${prolist.price} </font> <br /><br />
+		</c:if>
+		<c:if test="${prolist.sendpay == null}"> 
+		 <br/>
+		<font size="3" color="#4374D9" > <b>거래중입니다</b> </font> <br /><br />
+		</c:if>
 		<font size="3" color="#0042ED" >
 		-------------------------------- * 상세설명 * -------------------------------- 
 		</font>

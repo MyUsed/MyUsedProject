@@ -23,10 +23,20 @@
 									sysdate
 									)
 	</insert>
+	
 	 	<!-- orderlist 전체 꺼내는 쿼리 -->
 	<select id="selectOrderlist" resultClass="product.orderlistDTO">
 		select * from orderlist order by seq_num desc
 	</select>
+		<!-- orderlist 에서 게시글번호  꺼내는 쿼리 -->
+	<select id="selectProNum" resultClass="int" parameterClass="int">
+		select sell_pronum from orderlist where seq_num = #seq_num#
+	</select>
+		<!-- orderlist 에서 판매회원번호 꺼내는 쿼리 -->
+	<select id="selectMem_num" resultClass="int" parameterClass="int" >
+		select sell_memnum from orderlist where sell_pronum = #seq_num#
+	</select>
+	
 		<!-- 회원번호를 기준으로 최신 주문내역 가져오기 -->
 	<select id="buyOrderlist" resultClass="product.orderlistDTO" parameterClass="int">
 		select * from orderlist where buy_memnum = #mem_num# and seq_num = (select max(seq_num) from orderlist)
@@ -45,6 +55,18 @@
 	<update id="updateState" parameterClass="int">
 		update orderlist set state = state+1 where seq_num = #seq_num#
 	</update>
+	
+	
+		<!-- 거래중 처리하기위한 proboardlist 업데이트 -->
+	<update id="updateProboardlist" parameterClass="int">
+		update proboardlist set sendpay = null where num = #pro_num#
+	</update>
+	
+		<!-- 거래중 처리를 위한 개인DB 업데이트  -->
+	<update id="updateProboard" parameterClass="java.util.Map">
+		update proboard_$mem_num$ set sendpay = null where num = (select num from proboard_$mem_num$ where reg = (select reg from proboardlist where num = $pro_num$))
+	</update>
+		
 		
 		<!-- notice 테이블에 값 삽입 -->
 	<insert id="insertNotice" parameterClass="java.util.Map">
