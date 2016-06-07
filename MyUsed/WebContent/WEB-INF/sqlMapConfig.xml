@@ -22,7 +22,9 @@
 	<sqlMap resource="/sql/memDeleteSQL.xml"/>
 	<sqlMap resource="/sql/reportAccSQL.xml"/>
 	<sqlMap resource="/sql/chatSQL.xml"/>
+	<sqlMap resource="/sql/tradeSQL.xml"/>
 	<sqlMap resource="/adminSql/boardSQL.xml"/>
+	
 	
 
 

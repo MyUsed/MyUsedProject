@@ -34,12 +34,12 @@
 	</select>
 		<!-- orderlist 에서 판매회원번호 꺼내는 쿼리 -->
 	<select id="selectMem_num" resultClass="int" parameterClass="int" >
-		select sell_memnum from orderlist where sell_pronum = #seq_num#
+		select sell_memnum from orderlist where sell_pronum = #pro_num#
 	</select>
 	
 		<!-- 회원번호를 기준으로 최신 주문내역 가져오기 -->
 	<select id="buyOrderlist" resultClass="product.orderlistDTO" parameterClass="int">
-		select * from orderlist where buy_memnum = #mem_num# and seq_num = (select max(seq_num) from orderlist)
+		select * from orderlist where buy_memnum = #mem_num# and seq_num = (select max(seq_num) from orderlist)	
 	</select>
 		<!-- 개인의 구매내역을 가져옴  -->
 	<select id="butOrderAll" resultClass="product.orderlistDTO" parameterClass="int">
@@ -72,6 +72,15 @@
 	<insert id="insertNotice" parameterClass="java.util.Map">
 		insert into notice_$num$ values(notice_$num$seq.NEXTVAL,#board_num#,#pro_num#,#call_memnum#,#call_name#,#categ#,#state#,sysdate)	
 	</insert>
+	
+		<!-- notice 업데이트 읽은 것 상태 0 으로 변경 -->
+	<update id="updateNotice" parameterClass="java.util.Map">
+		update notice_$num$ set state = 0 where pro_num = #pro_num#
+	</update>
+		<!-- 배송확인 처리를 하기위한 업데이트  -->
+	<update id="updateOrderlist" parameterClass="int">
+		update orderlist set state = 2 where sell_pronum = #pro_num#
+	</update>
 	
 	
 	

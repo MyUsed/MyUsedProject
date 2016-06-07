@@ -81,7 +81,7 @@
  	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/board.png" width="20" height="20">&nbsp;게시판</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/deliver.png" width="20" height="20">&nbsp;배송관리</a>
+ 	<a href="depositState.nhn"><img src="/MyUsed/images/deliver.png" width="20" height="20">&nbsp;배송관리</a>
  	<br /><br />
  	&nbsp;&nbsp;&nbsp;&nbsp;
  	<a href="choiceMain.nhn?mynum=${num}"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;찜하기</a>

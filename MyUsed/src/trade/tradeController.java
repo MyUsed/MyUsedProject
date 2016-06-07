@@ -85,9 +85,24 @@ public class tradeController {
 	}
 	
 	@RequestMapping("/tradeCall.nhn")
-	public ModelAndView tradecall(){
+	public ModelAndView tradecall(HttpServletRequest request, int mem_num,int pro_num){
 		ModelAndView mv = new ModelAndView();
 		
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("memId");
+		int num = (int)sqlMap.queryForObject("main.num",sessionId); // 회원번호를 꺼내옴
+		
+		Map map = new HashMap();
+		map.put("num", num);
+		map.put("mem_num", mem_num);
+		map.put("pro_num", pro_num);
+		System.out.println(mem_num+"============================");
+		orderlistDTO orderInfo = new orderlistDTO();
+		orderInfo = (orderlistDTO)sqlMap.queryForObject("trade.orderInfo",map);
+		
+		sqlMap.update("order.updateNotice",map); // 읽은 창은 알림에서 안띄우게
+		
+		mv.addObject("orderInfo",orderInfo);
 		mv.setViewName("/admin_trade/tradeInfo.jsp");
 		return mv;
 	}

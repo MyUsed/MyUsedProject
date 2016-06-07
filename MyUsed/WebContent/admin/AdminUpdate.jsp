@@ -18,7 +18,7 @@
 	
 	 <table border="1" >
 	
-	 <tr align="center">
+	 <tr align="center" bgcolor="#EAEAEA">
    		<td><strong>ID</strong></td><td><strong>PW</strong></td><td><strong>NAME</strong></td>
    		<td><strong>GRADE</strong></td><td><strong>PART</strong></td><td><strong>DATE</strong></td><td><strong>Á¶Á¤</strong></td>
    		</tr>

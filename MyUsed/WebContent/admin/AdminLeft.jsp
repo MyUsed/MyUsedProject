@@ -31,8 +31,8 @@
 	<strong>- 거래관리</strong> <br/>
 			<a href="/MyUsed/tradeApply.nhn">거래신청</a> <br/>
 			<a href="/MyUsed/tradeDeposit.nhn">입금상태</a> <br/>
-			배송상태 <br/>
-			송장번호조회<br/>
+			<a href="/MyUsed/tradePost.nhn">배송상태</a> <br/>
+			
 	</td></tr>
 	<tr><td>
 	<strong>- 광고관리</strong> 

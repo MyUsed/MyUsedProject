@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="trade">
+	
+		<!-- 주문 정보를 가져오는 쿼리 -->
+	<select id="orderInfo" parameterClass="java.util.Map" resultClass="product.orderlistDTO">
+		select * from orderlist where buy_memnum = #mem_num# and sell_pronum = #pro_num#
+	</select>
+		<!-- 배송해야딜 정보를 가져오는 쿼리 -->
+	<select id="depositInfo" parameterClass="int" resultClass="product.orderlistDTO">
+		select * from orderlist where seq_num = (select max(seq_num) from orderlist where sell_memnum = #mem_num# and state = 1)
+	</select>
+		<!-- 배송lsit에  값을 넣어줌 계좌번호 이름등  -->
+	<insert id="insertDepositInfo" parameterClass="trade.selllistDTO">
+	
+			insert into selllist values(selllist_seq.NEXTVAL, 
+									#buy_memnum#,
+									#buy_name#,
+									#sell_pronum#,
+									#sell_memnum#,
+									#sell_name#,
+									#sell_propic#,
+									#send_ph#,
+									#acount#,
+									#bankname#,
+									#sendname#,
+									#postnum#,
+									#buy_price#,
+									default,
+									sysdate
+									)
+	</insert>
+		<!-- selllist의 정보를 가져옴 -->
+	<select id="selectSelllist" resultClass="trade.selllistDTO">
+		select * from selllist order by seq_num desc
+	</select>
+		<!--  배송확인 처리  -->
+	<update id="updateSelllist" parameterClass="int">
+		update selllist set state = 1 where seq_num = #seq_num#
+	</update>
+		<!-- pro_num을 가져오기위한 처리 -->
+	<select id="selectPronum" resultClass="int" parameterClass="int">
+		select sell_pronum from selllist where seq_num = #seq_num#
+	</select>
+		
+
+
+</sqlMap>

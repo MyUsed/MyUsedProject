@@ -135,12 +135,12 @@
                 
                 
                 /* 알람 정보  새창 열기 */
-                function tradeCheck(){
-                	
-                    url = "/MyUsed/tradeCall.nhn";
+                function tradeCheck(mem_num,pro_num){
+
+                    url = "/MyUsed/tradeCall.nhn?mem_num="+mem_num+"&pro_num="+pro_num;
                     
                     open(url, "confirm", 
-                	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=200");
+                	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800, height=500");
                 }
                 
                 

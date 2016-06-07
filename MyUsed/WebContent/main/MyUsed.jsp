@@ -83,7 +83,7 @@ function whenError(){
    			
    			(<strong> <a href="MyUsedMyPage.nhn?mem_num=${noticelist.call_memnum}">${noticelist.call_name}</a> </strong>) 
    			
-   			<a Onclick="javascript:tradeCheck()" style="cursor:pointer;">
+   			<a Onclick="javascript:tradeCheck(${noticelist.call_memnum},${noticelist.pro_num})" style="cursor:pointer;">
    			<b>님이 거래요청 하였습니다.</b> 
    			</a>
    			<br /> &nbsp;

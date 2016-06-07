@@ -349,10 +349,12 @@ function writeproduct(){
     $('#prolist').attr('style', "display:block;");
 }
 
+
 /* 친구 목록 실시간 */
 $(document).ready(function(){
 	window.setInterval('myfriendlist()', 5000); //5초마다한번씩 함수를 실행한다..!! 
 });
+
 function myfriendlist(){
 	 $.ajax({
 	        type: "post",

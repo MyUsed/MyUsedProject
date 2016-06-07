@@ -1,7 +1,7 @@
 @CHARSET "EUC-KR";
 
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:35%; width:15%; height:100%; background:#E9EAED; }
-#contents { width:52%; height:3000px; margin-top:30px; /* margin:0 auto; */ margin-left:13%;background:#EAEAEA; }
+#contents { width:52%; height:9000px; margin-top:30px; margin-left:13%; background:#EAEAEA; }
 #advertise {  position:fixed; width:22%; height:100%; left:64%; margin-right:30%;background:#EAEAEA; }
 #sidebannerR { position:fixed; 
 		top:50px; 

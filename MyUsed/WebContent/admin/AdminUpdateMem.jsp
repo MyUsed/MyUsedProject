@@ -12,7 +12,7 @@
 
 <form action="AdminUpdateCheck.nhn" method="post">
 <table border="1"  bgcolor="#A6A6A6">
-	<tr align="center">
+	<tr align="center" bgcolor="#EAEAEA">
 	<td><strong>ID</strong></td><td><strong>NAME</strong></td>
 	<td><strong>GRADE</strong></td><td><strong>PART</strong></td><td><strong>CHECK</strong></td>
 	</tr>
