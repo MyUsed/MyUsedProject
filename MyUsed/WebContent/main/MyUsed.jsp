@@ -16,7 +16,7 @@
 <script type="text/javascript">
 //----------------- 친구 목록 실시간 --------------------------------------------------------
 $(document).ready(function(){
-	window.setInterval('myfriendlist()', 5000); //5초마다한번씩 함수를 실행한다..!! 
+	window.setInterval('myfriendlist()', 10000); //5초마다한번씩 함수를 실행한다..!! 
 });
 function myfriendlist(){
 	 $.ajax({
@@ -32,6 +32,63 @@ function list(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다.
 function whenError(){
     alert("FriendListError");
 } 
+
+
+
+
+// ----------------------------------좋아요 이번트 처리---------------------------------
+var count;
+function likeAjax(num,c){
+	
+	
+	count = c;
+	
+	 $.ajax({
+	        type: "post",
+	        url : "likeup.nhn",
+	      	data: {	// url 페이지도 전달할 파라미터
+        	num : num //페이지 넘버
+        },
+	        success: test,	// 페이지요청 성공시 실행 함수
+	        error: whenError	//페이지요청 실패시 실행함수
+  	});
+}
+function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+	
+	$("#likewow"+count).html(aaa);	//id가 ajaxReturn인 부분에 넣어라
+    
+}
+function whenError(){
+    alert("Error");
+}
+
+
+var count;
+function likedownAjax(num,c){
+	
+	
+	count = c;
+	
+	 $.ajax({
+	        type: "post",
+	        url : "likedown.nhn",
+	      	data: {	// url 페이지도 전달할 파라미터
+        	num : num //페이지 넘버
+        },
+	        success: test,	// 페이지요청 성공시 실행 함수
+	        error: whenError	//페이지요청 실패시 실행함수
+  	});
+}
+function test(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+	
+	$("#likewow"+count).html(aaa);	//id가 ajaxReturn인 부분에 넣어라
+    
+}
+function whenError(){
+    alert("Error");
+}
+
+
 </script>
 
 
@@ -244,7 +301,7 @@ function whenError(){
 
 
 
-<c:forEach var="list" items="${list}">	
+<c:forEach var="list" items="${list}"  varStatus="i">	
 <form name="reple" action="reple.nhn" method="post" >
 
 	
@@ -302,7 +359,18 @@ function whenError(){
 		<td>
 		<hr width="100%"  > 
 		
-		좋아요  / 공유하기 / <a href="reple.nhn?num=${list.num}"><img src="/MyUsed/images/reple.PNG" width="25" height="20"/><font size="2" color="#9A9DA4">댓글 ${list.reples}개</font></a>
+	 <div id="likewow${i.count}"></div>
+	 <a onclick="likeAjax('${list.num}','${i.count}')">
+	 <c:if test="${list.likes == 0}">
+	 <img id="love" src="/MyUsed/images/likeDown.png"  style='cursor:pointer;' />
+	 </c:if>
+	 </a>
+	 <a onclick="likedownAjax('${list.num}','${i.count}')">
+	 <c:if test="${list.likes != 0}">
+	 <img id="love" src="/MyUsed/images/likeUp.png"  style='cursor:pointer;' />
+	 </c:if>
+	 </a>
+	 <a href="reple.nhn?num=${list.num}"><img src="/MyUsed/images/reple.PNG" width="23" height="17"/><font size="2" color="#9A9DA4">댓글 ${list.reples}개</font></a>
 		</td>
 		</tr>
 				
@@ -508,6 +576,7 @@ function whenError(){
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		
 		<c:if test="${prolist.mem_num == memDTO.num}">
 		<a href="prodelete.nhn?num=${prolist.num}"><img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 1em;" width="20" height="20" align="right" title="게시글 삭제"/></a>
 		</c:if>
@@ -534,8 +603,8 @@ function whenError(){
 		 <br/>
 		<font size="3" color="#4374D9" > <b>거래중입니다</b> </font> <br /><br />
 		</c:if>
-		<font size="3" color="#0042ED" >
-		-------------------------------- * 상세설명 * -------------------------------- 
+		<font size="3" color="#D7D2FF" >
+		■■■■■■■■■■■■■ <font color="#4374D9">★ 상세설명 ★</font> ■■■■■■■■■■■■■
 		</font>
 		<!-- 상품 게시글 해시태그 -->	
 	<script type="text/javascript">
@@ -567,11 +636,9 @@ function whenError(){
 		
 		<tr bgcolor="#FFFFFF">
 		<td>
-		<hr width="100%"  > 
-		
-		
-		좋아요 
-		<input type="image" src="/MyUsed/images/chiceIcon.png" width="20" height="20" id="choiceB${i.count}" onclick="choiceAjax('${i.count}')" title="찜하기"/>
+		<hr width="100%"> 
+
+		<img id="love" src="/MyUsed/images/likeDown.png"  style='cursor:pointer;' />
 		<input type="hidden" name="num" id="num${i.count}" value="${prolist.num}" />
 		<input type="hidden" name="mem_num" id="mem_num${i.count}" value="${prolist.mem_num}" />
 		<input type="hidden" name="mem_name" id="mem_name${i.count}" value="${prolist.name}" />
@@ -581,10 +648,13 @@ function whenError(){
 		
 		 <a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>
 		
-			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="35" height="35" /></a>
+			<a id="choiceB${i.count}" onclick="choiceAjax('${i.count}')"><img src="/MyUsed/images/chooseIcon.png" title="찜하기" width="60" height="65" style='cursor:pointer;'/></a>
+			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="55" height="45" title="구매하기"/></a>
+			
 			<div id="ajaxChoice"></div>
 			
 		</td>
+		
 		</tr>
 
 	</table>

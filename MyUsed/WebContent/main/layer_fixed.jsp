@@ -64,6 +64,9 @@ function enter(){
 				<!-- 개인 알림  -->
 				<label for="msg">
 					<img src="/MyUsed/images/mainView.png" width="40" height="35"  title="알림" style='cursor:pointer;'>
+					<c:if test="${notice != 0}">
+					<font color="red" style='cursor:pointer;'>${notice}</font>
+					</c:if>
 				</label>
 				<input type="button" id="msg" OnClick="javascript:openMsg();" style='display: none;' >
 				

@@ -23,6 +23,7 @@
 	<sqlMap resource="/sql/reportAccSQL.xml"/>
 	<sqlMap resource="/sql/chatSQL.xml"/>
 	<sqlMap resource="/sql/tradeSQL.xml"/>
+	<sqlMap resource="/sql/admin_memSQL.xml"/>
 	<sqlMap resource="/adminSql/boardSQL.xml"/>
 	
 	

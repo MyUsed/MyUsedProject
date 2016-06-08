@@ -63,7 +63,8 @@ function seachPost(post){
 			</c:forEach>
 	
 	</table>
-	
+	<br />
+		${pagingHtml}
 	
 		
 </center>		

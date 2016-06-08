@@ -26,6 +26,12 @@ public class depositController {
 	private selllistDTO sellDTO = new selllistDTO();
 	private List selllist = new ArrayList();
 	
+	private int currentPage = 1;	//현재 페이지
+	private int totalCount; 		// 총 게시물의 수
+	private int blockCount = 10;	// 한 페이지의  게시물의 수
+	private int blockPage = 5; 	// 한 화면에 보여줄 페이지 수
+	private String pagingHtml; 	//페이징을 구현한 HTML
+	private bankPagingAction page; 	// 페이징 클래스
 	
 	@RequestMapping("/depositState.nhn")
 	public ModelAndView depositsate(HttpServletRequest request){
@@ -59,11 +65,28 @@ public class depositController {
 	}
 	
 	@RequestMapping("/tradePost.nhn")
-	public ModelAndView tradepost(){
+	public ModelAndView tradepost(String currentPage){
 		ModelAndView mv = new ModelAndView();
 		
 		selllist = sqlMap.queryForList("trade.selectSelllist",null);
 		
+		
+		
+		totalCount = selllist.size();
+		if(currentPage != null){
+			this.currentPage = new Integer(currentPage);
+		}
+		page = new bankPagingAction(this.currentPage, totalCount, blockCount, blockPage); // pagingAction 객체 생성.
+		pagingHtml = page.getPagingHtml().toString(); // 페이지 HTML 생성.
+		// 현재 페이지에서 보여줄 마지막 글의 번호 설정.
+	
+		int lastCount = totalCount;
+		// 현재 페이지의 마지막 글의 번호가 전체의 마지막 글 번호보다 작으면 lastCount를 +1 번호로 설정.
+		if (page.getEndCount() < totalCount)
+			lastCount = page.getEndCount() + 1;
+		selllist = selllist.subList(page.getStartCount(), lastCount);
+		
+		mv.addObject("pagingHtml",pagingHtml);
 		mv.addObject("selllist",selllist);
 		mv.setViewName("/admin_deposit/postState.jsp");
 		return mv;

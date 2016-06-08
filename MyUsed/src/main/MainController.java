@@ -119,10 +119,11 @@ public class MainController {
 		
 		
 		
-		noticelist = sqlMap.queryForList("main.AllNoticeSelect",picmap);
+		noticelist = sqlMap.queryForList("main.AllNoticeSelect",picmap); // ¾Ë¸²³»¿ª »Ì¾Æ³»±â
+		int notice = (int)sqlMap.queryForObject("order.NoticeCount",memDTO.getNum()); // ¾Ë¸² °¹¼ö »Ì¾Æ³»±â
 		
 		
-		
+		mv.addObject("notice",notice);
 		mv.addObject("noticelist",noticelist);
 		mv.addObject("banner",banner);
 		mv.addObject("proDTO", proDTO);

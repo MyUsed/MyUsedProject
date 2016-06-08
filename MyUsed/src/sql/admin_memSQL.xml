@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="admin_mem">
+<!--................ 회원정보수정......................-->	
+
+<!-- 모든 요청 불러오기 -->
+<select id="allRequest" resultClass="admin.mem.MemInfoDTO">
+	select * from meminfo_modify order by num desc
+</select>	
+
+<!-- 정보 수정 요청 거절(state -1) -->
+<update id="reject" parameterClass="int">
+	update meminfo_modify set state=-1 where num=#num#
+</update>
+
+<!-- 정보 수정 승인(state 1) -->
+<update id="permit" parameterClass="int">
+	update meminfo_modify set state=1 where num=#num#
+</update>
+
+<!-- memberlist에서 수정 -->
+<update id="modifyInfo" parameterClass="java.util.Map">
+	update memberlist set $type$=#changeval# where num=#num#
+</update>
+
+<!-- 개인알림 테이블 insert -->
+<insert id="insertNotice" parameterClass="java.util.Map">
+	insert into notice_$num$(seq_num, categ, state, reg) values(notice_$num$seq.nextval, #categ#, default, sysdate)
+</insert>
+
+<!-- 타입별 정렬 -->
+<select id="type_sort" resultClass="admin.mem.MemInfoDTO" parameterClass="String">
+	select * from meminfo_modify where type=#type# order by num desc
+</select>
+
+<!-- 처리별 정렬 -->
+<select id="state_sort" resultClass="admin.mem.MemInfoDTO" parameterClass="int">
+	select * from meminfo_modify where state=#state# order by num desc
+</select>
+
+<!-- 회원번호 검색 -->
+<select id="search_mem" resultClass="admin.mem.MemInfoDTO" parameterClass="int">
+	select * from meminfo_modify where mem_num=#mem_num# order by num desc
+</select>
+
+<!--................ 회원 토탈......................-->	
+
+<!-- 회원번호로 회원정보 가져오기 -->
+<select id="selectMem" resultClass="member.MemberDTO" parameterClass="int">
+	select * from memberlist where num=#num#
+</select>
+
+<!-- 프로필 사진 뽑기 -->
+<select id="profile" resultClass="String" parameterClass="int">
+	select profile_pic from  profilepic_$mem_num$ where pic_num = (select max(pic_num) from profilepic_$mem_num$)
+</select>
+
+<!-- 분류검색 -->
+<select id="searchMem" resultClass="member.MemberDTO" parameterClass="java.util.Map">
+	select * from memberlist where $categ$ like '%'||#word#||'%' order by num desc
+</select>
+
+<!-- 등급 -->
+<select id="searchGrade" resultClass="member.MemberDTO" parameterClass="int">
+	select * from memberlist where grade=#grade# order by num desc
+</select>
+
+<!-- 포인트순 -->
+<select id="pointSort" resultClass="member.MemberDTO" parameterClass="String">
+	select * from memberlist order by point $point$
+</select>
+
+<!-- 네이버 회원 일때(naverid칼럼이 0이 아닌것) -->
+<select id="naver" resultClass="member.MemberDTO" parameterClass="int">
+	select * from memberlist where naverid<![CDATA[ <> ]]>0 order by num desc
+</select>
+
+<!-- 일반회원일때 -->
+<select id="not_naver" resultClass="member.MemberDTO" parameterClass="int">
+	select * from memberlist where naverid=0 order by num desc
+</select>
+
+<!-- 접속중인 회원 -->
+<select id="onoff_mem" resultClass="member.MemberDTO" parameterClass="int">
+	select * from memberlist where onoff=#onoff# order by num desc
+</select>
+
+<!-- 성별-->
+<select id="genderSort" resultClass="member.MemberDTO" parameterClass="String">
+	select * from memberlist where gender=#gender# order by num desc
+</select>
+
+
+<!-- 포인트 수정 -->
+<update id="updatePoint" parameterClass="java.util.Map">
+	update memberlist set point=#point# where num=#num#
+</update>
+
+<!-- 등급 수정 -->
+<update id="updateGrade" parameterClass="java.util.Map">
+	update memberlist set grade=#grade# where num=#num#
+</update>
+
+
+<!--................ 신고계정......................-->	
+<!-- 신고테이블 전체 -->
+<select id="reportAcc" resultClass="mypage.ReportAccDTO">
+	select * from report_mem order by num desc
+</select>
+
+<!-- 회원번호/이름 선택해서 키워드 검색 -->
+<select id="searchSort" resultClass="mypage.ReportAccDTO" parameterClass="java.util.Map">
+	select * from report_mem where $sort$=#word# order by num desc
+</select>
+
+<!-- 신고 사유 테이블 번호로 이유 찾기 -->
+<select id="selectReasons" resultClass="String" parameterClass="int">
+	select re_reason from report_reasons where re_num = #re_num#
+</select>
+	
+<!-- 신고테이블 전체 검색-->
+<select id="sortReason" resultClass="mypage.ReportAccDTO" parameterClass="String">
+	select * from report_mem where reason like '%'||#reason#||'%' order by num desc
+</select>
+
+
+</sqlMap>

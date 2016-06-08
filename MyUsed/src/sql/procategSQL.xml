@@ -3,7 +3,7 @@
 <sqlMap namespace="procateg">
 
 	<select id="viewCateg" resultClass="main.ProBoardCategDTO">
-		select * from proboard_categ where ca_level = 0
+		select * from proboard_categ where ca_level = 0 order by ca_group
 	</select>
 
 	<select id="selectCateg" resultClass="main.ProBoardCategDTO" parameterClass="int">
@@ -15,7 +15,27 @@
 	</select>
 	
 	<select id="selectCategGroup" resultClass="main.ProBoardCategDTO" parameterClass="java.util.Map">
-		select * from proboard_categ where ca_level=#ca_level# and ca_group=#ca_group#
+		select * from proboard_categ where ca_level=#ca_level# and ca_group=#ca_group# order by ca_group
 	</select>
+	
+	<insert id="insertCateg" parameterClass="String">
+		insert into proboard_categ values(#categ#, 0, procateg_seq.nextval)
+	</insert>
+		
+	<insert id="insertCateg1" parameterClass="java.util.Map">
+		insert into proboard_categ values(#categ#, 1, #ca_group#)
+	</insert>
+	
+	<update id="modifyCateg0" parameterClass="java.util.Map">
+		update proboard_categ set categ=#categ_modi# where categ=#categ# and ca_level=0 
+	</update>
+	
+	<update id="modifyCateg1" parameterClass="java.util.Map">
+		update proboard_categ set categ=#categ_modi# where categ=#categ# and ca_level=1 and ca_group=#ca_group# 
+	</update>
+	
+	<delete id="deleteCateg" parameterClass="java.util.Map">
+		delete from proboard_categ where categ=#categ# and ca_group=#ca_group# and ca_level=#ca_level#
+	</delete>
 	
 </sqlMap>

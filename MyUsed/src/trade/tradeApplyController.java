@@ -35,12 +35,37 @@ public class tradeApplyController {
 	
 	
 	@RequestMapping("/tradeApply.nhn")
-	public ModelAndView tradeApply(String currentPage){
+	public ModelAndView tradeApply(String currentPage,String search ,String text,String year,String yyear,String month,String mmonth,String day,String dday){
 		ModelAndView mv = new ModelAndView();
 		
 		
-		
+		if(year == null && search == null){
 		orderlist = sqlMap.queryForList("order.selectOrderlist",null);
+		}else if(year != null){	
+			if(Integer.parseInt(month) < 10 || Integer.parseInt(day) < 10 || Integer.parseInt(mmonth) < 10 || Integer.parseInt(dday) < 10){
+				month = "0"+month;
+				day = "0"+day;
+				mmonth = "0"+mmonth;
+				dday = "0"+dday;
+			
+			}
+			
+		String beginReg = year+month+day; // 시작 기간
+		String endReg = yyear+mmonth+dday; // 끝기간
+	
+		Map map = new HashMap();
+		map.put("beginReg", beginReg);
+		map.put("endReg", endReg);
+		orderlist = sqlMap.queryForList("order.RegSearchOrderlist",map); // 기간별 검색
+		}else if(search.equals("memnum")){
+			
+			orderlist = sqlMap.queryForList("order.memnumSearchOrderlist",Integer.parseInt(text)); //회원번호 검색
+			
+		}else if(search.equals("pronum")){
+			
+			orderlist = sqlMap.queryForList("order.pronumSearchOrderlist",Integer.parseInt(text)); // 상품번호 검색
+		}
+		
 		
 		totalCount = orderlist.size();
 		if(currentPage != null){

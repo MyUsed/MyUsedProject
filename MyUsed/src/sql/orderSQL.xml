@@ -82,6 +82,24 @@
 		update orderlist set state = 2 where sell_pronum = #pro_num#
 	</update>
 	
+		<!-- 알림 갯수 뽑아내기 -->
+	<select id="NoticeCount" parameterClass="int" resultClass="int">
+		select count(*) from notice_$num$ where state = 1
+	</select>
+	
+		<!-- orderlist에서 기간별로 조회  -->
+	<select id="RegSearchOrderlist" parameterClass="java.util.Map" resultClass="product.orderlistDTO">
+		select * from orderlist where reg between #beginReg# and #endReg# order by reg desc
+	</select>
+	
+		<!-- 회원번호별 검색 -->
+	<select id="memnumSearchOrderlist" parameterClass="int" resultClass="product.orderlistDTO">
+		select * from orderlist where buy_memnum = #text#
+	</select>
+		<!-- 상품번호별 검색 -->
+	<select id="pronumSearchOrderlist" parameterClass="int" resultClass="product.orderlistDTO">
+		select * from orderlist where sell_pronum = #text#
+	</select>
 	
 	
 </sqlMap>

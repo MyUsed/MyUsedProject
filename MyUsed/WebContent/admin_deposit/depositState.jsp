@@ -23,7 +23,7 @@
 <div id="detailViewback"></div>
 
 
-<div id="detailView">
+<div id="detailView" >
 	
 
 
@@ -33,7 +33,7 @@
  		<font color="#747474"><strong>* 구매자 배송지 정보  *</strong></font>
  	<hr width=100% />
  	<br />
- 	
+ 	<c:if test="${depositlist != null}">
  	<table align="center"  width="300" height="180">
   			<tr>
   				
@@ -48,7 +48,10 @@
   			</tr>
   			
   	</table>
- 	
+ 	</c:if>
+ 	<c:if test="${depositlist == null}">
+ 		<font color="#747474"> 정보가 없습니다. </font>
+ 	</c:if>
  	
    	</div>
 	
@@ -122,10 +125,16 @@
  		<font color="#747474"><strong>* 거래 요청된 상품정보 *</strong></font>
  		<hr width=100% />
     	<br />
-    	
+    	<c:if test="${depositlist != null}">
     	<a href="ProductDetailView.nhn?num=${depositlist.sell_pronum}"><img src="/MyUsed/images/${depositlist.sell_propic}" title="상품보기" width="120" height="120"/></a><br/>
+    	</c:if>
+    	
+    	 <c:if test="${depositlist == null}">
+ 			<font color="#747474"> 정보가 없습니다. </font>
+ 		</c:if>
     	
     </div>
+   
 
 
 </div>

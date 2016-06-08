@@ -14,13 +14,13 @@
 	<tr bgcolor="white" height="10" align="center"><td><font face="Comic Sans MS" size="4" color="blue" > <strong>QuickMenu</strong></font>  </td></tr>
 	<tr><td>
 	<strong>- 회원관리</strong> <br/>
-			정보수정 <br/>
-			등급조정 <br/>
-			정보수정 <br/>
+			<a href="/MyUsed/MyUsedMemTotal.nhn">회원정보토탈</a> <br/>
+			<a href="/MyUsed/MyUsedMemInfo.nhn">개인수정요청</a> <br/>
+			<a href="/MyUsed/MyUsedMemReport.nhn">신고계정관리</a> <br/>
 	</td></tr>
 	<tr><td>
 	<strong>- 페이지관리</strong> <br/>
-			카테고리수정 <br/>
+			<a href="/MyUsed/ModifyCateg.nhn">카테고리관리</a> <br/>
 			약관수정<br/>
 	</td></tr>
 	<tr><td>
@@ -52,6 +52,7 @@
 			FaQ수정 <br/>
 			공지사항 수정<br/>
 			게시판 생성<br/>
+			<br/><br/><br/><br/><br/><br/><br/>
 	</td></tr>
 	
 	

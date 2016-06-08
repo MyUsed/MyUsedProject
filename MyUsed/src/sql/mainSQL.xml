@@ -120,5 +120,51 @@
    
    
    
+   <!--  like 처리  -->
+   
+
+   <select id="likescount" parameterClass="java.util.Map" resultClass="int">
+   	select count(*) from likes_$mem_num$ where num = #num#
+   </select>
+   <select id="likes" parameterClass="java.util.Map" resultClass="String">
+   	select likes from likes_$mem_num$ where num=#num#
+   </select>
+   
+   <select id="ulikes" parameterClass="java.util.Map" resultClass="String">
+ 	select  num  from likes_$mem_num$ where num=#num#
+   </select>
+   <update id="likesBdUpdate" parameterClass="int">
+   	update boardlist set likes= likes+1 where num = #num#
+   </update>
+   
+   <insert id="likesInsert" parameterClass="java.util.Map">
+   	 insert into likes_$mem_num$(num, mem_num,likes, reg) values(#num#, #mem_num#, 1, sysdate)
+   </insert>
+   <update id="likescancle" parameterClass="java.util.Map">
+  	 update likes_$mem_num$ set likes=likes-1, reg=sysdate where num = #num#
+   </update>
+    <update id="likesUpdate" parameterClass="java.util.Map">
+  	 update likes_$mem_num$ set likes=likes+1, reg=sysdate where num = #num#
+   </update> 
+   <update id="likesBdcancle" parameterClass="int">
+   	update boardlist set likes=likes-1  where num =#num#
+   </update>
+   <select id="likeresult" resultClass="main.MainboardDTO">
+   	select likes from boardlist order by num desc
+   </select>
+   <update id="likeUpdatePush" parameterClass="int">
+   		update boardlist set likes = +1 where num = #num#
+   </update>
+   <update id="likeUpdateDown" parameterClass="int">
+   		update boardlist set likes = 0 where num = #num#
+   </update>
+   <insert id="memlikesInsert" parameterClass="java.util.Map">
+   		insert into likes_$memnum$ values(#num#,#memnum#,#id#,1,sysdate)
+   </insert>
+
+   
+   
+   
+   
 
 </sqlMap>

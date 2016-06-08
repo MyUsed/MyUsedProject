@@ -95,5 +95,18 @@
 	<select id="judmem_num" resultClass="int" parameterClass="int">
 		select count(*) from memberlist where num=#mem_num#
 	</select>
+	
+	
+	<update id="modiPw" parameterClass="java.util.Map">
+		update memberlist set password=#password# where num=#num#
+	</update>
+	
+	
+	<!-- 관리자에 정보수정 요청 -->
+	<insert id="ModifyInfo"  parameterClass="java.util.Map">
+		insert into meminfo_modify values(meminfo_modify_seq.NEXTVAL, #mem_num#, #type#, #changeval#, #reason#, 0, sysdate)
+	</insert>
+	
+	
 
 </sqlMap>

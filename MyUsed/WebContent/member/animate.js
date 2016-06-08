@@ -48,7 +48,7 @@ $(function(){
   $(".visual_btn li:first").css({background:"#fff", color:"#000"});   
 
   $(".visual_btn li").click( function(){
-     clearInterval(ag);
+	  clearInterval(ag);
      $(".slider_contorl").fadeIn("fast");
 
      btn_num = img_num = $(this).text()-1;
