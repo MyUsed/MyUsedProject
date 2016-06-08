@@ -604,7 +604,7 @@ function whenError(){
 		<font size="3" color="#4374D9" > <b>거래중입니다</b> </font> <br /><br />
 		</c:if>
 		<font size="3" color="#D7D2FF" >
-		■■■■■■■■■■■■■ <font color="#4374D9">★ 상세설명 ★</font> ■■■■■■■■■■■■■
+		──────────────<font size="3" color="#A6A6A6" face="Comic Sans MS"> Detail </font>──────────────
 		</font>
 		<!-- 상품 게시글 해시태그 -->	
 	<script type="text/javascript">
