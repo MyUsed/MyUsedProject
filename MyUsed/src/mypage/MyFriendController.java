@@ -48,7 +48,7 @@ public class MyFriendController {
 		//친구 목록 리스트 가져가기(state별로)
 		Map map = new HashMap();
 		map.put("num", memDTO.getNum());
-		System.out.println(map);
+		
 		
 		List friendList = new ArrayList();
 		friendList = sqlMapClientTemplate.queryForList("friend.allFriend", map);

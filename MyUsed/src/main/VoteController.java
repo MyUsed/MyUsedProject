@@ -97,11 +97,7 @@ public class VoteController {
 		
 		
 		sqlMap.update("main.likeUpdatePush",num); // 전체 likes 증가
-		
-		
-	
-		
-		
+
 		mv.setViewName("/MyUsed.nhn");
 		return mv;
 		

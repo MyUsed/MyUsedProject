@@ -141,7 +141,14 @@ function whenError(){
    			(<strong> <a href="MyUsedMyPage.nhn?mem_num=${noticelist.call_memnum}">${noticelist.call_name}</a> </strong>) 
    			
    			<a Onclick="javascript:tradeCheck(${noticelist.call_memnum},${noticelist.pro_num})" style="cursor:pointer;">
+   			<c:if test="${noticelist.categ == 'product'}">
    			<b>님이 거래요청 하였습니다.</b> 
+   			</c:if>
+   			</a>
+   			<a href="paperMain.nhn?mynum=${noticelist.board_num}" onclick="javascript:NoticeUpdate(${noticelist.board_num},${noticelist.call_memnum})">
+   			<c:if test="${noticelist.categ == 'msg'}">
+   			<b>님이 쪽지를 보내셨습니다.</b>
+   			</c:if>
    			</a>
    			<br /> &nbsp;
    			<font size="2" color="#9A9DA4">

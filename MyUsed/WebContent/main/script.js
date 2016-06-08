@@ -143,6 +143,22 @@
                 	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=800, height=500");
                 }
                 
+                // 알람 업데이트 채팅 확인 
+                function NoticeUpdate(mynum,memnum){
+                	
+                
+                	
+                	  $.ajax({
+              	        type: "post",
+              	        url : "/MyUsed/NoticeUpdate.nhn",
+              	        data: {	// url 페이지도 전달할 파라미터
+              	        	mynum : mynum,
+              	        	memnum : memnum
+              	      	},
+              	      
+                   	});
+                  }
+               
                 
                 
                 

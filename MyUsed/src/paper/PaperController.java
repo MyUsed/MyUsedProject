@@ -94,6 +94,11 @@ public class PaperController {
 			map.put("s_name", sessionId);	// 보낸 사람 아이디
 			SqlMapClientTemplate.insert("paper.send", map);	// 쪽지 받을 회원 DB에 insert
 			SqlMapClientTemplate.insert("paper.sendCollection", map);	// 보낸쪽지함 DB에 insert
+			map.put("board_num",mynum);
+			map.put("categ", "msg");
+			map.put("state", 1);
+			SqlMapClientTemplate.insert("paper.insertNoticeMsg",map); // 알림 테이블에 값 삽입;
+			
 		mv.addObject("mynum", mynum);
 		mv.setViewName("/paper/paperSend.jsp");
 		return mv;

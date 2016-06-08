@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
@@ -37,8 +40,7 @@ public class tradeApplyController {
 	@RequestMapping("/tradeApply.nhn")
 	public ModelAndView tradeApply(String currentPage,String search ,String text,String year,String yyear,String month,String mmonth,String day,String dday){
 		ModelAndView mv = new ModelAndView();
-		
-		
+
 		if(year == null && search == null){
 		orderlist = sqlMap.queryForList("order.selectOrderlist",null);
 		}else if(year != null){	
@@ -49,7 +51,6 @@ public class tradeApplyController {
 				dday = "0"+dday;
 			
 			}
-			
 		String beginReg = year+month+day; // 시작 기간
 		String endReg = yyear+mmonth+dday; // 끝기간
 	
@@ -147,5 +148,20 @@ public class tradeApplyController {
 		mv.setViewName("tradeDeposit.nhn");
 		return mv;
 	}
+	
+	@RequestMapping("NoticeUpdate.nhn")
+	public ModelAndView NoticeUpdate(int mynum , int memnum){
+		ModelAndView mv = new ModelAndView();
+		
+		Map map = new HashMap();
+		map.put("memnum", memnum);
+		map.put("mynum", mynum);
+		sqlMap.update("order.updateNoticeMsg",map); // 읽은 메세지 알림 처리
+		
+		
+		
+		return mv;
+	}
+	
 	
 }
