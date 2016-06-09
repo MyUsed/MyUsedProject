@@ -20,10 +20,8 @@
 		background:#EAEAEA; 
 		z-index:100;
 	}
-
-	
-
 </style>
+
 
 </head>
 <body>
@@ -45,6 +43,7 @@
 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState2.mem_num}">
  			<font color="#000000">${friendState2.name}</font>
  		</a>  
+ 		
  		<c:if test="${friendState2.onoff == 0}">
  			<%--로그아웃 상태 --%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
  			<font color="#FF0000">OFF</font>

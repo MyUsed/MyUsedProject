@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -159,6 +160,18 @@ public class tradeApplyController {
 		sqlMap.update("order.updateNoticeMsg",map); // 읽은 메세지 알림 처리
 		
 		
+		
+		return mv;
+	}
+	@RequestMapping("NoticeUpdateFriend.nhn")
+	public ModelAndView noticeUpdateFriend(int mynum, int memnum){
+		
+		ModelAndView mv = new ModelAndView();
+		
+		Map map = new HashMap();
+		map.put("mynum", mynum);
+		map.put("memnum", memnum);
+		sqlMap.update("order.updateNoticeFriend",map); // 친구추가 메세지 확인 알람처리
 		
 		return mv;
 	}

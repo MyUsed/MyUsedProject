@@ -62,21 +62,21 @@ function back(){
 	
 	<tr>
 		<td align="left">
-			<textarea name="text1" rows="3" cols="50">aaa
+			<textarea name="text1" rows="3" cols="50" readonly="readonly">${Tdto.content1}
 			</textarea>
 			<br />
 			<input type=radio name="text1" id="text1">
 			MyUsed의 데이터 정책에 동의합니다
 			<br /><br />
 	
-			<textarea name="text1" rows="3" cols="50">bbb
+			<textarea name="text1" rows="3" cols="50" readonly="readonly">${Tdto.content2}
 			</textarea>
 			<br />
 			<input type=radio name="text2" id="text2">
 			MyUsed의 권리 및 책임에 관한 정책에 동의합니다
 			<br /><br />
 	
-			<textarea name="text1" rows="3" cols="50">ccc
+			<textarea name="text1" rows="3" cols="50" readonly="readonly">${Tdto.content3}
 			</textarea>
 			<br />
 			<input type=radio name="text3" id="text3">

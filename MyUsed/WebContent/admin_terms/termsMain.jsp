@@ -47,7 +47,6 @@
 					
 					<tr align="center">
 						<td colspan="3">
-							<input type="button" value="적용하기" onclick="javascript:window.location='admin_termsSubmit.nhn"/>&nbsp&nbsp
 							<input type="button" value="약관작성" onclick="javascript:window.location='admin_termsWrite.nhn'"/>&nbsp&nbsp
 							<input type="submit" value="수정하기"/>&nbsp&nbsp
 							<input type="button" value="삭제" onclick="termsConfirm('${Tdto.seq_num}')"/>

@@ -75,13 +75,19 @@
 	
 		<!-- notice 업데이트 읽은 것 상태 0 으로 변경 상품-->
 	<update id="updateNotice" parameterClass="java.util.Map">
-		update notice_$num$ set state = 0 where pro_num = #pro_num#
+		update notice_$num$ set state = 0 where pro_num = #pro_num# and categ = 'product'
 	</update>
 	
 		<!-- notice 업데이트 읽은 것 상태 0 으로 변경 메시지 -->
 	<update id="updateNoticeMsg" parameterClass="java.util.Map">
-		update notice_$mynum$ set state = 0 where call_memnum = #memnum#
+		update notice_$mynum$ set state = 0 where call_memnum = #memnum# and categ = 'msg'
 	</update>
+	
+		<!-- notice 업데이트 읽은 것 상태 0 으로 변경 친구요청 -->
+	<update id="updateNoticeFriend" parameterClass="java.util.Map">
+		update notice_$mynum$ set state = 0 where call_memnum = #memnum# and categ = 'friend'
+	</update>
+	
 	
 		<!-- 배송확인 처리를 하기위한 업데이트  -->
 	<update id="updateOrderlist" parameterClass="int">

@@ -3,19 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<script type="text/javascript">
-// submit 이미지버튼 
-              function send1(){     
-        
-                   document.formId.method = "post"     // method 선택, get, post
-                   document.formId.action = "mainSubmit.nhn";  // submit 하기 위한 페이지 
-                   document.formId.submit();
-                   document.formId.image_preview();
-                  
-              }
-</script>
 
-<form name="formId" enctype="multipart/form-data" action="mainSubmit.nhn" method="post">
+<form name="formId" enctype="multipart/form-data" action="Write.nhn" method="post">
 
 	<table align="center" width="550" height="200">
 		<tr bgcolor="#FFFFFF">
@@ -86,7 +75,10 @@
 		</tr>
 		<tr bgcolor="#FFFFFF" align="center" height="40">
 			<td colspan="8">
-				<img src="/MyUsed/images/submit.PNG" style='cursor: pointer;' onclick="send1()" title="등록하기" />
+				<label for="button1" style="cursor:pointer;">
+	 				<img src="/MyUsed/images/submit.PNG" title="등록하기" />
+	 			</label>
+	 			<input type="submit" id="button1" style="display:none;">
 			</td>
 		</tr>
 

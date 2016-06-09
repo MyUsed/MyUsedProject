@@ -62,6 +62,13 @@
 	<div id="name">
 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mem_num}" onmouseover="this.style.textDecoration='none'">
 		<font color="#FFFFFF">${name}</font></a>
+		
+		<c:if test="${mynum != mem_num}">
+ 		<label for="paper">
+ 			<img src="/MyUsed/images/paper2.png" width="15" height="15" style="cursor:pointer;">
+ 		</label>
+ 		<input type="button" id="paper" onclick="javascript:openPaperForm('${memDTO.num}', '${memDTO.name}')" style="display:none">
+ 		</c:if>
 	</div>
 	
 	

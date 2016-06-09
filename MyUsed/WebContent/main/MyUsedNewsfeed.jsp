@@ -125,25 +125,63 @@
 		<td>
 		<hr width="100%"  > 
 		
-		좋아요  / 공유하기 / <a href="reple.nhn?num=${list.num}"><img src="/MyUsed/images/replego.PNG"/></a>
+		<script type="text/javascript">
+			/****** 리플열기 ******/
+			function openNreple${list.num}() {
+				if(nreple_${list.num}.style.display == 'block'){
+				    $('#nreple_${list.num}').slideUp();
+				    $('#nreple_${list.num}').attr('style', 'display:none;');			
+				}else{
+				    $.ajax({
+				        type: "post",
+				        url : "/MyUsed/reple.nhn",
+				        data: {	// url 페이지도 전달할 파라미터
+				        	num : '${list.num}',
+				        	page: 0
+				        },
+				        success: nreple${list.num},	// 페이지요청 성공시 실행 함수
+				        error: whenError_reple	//페이지요청 실패시 실행함수
+				 	});
+					
+				}
+			}
+			function nreple${list.num}(relist){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다.
+			    $('#nreple_${list.num}').attr('style', 'background:#FFFFFF; border:1px solid #D5D5D5; display:block;');
+			    $('#nreple_${list.num}').slideDown();	// 댓글 폼열기
+			    $('#nreple_${list.num}').html(relist);
+			    console.log(resdata);
+			}
+			function whenError_reple(){
+			    alert("리플 에러");
+			}
+		</script>
+		
+		좋아요  / 공유하기 /
+		<a onclick="javascript:openNreple${list.num}()" style="cursor:pointer;">
+			<img src="/MyUsed/images/reple.PNG" width="25" height="20"/>
+			<font size="2" color="#9A9DA4">댓글 ${list.reples}개</font>
+		</a>
 		</td>
 		</tr>
-		
+				
 		<tr bgcolor="#FFFFFF">
 		<td>
-		
-		
 		
 		</td>
 		</tr>
 		
 
 	</table>
+		<!-- 일반 게시글 해시태그 -->	
 	
-	<br /><br />
-</c:forEach>
+	<div id="nreple_${list.num}" style=" border:2px solid #000000; display:none;"></div>
+	
+	</div>
 
 
+ 	<br />	
+
+</c:forEach >
 </div>
 
 

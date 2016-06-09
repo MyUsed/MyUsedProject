@@ -17,6 +17,7 @@
 </head>
 
 <body>
+	<div id="modal" style="position:fixed; background:red; width:100%; height:100%; display:none; z-index:900;"></div>
 
 	<div id="layer_fixed"><jsp:include page="/mypage/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 	<div id="sidebannerL"></div><!-- 왼쪽 여백 -->
@@ -277,42 +278,64 @@
    	<input type="button" id="close4" OnClick="javascript:closeMsg()" style='display: none;'>
    	<br />
    	<div id="msgtitle">
-   		<font size="3"><b>알림 확인</b></font>
+   		<font size="3"><b>친구</b></font>
    	</div>
    	
    	<div id="msgtext">
- 	<b>친구 신청 대기(state 0)</b>
- 	<br />
- 	<c:forEach var="friendState0" items="${friendState0}">
- 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState0.mem_num}">
- 			${friendState0.name} 
- 		</a><br />
- 	</c:forEach>
- 	
- 	<br />
- 	
- 	<b>거절된 친구 신청(state -1)</b><br />
- 	<c:forEach var="friendState_m1" items="${friendState_m1}">
- 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState_m1.mem_num}">
- 			${friendState_m1.name} 
- 		</a><br />
- 		<input type="button" value="확인" onClick="javascript:window.location='MyUsedRejectionFriend.nhn?agree=${0}&mem_num=${friendState_m1.mem_num}&num=${num}'">
- 		<br />
- 	</c:forEach>
- 	
- 	<br />
- 	<b>나에게 들어온 친구신청(state 1)</b><br />
- 	<c:forEach var="friendState1" items="${friendState1}">
- 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState1.mem_num}">
- 			${friendState1.name}
- 		</a><br />
- 		<input type="button" value="수락" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${0}&mem_num=${friendState1.mem_num}&num=${num}'">
- 		<input type="button" value="거절" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${1}&mem_num=${friendState1.mem_num}&num=${num}'">
- 		<br />
- 	</c:forEach>
- 	
- 	<br />
+ 
+ 	<table width="90%" height="100%">
+   		<tr>
+   			<td><b>친구 신청 대기<font color="#4374D9">(${friendState0.size()}건)</font></b></td>
+   		</tr>
+   		<tr height="25%">
+   			<td valign="top" style="padding-left:5px;">
+ 				<c:forEach var="friendState0" items="${friendState0}">
+ 					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState0.mem_num}">
+ 					${friendState0.name} 
+ 					</a><br />
+ 				</c:forEach>
+			</td>
+   		</tr>
+   		<tr>
+   			<td><b>거절된 친구 신청<font color="#4374D9">(${friendState_m1.size()}건)</font></b></td>
+   		</tr>
+   		<tr height="25%">
+   			<td valign="top" style="padding-left:5px;">
+ 				<c:forEach var="friendState_m1" items="${friendState_m1}">
+ 					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState_m1.mem_num}">
+ 						${friendState_m1.name} 
+ 					</a><br />
+ 					<input type="button" value="확인" onClick="javascript:window.location='MyUsedRejectionFriend.nhn?agree=${0}&mem_num=${friendState_m1.mem_num}&num=${num}'">
+ 					<br />
+ 				</c:forEach>
+			</td>
+   		</tr>
+   		<tr>
+   			<td><b>나에게 들어온 친구신청<font color="#4374D9">(${friendState1.size()}건)</font></b></td>
+   		</tr>
+   		<tr height="25%">
+   			<td valign="top" style="padding-left:5px;">
+ 			<c:forEach var="friendState1" items="${friendState1}">
+ 				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState1.mem_num}">
+ 					${friendState1.name}
+ 				</a><br />
+ 				<input type="button" value="수락" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${0}&mem_num=${friendState1.mem_num}&num=${num}'">
+ 				<input type="button" value="거절" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${1}&mem_num=${friendState1.mem_num}&num=${num}'">
+ 				<br />
+ 			</c:forEach>
+			</td>
+   		</tr>
+   	
+   	</table>
+ 
+ 
  	</div>
+   	
+   	
+   	
+   	
+   	
+   	
    	
 </div>
 

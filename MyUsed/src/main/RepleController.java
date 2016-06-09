@@ -31,13 +31,13 @@ public class RepleController {
 	private List<MainpicDTO> piclist = new ArrayList<MainpicDTO>();;
 	
 	@RequestMapping("/reple.nhn")
-	public ModelAndView reple(int num,HttpServletRequest request){
+	public ModelAndView reple(int num,HttpServletRequest request, int page){
 		ModelAndView mv = new ModelAndView();
-		System.out.println(num);
+		System.out.println(">>>>>>>"+num);
 		
 		Timestamp reg = (Timestamp)sqlMap.queryForObject("reple.boardreg",num); // 게시글 등록된 시간 가져오기
 		String name = (String)sqlMap.queryForObject("reple.boardname",num); // boardlist에서 글쓴이 이름 가져오기
-		int mem_num = (int)sqlMap.queryForObject("reple.mem_num",num); // 댓글다는 사람의 회원번호 가져오기
+		int mem_num = (int)sqlMap.queryForObject("reple.mem_num",num); // 게시글 작성자의 회원번호 가져오기
 		String content =(String)sqlMap.queryForObject("reple.content",num); // 게시글의 내용 가져오기 
 		String board_pic = (String)sqlMap.queryForObject("reple.pic",num); // 게시글의 사진 가져오기
 		
@@ -58,8 +58,8 @@ public class RepleController {
 		remap.put("mem_num", mem_num);
 		remap.put("mem_pic", mem_pic);
 		if(mem_pic != null){
-		int pic_num = (int)sqlMap.queryForObject("reple.pic_num",remap); // 사진의 num을 가져오기
-		remap.put("pic_num", pic_num);
+		//int pic_num = (int)sqlMap.queryForObject("reple.pic_num",remap); // 사진의 num을 가져오기
+		//remap.put("pic_num", pic_num);
 		}
 		
 		piclist = sqlMap.queryForList("reple.all_pic",remap);
@@ -92,13 +92,14 @@ public class RepleController {
 		mv.addObject("time",time);
 		mv.addObject("mem_num",mem_num);
 		mv.addObject("board_pic",board_pic);
-		
+
+		mv.addObject("page", page);
 		mv.setViewName("/main/reple.jsp");
 		return mv;
 	}
 	
 	@RequestMapping("/replesubmit.nhn")
-	public ModelAndView replesubmit(HttpServletRequest request , String reple , int boardnum , String content){
+	public ModelAndView replesubmit(HttpServletRequest request , String reple , int boardnum , String content, int page, int page_mem_num){
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		String sessionId = (String)session.getAttribute("memId");
@@ -152,8 +153,9 @@ public class RepleController {
 		
 		
 		
-		
-		mv.setViewName("reple.nhn?num="+boardnum);
+		mv.addObject("page", page);
+		mv.addObject("mem_num", page_mem_num);
+		mv.setViewName("/main/redirect.jsp");
 		return mv;
 	}
 	

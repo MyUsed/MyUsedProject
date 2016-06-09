@@ -10,7 +10,8 @@
 <script src="/MyUsed/member/jquery-1.11.3.js"></script>
 <script src="/MyUsed/member/animate.js"></script>
 
-<c:if test="${(mem_num != mynum) || (knewFriendList == null)}">
+<!-- 자기 페이지는 아니고  친구 리스트도 없을 때.??(수정하기)-->
+<%-- <c:if test="${(mem_num != mynum) || (knewFriendList == null)}">
 	<style>
 		#knewpeople { position:absolute; height:110px;}
 		#picture{ position:absolute; margin-top:125px;}
@@ -18,22 +19,56 @@
 		/* #article {  position:absolute;  }				 */
 	</style>
 </c:if>
-
+ --%>
 <script type="text/javascript">
 	$(document).ready(function(){
+		// 해당 페이지가 나의 페이지가 아닐 때(글쓰기폼 감추고, 글 리스트를 위로 당긴다.)
 		if('${mem_num}' != '${mynum}'){
 	    	$('#writeform').attr('style', 'display:none;');
-	    	$('#list').attr('style','margin-top:253px;');
-	    	$('#prolist').attr('style','margin-top:193px;');
+	    	$('#list').attr('style','margin-top:517px;');
+	    	$('#prolist').attr('style','display:none; margin-top:517px;'); 	//처음 로드될땐 prolist는 감춘다
+	    	$('#friView').attr('style','display:block; margin-top:473px;');
+			
+			// 해당 페이지가 친구의 페이지 일 때(알 수 도있는 친구 감추기/사진 당기기/글쓰기폼 감추기/글리스트 당기기)
+			if('${friendCheck}' == 1){
+				$('#knewpeople').attr('style', 'display:none;');
+		    	$('#picture').attr('style','margin-top:0px;');
+		    	$('#writeform').attr('style', 'display:none;');
+		    	$('#list').attr('style','margin-top:323px;');
+		    	$('#prolist').attr('style', 'display:none;'); 	//처음 로드될땐 prolist는 감춘다
+		    	$('#friView').attr('style','display:block; margin-top:279px;');
+			}
 		}
-		if('${friendCheck}' == 1){
-			$('#knewpeople').attr('style', 'display:none;');
-	    	$('#picture').attr('style','margin-top:0px;');
-	    	$('#writeform').attr('style', 'display:none;');
-	    	$('#list').attr('style','margin-top:280px;');
-	    	$('#prolist').attr('style', 'display:none;');
-		}
+		
 	});
+
+	/* 로그인한 사용자의 페이지가 아닐 때 리스트만 보이기 */
+	function viewstate(){
+		if('${mem_num}' != '${mynum}'){
+		    $('#list').attr('style', "display:block;margin-top:517px;");		// 일반글 리스트
+		    $('#prolist').attr('style', "display:none;");	// 상품글 리스트
+			
+			if('${friendCheck}' == 1){
+			    $('#list').attr('style', "display:block;margin-top:323px;");		// 일반글 리스트
+			    $('#prolist').attr('style', "display:none;");	// 상품글 리스트
+				
+			}
+		}
+	}
+
+	function viewproduct(){
+		if('${mem_num}' != '${mynum}'){
+		    $('#list').attr('style', "display:none;");
+		    $('#prolist').attr('style', "display:block;margin-top:517px;");
+			
+			if('${friendCheck}' == 1){
+			    $('#list').attr('style', "display:none;");
+			    $('#prolist').attr('style', "display:block;margin-top:323px;");
+				
+			}
+		}
+	}
+
 </script>
 
 <body>
@@ -161,13 +196,24 @@
 				</center>
 				<hr width="100%" > 
 			</div>
-			<div style="background-color:#FFFFFF;/*  border:1px solid red; */">
+			<div style="background-color:#FFFFFF;">
 				<!-- 기본으로 보이는 것은 일반 글쓰기 폼 -->
 				<jsp:include page="prowriteForm.jsp"/>
 			</div>
 		</div>
 		
 	</div>
+	
+	<c:if test="${mem_num != mynum}">
+	<div id="friView">
+		<center>
+		<a onclick="javascript:viewstate()" onmouseover="this.style.textDecoration='none'" style="cursor:pointer;"> 
+			<font size="2" color="#3B5998">상태업데이트</font></a> | 
+		<a onclick="javascript:viewproduct()" onmouseover="this.style.textDecoration='none'" style="cursor:pointer;"> 
+			<font size="2" color="#3B5998">상품업데이트</font></a>
+		</center>
+	</div>
+	</c:if>
 	
 	<div id="list">
 		<jsp:include page="list.jsp"/>

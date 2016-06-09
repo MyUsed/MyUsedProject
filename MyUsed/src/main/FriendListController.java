@@ -76,6 +76,7 @@ public class FriendListController {
 			
 			request.setAttribute("friendpicList", friendpicList);
 		}
+		request.setAttribute("memDTO", memDTO);
 		
 		return "/main/MyUsedFriendList.jsp";
 	}

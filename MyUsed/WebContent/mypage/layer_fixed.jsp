@@ -27,14 +27,20 @@
 				
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40" title="친구"></a>
+				
+				<!-- 친구알림  -->
+				<label for="friend">
+				<img src="/MyUsed/images/mainFriend.png" width="45"  height="40" title="친구" style="cursor:pointer;"></a>
+				</label>
+				<input type="button" id="friend" OnClick="javascript:openMsg()" style='display: none;'>
+				
 				<a href="paperMain.nhn?mynum=${num}"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35" title="채팅"></a>
 				
 				<!-- 개인 알림  -->
 				<label for="msg">
 					<img src="/MyUsed/images/mainView.png" width="40" height="35" title="알림" style="cursor:pointer;">
 				</label>
-				<input type="button" id="msg" OnClick="javascript:openMsg()" style='display: none;'>
+				<input type="button" id="msg" OnClick="javascript:" style='display: none;'>
 				
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

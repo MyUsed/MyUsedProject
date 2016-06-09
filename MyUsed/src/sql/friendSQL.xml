@@ -94,8 +94,7 @@
 	
 	<!-- 알림 디비에 넣기 -->
 	<insert id="insertTegNotice" parameterClass="java.util.Map">
-		insert into notice_$num$(seq_num,board_num,call_memnum,call_name,categ,state,reg) 
-		values(notice_$num$seq.nextval, #board_num#, #call_memnum#, #call_name#, #categ#, 1 ,sysdate)	
+		insert into notice_$num$ values(notice_$num$seq.nextval, #board_num#, 0, #call_memnum#, #call_name#, #categ#, 1 ,sysdate)	
 	</insert>
 	
 	<select id="testfriend" resultClass="mypage.noticeDTO">

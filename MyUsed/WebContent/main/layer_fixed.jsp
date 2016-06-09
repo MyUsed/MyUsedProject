@@ -63,8 +63,11 @@ function enter(){
 				
 				<!-- 개인 알림  -->
 				<label for="msg">
+					<c:if test="${notice <=	0 || notice == null}">
 					<img src="/MyUsed/images/mainView.png" width="40" height="35"  title="알림" style='cursor:pointer;'>
-					<c:if test="${notice != 0}">
+					</c:if>
+					<c:if test="${notice != 0 && notice != null }">
+					<img src="/MyUsed/images/alramIcon.png" width="34" height="29"  title="알림" style='cursor:pointer;'>
 					<font color="red" style='cursor:pointer;'>${notice}</font>
 					</c:if>
 				</label>

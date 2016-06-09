@@ -145,9 +145,7 @@
                 
                 // 알람 업데이트 채팅 확인 
                 function NoticeUpdate(mynum,memnum){
-                	
-                
-                	
+
                 	  $.ajax({
               	        type: "post",
               	        url : "/MyUsed/NoticeUpdate.nhn",
@@ -159,6 +157,19 @@
                    	});
                   }
                
+                // 알람업데이트 친구 확인
+                function NoticeUpdateFriend(mynum,memnum){
+                
+                	  $.ajax({
+                	        type: "post",
+                	        url : "/MyUsed/NoticeUpdateFriend.nhn",
+                	        data: {	// url 페이지도 전달할 파라미터
+                	        	mynum : mynum,
+                	        	memnum : memnum
+                	      	},
+                	      
+                     	});
+                }
                 
                 
                 

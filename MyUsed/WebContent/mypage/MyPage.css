@@ -83,7 +83,7 @@
 	position:absolute; 
 	width:188px; 
 	height:25px; 
-	margin-top:-20px;
+	margin-top:195px;
 	margin-left:605px; 
 	text-align:right;
 	font-weight:bold;
@@ -130,7 +130,7 @@
 	
 #name { 
 	position:absolute; 
-	width:75px;
+	width:117px;
 	height:28px; 
 	margin-top:185px; 
 	margin-left:198px; 
@@ -292,14 +292,25 @@
 			  
 #form2 {  position:absolute; 
 			  width:555px; 
-			  height:414px;
-			  margin-top:125px; 
+			  height:399px;
+			  margin-top:193px; 
 			  margin-right:10px;
 			  margin-left:245px;
 			  background:none;
 			  border:1px solid #BDBDBD;
 			   /* border:1px solid red; */ }
 								
+#friView {  position:absolute; 
+			  width:555px; 
+			  height:45px;
+			  margin-top:279px; 
+			  margin-right:10px;
+			  margin-left:379px;
+			  padding-top:10px;
+			  background:#FFFFFF;
+			  border:1px solid #BDBDBD;
+			   /* border:1px solid red; */ }
+			   
 #writeformtitle {  position:absolute; 
 			  width:553px; 
 			  height:40px;
@@ -340,7 +351,7 @@
 #prolist {  position:absolute; 
 			  width:555px; 
 			  height:350px;
-			  margin-top:875px; 
+			  margin-top:903px; 
 			  margin-right:10px;
 			  margin-left:379px;
 			  background:none;

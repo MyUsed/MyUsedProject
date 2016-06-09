@@ -122,8 +122,8 @@
 #msgPop { position:fixed; 
 		width:350px; 
 		height:400px;
-		margin-top:-4988px;
-		margin-left:54%;
+		margin-top:-4990px;
+		margin-left:48%;
 		padding-left:20px;
 		font-size:90%;
 		background:#FFFFFF;
@@ -138,8 +138,8 @@
 		border-bottom:1px solid #D5D5D5;}		
 
 #msgtext { position:fixed; 
-		width:340px; 
-		height:300px;
+		width:328px; 
+		height:311px;
 		margin-top:50px;
 		font-size:100%; }		
 
@@ -152,8 +152,8 @@
 #arrow { position:fixed; 
 		width:25px; 
 		height:25px;
-		margin-top:-5000px;
-		margin-left:1040px;
+		margin-top:-5003px;
+		margin-left:951px;
 		z-index:999; }
 									
 #friendlist_img {position:relative;  

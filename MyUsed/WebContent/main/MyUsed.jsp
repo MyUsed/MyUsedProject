@@ -150,9 +150,14 @@ function whenError(){
    			<b>님이 메세지를 보내셨습니다.</b>
    			</c:if>
    			</a>
-   			<a href="" onclick="javascript:NoticeUpdate()" >
+   			<a href="MyUsedMyPage.nhn?mem_num=${noticelist.board_num}" onclick="javascript:NoticeUpdateFriend(${noticelist.board_num},${noticelist.call_memnum})" >
    			<c:if test="${noticelist.categ == 'friend'}">
    			<b>님이 친구요청을 하였습니다.</b>
+   			</c:if>
+   			</a>
+   			<a href="" onclick="javascript:NoticeUpdateFriend(${noticelist.board_num},${noticelist.call_memnum})" >
+   			<c:if test="${noticelist.categ == 'board'}">
+   			<b>님이 게시물에 태그 하였습니다.</b>
    			</c:if>
    			</a>
    			<br /> &nbsp;
@@ -335,20 +340,45 @@ function whenError(){
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
 		<c:if test="${list.mem_pic != null}">
-		<a href="reple.nhn?num=${list.num}">
+		<a href="reple.nhn?num=${list.num}">	
 		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/>
 		</a>
 		 <br/> <br />
 		</c:if>
 		<!-- 일반 게시글 해시태그 -->	
+	<!-- 일반 게시글 해시태그 -->	
 	<script type="text/javascript">
 	$(document).ready(function(){
 		var content = document.getElementById('listcontent_${list.num}').innerHTML;
-		var splitedArray = content.split(' ');
+		var splitedArray = content.split(' ');	// 공백을 기준으로 자름
+		var resultArray = [];	//최종 결과를 담을 배열을 미리 선언함
+		
+		// 공백을 기준으로 잘린 배열의 요소들을 검색함
+		for(var i = 0; i < splitedArray.length ; i++){
+			// 그 중 <br>이 포함되어있는 배열의 요소가 있다면
+			if(splitedArray[i].indexOf('<br>') > -1){
+				
+				// <br> 기준으로 잘라 임시 배열인 array에 넣는다 -> 이때 array의 길이는 2개 일 수 밖에 없음
+				var array = splitedArray[i].split('<br>');
+				// 이때 <br>이 #이 붙은 단어의 앞에 있을 수 도있고 뒤에 있을 수도 있기 때문에 indexOf를 이용해 위치를 판단한다.
+				if(splitedArray[i].indexOf('<br>') < splitedArray[i].indexOf('#')){	//br이 앞에 있을경우
+					resultArray[i] = array[0]+'<br>';	// array의 첫번째 요소에 <br>을 붙여준다
+					resultArray[i+1] = array[1];
+					i++;	//resultArray의 크기가 1 늘어났음으로 i를 ++해줌
+				}else{	//br이 뒤에 있을경우
+					resultArray[i] = array[0];
+					resultArray[i+1] = '<br>'+array[1];	// array의 두번째 요소에 <br>을 붙여준다
+					i++;	//resultArray의 크기가 1 늘어났음으로 i를 ++해줌
+				}
+			// <br>이 포함되지않은 요소들은 그냥 resultArray에 넣어준다.
+			}else{
+				resultArray[i] = splitedArray[i];
+			}
+		}
 		var linkedContent = '';
-		for(var word in splitedArray)
+		for(var word in resultArray)
 		{
-		  word = splitedArray[word];
+		  word = resultArray[word];
 		   if(word.indexOf('#') == 0)
 		   {
 				var url = '"'+'/MyUsed/tegSearch.nhn?word='+word.split('#')+'"';
@@ -356,20 +386,49 @@ function whenError(){
 		   }
 		   linkedContent += word+' ';
 		}
-		document.getElementById('listcontent_${list.num}').innerHTML = ' '+linkedContent; 
+		document.getElementById('listcontent_${list.num}').innerHTML = linkedContent; 
 	});
 	</script>
 		
 		
-		<div id="listcontent_${list.num}">
-		${list.content}
-		</div>
+		<div id="listcontent_${list.num}">${list.content}</div>
 		</td>
 		</tr>
 		
 		<tr bgcolor="#FFFFFF">
 		<td>
 		<hr width="100%"  > 
+		
+		<script type="text/javascript">
+			/****** 리플열기 ******/
+			function mianopenreple${list.num}() {
+				if(main_reple_${list.num}.style.display == 'block'){
+				    $('#main_reple_${list.num}').slideUp();
+				    $('#main_reple_${list.num}').attr('style', 'display:none;');				
+				}else{
+				    $.ajax({
+				        type: "post",
+				        url : "/MyUsed/reple.nhn",
+				        data: {	// url 페이지도 전달할 파라미터
+				        	num : '${list.num}',
+				        	page: 0
+				        },
+				        success: reple${list.num},	// 페이지요청 성공시 실행 함수
+				        error: whenError_reple	//페이지요청 실패시 실행함수
+				 	});
+					
+				}
+			}
+			function reple${list.num}(relist){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다.
+			    $('#main_reple_${list.num}').attr('style', 'background:#FFFFFF;  display:block;');
+			    $('#main_reple_${list.num}').slideDown();	// 댓글 폼열기
+			    $('#main_reple_${list.num}').html(relist);
+			    console.log(resdata);
+			}
+			function whenError_reple(){
+			    alert("리플 에러");
+			}
+		</script>
 		
 	 <div id="likewow${i.count}"></div>
 	 <a onclick="likeAjax('${list.num}','${i.count}')">
@@ -382,7 +441,7 @@ function whenError(){
 	 <img id="love" src="/MyUsed/images/likeUp.png"  style='cursor:pointer;' />
 	 </c:if>
 	 </a>
-	 <a href="reple.nhn?num=${list.num}"><img src="/MyUsed/images/reple.PNG" width="23" height="17"/><font size="2" color="#9A9DA4">댓글 ${list.reples}개</font></a>
+	 <a onclick="javascript:mianopenreple${list.num}()" style="cursor:pointer;"><img src="/MyUsed/images/reple.PNG" width="23" height="17"/><font size="2" color="#9A9DA4">댓글 ${list.reples}개</font></a>
 		</td>
 		</tr>
 				
@@ -391,6 +450,15 @@ function whenError(){
 		
 		
 		
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		
+		<!-- 리플 영역 -->
+		<div id="main_reple_${list.num}" style=" border:2px solid #000000; display:none;"></div>
+	
 		</td>
 		</tr>
 		

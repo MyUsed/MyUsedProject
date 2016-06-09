@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import friend.FriendCategDTO;
 import friend.FriendDTO;
+import main.ProBoardCategDTO;
 import member.CoverPicDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
@@ -54,7 +55,7 @@ public class MyPageController {
 			//친구 목록 리스트 가져가기(state별로)
 			Map map = new HashMap();
 			map.put("num", memDTO.getNum());
-			
+			System.out.println(map);
 			
 			List friendList = new ArrayList();
 			friendList = sqlMapClientTemplate.queryForList("friend.allFriend", map);
@@ -225,6 +226,14 @@ public class MyPageController {
 			List prolist = new ArrayList();
 			prolist = sqlMapClientTemplate.queryForList("main.per_proboard", mem_num); // product 리스트
 			
+			/** 상품 카테고리 추가 */
+			ProBoardCategDTO categDTO0 = new ProBoardCategDTO();
+			List categList = new ArrayList();
+			categList = sqlMapClientTemplate.queryForList("procateg.selectCateg", 0);
+
+			request.setAttribute("categList", categList);
+			request.setAttribute("checked", "checked");
+			
 			request.setAttribute("list",list);
 			request.setAttribute("prolist",prolist);
 			request.setAttribute("picList", picList);
@@ -245,15 +254,13 @@ public class MyPageController {
 			request.setAttribute("friendState2", friendState2);
 			request.setAttribute("friendState_m1", friendState_m1);
 		    request.setAttribute("friendCateg", friendCateg);
+		    request.setAttribute("memDTO", memDTO);
 			
 		    result = "/mypage/MyUsedMyPage.jsp";
 		}
 		
-		
-		
 		return result;
 	}
-	
 
 	@RequestMapping("/BigViewImage.nhn")
 	public String BigViewimage(HttpServletRequest request, String pic){	
@@ -261,4 +268,26 @@ public class MyPageController {
 		return "/mypage/bigViewImage.jsp";
 	}
 
+	@RequestMapping("/prowrite_categ2.nhn")
+	public String prowrite_categ2(HttpServletRequest request, String categ0){
+		System.out.println("=================== ajax실행 =======================");
+		Map categMap = new HashMap();
+	
+		categMap.put("categ", categ0);
+		categMap.put("ca_level", 0);
+		int ca_group = (Integer)sqlMapClientTemplate.queryForObject("procateg.findgroup", categMap);
+		System.out.println(categMap);
+		
+		Map categMap2 = new HashMap();
+		categMap2.put("ca_group", ca_group);
+		categMap2.put("ca_level", 1);
+		
+		List categList = new ArrayList();	
+		categList = sqlMapClientTemplate.queryForList("procateg.selectCategGroup", categMap2);
+		
+		request.setAttribute("categList", categList);
+		request.setAttribute("categ0", categ0);
+		
+		return "/mypage/prowrite_categ2.jsp";
+	}
 }

@@ -3,18 +3,59 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+
+<script type="text/javascript">
+$(document).ready(function(){		//onload이벤트같은것(시작하자마자 바로 동작)
+    $("#categ0").change(function(){	
+    	callCateg2();
+    });
+  });
+function callCateg2(){
+    $.ajax({
+        type: "post",
+        url : "/MyUsed/prowrite_categ2.nhn",
+        data: {	// url 페이지도 전달할 파라미터
+	        categ0 : $('#categ0').val()
+        },
+        success: callCateg2success,	// 페이지요청 성공시 실행 함수
+        error: whenErrorCateg	//페이지요청 실패시 실행함수
+ 	});
+}
+function callCateg2success(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+    $("#categ1form").html(aaa);
+    console.log(resdata);
+}
+function whenErrorCateg(){
+    alert("Error categ");
+}
+</script>
 	 	
+	 	
+<!------------------------------------------------ 상품 카테고리 ------------------------------------------------>
+
+<form action="proWrite.nhn" method="post"  enctype="multipart/form-data">
+
 <table align="center"  width="550" height="20">
 <tr bgcolor="#FFFFFF">
-	<td align="left" style="padding-left:10px">
-	<select name="categ0" id="categ0">
-		<option>--------1차--------</option>
-		<c:forEach var="categ" items="${categList}">
-			<option>${categ.categ}</option>
-		</c:forEach>
-	</select>
-	<input id="button" type="image" src="/MyUsed/images/agree.PNG" width="15" height="" value="확인" onClick="callAjax()">
-	<br />
+	<td align="right">
+		<div id="categ0form">
+			<select name="categ0" id="categ0">
+				<option>--------1차--------</option>
+				<c:forEach var="categ" items="${categList}">
+					<option>${categ.categ}</option>
+				</c:forEach>
+			</select>
+		</div>
+	<!-- 
+	<input id="button" type="image" src="/MyUsed/images/agree.PNG" width="15" height="" value="확인" onClick="callCateg2()"> -->
+
+	</td>
+	<td align="left" style="padding-left:10px">	
+		<div id="categ1form">
+			<select >
+				<option>--------2차--------</option>
+			</select>
+		</div>
 	</td>
 </tr>
 </table>
@@ -24,12 +65,10 @@
 	 
 	 
 	 
-	 <!--  --------------------------------------------- 상품 ---------------------------------------------------- -->
-	 
-	 <%-- 
-<div id='div2'  style='display:${view2};'  > --%>
-	
-	<table align="center"  width="550" height="200">
+
+<!------------------------------------------------ 상품 글쓰기 ------------------------------------------------>
+
+<table align="center"  width="550" height="200">
 	<tr bgcolor="#FFFFFF">
 	<td align="center" colspan="8">
 	<br/>
@@ -41,7 +80,7 @@
 		미포함(착불) <input type="radio" name="sendPay" value="no"  />
 		</font>
 		<br />
-		<input type="text" name="price" size="7" value="0000" placeholder="상품가격"/>
+		<input type="text" name="price" size="7" placeholder="상품가격"/>
 		<hr width="80%"  > 	
 	
 	</td>
@@ -69,6 +108,7 @@
    
     <div id="pimage${i}_preview" style='display: none;'>
         <img src="/MyUsed/images/option.png" width="70" height="70"/>
+        <br />
         <a href="#">Remove</a>
     </div>
 
@@ -88,8 +128,8 @@
             file = $('#pimage${i}').prop("files")[0];
             blobURL = window.URL.createObjectURL(file);
             $('#pimage${i}_preview img').attr('src', blobURL);
-	        $('#writeform').attr('style', 'height:356px;');
-	        $('#prolist').attr('style', 'margin-top:915px;');
+	        $('#writeform').attr('style', 'height:505px;');
+	        $('#prolist').attr('style', 'margin-top:995px;');
             $('#pimage${i}_preview').slideDown(); //업로드한 이미지 미리보기 
             $(this).slideUp(); //파일 양식 감춤
         }
@@ -99,7 +139,7 @@
         //$('#pimage${i}').slideDown(); //파일 양식 보여줌
         $(this).parent().slideUp(); //미리 보기 영역 감춤
         $('#writeform').attr('style', 'height:300px;');
-        $('#list').attr('style', 'margin-top:790px;');
+        $('#prolist').attr('style', 'margin-top:892px;');
         return false; //기본 이벤트 막음
     });	
   
@@ -152,15 +192,17 @@
 </tr>
 	<tr bgcolor="#FFFFFF" align="center"	>
 		<td colspan="8">
-	 	<img src="/MyUsed/images/submit.PNG" style='cursor:pointer;' title="등록하기" onclick="javascript_:send();" />
+		<label for="button" style="cursor:pointer;">
+	 		<img src="/MyUsed/images/submit.PNG" title="등록하기" />
+	 	</label>
+	 	<input type="submit" id="button" style="display:none;">
 	 	</td>
 	</tr> 	
 	</table>
 
 	 
-	 <br /> <br />
-
-
+	 <br />
+</form>
 	 
 	 
 	 

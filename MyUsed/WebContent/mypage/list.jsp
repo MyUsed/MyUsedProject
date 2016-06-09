@@ -3,8 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+
 <c:forEach var="list" items="${list}">	
-<form name="reple" action="reple.nhn" method="post" >
+<form name="reple" action="replesubmit.nhn" method="post" >
 
 	<div style="border:1px solid #BDBDBD;">
  	<table align="center"  width="550" height="180">
@@ -12,11 +13,8 @@
 		<td>
 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${list.mem_num}"><font face="Comic Sans MS">( ${list.name} )</font></a>
 		<font face="Comic Sans MS" size="2" color="#A6A6A6" > 님이 글을 게시하였습니다</font>  
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<c:if test="${list.mem_num == memDTO.num}">
-		<a href="delete.nhn?num=${list.num}"><img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 1em;" width="20" height="20" align="right" title="게시글 삭제"/></a>
+		<c:if test="${mem_num == mynum}">
+		<a href="delete.nhn?num=${list.num}&page=1"><img src="/MyUsed/images/deleteIcon.PNG" style="margin-right: 1em; margin-top:5px;" width="20" height="20" align="right" title="게시글 삭제"/></a>
 		</c:if>
 		<hr width="100%" > 
 		</td>
@@ -25,9 +23,7 @@
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
 		<c:if test="${list.mem_pic != null}">
-		<a href="reple.nhn?num=${list.num}">
-		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/>
-		</a>
+			<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300" onclick="modal('${list.num}', '${list.mem_num}', '${list.reg}')"/>
 		 <br/> <br />
 		</c:if>
 		<!-- 일반 게시글 해시태그 -->	
@@ -96,7 +92,8 @@
 				        type: "post",
 				        url : "/MyUsed/reple.nhn",
 				        data: {	// url 페이지도 전달할 파라미터
-				        	num : '${list.num}'
+				        	num : '${list.num}',
+				        	page: 1
 				        },
 				        success: reple${list.num},	// 페이지요청 성공시 실행 함수
 				        error: whenError_reple	//페이지요청 실패시 실행함수
@@ -114,21 +111,13 @@
 			function whenError_reple(){
 			    alert("리플 에러");
 			}
-/* 			function closereple${list.num}() {
-			    $('#reple_${list.num}').slideUp();
-			    $('#reple_${list.num}').attr('style', 'display:none;');
-			    $('close_${list.num}').attr('style', 'display:none;');	//닫기버튼
-			} */
 		</script>
 		
-		좋아요  / 공유하기 / <%-- <a href="reple.nhn?num=${list.num}"> --%>
+		좋아요  / 공유하기 /
 		<a onclick="javascript:openreple${list.num}()" style="cursor:pointer;">
 			<img src="/MyUsed/images/reple.PNG" width="25" height="20"/>
 			<font size="2" color="#9A9DA4">댓글 ${list.reples}개</font>
-		</a><%-- 
-		<a onclick="javascript:closereple${list.num}()" id="close_${list.num}"style="cursor:pointer; display:none;">
-			<font size="2" color="#9A9DA4" >▼</font>
-		</a> --%>
+		</a>
 		</td>
 		</tr>
 				

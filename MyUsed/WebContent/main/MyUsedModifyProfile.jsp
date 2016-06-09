@@ -36,6 +36,15 @@ function closeGender(){
     $('#M_Gender').attr('style', "display:none;");
 }
 
+/* 비밀번호 변경 (비번 확인) */
+function recomfirmPw(){
+	
+    url = "/MyUsed/RecomfrimPw.nhn?";
+    
+    // 새로운 윈도우를 엽니다.
+    open(url, "confirm", 
+	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=350, height=350");
+}
 
 </script>
 
@@ -98,6 +107,7 @@ function closeGender(){
 
 
 <div id="M_Name" style="display:none;">
+<form action="Modify_name.nhn" method="post">
 	<br /><br />
 	<font style="font-size:110%; font-weight:bold;">
 	이름을 변경하시겠습니까?
@@ -110,10 +120,12 @@ function closeGender(){
 	<br /><br />
 	<input type="submit" value="변경신청" class="btn btn-success" style="width:130px; height:30px" >
 	<input type="button" value="취  소" class="btn btn-success" onclick="closeName()" style="width:130px; height:30px" >
+</form>
 </div>
 
 
 <div id="M_ID" style="display:none;">
+<form action="Modify_id.nhn" method="post">
 	<br /><br />
 	<font style="font-size:110%; font-weight:bold;">
 	아이디를 변경하시겠습니까?
@@ -125,10 +137,12 @@ function closeGender(){
 	<br /><br />
 	<input type="submit" value="변경신청" class="btn btn-success" style="width:130px; height:30px" >
 	<input type="button" value="취  소" class="btn btn-success" onclick="closeID()" style="width:130px; height:30px" >
+</form>
 </div>
 
 
 <div id="M_Birth" style="display:none;">
+<form action="Modify_birth.nhn" method="post">
 	<br /><br />
 	<font style="font-size:110%; font-weight:bold;">
 	생일을 변경하시겠습니까?
@@ -159,9 +173,11 @@ function closeGender(){
 	<br /><br />
 	<input type="submit" value="변경신청" class="btn btn-success" style="width:130px; height:30px" >
 	<input type="button" value="취  소" class="btn btn-success" onclick="closeBirth()" style="width:130px; height:30px" >
+</form>
 </div>
 
 <div id="M_Gender" style="display:none;">
+<form action="Modify_gender.nhn" method="post">
 	<br /><br />
 	<font style="font-size:110%; font-weight:bold;">
 	성별을 변경하시겠습니까?
@@ -175,6 +191,7 @@ function closeGender(){
 	<br /><br />
 	<input type="submit" value="변경신청" class="btn btn-success" style="width:130px; height:30px" >
 	<input type="button" value="취  소" class="btn btn-success" onclick="closeGender()" style="width:130px; height:30px" >
+</form>
 </div>
 
 
@@ -187,11 +204,11 @@ function closeGender(){
 </font>
 <hr width="100%"><br />
 <center>
-	<form class="signup" action="/MyUsed/MyUsedJoinPro.nhn" method="post" name="userinput" onSubmit="return checkIt()">
+	<form class="signup" action="ModifyPw.nhn" method="post" name="userinput" onSubmit="return checkIt()">
 
 		<input class="signup_name" size="45" type="text" name="signup_lname" id="signup_lname" value="${memDTO.name}" onfocus="openName()"> <br /> <br />
 		<input class="signup_input" size="45" type="text" name="signup_id" id="signup_id" value="${memDTO.id}" onfocus="openID()"> <br /> <br />
-		<input class="signup_input" size="46" type="password" name="signup_pw" id="signup_pw" placeholder="새 비밀번호" onfocus="alert('pw을 변경하시겠습니까?')">
+		<input class="signup_input" size="46" type="password" name="signup_pw" id="signup_pw" placeholder="새 비밀번호" onfocus="recomfirmPw()">
             
         <br />
         <p style="font-size: 18px; color: #000; padding-top: 8px;">생일</p>
@@ -240,7 +257,7 @@ function closeGender(){
                 
               </tbody>
             </table> <br /><br />
-		<input id="button" type="button" value="비밀번호 변경" class="btn btn-success" style="width:180px; height:50px" >
+		<input id="button" type="submit" value="확인" class="btn btn-success" style="width:180px; height:50px" >
 	</form>
 
 <br /><br />

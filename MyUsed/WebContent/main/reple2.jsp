@@ -140,9 +140,7 @@
 			</a>
 			<input style="padding:7px;" type="text" id="reple" name="reple" size="50" placeholder="´ñ±ÛÀ» ÀÔ·ÂÇÏ¼¼¿ä..."/> <!--  onkeydown="findteg()"  -->
 			<input type="image" src="/MyUsed/images/submitReple.png" width="30" height="20" title="´ñ±Û´Ş±â"/>
-			<div id="findname" style="background:red; margin-left:45px;">
-			ddd
-			</div>
+			
 		</td>
 	</tr>
 	</table>

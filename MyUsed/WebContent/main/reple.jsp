@@ -55,6 +55,9 @@
 
 <form action="replesubmit.nhn" method="post" >
 
+	<input type="hidden" value="${page}" name="page"><!-- 메인은 0 / 마이페이지는 1 (댓글쓰고 리턴할 view를 결정) -->
+	<input type="hidden" value="${mem_num}" name="page_mem_num"><!-- 해당 페이지의 주인의 번호(메인은 필요x) -->
+
 	<input type="hidden" name="boardnum" value="${num}"/>
 	<input type="hidden" name="content" value="${content}"/>
 
@@ -140,9 +143,9 @@
 			</a>
 			<input style="padding:7px;" type="text" id="reple" name="reple" size="50" placeholder="댓글을 입력하세요..."/> <!--  onkeydown="findteg()"  -->
 			<input type="image" src="/MyUsed/images/submitReple.png" width="30" height="20" title="댓글달기"/>
-			<div id="findname" style="background:red; margin-left:45px;">
+<!-- 			<div id="findname" style="background:red; margin-left:45px;">
 			ddd
-			</div>
+			</div> -->
 		</td>
 	</tr>
 	</table>

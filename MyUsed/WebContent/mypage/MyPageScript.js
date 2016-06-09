@@ -346,15 +346,15 @@ function writeproduct(){
     $('#form1').attr('style', "display:none;");
     $('#form2').attr('style', "display:block;");
     $('#list').attr('style', "display:none;");
-    $('#prolist').attr('style', "display:block;");
+    $('#prolist').attr('style', "display:block; margin-top:892px;");
 }
+
 
 
 /* 친구 목록 실시간 */
 $(document).ready(function(){
-	window.setInterval('myfriendlist()', 10000); //5초마다한번씩 함수를 실행한다..!! 
+	window.setInterval('myfriendlist()', 5000); //5초마다한번씩 함수를 실행한다..!! 
 });
-
 function myfriendlist(){
 	 $.ajax({
 	        type: "post",
@@ -381,4 +381,33 @@ function reportAccount(mem_num){
 }
 
 
+/* 일반글-모달겔러리 열기 */
+function modal(listnum, mem_num, reg){
+	 $.ajax({
+	        type: "post",
+	        url : "/MyUsed/MypageModal.nhn",
+	        data: {	// url 페이지도 전달할 파라미터
+	        	listnum : listnum,
+	        	mem_num : mem_num,
+	        	reg : reg
+	        },
+	        success: modalgel,	// 페이지요청 성공시 실행 함수
+	        error: whenErrormodal	//페이지요청 실패시 실행함수
+  	});
+}
+function modalgel(aaa){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다. 
+    $("#modal").attr('style','position:fixed; background:red; width:100%; height:100%; display:none; z-index:900;');
+    $("#modal").html(aaa);
+}
+function whenErrormodal(){
+    alert("whenErrormodal");
+}
 
+/* 쪽지 새창 */
+function openPaperForm(mynum, name){
+    url = "/MyUsed/paperForm.nhn?mynum="+mynum+"&name="+name;
+    
+    // 새로운 윈도우를 엽니다.
+    open(url, "confirm", 
+	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=500");
+}

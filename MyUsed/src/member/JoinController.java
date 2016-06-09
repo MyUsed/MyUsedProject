@@ -11,6 +11,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class JoinController {
@@ -32,10 +33,10 @@ public class JoinController {
 	
 	/** 약관 동의 */
 	@RequestMapping("/MyUsedAgreement.nhn")
-	public String MyUsedAgreement(HttpServletRequest request, String signup_lname, String signup_fname,String signup_pw, String signup_id, String year, String month, String date, String gender){
+	public String MyUsedAgreement(admin.adminTermsDTO Tdto, HttpServletRequest request, String signup_lname, String signup_fname,String signup_pw, String signup_id, String year, String month, String date, String gender){
+		Tdto = (admin.adminTermsDTO)sqlMapClientTemplate.queryForObject("adminTerms.all", null);	// 가장 최근에 올린 약관 가져오기
 
-		System.out.println(gender);
-	
+		request.setAttribute("Tdto", Tdto);
 		request.setAttribute("signup_lname", signup_lname);
 		request.setAttribute("signup_fname", signup_fname);
 		request.setAttribute("signup_pw", signup_pw);

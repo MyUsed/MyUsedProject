@@ -17,7 +17,7 @@ public class DeleteController {
 	private SqlMapClientTemplate sqlMap; // ibatis를 사용 하기위해 
 		
 	@RequestMapping("/delete.nhn")
-	public ModelAndView delete(int num){
+	public ModelAndView delete(int num, int page){
 		ModelAndView mv = new ModelAndView();
 		
 		int mem_num = (int)sqlMap.queryForObject("delete.mem_num", num); // board_ (개인 board의 번호를 가져옴)
@@ -40,12 +40,15 @@ public class DeleteController {
 		
 		System.out.println(num+"번 토탈게시글삭제완료");
 		System.out.println(mem_num+"개인board의"+board_num+"게시글삭제완료");
+
+		mv.addObject("page", page);
+		mv.addObject("mem_num", mem_num);
 		mv.setViewName("/main/Delete.jsp");
 		return mv;
 	}
 	
 	@RequestMapping("/prodelete.nhn")
-	public ModelAndView prodelete(int num){
+	public ModelAndView prodelete(int num, int page){
 		ModelAndView mv = new ModelAndView();
 		
 		int promem_num = (int)sqlMap.queryForObject("delete.promem_num", num); // proboardlist 에서 개인의 mem_num을 꺼내옴 
@@ -73,8 +76,9 @@ public class DeleteController {
 		System.out.println("사진삭제 성공");
 		}
 		
-		
-		
+
+		mv.addObject("page", page);
+		mv.addObject("mem_num", promem_num);
 		mv.setViewName("/main/Delete.jsp");
 		return mv;
 	}

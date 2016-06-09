@@ -15,6 +15,7 @@
 	var loginId = '${sessionScope.memId}';
 	$(document).ready(function() {
 			var socket = io.connect("http://192.168.50.22:12345");  //서버연결 
+			messenger.area.value = "<채팅방에 입장 하셨습니다>"+'\n';
 			socket.on('response', function(msg){	// 서버로부터 채팅메세지를 계속 받고있다...
 				var a = msg.msg;	// msg.gsg = 아이디 : 채팅내용
 				var ap = a.split(':');	// ap[0] = 아이디 , ap[1] = 채팅내용
@@ -60,7 +61,7 @@
 	//나가기버튼
 	function Exit(){
 		if (confirm("채팅을 종료하시겠습니까?") == true){
-			window.location="chatExit.nhn";
+			window.location="chatExit.nhn"	;
 		}
 		else{
 			return;
@@ -135,7 +136,7 @@
 			
 				<td>
 					<div id="namelistReturn">
-						<select name="select" multiple="multiple" size="23" style="width:150px;" onchange="window.open(this.value);">
+						<select name="select" multiple="multiple" size="22" style="width:150px;" onchange="window.open(this.value);">
 							<c:forEach var="list" items="${list}">
 							
 								<c:if test="${name == list.name}">
