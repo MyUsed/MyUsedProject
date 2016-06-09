@@ -10,11 +10,22 @@
 <script src="/Vertx/js/jquery-1.10.2.min.js"></script>
 <script src="/Vertx/js/socket.io.js"></script>
 
+
 <script>
+	var loginId = '${sessionScope.memId}';
 	$(document).ready(function() {
-			var socket = io.connect("http://192.168.50.27:12345");  //서버연결 
+			var socket = io.connect("http://192.168.50.22:12345");  //서버연결 
 			socket.on('response', function(msg){	// 서버로부터 채팅메세지를 계속 받고있다...
-			messenger.area.value = messenger.area.value + msg.msg + '\n';	// 채팅 메세지 받아 출력 부분..
+				var a = msg.msg;	// msg.gsg = 아이디 : 채팅내용
+				var ap = a.split(':');	// ap[0] = 아이디 , ap[1] = 채팅내용
+				a = ap[0].trim();		// 앞뒤공백 자르고 var a에 대입
+				if(a == loginId){		// 아이디가 sessionid와 같으면
+					messenger.area.value = messenger.area.value + "> " + ap[1] + " " + '\n';	// 채팅 메세지 받아 출력 부분(아이디를 출력하지 않음)
+					messenger.chat.value = "";		// 메시지 출력하고 채팅창 초기화. 
+				}
+				else{
+					messenger.area.value = messenger.area.value + msg.msg + '\n';	// 채팅 메세지 받아 출력 부분(아이디를 출력함)
+				}
 			$('textarea').scrollTop($('textarea')[0].scrollHeight);	//채팅 전송할 때 스크롤 자동 포커스
 		});
 		
@@ -24,7 +35,6 @@
 			var sessionId = '${sessionScope.memId}' + ' : ';	// session아이디 받는 변수
 			socket.emit('msg', {msg:sessionId + msg});	// 서버로 채팅 메세지 보내는 부분
 			messenger.chat.focus();		// 메시지 전송하고 포커스 맞추기.
-			messenger.chat.value = "";	// 메시지 전송하고 text공백.
 			$('textarea').scrollTop($('textarea')[0].scrollHeight);	//채팅 전송할 때 스크롤 자동 포커스
 		});
 		
@@ -36,6 +46,13 @@
 			}
 		});
 	});
+	
+	function profile(){
+		if (c) return;
+		document.messenger.textarea.style.backgroundImage="";
+		c=true;
+	}
+	
 	//body onload
 	function focus(){
 		messenger.chat.focus();
@@ -61,7 +78,7 @@
 <!-- 총접속자수 나타내는 함수 -->
   <script type="text/javascript">
     $(document).ready(function(){
-    	window.setInterval('countAjax()', 3000); //3초마다한번씩 함수를 실행
+    	window.setInterval('countAjax()', 2000); //2초마다한번씩 함수를 실행
     });
     function countAjax(){
     	 $.ajax({
@@ -82,7 +99,7 @@
 <!-- 접속자의 ID 나타내는 함수 -->
 <script type="text/javascript">
     $(document).ready(function(){
-    	window.setInterval('namelistAjax()', 3000); //3초마다한번씩 함수를 실행
+    	window.setInterval('namelistAjax()', 2000); //2초마다한번씩 함수를 실행
     });
     function namelistAjax(){
     	 $.ajax({
@@ -99,12 +116,12 @@
         alert("Error");
     }
   </script>
- 
+
 </head>
 
 
 
-<body onload="focus()" onbeforeunload="unload()" method="post">
+<body onload="focus()" onbeforeunload="unload()" method="post" bgcolor="#EAEAEA">
 
 	<form name="messenger" method="post"><br><br>
 		<center>
@@ -115,8 +132,23 @@
 		
 			<tr>
 				<td><textarea name="area" id="areai" readonly="readonly" rows="25" cols="40"></textarea></td>
+			
 				<td>
-				<div id="namelistReturn"></div>
+					<div id="namelistReturn">
+						<select name="select" multiple="multiple" size="23" style="width:150px;" onchange="window.open(this.value);">
+							<c:forEach var="list" items="${list}">
+							
+								<c:if test="${name == list.name}">
+									<option value="paperchatForm.nhn?mynum=${mynum}&name=${list.id}">${list.name}(나)</option>
+								</c:if>
+								
+								<c:if test="${name != list.name}">
+									<option value="paperchatForm.nhn?mynum=${mynum}&name=${list.id}">${list.name}</option>
+								</c:if>
+								
+							</c:forEach>
+						</select>
+					</div>
 				</td>
 			</tr>
 			
@@ -125,15 +157,18 @@
 			</tr>
 			
 			<tr align="center">
-				<td><input type="button" value="보내기" id="sendBtn"/>
+				<td><input type="button" value="보내기" id="sendBtn" onclick="profile()"/>
 					<input type="button" value="나가기" onclick="Exit()"/>
 				</td>
 			</tr>
-
 			<span id="msgs"></span>
+
 		</table>
 		</center>
 	</form>
+
 	
+
+
 </body>
 </html>

@@ -85,12 +85,12 @@ function adrNum(){
     	<br /> <br />
     	
     		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mem_num}"> 
-				<img src="/MyUsed/images/${profilepic}" width="40"  height="40"></a>
+				<img src="/MyUsed/images/profile/${profilepic}" width="40"  height="40"></a>
 		
     	<c:forEach var="memlist" items="${memlist}">
     		
-    		<font face="Comic Sans MS" size="3" color="#5D5D5D" >판매자 ID = <strong>${memlist.id}</strong> </font><br />
-    		<font face="Comic Sans MS" size="3" color="#5D5D5D" >판매자 성함 = <strong>${memlist.name}</strong> </font><br />  
+    		<font face="Comic Sans MS" size="3" color="#5D5D5D" ><strong>${memlist.name}</strong> </font><br />
+    		  
     		<font face="Comic Sans MS" size="3" color="#5D5D5D" >판매자 등급 = <strong>${memlist.grade}  (등급) </strong></font> <br />
     		<font face="Comic Sans MS" size="3" color="#5D5D5D" >판매자 접속여부 = <strong>
     		<c:if test="${memlist.onoff == 0}">

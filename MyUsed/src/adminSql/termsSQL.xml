@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="adminTerms">
+
+	<select id="all" resultClass="admin.adminTermsDTO">
+		select * from admin_terms where reg = (select max(reg) from admin_terms)
+	</select>
+	
+	<select id="one" resultClass="admin.adminTermsDTO" parameterClass="int">
+		select * from admin_terms where seq_num=#seq_num#
+	</select>
+	
+	<select id="count" resultClass="int">
+		select count(*) from admin_terms
+	</select>
+	
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into admin_terms values(admin_terms_seq.nextval, #content1#, #content2#, #content3#, sysdate)
+	</insert>
+	
+	<update id="update" parameterClass="java.util.Map">
+		update admin_terms set content1=#content1#,
+									content2=#content2#,
+									content3=#content3#
+	</update>
+	
+	<delete id="delete" parameterClass="int">
+		delete from admin_terms where seq_num=#seq_num#
+	</delete>
+</sqlMap>

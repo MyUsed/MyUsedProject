@@ -147,7 +147,12 @@ function whenError(){
    			</a>
    			<a href="paperMain.nhn?mynum=${noticelist.board_num}" onclick="javascript:NoticeUpdate(${noticelist.board_num},${noticelist.call_memnum})">
    			<c:if test="${noticelist.categ == 'msg'}">
-   			<b>님이 쪽지를 보내셨습니다.</b>
+   			<b>님이 메세지를 보내셨습니다.</b>
+   			</c:if>
+   			</a>
+   			<a href="" onclick="javascript:NoticeUpdate()" >
+   			<c:if test="${noticelist.categ == 'friend'}">
+   			<b>님이 친구요청을 하였습니다.</b>
    			</c:if>
    			</a>
    			<br /> &nbsp;

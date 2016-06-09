@@ -115,11 +115,11 @@ $(document).ready(function(){
 		<tr height="50" align="left">
 			<td style="padding:0 0 0 10px;">
 			<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${productDTO.mem_num}"> 
-				<img src="/MyUsed/images/${profilepic}" width="40"  height="40"></a>
+				<img src="/MyUsed/images/profile/${profilepic}" width="40"  height="40"></a>
 			<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${productDTO.mem_num}"> 
 				<font size="3" color="#4565A1"><strong>${productDTO.name}</strong></font>
 			</a>
-				<font size="1">쪽지보내기</font>
+				<!-- <font size="1">쪽지보내기</font> -->
 			</td >
 			<td align="right" style="padding:0 10px 0 0;">			
 			 <font size="2" color="#9A9DA4">
@@ -213,7 +213,7 @@ $(document).ready(function(){
 				<p style='overflow:auto; width:330px; height:250px'>
 				<c:forEach var="proreplelist" items="${proreplelist}"> 
 					<a  href="/MyUsed/MyUsedMyPage.nhn?mem_num=${proreplelist.mem_num}"> 
-						<img src="/MyUsed/images/profile/${proreplelist.profile_pic}" style="width:20px; height:20px;">
+						<!-- <img src="/MyUsed/images/profile/${proreplelist.profile_pic}" style="width:20px; height:20px;"> -->
 						<font face="Comic Sans MS" size="3" color="#4565A1"> ${proreplelist.name}</font>
 					</a>
  					${proreplelist.content}

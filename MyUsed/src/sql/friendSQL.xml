@@ -101,5 +101,14 @@
 	<select id="testfriend" resultClass="mypage.noticeDTO">
 		select * from notice_11
 	</select>
+	
+	
+	<!-- notice 테이블에 값 삽입 -->
+	<insert id="insertNoticeFriend" parameterClass="java.util.Map">
+	insert into notice_$num$ values(notice_$num$seq.NEXTVAL,#num#,0,#mem_num#,#name#,#categs#,#state#,sysdate)	
+	</insert>
+	
+	
+	
 
 </sqlMap>

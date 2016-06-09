@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="adminNotice">
+
+	<select id="all" resultClass="admin.AdminNoticeDTO">
+		select * from admin_notice
+	</select>
+
+	<select id="one" resultClass="admin.AdminNoticeDTO" parameterClass="int">
+		select * from admin_notice where seq_num=#seq_num#
+	</select>
+
+	<insert id="insert" parameterClass="java.util.Map">
+		insert into admin_notice values(admin_notice_seq.NEXTVAL, #title#, #content#, sysdate)	
+	</insert>
+	
+	<update id="update" parameterClass="java.util.Map">
+		update admin_notice set title=#title#,
+								content=#content#
+								where seq_num=#seq_num#
+	</update>
+	
+	<delete id="delete" parameterClass="int">
+		delete from admin_notice where seq_num=#seq_num#
+	</delete>
+	
+</sqlMap>

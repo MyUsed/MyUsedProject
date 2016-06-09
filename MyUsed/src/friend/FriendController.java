@@ -78,14 +78,20 @@ public class FriendController {
 			map2.put("name", memDTO.getName());
 			map2.put("state", "1");
 			map2.put("categ", fri_categ);
+			map2.put("categs", "friend");
 			
 			System.out.println(map2);
 			
 			sqlMapClientTemplate.insert("friend.addFriend", map2);
+			 
+			sqlMapClientTemplate.insert("friend.insertNoticeFriend",map2); // ¾Ë¸² DB »ðÀÔ
+			
+			
 			
 			result = "/friend/MyUsedAddFriend.jsp";
 			
 		}
+		
 		
 		
 		request.setAttribute("mem_num", mem_num);

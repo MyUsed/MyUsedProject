@@ -25,6 +25,9 @@
 	<sqlMap resource="/sql/tradeSQL.xml"/>
 	<sqlMap resource="/sql/admin_memSQL.xml"/>
 	<sqlMap resource="/adminSql/boardSQL.xml"/>
+	<sqlMap resource="/adminSql/noticeSQL.xml"/>
+	<sqlMap resource="/adminSql/termsSQL.xml"/>
+	
 	
 	
 

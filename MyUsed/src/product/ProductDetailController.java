@@ -81,8 +81,6 @@ public class ProductDetailController {
 		propicList = sqlMap.queryForList("product.findPropic", mem_numMap);
 		
 		
-		/** 해당 상품 글쓴이의 프로필 사진 */
-		String profilepic = (String) sqlMap.queryForObject("product.propic", mem_numMap);
 		
 		HttpSession session = request.getSession();
 	    String sessionId = (String) session.getAttribute("memId");
@@ -91,6 +89,10 @@ public class ProductDetailController {
 	    Map picmap = new HashMap();
 		picmap.put("mem_num", session_num);   
 		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 댓글단 프로필 사진을 가져옴
+		
+
+		/** 해당 상품 글쓴이의 프로필 사진 */
+		String profilepic = (String) sqlMap.queryForObject("product.propic", mem_numMap);
 		
 		int procount = (int)sqlMap.queryForObject("reple.procount",num);
 		
