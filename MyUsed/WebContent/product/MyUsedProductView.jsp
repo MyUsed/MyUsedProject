@@ -231,36 +231,7 @@
 
 <div id="sidebannerR"><jsp:include page="/mypage/friendList.jsp"/>
  	
- 	<!-- 친구 목록(state 2) -->
- 	<div id="friendlist_side"></div>
- 
- 	<br />
- 	<div id="friendlist_img_line">
- 	<c:forEach var="friprofileList" items="${friprofileList}">
- 	<div id="friendlist_img">
-		<img src="/MyUsed/images/profile/${friprofileList.profile_pic}" width="49" height="49">
- 	</div>
- 	</c:forEach>
- 	</div>
  	
- 	<div id="friendlist_line">
- 	<c:forEach var="friendState2" items="${friendState2}">
- 	<div id="friendlist">
-		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState2.mem_num}">
- 			<font color="#000000">${friendState2.name}</font>
- 		</a>  
- 		<c:if test="${friendState2.onoff == 0}">
- 			<%--로그아웃 상태 --%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 			<font color="#FF0000">OFF</font>
- 		</c:if>
- 		<c:if test="${friendState2.onoff == 1}">
- 			<%--로그인 상태 --%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 			<font color="#2F9D27">ON</font>
- 		</c:if>
- 		<br />
- 	</div>
- 	</c:forEach>
- 	</div>
  	
 </div>
 
@@ -268,18 +239,7 @@
 <div id="advertise">
 <br /> 
 <center>
-	<table align="center" width="95%" height="95%">
-	<tr bgcolor="#FFFFFF">
-	<td align="center">
-		<hr width="90%" />
-	<a href="http://www.iei.or.kr/">
-	<img src="/MyUsed/images/adver.PNG" width="95%" />
-		<hr width="90%" />
-	</a>
-	<a href="http://www.iei.or.kr/"><u>국비지원 바로가기</u></a>
-	</td>
-	</tr>
-	</table>
+	
 	
 </center>
 </div>

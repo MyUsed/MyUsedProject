@@ -22,7 +22,7 @@
 	<div id="layer_fixed"><jsp:include page="/mypage/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 	<div id="sidebannerL"></div><!-- 왼쪽 여백 -->
 	<div id="sidebannerR"><jsp:include page="/mypage/friendList.jsp"/></div><!-- 오른족 친구 목록 -->
-	<div id="advertise" ><jsp:include page="/mypage/advertise.jsp"/></div><!-- 광고 -->
+	<div id="advertise" ></div><!-- 광고 -->
 
 	<div id="content">
 		<!-- 마이페이지 상단(커버, 프로필, 메뉴) -->

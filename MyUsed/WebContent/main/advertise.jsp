@@ -5,12 +5,12 @@
 
 <br /> <br /> <br />
 <center>
-	<table align="center" width="280" height="550">
+	<table align="center" width="230" height="350">
 	<tr bgcolor="#FFFFFF">
 	<td align="center">
 		<hr width="90%" />
 	<a href="http://${banner.url}">
-	<img src="/MyUsed/images/${banner.img}" width="250" height="400"/>
+	<img src="/MyUsed/images/${banner.img}" width="180" height="330"/>
 		<hr width="90%" />
 	</a>
 	
