@@ -24,7 +24,10 @@
 		<c:if test="${coverDTO.cover_pic != null}">
 			<img src="/MyUsed/images/cover/${coverDTO.cover_pic}" width="798" height="220"/>
 		</c:if>
-	
+		<c:if test="${coverDTO.cover_pic == null}">
+			<img src="/MyUsed/images/cover/coverDefault.png" width="798" height="220"/>
+		</c:if>
+		
 		<div id="covertext">
 			<font color="#FFFFFF">
 			<c:if test="${mynum == mem_num}">
