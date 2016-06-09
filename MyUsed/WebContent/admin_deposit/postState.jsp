@@ -37,9 +37,9 @@ function seachPost(post){
 	<table border="1">
 	
 		<tr align="center">
-		<td bgcolor="#B2CCFF"><strong>구매자회원번호</strong></td><td bgcolor="#B2CCFF"><strong>구매자</strong></td><td bgcolor="#B2CCFF"><strong>판매상품</strong></td>
-		<td bgcolor="#B2CCFF"><strong>판매자</strong></td><td bgcolor="#B2CCFF"><strong>은행</strong></td><td bgcolor="#B2CCFF"><strong>계좌</strong></td>
-		<td bgcolor="#B2CCFF"><strong>이름</strong></td><td bgcolor="#B2CCFF"><strong>금액</strong></td><td bgcolor="#B2CCFF"><strong>송장번호</strong></td>
+		<td bgcolor="#B2CCFF"><strong>구매자회원번호</strong></td><td bgcolor="#B2CCFF"><strong>구매자</strong></td><td bgcolor="#CC3D3D"><strong>판매상품</strong></td>
+		<td bgcolor="#CC3D3D"><strong>판매자</strong></td><td bgcolor="#CC3D3D"><strong>은행</strong></td><td bgcolor="#CC3D3D"><strong>계좌</strong></td>
+		<td bgcolor="#CC3D3D"><strong>이름</strong></td><td bgcolor="#CC3D3D"><strong>금액</strong></td><td bgcolor="#CC3D3D"><strong>송장번호</strong></td>
 		<td bgcolor="#B2CCFF"><strong>배송상태</strong></td>
 		</tr>
 		

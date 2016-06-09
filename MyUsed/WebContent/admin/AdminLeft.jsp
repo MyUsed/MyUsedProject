@@ -38,9 +38,7 @@
 	<strong>- ±¤°í°ü¸®</strong> 
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<c:if test="${bannerCount != null}">
-	<a href="/MyUsed/applyBanner.nhn"><font size="2" color="red">${bannerCount}°Ç</font></a>
-		</c:if> <br/>
+		 <br/>
 			<a href="/MyUsed/insertBanner.nhn">±¤°íµî·Ï</a> <br/>
 			<a href="/MyUsed/updateBanner.nhn">±¤°í¼öÁ¤</a><br/>
 			<a href="/MyUsed/deleteBanner.nhn">±¤°í»èÁ¦</a> <br/>
