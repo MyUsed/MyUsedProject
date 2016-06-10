@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-	<select name="select" multiple="multiple" size="22" style="width:150px; cursor:pointer;" onchange="window.open(this.value);">
+	<select name="select" multiple="multiple" size="22" style="width:150px; cursor:pointer; background-color: #EAEAEA; border:1px solid #B4B4B4; border-width:1px;" onchange="window.open(this.value);">
 		<c:forEach var="list" items="${list}">
 		
 			<c:if test="${name == list.name}">

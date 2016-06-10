@@ -18,7 +18,7 @@
 
 <div id="board"> <!-- 게시판 공지사항 -->
 <b>공지사항</b>
-<table border="1" width="530" height="180" style="border:1px solid black; border-collapse:collapse;">
+<table border="1" width="530" height="130" style="border:2px double #747474; border-collapse:collapse;">
 
 	<tr>
 	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
@@ -35,18 +35,18 @@
 	<tr>
 	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
 	</tr>
-	
-	
+	<tr>
+	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
+	</tr>
 
 
-	
 	
 </table>
 </div>
 
 <div id="call">  <!-- 처리요청 건수 -->
 <b>게시글 통계</b>
-<table border="1" width="250" height="180" style="border:1px solid black; border-collapse:collapse;">
+<table border="1" width="250" height="130" style="border:2px double #747474; border-collapse:collapse;">
 	<tr>
 	<td bgcolor="#EAEAEA" width="150">총 게시글</td><td align="right"><b><font color="red">0 건</font></b></td>
 	</tr>
@@ -76,7 +76,7 @@
 
 <div id="info"> <!-- 회원정보 토탈  -->
 <b>회원 통계</b>
-<table border="1" width="250" height="180" style="border:1px solid black; border-collapse:collapse;">
+<table border="1" width="250" height="130" style="border:2px double #747474; border-collapse:collapse;">
 	<tr>
 	<td bgcolor="#EAEAEA" width="130">총 회원수</td><td align="right"><b>0</b> 명</td>
 	</tr>
@@ -130,12 +130,12 @@
 
 <div id="state"> <!-- 진행상태 -->
 	<b>거래 입출금 내역</b>
-	<br/><br/><br/><br/><br/> <center> <input type="button" value="   조회   "/> </center>
+	<br/><br/><br/><br/> <center> <input type="button" value="   조회   "/> </center>
 </div>
 
 <div id="product"> <!-- 상품현황 -->
 	<b>상품 현황</b><br/>
-	<table border="1" width="250" height="160" style="border:1px solid black; border-collapse:collapse;">
+	<table border="1" width="250" height="160" style="border:2px double #747474; border-collapse:collapse;">
 		<tr>
 		<td bgcolor="#EAEAEA" width="150">총 상품판매글</td><td align="right"><b><font color="red">0 건</font></b></td>
 		</tr>
@@ -156,7 +156,7 @@
 
 <div id="advertice"> <!-- 광고현황 -->
 	<b>광고 현황</b>
-	<table border="1" width="250" height="160" style="border:1px solid black; border-collapse:collapse;">
+	<table border="1" width="250" height="160" style="border:2px double #747474; border-collapse:collapse;">
 		<tr>
 		<td bgcolor="#EAEAEA" width="150">총 광고신청 수</td><td align="right"><b><font color="red">0 건</font></b></td>
 		</tr>
@@ -177,7 +177,7 @@
 
 <div id="money"> <!-- 인기현황 -->
 	<b>매출 현황</b>
-	<table border="1" width="250" height="160" style="border:1px solid black; border-collapse:collapse;">
+	<table border="1" width="250" height="160" style="border:2px double #747474; border-collapse:collapse;">
 		<tr>
 		<td bgcolor="#EAEAEA" width="100">이달 총 매출</td><td align="right"><b>3.243.000</b> 원</td>
 		</tr>
@@ -195,7 +195,7 @@
 
 <div id="member"> <!-- 직원 -->
 	<b>직원 관리</b> <a href=""><font size="2">수정하러가기</font></a><br>
-	<table border="1" width="250" height="160" style="border:1px solid black; border-collapse:collapse;">
+	<table border="1" width="250" height="160" style="border:2px double #747474; border-collapse:collapse;">
 		<tr>
 		<td bgcolor="#EAEAEA" width="150">총 직원 수</td><td align="right"><b>0</b> 명</td>
 		</tr>

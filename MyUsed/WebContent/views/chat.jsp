@@ -9,25 +9,27 @@
 
 <script src="/Vertx/js/jquery-1.10.2.min.js"></script>
 <script src="/Vertx/js/socket.io.js"></script>
+<link rel="stylesheet" type="text/css" href="views/style.css" />
 
 
 <script>
 	var loginId = '${sessionScope.memId}';
 	$(document).ready(function() {
-			var socket = io.connect("http://192.168.50.22:12345");  //서버연결 
-			messenger.area.value = "<채팅방에 입장 하셨습니다>"+'\n';
+			var socket = io.connect("http://192.168.50.27:12345");  //서버연결 
 			socket.on('response', function(msg){	// 서버로부터 채팅메세지를 계속 받고있다...
 				var a = msg.msg;	// msg.gsg = 아이디 : 채팅내용
 				var ap = a.split(':');	// ap[0] = 아이디 , ap[1] = 채팅내용
 				a = ap[0].trim();		// 앞뒤공백 자르고 var a에 대입
 				if(a == loginId){		// 아이디가 sessionid와 같으면
-					messenger.area.value = messenger.area.value + "> " + ap[1] + " " + '\n';	// 채팅 메세지 받아 출력 부분(아이디를 출력하지 않음)
+					var ChatMsg = $("#areai").append("<div class='from-me'>"+ap[1]+"</div><div class='clear'></div>");
+					ChatMsg = ChatMsg + ap[1];	// 채팅 메세지 받아 출력 부분(아이디를 출력하지 않음)
 					messenger.chat.value = "";		// 메시지 출력하고 채팅창 초기화. 
 				}
 				else{
-					messenger.area.value = messenger.area.value + msg.msg + '\n';	// 채팅 메세지 받아 출력 부분(아이디를 출력함)
+					var ChatMsg = $("#areai").append("<div class='from-them'>"+ap[1]+"</div><div class='clear'></div>");
+					ChatMsg = ChatMsg + msg.msg;	// 채팅 메세지 받아 출력 부분(아이디를 출력함)
 				}
-			$('textarea').scrollTop($('textarea')[0].scrollHeight);	//채팅 전송할 때 스크롤 자동 포커스
+			$('#areai').scrollTop($('#areai')[0].scrollHeight);	//채팅 전송할 때 스크롤 자동 포커스
 		});
 		
 		// 텍스트박스내부의 채팅 내용 보내기
@@ -36,7 +38,7 @@
 			var sessionId = '${sessionScope.memId}' + ' : ';	// session아이디 받는 변수
 			socket.emit('msg', {msg:sessionId + msg});	// 서버로 채팅 메세지 보내는 부분
 			messenger.chat.focus();		// 메시지 전송하고 포커스 맞추기.
-			$('textarea').scrollTop($('textarea')[0].scrollHeight);	//채팅 전송할 때 스크롤 자동 포커스
+			$('#areai').scrollTop($('#areai')[0].scrollHeight);	//채팅 전송할 때 스크롤 자동 포커스
 		});
 		
 		// 쉬프트+엔터 = 줄바꿈 , 엔터 = 보내기버튼
@@ -61,7 +63,7 @@
 	//나가기버튼
 	function Exit(){
 		if (confirm("채팅을 종료하시겠습니까?") == true){
-			window.location="chatExit.nhn"	;
+			window.location="chatExit.nhn";
 		}
 		else{
 			return;
@@ -122,21 +124,22 @@
 
 
 
-<body onload="focus()" onbeforeunload="unload()" method="post" bgcolor="#EAEAEA">
+<body onload="focus()" onbeforeunload="unload()" method="post">
 
 	<form name="messenger" method="post"><br><br>
 		<center>
 		<table>
 			<tr>
-				<td align="center"><div id="countReturn">총 접속자 수:0명</div></td>
+				<td align="center">자유 채팅방</td>
+				<td align="center"><div id="countReturn">접속자 수: 0명</div></td>
 			</tr>
 		
 			<tr>
-				<td><textarea name="area" id="areai" readonly="readonly" rows="25" cols="40"></textarea></td>
+				<td><div name="area" id="areai" style="width:310px; height:410px; overflow: auto; background-color: #EAEAEA; border:1px solid #B4B4B4; border-width:1px;"></div></td>
 			
 				<td>
 					<div id="namelistReturn">
-						<select name="select" multiple="multiple" size="22" style="width:150px;" onchange="window.open(this.value);">
+						<select name="select" multiple="multiple" size="22" style="width:150px; background-color: #EAEAEA; border:1px solid #B4B4B4; border-width:1px;" onchange="window.open(this.value);">
 							<c:forEach var="list" items="${list}">
 							
 								<c:if test="${name == list.name}">
@@ -154,14 +157,13 @@
 			</tr>
 			
 			<tr>
-				<td><textarea name="chat" id="chati" rows="3" cols="40"></textarea></td>
-			</tr>
-			
-			<tr align="center">
-				<td><input type="button" value="보내기" id="sendBtn" onclick="profile()"/>
+				<td><textarea name="chat" id="chati" rows="3" cols="41" style="background-color: #EAEAEA;"></textarea></td>
+				<td align="center">
+					<input type="button" value="보내기" id="sendBtn" onclick="profile()"/>
 					<input type="button" value="나가기" onclick="Exit()"/>
 				</td>
 			</tr>
+			
 			<span id="msgs"></span>
 
 		</table>
@@ -169,7 +171,32 @@
 	</form>
 
 	
-
+	
+	<!-- <section>
+ <div class="from-me">
+   <p>Hey there! What's up?</p>
+ </div>
+ <div class="clear"></div>
+ <div class="from-them">
+   <p>Checking out iOS7 you know..</p>
+ </div>
+ <div class="clear"></div>
+ <div class="from-me">
+   <p>Check out this bubble!</p>
+ </div>
+ <div class="clear"></div>
+ <div class="from-them">
+   <p>It's pretty cool!</p>
+ </div>
+ <div class="clear"></div>
+ <div class="from-me">
+   <p>Yeah it's pure CSS &amp; HTML</p>
+ </div>
+ <div class="clear"></div>
+ <div class="from-them">
+   <p>Wow that's impressive. But what's even more impressive is that this bubble is really high.</p>
+ </div>
+</section> -->
 
 </body>
 </html>

@@ -1,27 +1,28 @@
 
 			
 #board { position:absolute; 
-			top:13%;
+			top:15%;
 			left:16%;
 			width:250px; 
-			height:200px;
+			height:150px;
+			border:1px;
 			z-index:100; }	
 
 
 
 #call { 	position:absolute;
-			top: 13%;
+			top: 15%;
 			width:250px; 
-			height:200px;
+			height:150px;
 			margin-left:58%;
 			z-index:100; }	
 			
 
 
 #info { 	position:absolute;
-			top: 13%;
+			top: 15%;
 			left: 79.5%;
-			width:250px; 
+			width:150px; 
 			height:200px;
 			z-index:100; }		
 			
@@ -32,22 +33,22 @@
 
 #trade { 
 			position:absolute; 
-			top:41%;
+			top:45%;
 			left:16%;
 			width:800px; 
-			height:230px;
+			height:180px;
 			z-index:200; 
 			background: #EAEAEA;
 			}		
 			
 #trade_1 { 
 			position:absolute; 
-			top:19%;
+			top:12%;
 			left:3.5%;
 			width:140px; 
 			height:140px;
-			border:1px solid #000000;
 			box-shadow: 3px 4px 5px #A6A6A6;
+			border:2px double #747474;
 			z-index:200; }					
 			
 #arrow_1 { 
@@ -61,11 +62,11 @@
 
 #trade_2 { 
 			position:absolute; 
-			top:19%;
+			top:12%;
 			left:28.5%;
 			width:140px; 
 			height:140px;
-			border:1px solid #000000;
+			border:2px double #747474;						
 			box-shadow: 3px 4px 5px #A6A6A6;
 			z-index:200; }	
 			
@@ -79,11 +80,11 @@
 
 #trade_3 { 
 			position:absolute; 
-			top:19%;
+			top:12%;
 			left:54%;
 			width:140px; 
 			height:60px;
-			border:1px solid #000000;
+			border:2px double #747474;
 			box-shadow: 3px 4px 5px #A6A6A6;
 			z-index:200; }	
 			
@@ -91,11 +92,11 @@
 
 #trade_4 { 
 			position:absolute; 
-			top:54%;
+			top:56%;
 			left:54%;
 			width:140px; 
 			height:60px;
-			border:1px solid #000000;
+			border:2px double #747474;
 			box-shadow: 3px 4px 5px #A6A6A6;
 			z-index:200; }	
 			
@@ -112,11 +113,11 @@
 
 #trade_5 { 
 			position:absolute; 
-			top:19%;
+			top:12%;
 			left:79%;
 			width:140px; 
 			height:140px;
-			border:1px solid #000000;
+			border:2px double #747474;
 			box-shadow: 3px 4px 5px #A6A6A6;
 			z-index:200; }					
 											
@@ -124,10 +125,10 @@
 
 #state { 
 			position:absolute; 
-			top:41%;
+			top:45%;
 			left:79.5%;
 			width:250px; 
-			height:230px;
+			height:180px;
 			z-index:200; }							
 
 
