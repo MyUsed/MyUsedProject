@@ -340,7 +340,7 @@ function whenError(){
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
 		<c:if test="${list.mem_pic != null}">
-		<a href="reple.nhn?num=${list.num}">	
+		<a href="MypageModal.nhn?num=${list.num}">	
 		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/>
 		</a>
 		 <br/> <br />

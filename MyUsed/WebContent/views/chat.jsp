@@ -26,7 +26,7 @@
 					messenger.chat.value = "";		// 메시지 출력하고 채팅창 초기화. 
 				}
 				else{
-					var ChatMsg = $("#areai").append("<div class='from-them'>"+ap[1]+"</div><div class='clear'></div>");
+					var ChatMsg = $("#areai").append("<div class='from-them'>"+msg.msg+"</div><div class='clear'></div>");
 					ChatMsg = ChatMsg + msg.msg;	// 채팅 메세지 받아 출력 부분(아이디를 출력함)
 				}
 			$('#areai').scrollTop($('#areai')[0].scrollHeight);	//채팅 전송할 때 스크롤 자동 포커스

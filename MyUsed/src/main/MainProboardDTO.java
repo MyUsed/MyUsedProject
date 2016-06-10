@@ -7,6 +7,13 @@ public class MainProboardDTO {
 	private int num;
 	private String contents;
 	private String categ0;
+	private String categ;
+	public String getCateg() {
+		return categ;
+	}
+	public void setCateg(String categ) {
+		this.categ = categ;
+	}
 	private String categ1;
 	private String name;
 	private int likes;
