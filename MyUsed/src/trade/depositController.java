@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.MemberDTO;
 import member.ProfilePicDTO;
 import product.orderlistDTO;
 
@@ -44,6 +45,14 @@ public class depositController {
 		Map picmap = new HashMap();
 		picmap.put("mem_num", mem_num);   
 		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 로그인한 프로필 가져옴
+		
+		
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+
+		request.setAttribute("name", memDTO.getName());
+		request.setAttribute("num", memDTO.getNum());
+
 		
 		orderlistDTO depositlist = new orderlistDTO();
 		depositlist = (orderlistDTO)sqlMap.queryForObject("trade.depositInfo",mem_num); // 거래요청된 정보

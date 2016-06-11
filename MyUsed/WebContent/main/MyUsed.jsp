@@ -191,8 +191,8 @@ function whenError(){
 	 <table align="center"  width="550" height="30">
 	 <tr bgcolor="#FFFFFF">
 	 <td align="center" colspan="8">
-	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' ${checked}>State
-     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'${checked1}>Product
+	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' ${checked}><font size="3" color="#3B5998" face="Comic Sans MS"><b>SNS</b></font>
+     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'${checked1}><font size="3" color="#3B5998"  face="Comic Sans MS"><b>Trade</b></font>
 	 </td>
 	 </tr>
 	 </table>
@@ -677,7 +677,7 @@ function whenError(){
 		
 		<c:if test="${prolist.sendpay != null}"> 
 		<font size="2" color="#8C8C8C">* 배송료${prolist.sendpay}</font> <br/>
-		<font size="5" color="#1F51B7" >${prolist.price} </font> <br /><br />
+		<font size="3" color="#1F51B7" ><b><fmt:formatNumber value="${prolist.price}" type="number" />원</b></font> <br /><br />
 		</c:if>
 		<c:if test="${prolist.sendpay == null}"> 
 		 <br/>
@@ -728,7 +728,10 @@ function whenError(){
 		
 		 <a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>
 		
-			<a id="choiceB${i.count}" onclick="choiceAjax('${i.count}')"><img src="/MyUsed/images/chooseIcon.png" title="찜하기" width="60" height="65" style='cursor:pointer;'/></a>
+			<c:if test="${prolist.sendpay != null}"> 
+			<a id="choiceB${i.count}" onclick="choiceAjax('${i.count}')"><img src="/MyUsed/images/choIcon.png" title="찜하기" width="25" height="25" style='cursor:pointer;'/><font size="2" color="#9A9DA4" style='cursor:pointer;'>찜하기</font></a>
+			</c:if>
+			
 			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="55" height="45" title="구매하기"/></a>
 			
 			<div id="ajaxChoice"></div>

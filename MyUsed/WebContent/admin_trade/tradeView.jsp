@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <title>주소록</title>
@@ -49,7 +50,7 @@
   			<a href="MyUsedMyPage.nhn?mem_num=${orderlist.sell_memnum}">
   			<font size="3" color="#4565A1"><strong>${orderlist.sell_name}</strong> </font></a><br/> <br/>
   			
-  			<font size="4" color="red"><strong>${orderlist.buy_price} 원</strong></font>
+  			<font size="4" color="red" ><b><fmt:formatNumber value="${orderlist.buy_price}" type="number" />원</b></font>
   			</td>
   			
   				

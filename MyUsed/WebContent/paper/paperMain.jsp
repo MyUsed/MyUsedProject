@@ -67,7 +67,7 @@
 	    <table width="600">
 	    
 	    	<tr>
-	    		<td colspan="4"><hr color="#BDBDBD"></td>
+	    		<td colspan="6"><hr color="#BDBDBD"></td>
 	    	</tr>
 	    
 	    	<tr align="center">
@@ -83,18 +83,19 @@
 	    			<input type="button" value="쪽지쓰기" onclick="javascript:window.location='paperForm.nhn?mynum=${mynum}'"/>
 	    		</td>
 	    		
-				<td colspan="2" align="right">안 읽은 쪽지 ${paperCount}개</td>
+				<td colspan="2" align="right"><font color="#747474"><b>안 읽은 쪽지 ${paperCount}개</b></font></td>
 				
 			</tr>
 			
 			<tr>
-				<td colspan="4"><hr color="#BDBDBD"></td>
+				<td colspan="6"><hr color="#BDBDBD"></td>
 			</tr>
 			
 		    	<tr>
 		    		<td align="center" width="5%"><input type="checkbox" name="checkall" onclick="CheckAll()"/></td>
-		    		<td width="25%">보낸사람</td>
-		    		<td width="45%">내용</td>
+		    		<td width="15%">보낸사람</td>
+		    		<td width="30%">내용</td>
+		    		<td width="10%">상태</td>
 		    		<td width="25%">날짜</td>
 		    	</tr>
 	    				
@@ -104,11 +105,7 @@
 	    			<td><a href="paperForm.nhn?mynum=${mynum}&name=${list.s_name}">${list.s_name}</a></td>
 	    			<td><a href="paperView.nhn?m_no=${list.m_no}">
 	    			
-	    			
-	    			<c:if test="${list.state == 1}">
-	    				(1)
-	    			</c:if>
-	    			
+	    		
 	    			<!-- list.s_content의 길이가 15보다 크면 14번째 자리 + ... 로 출력 -->
 	    			<c:if test="${fn:length(list.s_content) > 14}">
 	    				${fn:substring(list.s_content,0,13)}... 
@@ -119,7 +116,14 @@
 	    				${list.s_content}
 	    			</c:if>
 					</a>
-	    					
+	    			<td>
+	    			<c:if test="${list.state == 1}">
+	    				<font size="2" color=#747474>안읽음</font>
+	    			</c:if>
+	    			<c:if test="${list.state == 0}">
+	    				<font size="2" color="#BDBDBD">읽음</font>
+	    			</c:if>
+	    			</td>	
 	    			</td>
 	    			<td><font size="2">${list.reg}</font></td>
 	    		</tr>
@@ -130,7 +134,7 @@
 	    		</tr>
 	    	
 	    		<tr>
-	    			<td colspan="4"><hr color="#BDBDBD"></td>
+	    			<td colspan="6"><hr color="#BDBDBD"></td>
 	    		</tr>
 	    		
 	    </table>

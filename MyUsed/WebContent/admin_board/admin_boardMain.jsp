@@ -106,7 +106,7 @@ $(document).ready(function(){	// 시작하자마자 바로동작(onload)
 				<tr>
 					<td align="center">
 							<input type="radio" name="bradio" id="radio" value="board" checked/> SNS
-							<input type="radio" name="bradio" id="radio" value="proboard" /> Product
+							<input type="radio" name="bradio" id="radio" value="proboard" /> Trade
 					</td>
 				</tr>
 				

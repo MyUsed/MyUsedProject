@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/MyUsed/main/animate.js"></script>
 <script src="/MyUsed/main/script.js"></script>
 
 
@@ -20,8 +22,8 @@
 	</script>
 
 <div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
-<div id="sidebannerR"><jsp:include page="/main/sidebannerR.jsp"/></div> <!-- 사이드배너 Right  -->
-<div id="advertise" ><jsp:include page="/main/advertise.jsp"/></div>  <!-- 광고 페이지  -->
+<div id="sidebannerR"><jsp:include page="/mypage/friendList.jsp"/></div><!-- 사이드배너 Right  -->
+<div id="advertise" ></div>  <!-- 광고 페이지  -->
 <div id="sidebannerL"><jsp:include page="/main/sidebannerL.jsp" /></div> <!-- 사이드배너 Left -->
 
 
@@ -52,9 +54,9 @@
 					 		<br/> <br />
 						</c:if>
 						
-						<font size="5" color="#1F51B7" >[${list.price}\] </font> <br /><br />
-						<font size="3" color="#0042ED" >
-			------------------------------- * 상세설명 * -------------------------------- 
+						<font size="3" color="#1F51B7" ><b><fmt:formatNumber value="${list.price}" type="number" />원</b></font> <br /><br />
+						<font size="3" color="#D7D2FF" >
+		──────────────<font size="3" color="#A6A6A6" face="Comic Sans MS"> Detail </font>──────────────
 						</font>
 			 			<br/>
 						${list.content}
@@ -64,7 +66,7 @@
 				<tr bgcolor="#FFFFFF">
 					<td>
 						<hr width="100%"  > 
-						좋아요  / <a href="choiceDetail.nhn?c_no=${list.c_no}&mynum=${mynum}"><img src="/MyUsed/images/replego.PNG"/></a>
+						
 					</td>
 				</tr>
 					

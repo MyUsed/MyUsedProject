@@ -16,12 +16,12 @@
 
 <a onclick="javascript:openstate()" onmouseover="this.style.textDecoration='none'" style="cursor:pointer;"> 
 <font style="font-weight:bold; font-size:120%">
-	State </font>
+	SNS </font>
 </a> &nbsp;&nbsp;
 
 <a onclick="javascript:openproduct()" onmouseover="this.style.textDecoration='none'" style="cursor:pointer;"> 
 <font style="font-weight:bold; font-size:120%">
-	Product</font>
+	Trade</font>
 </a>
 
 </center>

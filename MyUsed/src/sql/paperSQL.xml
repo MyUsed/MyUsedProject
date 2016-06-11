@@ -4,7 +4,7 @@
 <sqlMap namespace="paper">
 
 		<select id="all" resultClass="paper.PaperDTO" parameterClass="java.util.Map">
-			select * from message_r_$mynum$ order by state desc
+			select * from message_r_$mynum$ order by reg desc
 		</select>
 		
 		<insert id="send" parameterClass="java.util.Map">

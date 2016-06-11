@@ -195,7 +195,7 @@ $(document).ready(function(){
 			<td align="right" style="padding:0 0 0 20px;" bgcolor=#EBE8FF colspan="2">
 			
 			<c:if test="${productDTO.sendpay != null}">
-				<font face="Comic Sans MS" size="5" color="#4565A1"><strong>${productDTO.price} ¿ø </strong> </font>
+				<font size="3" color="#1F51B7" ><b><fmt:formatNumber value="${productDTO.price}" type="number" />¿ø</b></font>
 				<a href="/MyUsed/productOrder.nhn?mem_num=${productDTO.mem_num}&price=${productDTO.price}&pronum=${num}">
 				<img src="/MyUsed/images/buyIcon.PNG" width="50" height="50" />
 				</a>

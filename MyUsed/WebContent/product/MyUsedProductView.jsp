@@ -146,7 +146,7 @@
 				</div>
 				<div id="proview_sub">
 					<font size="5" color="#3B5998">
-						<fmt:formatNumber value="${proList.price}" type="number" />¿ø
+						<font size="3" color="#1F51B7" ><b><fmt:formatNumber value="${proList.price}" type="number" />¿ø</b></font>
 					</font>
 				</div>
 				<input type="hidden" name="num" id="num${i.count}" value="${proList.num}">

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.MemberDTO;
+import member.ProfilePicDTO;
+
 
 
 @Controller
 public class choiceController {
 	@Autowired
 	private SqlMapClientTemplate SqlMapClientTemplate;
+	
+
+	private ProfilePicDTO proDTO = new ProfilePicDTO();
 
 	@RequestMapping("choiceInsert.nhn")
 	public ModelAndView choice(int mem_num, int price, String pro_pic, String mem_name, String content, HttpSession session, int num){
@@ -46,11 +53,29 @@ public class choiceController {
 	}
 	
 	@RequestMapping("choiceMain.nhn")
-	public ModelAndView choiceMain(int mynum, choiceDTO dto, HttpSession session){
+	public ModelAndView choiceMain(int mynum, choiceDTO dto, HttpServletRequest request){
 		ModelAndView mv = new ModelAndView();
-		String sessionId = (String)session.getAttribute("memId");
+		
+		
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("memId");
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) SqlMapClientTemplate.queryForObject("member.selectDTO", sessionId);
+		
+		Map picmap = new HashMap();
+		picmap.put("mem_num", memDTO.getNum());
+		proDTO = (ProfilePicDTO) SqlMapClientTemplate.queryForObject("profile.newpic", picmap); // 프로필
+																					// 사진을
+																					// 가져옴
+		request.setAttribute("name", memDTO.getName());
+		request.setAttribute("num", memDTO.getNum());
+		
+		
 		List list = SqlMapClientTemplate.queryForList("choice.all", mynum);		// 찜한 게시글 다가져오기
 		int count = (int)SqlMapClientTemplate.queryForObject("choice.count", mynum);	// 찜한 게시글 개수
+		
+		mv.addObject("proDTO",proDTO);
+		mv.addObject("memDTO",memDTO);
 		mv.addObject("list", list);
 		mv.addObject("mynum", mynum);
 		mv.addObject("count", count);

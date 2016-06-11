@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
 
@@ -72,8 +73,8 @@
 	 <table align="center"  width="550" height="30">
 	 <tr bgcolor="#FFFFFF">
 	 <td align="center" colspan="8">
-	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' ${checked}>State
-     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'checked>Product
+	 <input type="radio" name="deposit" value="update" onclick='javascript:fncChecked(1);' ${checked}><font size="3" color="#3B5998" face="Comic Sans MS"><b>SNS</b></font>
+     <input type="radio" name="deposit" value="product" onclick='javascript:fncChecked(2);'checked><font size="3" color="#3B5998"  face="Comic Sans MS"><b>Trade</b></font>
 	 </td>
 	 </tr>
 	 
@@ -244,10 +245,10 @@
 		</c:if>
 		
 		
-		 <font size="5" color="#1F51B7" >[${prolist.price}\] </font> <br /><br />
+		 <font size="3" color="#1F51B7" ><b><fmt:formatNumber value="${prolist.price}" type="number" />원</b></font> <br /><br />
 		
-		<font size="3" color="#0042ED" >
-		-------------------------------- * 상세설명 * -------------------------------- 
+		<font size="3" color="#D7D2FF" >
+		──────────────<font size="3" color="#A6A6A6" face="Comic Sans MS"> Detail </font>──────────────
 		</font>
 		 <br/>
 		${prolist.content}
@@ -258,7 +259,11 @@
 		<tr bgcolor="#FFFFFF">
 		<td>
 		<hr width="100%"  > 
-		좋아요 / 댓글달기 / 공유하기 / 구매하기
+		 <a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>
+		
+			<a id="choiceB${i.count}" onclick="choiceAjax('${i.count}')"><img src="/MyUsed/images/choIcon.png" title="찜하기" width="25" height="25" style='cursor:pointer;'/><font size="2" color="#9A9DA4">찜하기</font></a>
+			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="55" height="45" title="구매하기"/></a>
+			
 		</td>
 		</tr>
 

@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <title>주문 정보</title>
@@ -32,7 +33,8 @@
  	
  	<div id="detailimgs">
  	
- 	<font face="Comic Sans MS" size="5" color="#003399"> 입금액 ( <font color="Red">${price}</font> 원 )</font> <br /> 
+ 	
+ 	<font size="5" color="red" ><b> <fmt:formatNumber value="${price}" type="number" /> 원</b></font><br /> 
  	
  	<font face="Comic Sans MS" size="3" color="#003399"><strong>국민은행 </strong> <br/> </font>
  	<font face="Comic Sans MS" size="3" color="#4565A1">

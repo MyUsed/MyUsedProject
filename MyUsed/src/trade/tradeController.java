@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.MemberDTO;
 import member.ProfilePicDTO;
 import product.orderlistDTO;
 
@@ -36,7 +37,13 @@ public class tradeController {
 		HttpSession session = request.getSession();
 		String sessionId = (String) session.getAttribute("memId");
 		int mem_num = (int)sqlMap.queryForObject("main.num",sessionId); // 회원번호를 꺼내옴
-		
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+
+
+		request.setAttribute("name", memDTO.getName());
+		request.setAttribute("num", memDTO.getNum());
+
 		 // 프로필 사진을 띄우기 위한 처리 
 	    Map picmap = new HashMap();
 		picmap.put("mem_num", mem_num);   

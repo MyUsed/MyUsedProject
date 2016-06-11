@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <title>상품주문</title>
@@ -103,7 +104,8 @@ function adrNum(){
     		</strong></font> <br />
     		
     		<br/> <br/>
-    		<font face="Comic Sans MS" size="5" color="#4565A1"><strong>${price} 원</strong></font>
+    		<font size="5" color="#1F51B7" ><b><fmt:formatNumber value="${price}" type="number" />원</b></font>
+    		<br />
     	
     	</c:forEach>
  	

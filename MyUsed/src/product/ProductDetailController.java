@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import friend.FriendDTO;
 import main.MainProboardDTO;
 import main.RepleDTO;
+import member.MemberDTO;
 import member.ProfilePicDTO;
 
 @Controller
@@ -31,9 +32,22 @@ public class ProductDetailController {
 	@RequestMapping("/ProductDetailView.nhn")
 	public String ProductDetailView(HttpServletRequest request, int num){
 		
-		System.out.println(num);	// 상품글번호
 		
 		
+		
+
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("memId");
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+		
+		Map picmap = new HashMap();
+		picmap.put("mem_num", memDTO.getNum());
+		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 프로필
+																					// 사진을
+																					// 가져옴
+		request.setAttribute("name", memDTO.getName());
+		request.setAttribute("num", memDTO.getNum());
 		/*댓글 불러오기*/
 		Timestamp reg = (Timestamp)sqlMap.queryForObject("reple.proboardreg",num); // 게시글 등록된 시간 가져오기
 		String name = (String)sqlMap.queryForObject("reple.proboardname",num); // boardlist에서 글쓴이 이름 가져오기
@@ -82,13 +96,11 @@ public class ProductDetailController {
 		
 		
 		
-		HttpSession session = request.getSession();
-	    String sessionId = (String) session.getAttribute("memId");
+		
+	
 	    int session_num = (int)sqlMap.queryForObject("main.num",sessionId); // 회원번호 가져오기
 
-	    Map picmap = new HashMap();
-		picmap.put("mem_num", session_num);   
-		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // 댓글단 프로필 사진을 가져옴
+	    
 		
 
 		/** 해당 상품 글쓴이의 프로필 사진 */
@@ -96,6 +108,8 @@ public class ProductDetailController {
 		
 		int procount = (int)sqlMap.queryForObject("reple.procount",num);
 		
+		request.setAttribute("memDTO", memDTO);
+		request.setAttribute("proDTO", proDTO);
 		request.setAttribute("procount", procount);
 		request.setAttribute("session_num", session_num);
 		request.setAttribute("profilepic", profilepic);

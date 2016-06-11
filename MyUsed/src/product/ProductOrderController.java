@@ -38,6 +38,13 @@ public class ProductOrderController {
 		String sessionId = (String)session.getAttribute("memId");
 		int num = (int)sqlMap.queryForObject("main.num",sessionId); // 회원번호 가져오기
 		
+		
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+		
+		request.setAttribute("name", memDTO.getName());
+		request.setAttribute("num", memDTO.getNum());
+		
 		addresslist = sqlMap.queryForList("address.select",num); // address_$num$의 결과를 list로 담아줌
 		
 		memlist = sqlMap.queryForList("main.userInfo",mem_num);
@@ -69,13 +76,26 @@ public class ProductOrderController {
 	}
 	
 	@RequestMapping("/orderDetail.nhn")
-	public ModelAndView oderDetail(int seq_num,int num,int price,int mem_num ,int pronum){
+	public ModelAndView oderDetail(HttpServletRequest request , int seq_num,int num,int price,int mem_num ,int pronum){
 		ModelAndView mv = new ModelAndView ();
 		
 		System.out.println("판매게시글번호 = "+pronum);
 		System.out.println("판매자회원넘버 = "+mem_num);
 		System.out.println("주소넘버 = "+seq_num);
 		System.out.println("구매자회원넘버 = "+num);
+		
+		HttpSession session = request.getSession();
+		String sessionId = (String)session.getAttribute("memId");
+		
+		
+		
+
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+		
+		request.setAttribute("name", memDTO.getName());
+		
+		
 		
 		MainProboardDTO proboardDTO = new MainProboardDTO();
 		proboardDTO = (MainProboardDTO)sqlMap.queryForObject("product.proInfoSelect",pronum); // 판매글 정보 
