@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,30 +19,21 @@
 
 
 <div id="board"> <!-- 게시판 공지사항 -->
-<b>공지사항</b>
-<table border="1" width="530" height="130" style="border:2px double #747474; border-collapse:collapse;">
+<b>공지사항</b> <a href="admin_notice.nhn"><font size="2">더보기</font></a>
+<table border="1" width="550" height="130" style="border:2px double #747474; border-collapse:collapse;">
 
+	<c:forEach var="admin_Notice" items="${admin_Notice}" begin="0" end="4">
 	<tr>
-	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
+	<td width="70">공지사항</td>
+	<td width="350"> ${admin_Notice.title} </td>
+	<td width="110" align="center">
+	<c:if test="${fn:length(admin_Notice.reg) > 11}">
+	${fn:substring(admin_Notice.reg,0,10)}
+	</c:if>
+	</td>
 	</tr>
-	<tr>
-	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
-	</tr>
-	<tr>
-	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
-	</tr>
-	<tr>
-	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
-	</tr>
-	<tr>
-	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
-	</tr>
-	<tr>
-	<td width="100">공지사항</td><td width="300"> 공지 </td><td width="130" align="center">2016.06.2</td>
-	</tr>
+	</c:forEach>
 
-
-	
 </table>
 </div>
 
@@ -48,16 +41,16 @@
 <b>게시글 통계</b>
 <table border="1" width="250" height="130" style="border:2px double #747474; border-collapse:collapse;">
 	<tr>
-	<td bgcolor="#EAEAEA" width="150">총 게시글</td><td align="right"><b><font color="red">0 건</font></b></td>
+	<td bgcolor="#EAEAEA" width="150">총 게시글</td><td align="right"><b><font color="red">${total_board} 건</font></b></td>
 	</tr>
 	<tr>
 	<td bgcolor="#EAEAEA" width="150">신고접수 게시글</td><td align="right"><b><font color="red">0 건</font></b></td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="150">댓글 1000개 이상</td><td align="right"><b><font color="red">0 건</font></b></td>
+	<td bgcolor="#EAEAEA" width="150">댓글 1000개 이상</td><td align="right"><b><font color="red">${board_reples} 건</font></b></td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="150">좋아요 1000개 이상</td><td align="right"><b><font color="red">0 건</font></b></td>
+	<td bgcolor="#EAEAEA" width="150">좋아요 1000개 이상</td><td align="right"><b><font color="red">${board_likes} 건</font></b></td>
 	</tr>
 	<tr>
 	<td bgcolor="#EAEAEA" width="150">당일 업데이트</td><td align="right"><b><font color="red">0 건</font></b></td>
@@ -78,19 +71,19 @@
 <b>회원 통계</b>
 <table border="1" width="250" height="130" style="border:2px double #747474; border-collapse:collapse;">
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">총 회원수</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">총 회원수</td><td align="right"><b>${total_mem}</b> 명</td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">접속중 회원</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">접속중 회원</td><td align="right"><b>${mem_login}</b> 명</td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">신고접수 회원</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">신고접수 회원</td><td align="right"><b>${mem_report}</b> 명</td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">10대 회원</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">일반 회원</td><td align="right"><b>${nomal_mem}</b> 명</td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">20대 회원</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">네이버 회원</td><td align="right"><b>${naver_mem}</b> 명</td>
 	</tr>
 	<tr>
 	<td bgcolor="#EAEAEA" width="130">30대 회원</td><td align="right"><b>0</b> 명</td>
@@ -107,16 +100,16 @@
 
 <div id="trade"> <!-- 거래 현황 -->
 	
-	<div id="trade_1"> <center><br/> <b>거래신청</b> <br/> <br/><b><font color="red">0 건</font></b></center></div> 
+	<div id="trade_1"> <center><br/> <b>거래신청</b> <br/> <br/><b><font color="red">${trade_all} 건</font></b></center></div> 
 	
 	<div id="trade_2"> 
-	<center><br/><b>입금상태</b><br/><font size="2">입금완료</font> <b><font color="red">0 건</font></b><br/>
-	<font size="2">송금완료</font> <b><font color="red">0 건</font></b></center>
+	<center><br/><b>입금상태</b><br/><font size="2">입금완료</font> <b><font color="red">${trade_deposit} 건</font></b><br/>
+	<font size="2">송금완료</font> <b><font color="red">${trade_finish} 건</font></b></center>
 	</div>
 	
-	<div id="trade_3"> <center> <b>배송중</b> <br/><b><font color="red">0 건</font></b></center></div>
-	<div id="trade_4"> <center> <b>배송완료</b> <br/><b><font color="red">0 건</font></b></center></div>
-	<div id="trade_5"> <center><br/> <b>거래완료</b> <br/> <br/><b><font color="red">0 건</font></b></center></div>
+	<div id="trade_3"> <center> <b>배송중</b> <br/><b><font color="red">${trade_send} 건</font></b></center></div>
+	<div id="trade_4"> <center> <b>배송완료</b> <br/><b><font color="red">${trade_finish} 건</font></b></center></div>
+	<div id="trade_5"> <center><br/> <b>거래완료</b> <br/> <br/><b><font color="red">${trade_finish} 건</font></b></center></div>
 	
 	
 	<div id="arrow_1"><center> ▷ ▶</center></div>
@@ -137,7 +130,7 @@
 	<b>상품 현황</b><br/>
 	<table border="1" width="250" height="160" style="border:2px double #747474; border-collapse:collapse;">
 		<tr>
-		<td bgcolor="#EAEAEA" width="150">총 상품판매글</td><td align="right"><b><font color="red">0 건</font></b></td>
+		<td bgcolor="#EAEAEA" width="150">총 상품판매글</td><td align="right"><b><font color="red">${total_pro} 건</font></b></td>
 		</tr>
 		<tr>
 		<td bgcolor="#EAEAEA" width="150">거래중인 상품</td><td align="right"><b><font color="red">0 건</font></b></td>

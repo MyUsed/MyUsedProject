@@ -8,7 +8,7 @@
 
 	<select id="one" resultClass="admin.AdminNoticeDTO" parameterClass="int">
 		select * from admin_notice where seq_num=#seq_num#
-	</select>
+	</select>	
 
 	<insert id="insert" parameterClass="java.util.Map">
 		insert into admin_notice values(admin_notice_seq.NEXTVAL, #title#, #content#, sysdate)	

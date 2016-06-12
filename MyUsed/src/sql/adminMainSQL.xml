@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="adminMain">
+	
+	<!--  공지사항 메뉴 -->
+	
+	<!-- 공지사항을 메인에 띄우기 위해 -->
+	<select id="select_Notice" resultClass="admin.AdminNoticeDTO">
+		select * from admin_notice order by reg desc
+	</select>
+	
+	
+	
+	<!-- 게시글 통계 메뉴 -->
+	
+	<!-- 1. 총 게시글 수  -->
+	<select id="total_board" resultClass="int">
+		select count(*) from boardlist
+	</select>
+	<!-- 2. 댓글 1000개 이상 -->
+	<select id="board_reples" resultClass="int">
+		select count(*) from boardlist where reples > 1000
+	</select>
+	<!-- 3. 좋아요 1000개 이상 -->
+	<select id="board_likes" resultClass="int">
+		select count(*) from boardlist where likes > 1000
+	</select>
+	
+	
+	
+	<!-- 회원 통계 메뉴 -->
+	
+	<!-- 1. 총 회원수 -->
+	<select id="total_mem" resultClass="int">
+		select count(*) from memberlist
+	</select>
+	<!-- 2. 접속중 회원 -->
+	<select id="mem_login" resultClass="int">
+		select count(*) from memberlist where ONOFF = '1'
+	</select>
+	<!-- 3. 신고접수 회원 -->
+	<select id="mem_report" resultClass="int">
+		select count(*) from report_mem
+	</select>
+	<!-- 4. 일반 회원 -->
+	<select id="nomal_mem" resultClass="int">
+		select count(*) from memberlist where naverid = 0
+	</select>
+	<!-- 5. 네이버 회원 -->
+	<select id="naver_mem" resultClass="int">
+		select count(*) from memberlist where naverid != 0
+	</select>
+	
+	
+	
+	<!--  거래현황 메뉴  -->
+	<!-- 1.거래신청  -->
+	<select id="trade_all" resultClass="int">
+		select count(*) from orderlist 
+	</select>
+ 	<!-- 2.입금완료 -->
+ 	<select id="trade_deposit" resultClass="int">
+ 		select count(*) from orderlist where state = 1
+ 	</select>
+ 	<!-- 3.송금완료  -->
+ 	<select id="trade_finish" resultClass="int">
+ 		select count(*) from orderlist where state = 3
+ 	</select>
+ 	<!-- 4.배송중 -->
+ 	<select id="trade_send" resultClass="int">
+ 		select count(*) from orderlist where state = 2
+ 	</select>
+ 	
+ 	<!--  상품현황 메뉴  -->
+ 	<!-- 1.총 상품판매글 -->
+ 	<select id="total_pro" resultClass="int">
+ 		select count(*) from proboardlist
+ 	</select>
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+	
+
+</sqlMap>
