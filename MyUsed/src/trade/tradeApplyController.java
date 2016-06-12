@@ -176,5 +176,38 @@ public class tradeApplyController {
 		return mv;
 	}
 	
+	@RequestMapping("NoticeUpdateTeg.nhn")
+	public ModelAndView noticeUpdateTeg(HttpServletRequest request , int mynum, int memnum){
+		ModelAndView mv = new ModelAndView();
+		
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("memId");
+		int mem = (int)sqlMap.queryForObject("main.num",sessionId);
+		
+		Map map = new HashMap();
+		map.put("mem", mem);
+		map.put("mynum", mynum);
+		map.put("memnum", memnum);
+	
+		sqlMap.update("order.updateNoticeTeg",map); // 알림 상태 0 으로변경 태그 
+		
+		return mv;
+	}
+	
+	@RequestMapping("NoticeUpdatPost.nhn")
+	public ModelAndView noticeUpdatePost( int mynum, int pro_num){
+		ModelAndView mv = new ModelAndView();
+		
+		Map map = new HashMap();
+		map.put("mynum", mynum);
+		map.put("pro_num", pro_num);
+		
+		sqlMap.update("order.updateNoticePost",map); // 알림 상태 0 으로	변경 배송 
+		
+		return mv;
+	}
+	
+	
+	
 	
 }

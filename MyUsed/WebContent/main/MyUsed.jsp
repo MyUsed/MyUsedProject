@@ -89,6 +89,38 @@ function whenError(){
 }
 
 
+// 태그 알람 확인 
+function NoticeUpdateTeg(mynum,memnum){
+	
+	  $.ajax({
+	        type: "post",
+	        url : "/MyUsed/NoticeUpdateTeg.nhn",
+	        data: {	// url 페이지도 전달할 파라미터
+	        	mynum : mynum,
+	        	memnum : memnum
+	      	},
+	      
+   	});
+	
+}
+
+// 배송 알람 확인
+function NoticeUpdatePost(mynum,pro_num){
+	
+	  $.ajax({
+	        type: "post",
+	        url : "/MyUsed/NoticeUpdatPost.nhn",
+	        data: {	// url 페이지도 전달할 파라미터
+	        	mynum : mynum,
+	        	pro_num : pro_num
+	      	},
+	      
+   	});
+	
+}
+
+
+
 </script>
 
 
@@ -155,9 +187,14 @@ function whenError(){
    			<b>님이 친구요청을 하였습니다.</b>
    			</c:if>
    			</a>
-   			<a href="" onclick="javascript:NoticeUpdateFriend(${noticelist.board_num},${noticelist.call_memnum})" >
+   			<a href="MypageModal.nhn?num=${noticelist.board_num}" onclick="javascript:NoticeUpdateTeg(${noticelist.board_num},${noticelist.call_memnum})" >
    			<c:if test="${noticelist.categ == 'board'}">
    			<b>님이 게시물에 태그 하였습니다.</b>
+   			</c:if>
+   			</a>
+   			<a href="tradeState.nhn" onclick="javascript:NoticeUpdatePost(${noticelist.board_num},${noticelist.pro_num})"  >
+   			<c:if test="${noticelist.categ == 'post'}">
+   			<b>님이 상품을 배송 하였습니다.</b>
    			</c:if>
    			</a>
    			<br /> &nbsp;

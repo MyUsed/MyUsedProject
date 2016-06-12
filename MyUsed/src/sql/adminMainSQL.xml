@@ -77,6 +77,45 @@
  		select count(*) from proboardlist
  	</select>
  	
+ 	<!-- 광고 현황 메뉴 -->
+ 	<!-- 1.총 광고신청수 -->
+ 	<select id="total_banner" resultClass="int">
+ 		select count(*) from bannerlist
+ 	</select>
+ 	<!-- 2.광고 심사 통과 수 -->
+ 	<select id="banner_pass" resultClass="int">
+ 		select count(*) from bannerapply where state = 1
+ 	</select>
+ 		<!-- 2.광고 심사 탈락 수 -->
+ 	<select id="banner_fail" resultClass="int">
+ 		select count(*) from bannerapply where state = 0
+ 	</select>
+ 	
+	<!-- 매출 현황 메뉴  -->
+	<!-- 1.이달 총 매출 -->
+	
+	
+	<!-- 직원 관리 메뉴 -->
+	<!-- 1.총 직원 수 -->
+	<select id="total_adminMem" resultClass="int">
+		select count(*) from adminlist where grade != 'MASTER'
+	</select>
+ 	<!-- 팀장 -->
+ 	<select id="adminMem_Team1" resultClass="int">
+ 		select count(*) from adminlist where grade = '팀장'
+ 	</select>
+ 	<!-- 팀장 -->
+ 	<select id="adminMem_Team2" resultClass="int">
+ 		select count(*) from adminlist where grade = '과장'
+ 	</select>
+ 	<!-- 팀장 -->
+ 	<select id="adminMem_Team3" resultClass="int">
+ 		select count(*) from adminlist where grade = '대리'
+ 	</select>
+ 	<!-- 팀장 -->
+ 	<select id="adminMem_Team4" resultClass="int">
+ 		select count(*) from adminlist where grade = '사원'
+ 	</select>
  	
  	
  	

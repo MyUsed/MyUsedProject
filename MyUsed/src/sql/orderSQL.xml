@@ -88,6 +88,18 @@
 		update notice_$mynum$ set state = 0 where call_memnum = #memnum# and categ = 'friend'
 	</update>
 	
+		<!-- notice 업데이트 읽은 것 상태 0으로 변경 사람태그 -->
+	<update id="updateNoticeTeg" parameterClass="java.util.Map">
+		update notice_$mem$ set state = 0 where board_num = #mynum# and categ = 'board'
+	</update>
+	
+		<!-- notice 업데이트 읽은 것 상태 0으로 변경 배송처리 -->
+	<update id="updateNoticePost" parameterClass="java.util.Map">
+		update notice_$mynum$ set state = 0 where pro_num = #pro_num# and categ = 'post'
+	</update>
+	
+	
+	
 	
 		<!-- 배송확인 처리를 하기위한 업데이트  -->
 	<update id="updateOrderlist" parameterClass="int">

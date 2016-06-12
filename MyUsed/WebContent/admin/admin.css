@@ -121,8 +121,8 @@
 			box-shadow: 3px 4px 5px #A6A6A6;
 			z-index:200; }					
 											
-											
 
+										
 #state { 
 			position:absolute; 
 			top:45%;
@@ -130,7 +130,6 @@
 			width:250px; 
 			height:180px;
 			z-index:200; }							
-
 
 #product { 
 			position:absolute; 
@@ -163,5 +162,3 @@
 			width:250px; 
 			height:180px;
 			z-index:200; }	
-
-			

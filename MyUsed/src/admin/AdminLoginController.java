@@ -119,6 +119,33 @@ public class AdminLoginController {
 		// 2.거래중인 상품
 		
 		
+		// << 광고 현황 메뉴 >>
+		// 1.총 광고신청 수
+		int total_banner = (int)sqlMap.queryForObject("adminMain.total_banner",null);
+		// 2.총 광고통과 수
+		int banner_pass = (int)sqlMap.queryForObject("adminMain.banner_pass",null);
+		// 3.총 광고탈락 수
+		int banner_fail = (int)sqlMap.queryForObject("adminMain.banner_fail",null);
+		
+		
+		// << 매출 현황 메뉴 >>
+		// 1.이달 총 매출
+		
+		
+		
+		// << 직원 관리 메뉴 >>
+		// 1.총 직원 수
+		int total_adminMem = (int)sqlMap.queryForObject("adminMain.total_adminMem",null);
+		// 2.팀장
+		int adminMem_Team1 = (int)sqlMap.queryForObject("adminMain.adminMem_Team1",null);
+		// 3.과장
+		int adminMem_Team2 = (int)sqlMap.queryForObject("adminMain.adminMem_Team2",null);
+		// 4.대리
+		int adminMem_Team3 = (int)sqlMap.queryForObject("adminMain.adminMem_Team3",null);
+		// 5.사원
+		int adminMem_Team4 = (int)sqlMap.queryForObject("adminMain.adminMem_Team4",null);
+				
+		
 		
 		mv.addObject("admin_Notice",admin_Notice);
 		mv.addObject("total_board",total_board);
@@ -134,6 +161,16 @@ public class AdminLoginController {
 		mv.addObject("trade_finish",trade_finish);
 		mv.addObject("trade_send",trade_send);
 		mv.addObject("total_pro",total_pro);
+		mv.addObject("total_banner",total_banner);
+		mv.addObject("banner_pass",banner_pass);
+		mv.addObject("banner_fail",banner_fail);
+		mv.addObject("total_adminMem",total_adminMem);
+		mv.addObject("adminMem_Team1",adminMem_Team1);
+		mv.addObject("adminMem_Team2",adminMem_Team2);
+		mv.addObject("adminMem_Team3",adminMem_Team3);
+		mv.addObject("adminMem_Team4",adminMem_Team4);
+		
+		
 		
 		mv.setViewName("/admin/AdminPage.jsp");	
 		return mv;

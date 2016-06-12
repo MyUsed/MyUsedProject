@@ -102,13 +102,25 @@ public class depositController {
 	}
 	
 	@RequestMapping("/depositCheck.nhn")
-	public ModelAndView depositCheck(int seq_num){
+	public ModelAndView depositCheck(int seq_num,String call_name,int call_memnum,int pro_Num,int my_num){
 		ModelAndView mv = new ModelAndView();
 		
 		sqlMap.update("trade.updateSelllist",seq_num); // 배송상태 업데이트
 		
 		int pro_num = (int)sqlMap.queryForObject("trade.selectPronum",seq_num); // 게시글 번호를 가져옴
 		sqlMap.update("order.updateOrderlist",pro_num);// orderlist 상태 2로 변경 
+		
+		Map map = new HashMap();
+		map.put("num", my_num);
+		map.put("board_num", my_num);
+		map.put("call_name", call_name);
+		map.put("call_memnum", call_memnum);
+		map.put("pro_num", pro_Num);
+		map.put("categ", "post");
+		map.put("state", 1);
+		
+		sqlMap.insert("order.insertNotice",map); // 알림 디비에 삽입
+		
 		
 		mv.setViewName("tradePost.nhn");
 		return mv;

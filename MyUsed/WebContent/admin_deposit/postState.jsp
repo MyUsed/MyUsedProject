@@ -55,7 +55,7 @@ function seachPost(post){
 			<td bgcolor="#FFEF85">${selllist.buy_price}</td>
 			<td><a Onclick="javascript:seachPost(${selllist.postnum})" style="cursor:pointer;" title="조회하기"><font color="blue">${selllist.postnum}</font></a></td>
 			<td>
-			<c:if test="${selllist.state == 0}"><input type="button" value="배송확인" onclick="javascript:window.location='depositCheck.nhn?seq_num=${selllist.seq_num}'"/></c:if>
+			<c:if test="${selllist.state == 0}"><input type="button" value="배송확인" onclick="javascript:window.location='depositCheck.nhn?seq_num=${selllist.seq_num}&call_name=${selllist.sell_name}&call_memnum=${selllist.sell_memnum}&pro_Num=${selllist.sell_pronum}&my_num=${selllist.buy_memnum}'"/></c:if>
 			<c:if test="${selllist.state == 1}"><font color="red">배송확인</font></c:if>
 			</td>
 			
