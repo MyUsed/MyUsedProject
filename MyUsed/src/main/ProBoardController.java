@@ -113,9 +113,9 @@ public class ProBoardController {
 		System.out.println("게시글번호"+proboardnum);
 		
 		sqlMap.insert("create.proboardreple",proboardnum); // 게시글 댓글 테이블 생성 
-		System.out.println("pro게시글댓글 DB 생성");
+		System.out.println("pro게시글댓글 DB 생성"+proboardnum);
 		sqlMap.insert("create.proboardreple_seq",proboardnum);
-		System.out.println("pro게시글댓글 시퀀스 생성");
+		System.out.println("pro게시글댓글 시퀀스 생성"+proboardnum);
 
 		mv.setViewName("/MyUsed.nhn");
 		return mv;

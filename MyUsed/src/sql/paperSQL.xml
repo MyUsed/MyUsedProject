@@ -62,9 +62,13 @@
 		
 			<!-- notice 테이블에 값 삽입 -->
 		<insert id="insertNoticeMsg" parameterClass="java.util.Map">
-		insert into notice_$memNum$ values(notice_$memNum$seq.NEXTVAL,#memNum#,0,#board_num#,#s_name#,#categ#,#state#,sysdate)	
+		insert into notice_$memNum$ values(notice_$memNum$seq.NEXTVAL,#memNum#,0,#board_num#,#name#,#categ#,#state#,sysdate)	
 		</insert>
 	
+			<!-- 번호를 이용해 이름을 가져옴 -->
+		<select id="SerachName" parameterClass="int" resultClass="String">
+			select name from memberlist where num = #mynum#
+		</select>
 		
 		
 </sqlMap>

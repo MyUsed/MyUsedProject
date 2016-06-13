@@ -159,7 +159,7 @@ input[type=text] {
 			height:330px;
 			margin-top:11px;
 			margin-left:20px;
-			border:1px solid #000000;
+			/* border:1px solid #000000; */
 			z-index:200; }	
 			
 #detailimgs { position:relative; 
@@ -167,14 +167,14 @@ input[type=text] {
 			height:160px;
 			margin-top:10px;
 			margin-left:20px;
-			border:1px solid #000000;
+			/* border:1px solid #000000; */
 			z-index:200; }	
 			
 #detailcontent { position:absolute;
 			width:360px; 
 			margin-top:-499px;
 			margin-left:520px;
-			border:1px solid #000000;
+			/* border:1px solid #000000; */
 			z-index:200; }	
 			
 #closebotton{position:absolute; 

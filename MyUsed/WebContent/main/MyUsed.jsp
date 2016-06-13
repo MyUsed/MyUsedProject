@@ -221,7 +221,7 @@ function fri_closeMsg() {
    			(<strong> <a href="MyUsedMyPage.nhn?mem_num=${noticelist.call_memnum}">${noticelist.call_name}</a> </strong>) 
    			
    			<a Onclick="javascript:tradeCheck(${noticelist.call_memnum},${noticelist.pro_num})" style="cursor:pointer;">
-   			<c:if test="${noticelist.categ == 'product'}">
+   			<c:if test="${noticelist.categ == 'product'}">	
    			<b>님이 거래요청 하였습니다.</b> 
    			</c:if>
    			</a>
@@ -782,14 +782,38 @@ function fri_closeMsg() {
 		──────────────<font size="3" color="#A6A6A6" face="Comic Sans MS"> Detail </font>──────────────
 		</font>
 		<!-- 상품 게시글 해시태그 -->	
-	<script type="text/javascript">
+		<script type="text/javascript">
 	$(document).ready(function(){
-		var content = document.getElementById('procontent').innerHTML;
-		var splitedArray = content.split(' ');
+		var content = document.getElementById('procontent_${prolist.num}').innerHTML;
+		var splitedArray = content.split(' ');	// 공백을 기준으로 자름
+		var resultArray = [];	//최종 결과를 담을 배열을 미리 선언함
+		
+		// 공백을 기준으로 잘린 배열의 요소들을 검색함
+		for(var i = 0; i < splitedArray.length ; i++){			
+			// 그 중 <br>이 포함되어있는 배열의 요소가 있다면
+			if(splitedArray[i].indexOf('<br>') > -1){
+				
+				// <br> 기준으로 잘라 임시 배열인 array에 넣는다 -> 이때 array의 길이는 2개 일 수 밖에 없음
+				var array = splitedArray[i].split('<br>');
+				// 이때 <br>이 #이 붙은 단어의 앞에 있을 수 도있고 뒤에 있을 수도 있기 때문에 indexOf를 이용해 위치를 판단한다.
+				if(splitedArray[i].indexOf('<br>') < splitedArray[i].indexOf('#')){	//br이 앞에 있을경우
+					resultArray[i] = array[0]+'<br>';	// array의 첫번째 요소에 <br>을 붙여준다
+					resultArray[i+1] = array[1];
+					i++;	//resultArray의 크기가 1 늘어났음으로 i를 ++해줌
+				}else{	//br이 뒤에 있을경우
+					resultArray[i] = array[0];
+					resultArray[i+1] = '<br>'+array[1];	// array의 두번째 요소에 <br>을 붙여준다
+					i++;	//resultArray의 크기가 1 늘어났음으로 i를 ++해줌
+				}
+			// <br>이 포함되지않은 요소들은 그냥 resultArray에 넣어준다.
+			}else{
+				resultArray[i] = splitedArray[i];
+			}
+		}
 		var linkedContent = '';
-		for(var word in splitedArray)
+		for(var word in resultArray)
 		{
-		  word = splitedArray[word];
+		  word = resultArray[word];
 		   if(word.indexOf('#') == 0)
 		   {
 				var url = '"'+'/MyUsed/protegSearch.nhn?word='+word.split('#')+'"';
@@ -797,14 +821,12 @@ function fri_closeMsg() {
 		   }
 		   linkedContent += word+' ';
 		}
-		document.getElementById('procontent').innerHTML = linkedContent; 
+		document.getElementById('procontent_${prolist.num}').innerHTML = linkedContent; 
 	});
 	</script>
-		
+	
 		 <br/>
-		 <div id="procontent">
-		${prolist.content}
-		</div>
+		 <div id="procontent_${prolist.num}">${prolist.content}</div>
 		
 		</td>
 		</tr>

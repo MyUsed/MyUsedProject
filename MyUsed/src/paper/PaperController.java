@@ -118,6 +118,10 @@ public class PaperController {
 			map.put("board_num",mynum);
 			map.put("categ", "msg");
 			map.put("state", 1);
+			
+			String name = (String)SqlMapClientTemplate.queryForObject("paper.SerachName",mynum);
+			
+			map.put("name",name);
 			SqlMapClientTemplate.insert("paper.insertNoticeMsg",map); // 알림 테이블에 값 삽입;
 			
 		mv.addObject("mynum", mynum);

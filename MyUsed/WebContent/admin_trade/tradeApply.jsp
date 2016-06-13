@@ -35,7 +35,7 @@
 		<td><c:if test="${orderlist.state == 0}"><font color="blue">입금전</font></c:if>
 			<c:if test="${orderlist.state == 1}"><font color="red">입금완료</font></c:if>
 			<c:if test="${orderlist.state == 2}"><font color="green">배송중</font></c:if>
-			<c:if test="${orderlist.state == 4}"><font color="black">완료</font></c:if>
+			<c:if test="${orderlist.state == 3}"><font color="#232323"><b>거래완료</b></font></c:if>
 		</td>
 		<td><fmt:formatDate value="${orderlist.reg}" type="date"/></td><td><font color="red"><strong>>>>>></strong></font></td>
 		<td>${orderlist.sell_pronum}</td><td>${orderlist.sell_id}</td><td>${orderlist.sell_name}</td>

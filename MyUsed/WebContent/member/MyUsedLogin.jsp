@@ -33,7 +33,7 @@
     var naver = NaverAuthorize({
         client_id : "qMD7f0qkqenQGghOLdVc",
         //redirect_uri : "http://192.168.35.247:8000/test/login.nhn",	//데탑
-        redirect_uri : "http://127.0.0.1:8000/MyUsed/MyUsedLogin.nhn",	//학원
+        redirect_uri : "http://192.168.50.27:8000/MyUsed/MyUsedLogin.nhn",	//학원
         client_secret : "QF4E_FPwax"
     });
 
@@ -107,7 +107,7 @@
             str4 = "&birthday="+birthday.toString();
             str5 = "&accesstoken="+accesstoken.toString();
             //urladd = "http://192.168.35.247:8000/test/main.nhn?email="+email.toString(); //데탑
-            urladd = "http://127.0.0.1:8000/MyUsed/MyUsedNaverLoginPro.nhn?email="+email.toString();	//학원
+            urladd = "http://192.168.50.27:8000/MyUsed/MyUsedNaverLoginPro.nhn?email="+email.toString();	//학원
             window.location=urladd + str1 + str2 + str3 + str4 + str5; 
              
             });

@@ -160,7 +160,7 @@ public class RepleController {
 	}
 	
 	@RequestMapping("proreplesubmit.nhn")
-	public ModelAndView proreplesubmit(HttpServletRequest request , String reple , int proboardnum){
+	public ModelAndView proreplesubmit(HttpServletRequest request , String reple , int proboardnum, String content){
 		ModelAndView mv = new ModelAndView();
 		
 		HttpSession session = request.getSession();
@@ -173,21 +173,33 @@ public class RepleController {
 		System.out.println("댓글내용 = "+reple);
 		System.out.println("댓글 작성한회원번호 = "+mem_num);
 		System.out.println("댓글 작성한회원이름 = "+re_name);
+		System.out.println(content);
+
+		//상품글 작성: proboardlist의 seq_num을 참조하여 proboardreple_ 가 생성된다.
+		//MainboardDTO proboardDTO = new MainboardDTO();
+		/*List proboardlist = new ArrayList();
+		proboardlist =  sqlMap.queryForList("main.selectPro", mem_num);
+		System.out.println(((MainboardDTO)proboardlist.get(0)).getContent());*/
+		
+		Map map = new HashMap();
+		int proboardlistnum =  (Integer)sqlMap.queryForObject("main.selectProlist", content);
+		
+		System.out.println(proboardlistnum);
 		
 		Map promap = new HashMap();
-		promap.put("proboardnum", proboardnum); 
+		promap.put("proboardnum", proboardlistnum); 
 		promap.put("mem_num", mem_num);
 		promap.put("content", reple);
 		promap.put("name", re_name);
+		System.out.println(promap);
 		
 		
 		sqlMap.insert("reple.proinsert",promap);   // 댓글 삽입 
-		sqlMap.update("reple.proupdate",proboardnum); // 전체 boardlist에 reple 추가;
+		sqlMap.update("reple.proupdate",proboardlistnum); // 전체 boardlist에 reple 추가;
 		
+		 
 		
-		
-		
-		mv.setViewName("ProductDetailView.nhn?num="+proboardnum);
+		mv.setViewName("ProductDetailView.nhn?num="+proboardlistnum);
 		return mv;
 	}
 	

@@ -36,11 +36,11 @@ function bigImage(pic){
 
 <title>상품</title>
 
+<div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 
 	<script>
 	function deleteCheck(){
                if(confirm("정말로 삭제하시겠습니까?") == true){
-
                } 	else{
                	event.preventDefault();
              		  }
@@ -60,7 +60,6 @@ $(document).ready(function(){
 </head>
 <body bgcolor="#06090F">
 
-<div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 
 <div id="detailViewback">
 
@@ -86,7 +85,7 @@ $(document).ready(function(){
    	<!-- 다른 이미지 -->
    	<div id="detailimgs">
    	
-   	<table border="0" width="480" height="160">
+   	<table border="1" width="480" height="160">
    	
    		<tr>
    		<c:forEach begin="0" step="1" end="3" var="propic" items="${propicList}">
@@ -108,10 +107,10 @@ $(document).ready(function(){
     
     <div id="detailcontent">
     <form action="proreplesubmit.nhn" method="post" >
-    
+    <input type="hidden" name="content" value="${productDTO.content}">
     <input type="hidden" name="proboardnum" value="${num}"/>
     
-	<table align="right" width="360" height="497" border="0">
+	<table align="right" width="360" height="497" border="1">
 		<tr height="50" align="left">
 			<td style="padding:0 0 0 10px;">
 			<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${productDTO.mem_num}"> 
@@ -129,35 +128,45 @@ $(document).ready(function(){
 			</td>
 		</tr>
 		
+		
 		<!-- 해시태크 링크 -->
  		<script type="text/javascript">
  		$(document).ready(function(){
 		var content = document.getElementById('procontent_${productDTO.num}').innerHTML;
+		console.log(content);
 		var splitedArray = content.split(' ');	// 공백을 기준으로 자름
+		console.log(">>>1>>>",splitedArray);
 		var resultArray = [];	//최종 결과를 담을 배열을 미리 선언함
 		
 		// 공백을 기준으로 잘린 배열의 요소들을 검색함
 		for(var i = 0; i < splitedArray.length ; i++){
+			console.log(i+' : ',splitedArray[i].indexOf('<br>'));
+			
 			// 그 중 <br>이 포함되어있는 배열의 요소가 있다면
 			if(splitedArray[i].indexOf('<br>') > -1){
 				
 				// <br> 기준으로 잘라 임시 배열인 array에 넣는다 -> 이때 array의 길이는 2개 일 수 밖에 없음
 				var array = splitedArray[i].split('<br>');
+				console.log(i+'번째에서 <br> 출연 : ',array);
 				// 이때 <br>이 #이 붙은 단어의 앞에 있을 수 도있고 뒤에 있을 수도 있기 때문에 indexOf를 이용해 위치를 판단한다.
 				if(splitedArray[i].indexOf('<br>') < splitedArray[i].indexOf('#')){	//br이 앞에 있을경우
 					resultArray[i] = array[0]+'<br>';	// array의 첫번째 요소에 <br>을 붙여준다
 					resultArray[i+1] = array[1];
 					i++;	//resultArray의 크기가 1 늘어났음으로 i를 ++해줌
+					console.log('///resultArray 찍어봄(br앞) : ',resultArray);
 				}else{	//br이 뒤에 있을경우
 					resultArray[i] = array[0];
 					resultArray[i+1] = '<br>'+array[1];	// array의 두번째 요소에 <br>을 붙여준다
 					i++;	//resultArray의 크기가 1 늘어났음으로 i를 ++해줌
+					console.log('///resultArray 찍어봄(br뒤) : ',resultArray);
 				}
 			// <br>이 포함되지않은 요소들은 그냥 resultArray에 넣어준다.
 			}else{
 				resultArray[i] = splitedArray[i];
+				console.log('<br>없는 착한 요소///resultArray 찍어봄 : ',resultArray);
 			}
 		}
+		console.log(">>>2>>>",resultArray);
 		var linkedContent = '';
 		for(var word in resultArray)
 		{
@@ -181,14 +190,13 @@ $(document).ready(function(){
  		</tr>
  		
  		<tr height="30">
- 			<td align="left" style="padding:0 10px 0  10px; border-bottom:1px solid #BDBDBD; border-left:1px solid #BDBDBD; border-top:1px solid #BDBDBD"  bgcolor=#EBE8FF >
- 			<font size="2" color="#9A9DA4" ><strong>댓글 ${procount}개</strong></font></td>
-			<td align="right" style="padding:0 0 0 20px; border-bottom:1px solid #BDBDBD; border-right:1px solid #BDBDBD; border-top:1px solid #BDBDBD" bgcolor=#EBE8FF colspan="2">
+ 		<td style="padding:0 0 0 0px;"  bgcolor=#EBE8FF ><font size="2" color="#9A9DA4" ><strong>댓글 ${procount}개</strong></font></td>
+			<td align="right" style="padding:0 0 0 20px;" bgcolor=#EBE8FF colspan="2">
 			
 			<c:if test="${productDTO.sendpay != null}">
-				<font face="Comic Sans MS" size="5" color="#4565A1"><strong>${productDTO.price} 원 </strong> </font>
-				<a href="/MyUsed/productOrder.nhn?mem_num=${productDTO.mem_num}&price=${productDTO.price}&pronum=${num}">
-				<img src="/MyUsed/images/buyIcon.PNG" width="50" height="50" />
+				<font size="3" color="#1F51B7" ><b><fmt:formatNumber value="${productDTO.price}" type="number" />원</b></font>
+				<a href="/MyUsed/productOrder.nhn?mem_num=${productDTO.mem_num}&price=${productDTO.price}&pronum=${productDTO.num}">
+				<img src="/MyUsed/images/buyIcon.PNG" width="50" height="50" title="구매하기"/>
 				</a>
 			</c:if>
 			<c:if test="${productDTO.sendpay == null}">
@@ -200,8 +208,8 @@ $(document).ready(function(){
 		</tr>
 		
 		<tr>
-			<td align="left" style="padding:0 0 0 20px; border-bottom:1px solid #BDBDBD; border-right:1px solid #BDBDBD; border-left:1px solid #BDBDBD" bgcolor="#F6F7F9" colspan="2">	
-				<div style='overflow:auto; width:330px; height:250px'>
+			<td align="left" style="padding:0 0 0 20px;" bgcolor="#F6F7F9" colspan="2">	
+				<p style='overflow:auto; width:330px; height:250px'>
 				<c:forEach var="proreplelist" items="${proreplelist}"> 
 				
 				<script type="text/javascript">
@@ -246,13 +254,13 @@ $(document).ready(function(){
 						document.getElementById('proreple_${proreplelist.seq_num}').innerHTML = linkedContent; 
 					});
 				</script>
-					
+				
+				
 					<a  href="/MyUsed/MyUsedMyPage.nhn?mem_num=${proreplelist.mem_num}"> 
 						<!-- <img src="/MyUsed/images/profile/${proreplelist.profile_pic}" style="width:20px; height:20px;"> -->
 						<font face="Comic Sans MS" size="3" color="#4565A1"> ${proreplelist.name}</font>
 					</a>
-					
-					<div id="proreple_${proreplelist.seq_num}" style="position:absolute; margin-top:-20px; margin-left:60px;">${proreplelist.content}</div>
+ 					${proreplelist.content}
  					
  					<c:if test="${session_num == proreplelist.mem_num}">
  					<a href="prorepleDelete.nhn?seq_num=${proreplelist.seq_num}&boardnum=${num}" onclick="javasciprt:deleteCheck()">
@@ -266,11 +274,11 @@ $(document).ready(function(){
  					</font>
 					<br />
 				</c:forEach>
-				</div>
+				</p>
 			</td>
 		</tr>
 		<tr height="50">
-			<td bgcolor="#F6F7F9" colspan="2" style="border-bottom:1px solid #BDBDBD; border-right:1px solid #BDBDBD; border-left:1px solid #BDBDBD"">
+			<td bgcolor="#F6F7F9" colspan="2">
 				<img src="/MyUsed/images/profile/${proDTO.profile_pic}" align="left" width="40"  height="35" style="margin-left:10px;"/>
 					<input style="padding:7px;" type="text" name="reple" size="30" placeholder="댓글을 입력하세요..." />
 				<input type="image" src="/MyUsed/images/submitReple.png" width="30" height="20" title="댓글달기"/>

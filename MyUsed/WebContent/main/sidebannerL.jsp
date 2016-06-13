@@ -42,7 +42,7 @@
  	<!--상품 카테고리 별로 조회 -->
  	<nav class="nav">
 		<ul class="gnb">
- 			<li><a href="#" onmouseover="this.style.textDecoration='none'">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="/MyUsed/images/categ.png" width="20" height="20">&nbsp;<font size="2"><b>카테고리</b></font></a>
+ 			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" onmouseover="this.style.textDecoration='none'"><img src="/MyUsed/images/categ.png" width="20" height="20">&nbsp;<font size="2"><b>카테고리</b></font></a>
  			<ul class="sub">
 	      		<li>
 	      			<table width="95%" height="300" border="0" align="right">

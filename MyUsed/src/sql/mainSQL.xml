@@ -161,6 +161,18 @@
    <insert id="memlikesInsert" parameterClass="java.util.Map">
    		insert into likes_$memnum$ values(#num#,#memnum#,#id#,1,sysdate)
    </insert>
+   
+   
+   <!-- 개인 proboard글 찾기 -->
+   <select id="selectPro" resultClass="main.MainboardDTO" parameterClass="int">
+   		select * from proboard_$mem_num$
+   </select>
+   
+   <!-- 동일한 content내용을 찾아 proboardlist의 seq_num를 찾는다. -->
+   <select id="selectProlist" resultClass="int" parameterClass="String">
+   		select num from proboardlist where content = #content#
+   </select>
+   
 
    
    

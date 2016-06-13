@@ -104,7 +104,7 @@ public class ProductOrderController {
 		sellDTO = (MemberDTO)sqlMap.queryForObject("member.selectDTOforNum",mem_num); // 판매자 회원정보
 		MemberDTO buyDTO = new MemberDTO();
 		buyDTO = (MemberDTO)sqlMap.queryForObject("member.selectDTOforNum",num); // 구매자 회원정보
-		
+
 		Map adrMap = new HashMap();
 		adrMap.put("num", num);
 		adrMap.put("seq_num", seq_num);
@@ -112,6 +112,7 @@ public class ProductOrderController {
 		AddressDTO addresslist = new AddressDTO();
 		addresslist = (AddressDTO)sqlMap.queryForObject("address.seq_numSelect",adrMap); // 주소정보
 		
+	
 		
 		Map orderMap = new HashMap();
 		orderMap.put("buy_memnum", buyDTO.getNum());
