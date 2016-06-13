@@ -286,7 +286,7 @@
             <button type="submit" class="btn btn-success">Sign in</button>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" onClick="loginNaver()" class="btn btn-success">네이버로 로그인</button>
-            <button type="button" class="btn btn-success">페이스북으로 로그인</button>
+          <!--   <button type="button" class="btn btn-success">페이스북으로 로그인</button>  -->
 			</div>
           </form>
 

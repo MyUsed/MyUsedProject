@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.BannerApplyDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
 import product.orderlistDTO;
@@ -57,6 +58,12 @@ public class depositController {
 		orderlistDTO depositlist = new orderlistDTO();
 		depositlist = (orderlistDTO)sqlMap.queryForObject("trade.depositInfo",mem_num); // 거래요청된 정보
 		
+		// 광고 가져옴 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)sqlMap.queryForObject("main.bannerSelect",null);
+		
+		
+		mv.addObject("banner",banner);
 		mv.addObject("depositlist",depositlist);
 		mv.addObject("proDTO",proDTO);
 		mv.setViewName("/admin_deposit/depositState.jsp");

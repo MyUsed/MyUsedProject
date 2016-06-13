@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
 <script>
 	// 친구목록에 체크된 radio버튼 값(친구의id)을 1개 가져오는 함수
 	function swap(){

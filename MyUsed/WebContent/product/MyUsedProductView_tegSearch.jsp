@@ -246,7 +246,7 @@
 	<td align="center">
 		<hr width="90%" />
 	<a href="http://www.iei.or.kr/">
-	<img src="/MyUsed/images/adver.PNG" width="95%" />
+	<img src="/MyUsed/images/${banner}" width="95%" />
 		<hr width="90%" />
 	</a>
 	<a href="http://www.iei.or.kr/"><u>국비지원 바로가기</u></a>

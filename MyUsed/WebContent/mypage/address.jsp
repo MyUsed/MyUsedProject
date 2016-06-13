@@ -83,10 +83,26 @@
 </body>
 </div> <!-- 사이드배너 Left -->
 
-
+<style>
+#sidebannerR { position:fixed; 
+		top:50px; 
+		height:500%; 
+		left:80%; 
+		width:14%;
+		margin-left:0%;  
+		padding-left:1%;
+		background:#EAEAEA; 
+		z-index:100;
+	}
+#contents { width:52%; height:9000px; margin-top:1px; margin-left:13%; background:#EAEAEA; }
+#advertise {  position:fixed; width:45%; height:100%; left:57%; margin-right:30%;background:#EAEAEA; }
+</style>
 
     
 <div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
+<div id="sidebannerR"><jsp:include page="/main/advertise.jsp"/></div> <!-- 사이드배너 Right  -->
+<div id="contents"></div>
+<div id="advertise"></div>
 <div id="detailViewback"></div>
 
 

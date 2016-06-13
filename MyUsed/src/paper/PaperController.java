@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.BannerApplyDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
 
@@ -64,12 +65,18 @@ public class PaperController {
 		 
 		
 		int paperCount = (int)SqlMapClientTemplate.queryForObject("paper.paperCount", map);	// 글 읽음 여부. state값 가져오기
+		
+		// 광고 가져옴 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)SqlMapClientTemplate.queryForObject("main.bannerSelect",null);
+		
 		mv.addObject("list", list);
 		mv.addObject("mynum", mynum);
 		mv.addObject("proDTO", proDTO);
 		mv.addObject("memDTO", memDTO);
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.addObject("paperCount", paperCount);
+		mv.addObject("banner",banner);
 		mv.setViewName("/paper/paperMain.jsp");
 		return mv;
 	}
@@ -82,12 +89,17 @@ public class PaperController {
 		String sessionId = (String) session.getAttribute("memId");
 		MemberDTO memDTO = new MemberDTO();
 		memDTO = (MemberDTO) SqlMapClientTemplate.queryForObject("member.selectDTO", sessionId);
+		
+		// 광고 가져옴 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)SqlMapClientTemplate.queryForObject("main.bannerSelect",null);
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("proDTO", proDTO);
 		mv.addObject("memDTO", memDTO);
 		mv.addObject("mynum", mynum);
 		mv.addObject("name", name);
+		mv.addObject("banner",banner);
 		mv.setViewName("/paper/paperForm.jsp");
 		return mv;
 	}
@@ -95,6 +107,12 @@ public class PaperController {
 	@RequestMapping("paperchatForm.nhn")	// 쪽지 쓰는 폼
 	public ModelAndView paperchatForm(int mynum, String name){
 		ModelAndView mv = new ModelAndView();
+		
+		// 광고 가져옴 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)SqlMapClientTemplate.queryForObject("main.bannerSelect",null);
+		
+		mv.addObject("banner",banner);
 		mv.addObject("mynum", mynum);
 		mv.addObject("name", name);
 		mv.setViewName("/paper/paperchatForm.jsp");
@@ -124,7 +142,12 @@ public class PaperController {
 			map.put("name",name);
 			SqlMapClientTemplate.insert("paper.insertNoticeMsg",map); // 알림 테이블에 값 삽입;
 			
+			// 광고 가져옴 
+			BannerApplyDTO banner = new BannerApplyDTO();
+			banner = (BannerApplyDTO)SqlMapClientTemplate.queryForObject("main.bannerSelect",null);
+			
 		mv.addObject("mynum", mynum);
+		mv.addObject("banner",banner);
 		mv.setViewName("/paper/paperSend.jsp");
 		return mv;
 	}
@@ -181,6 +204,12 @@ public class PaperController {
 		String memname = dto.getS_name();	// memberlist에서 이름을 꺼내기위해 사용할 변수
 		String name = (String)SqlMapClientTemplate.queryForObject("paper.name", memname);	// memberlist에서 사용자 이름 가져오기
 		
+		// 광고 가져옴 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)SqlMapClientTemplate.queryForObject("main.bannerSelect",null);
+				
+		
+		mv.addObject("banner",banner);
 		mv.addObject("dto", dto);
 		mv.addObject("mynum", mynum);
 		mv.addObject("m_no", m_no);
@@ -252,7 +281,12 @@ public class PaperController {
 			lastCount = page.getEndCount() + 1;
 		
 		 list = list.subList(page.getStartCount(), lastCount);
-		
+		 
+			// 광고 가져옴 
+			BannerApplyDTO banner = new BannerApplyDTO();
+			banner = (BannerApplyDTO)SqlMapClientTemplate.queryForObject("main.bannerSelect",null);
+			
+		mv.addObject("banner",banner);
 		mv.addObject("mynum", mynum);
 		mv.addObject("list", list);
 		mv.addObject("proDTO", proDTO);

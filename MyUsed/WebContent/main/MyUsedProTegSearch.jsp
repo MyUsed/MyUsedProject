@@ -147,7 +147,7 @@
 		
 		 <a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>
 		
-			<a id="choiceB${i.count}" onclick="choiceAjax('${i.count}')"><img src="/MyUsed/images/chooseIcon.png" title="찜하기" width="60" height="65" style='cursor:pointer;'/></a>
+			<a id="choiceB${i.count}" onclick="choiceAjax('${i.count}')"><img src="/MyUsed/images/chooseIcon.png" title="찜하기" width="25" height="25" style='cursor:pointer;'/><font size="2" color="#9A9DA4" style='cursor:pointer;'>찜하기</font></a>
 			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="55" height="45" title="구매하기"/></a>
 			
 			<div id="ajaxChoice"></div>

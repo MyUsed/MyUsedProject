@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.BannerApplyDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
 import product.orderlistDTO;
@@ -58,12 +59,23 @@ public class tradeController {
 		picmap.put("mem_num",sellnum.getSell_memnum());
 		sellDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // ÆÇ¸ÅÀÚ ÇÁ·ÎÇÊ °¡Á®¿È
 		
+		// ±¤°í °¡Á®¿È 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)sqlMap.queryForObject("main.bannerSelect",null);
+		
 		mv.addObject("sellDTO",sellDTO);
 		mv.addObject("proDTO",proDTO);
 		mv.addObject("orderlist",orderlist);		
+		mv.addObject("banner",banner);
 		mv.setViewName("/admin_trade/tradeView.jsp");
+		
 		}else if(orderlist == null){
 		mv.addObject("proDTO",proDTO);
+		// ±¤°í °¡Á®¿È 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)sqlMap.queryForObject("main.bannerSelect",null);
+		
+		mv.addObject("banner",banner);
 		mv.setViewName("/admin_trade/tradeNotView.jsp");
 		}
 		return mv;

@@ -145,9 +145,10 @@ input[type=text] {
 			height:700%;  
 			margin-top:0px;
 			margin-left:-10%;
-			background:#06090F;
+			background:#EAEAEA;
 			filter:alpha(opacity=50); opacity:0.3; -moz-opacity:0.1;
 			z-index:150; }
+			
 
 #detailView { position:fixed; 
 			width:900px; 	

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.BannerApplyDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
 
@@ -74,6 +75,12 @@ public class choiceController {
 		List list = SqlMapClientTemplate.queryForList("choice.all", mynum);		// 찜한 게시글 다가져오기
 		int count = (int)SqlMapClientTemplate.queryForObject("choice.count", mynum);	// 찜한 게시글 개수
 		
+		
+		// 광고 가져옴 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)SqlMapClientTemplate.queryForObject("main.bannerSelect",null);
+		
+		mv.addObject("banner",banner);
 		mv.addObject("proDTO",proDTO);
 		mv.addObject("memDTO",memDTO);
 		mv.addObject("list", list);

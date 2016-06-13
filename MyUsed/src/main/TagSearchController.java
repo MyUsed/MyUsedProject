@@ -13,6 +13,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import admin.BannerApplyDTO;
 import friend.FriendDTO;
 import member.MemberDTO;
 import member.ProfilePicDTO;
@@ -82,12 +83,17 @@ public class TagSearchController {
 			System.out.println(((MainboardDTO)tegList.get(i)).getContent());
 		}
 		
+
+		// ±¤°í °¡Á®¿È 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)sqlMapClientTemplate.queryForObject("main.bannerSelect",null);
+		
 		request.setAttribute("list", tegList);
 		request.setAttribute("content", content);	//°Ë»öÇÑ ´Ü¾î
 		request.setAttribute("name", memDTO.getName());
 		request.setAttribute("num", memDTO.getNum());
 		request.setAttribute("proDTO", proDTO);
-		
+		request.setAttribute("banner", banner);
 		return "/main/MyUsedTegSearch.jsp";
 	}
 	
@@ -148,11 +154,17 @@ public class TagSearchController {
 			System.out.println(((MainProboardDTO)protegList.get(i)).getContent());
 		}
 		
+
+		// ±¤°í °¡Á®¿È 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)sqlMapClientTemplate.queryForObject("main.bannerSelect",null);
+		
 		request.setAttribute("prolist", protegList);
 		request.setAttribute("content", content);	//°Ë»öÇÑ ´Ü¾î
 		request.setAttribute("name", memDTO.getName());
 		request.setAttribute("num", memDTO.getNum());
 		request.setAttribute("proDTO", proDTO);
+		request.setAttribute("banner", banner);
 		
 		return "/main/MyUsedProTegSearch.jsp";
 	}

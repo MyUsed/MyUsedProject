@@ -23,7 +23,7 @@
 
 <div id="layer_fixed"><jsp:include page="/main/layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
 <div id="sidebannerR"><jsp:include page="/mypage/friendList.jsp"/></div><!-- 사이드배너 Right  -->
-<div id="advertise" ></div>  <!-- 광고 페이지  -->
+<div id="advertise" ><jsp:include page="/main/advertise.jsp"/></div>  <!-- 광고 페이지  -->
 <div id="sidebannerL"><jsp:include page="/main/sidebannerL.jsp" /></div> <!-- 사이드배너 Left -->
 
 

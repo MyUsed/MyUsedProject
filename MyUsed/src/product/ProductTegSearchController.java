@@ -13,6 +13,7 @@ import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import admin.BannerApplyDTO;
 import friend.FriendDTO;
 import main.ProBoardCategDTO;
 import member.MemberDTO;
@@ -110,6 +111,11 @@ public class ProductTegSearchController {
 			request.setAttribute("friendState2", friendState2);	//친구목록 불러오는 리스트
 		}
 	  		
+		
+
+		// 광고 가져옴 
+		BannerApplyDTO banner = new BannerApplyDTO();
+		banner = (BannerApplyDTO)sqlMapClientTemplate.queryForObject("main.bannerSelect",null);
 	    
 
 	   // request.setAttribute("categList", categList);	//옆에 뿌려지는 2차 카테고리 리스트
@@ -126,6 +132,7 @@ public class ProductTegSearchController {
 		request.setAttribute("pagingHtml", pagingHtml);
 		request.setAttribute("page", page);
 		request.setAttribute("number", number);
+		request.setAttribute("banner", banner);
 		
 		return "/product/MyUsedProductView_tegSearch.jsp";
 	}

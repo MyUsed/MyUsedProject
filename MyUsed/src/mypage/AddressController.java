@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import admin.BannerApplyDTO;
 import member.ProfilePicDTO;
 
 
@@ -49,10 +50,18 @@ public class AddressController {
 		picmap.put("mem_num", num);   
 		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap); // ´ñ±Û´Ü ÇÁ·ÎÇÊ »çÁøÀ» °¡Á®¿È
 		
+		
+		// ±¤°í °¡Á®¿È 
+				BannerApplyDTO banner = new BannerApplyDTO();
+				banner = (BannerApplyDTO)sqlMap.queryForObject("main.bannerSelect",null);
+				
+				
+		
 		mv.addObject("num",num);
 		mv.addObject("addresslist",addresslist);
 		mv.addObject("fianllist",fianllist);
 		mv.addObject("proDTO",proDTO);
+		mv.addObject("banner",banner);
 		mv.setViewName("/mypage/address.jsp");
 		return mv;
 	}

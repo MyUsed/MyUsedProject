@@ -65,19 +65,23 @@ figure,figcaption,img{ display:block; }
 		<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mem_num}"> 
 		<font size="3" color="#4565A1"><strong>${name}</strong></font>
 		</a> <br />
-		<font size="2" color="#9A9DA4">${time}</font>
+		<font size="2" color="#9A9DA4">${time}</font>	<img src="/MyUsed/images/likeDown.png" /> 
  
-		<br/> <br /> ${content}  <br /><br />
-		
+		<br/> <br /> ${content}  <br /><br /><br/>
+	
 		</td>
 	</tr>
-
+	
 	<tr >
 		<td  bgcolor="#F6F7F9">
+		
 	  		<hr width="99%"  > 
-			좋아요 /<font size="2" color="#9A9DA4"> 댓글 ${count}개 </font>/ 공유
+			<font size="2" color="#9A9DA4"> 댓글 ${count}개 </font>
+			
 	  		<hr width="99%"  > 
+	  		
 		</td>
+		
 	</tr>
 	
 	<tr>
