@@ -30,6 +30,10 @@ public class LoginController {
 	public String logout(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("memId");
+		
+		memDTO = (MemberDTO) sqlMapClientTemplate.queryForObject("member.selectDTO", id);
+		request.setAttribute("naverId", memDTO.getNaverid());
+		
 		sqlMapClientTemplate.update("member.Log_off", id);	// 로그인상태를 on으로(onoff 컬럼 1)
 
 		session.removeAttribute("memId");

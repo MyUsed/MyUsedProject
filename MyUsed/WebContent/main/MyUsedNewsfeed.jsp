@@ -16,12 +16,12 @@
 
 <a onclick="javascript:openstate()" onmouseover="this.style.textDecoration='none'" style="cursor:pointer;"> 
 <font style="font-weight:bold; font-size:120%">
-	SNS </font>
+	State </font>
 </a> &nbsp;&nbsp;
 
 <a onclick="javascript:openproduct()" onmouseover="this.style.textDecoration='none'" style="cursor:pointer;"> 
 <font style="font-weight:bold; font-size:120%">
-	Trade</font>
+	Product</font>
 </a>
 
 </center>
@@ -49,6 +49,9 @@
 
 
 <c:forEach var="list" items="${newsfeed}">	
+<!-- <form name="reple" action="reple.nhn" method="post" > -->
+
+	
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
 		<td>
@@ -67,12 +70,12 @@
 		<tr  bgcolor="#FFFFFF">
 		<td align="center">
 		<c:if test="${list.mem_pic != null}">
-		<a href="reple.nhn?num=${list.num}">
+		<a href="MypageModal.nhn?num=${list.num}">	
 		<img src="/MyUsed/images/${list.mem_pic}" width="470" height="300"/>
 		</a>
 		 <br/> <br />
 		</c:if>
-		<!-- 일반 게시글 해시태그 -->	
+	<!-- 일반 게시글 해시태그 -->	
 	<script type="text/javascript">
 	$(document).ready(function(){
 		var content = document.getElementById('listcontent_${list.num}').innerHTML;
@@ -127,10 +130,10 @@
 		
 		<script type="text/javascript">
 			/****** 리플열기 ******/
-			function openNreple${list.num}() {
-				if(nreple_${list.num}.style.display == 'block'){
-				    $('#nreple_${list.num}').slideUp();
-				    $('#nreple_${list.num}').attr('style', 'display:none;');			
+			function newopenreple${list.num}() {
+				if(new_reple_${list.num}.style.display == 'block'){
+				    $('#new_reple_${list.num}').slideUp();
+				    $('#new_reple_${list.num}').attr('style', 'display:none;');				
 				}else{
 				    $.ajax({
 				        type: "post",
@@ -139,48 +142,69 @@
 				        	num : '${list.num}',
 				        	page: 0
 				        },
-				        success: nreple${list.num},	// 페이지요청 성공시 실행 함수
-				        error: whenError_reple	//페이지요청 실패시 실행함수
+				        success: newreple${list.num},	// 페이지요청 성공시 실행 함수
+				        error: whenError_newreple	//페이지요청 실패시 실행함수
 				 	});
 					
 				}
 			}
-			function nreple${list.num}(relist){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다.
-			    $('#nreple_${list.num}').attr('style', 'background:#FFFFFF; border:1px solid #D5D5D5; display:block;');
-			    $('#nreple_${list.num}').slideDown();	// 댓글 폼열기
-			    $('#nreple_${list.num}').html(relist);
+			function newreple${list.num}(relist){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다.
+			    $('#new_reple_${list.num}').attr('style', 'background:#FFFFFF;  display:block;');
+			    $('#new_reple_${list.num}').slideDown();	// 댓글 폼열기
+			    $('#new_reple_${list.num}').html(relist);
 			    console.log(resdata);
 			}
-			function whenError_reple(){
+			function whenError_newreple(){
 			    alert("리플 에러");
 			}
 		</script>
 		
-		좋아요  / 공유하기 /
-		<a onclick="javascript:openNreple${list.num}()" style="cursor:pointer;">
-			<img src="/MyUsed/images/reple.PNG" width="25" height="20"/>
-			<font size="2" color="#9A9DA4">댓글 ${list.reples}개</font>
-		</a>
+	 <div id="likewow${i.count}"></div>
+	 <a onclick="likeAjax('${list.num}','${i.count}')">
+	 <c:if test="${list.likes == 0}">
+	 <img id="love" src="/MyUsed/images/likeDown.png"  style='cursor:pointer;' />
+	 </c:if>
+	 </a>
+	 <a onclick="likedownAjax('${list.num}','${i.count}')">
+	 <c:if test="${list.likes != 0}">
+	 <img id="love" src="/MyUsed/images/likeUp.png"  style='cursor:pointer;' />
+	 </c:if>
+	 </a>
+	 <a onclick="javascript:newopenreple${list.num}()" style="cursor:pointer;">
+	 <img src="/MyUsed/images/reple.PNG" width="23" height="17"/>
+	 <font size="2" color="#9A9DA4">댓글 ${list.reples}개</font></a>
 		</td>
 		</tr>
 				
 		<tr bgcolor="#FFFFFF">
 		<td>
 		
+		
+		
+		</td>
+		</tr>
+		
+		<tr>
+		<td>
+		
+		<!-- 리플 영역 -->
+		<div id="new_reple_${list.num}" style=" border:2px solid #000000; display:none;"></div>
+	
 		</td>
 		</tr>
 		
 
 	</table>
-		<!-- 일반 게시글 해시태그 -->	
-	
-	<div id="nreple_${list.num}" style=" border:2px solid #000000; display:none;"></div>
-	
-	</div>
+
 
 
  	<br />	
 
+		
+
+<!--  상품 보기 페이지  -->	
+
+<!-- </form>	  -->
 </c:forEach >
 </div>
 

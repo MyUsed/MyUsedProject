@@ -25,7 +25,7 @@
 
 <!-- 개인알림 테이블 insert -->
 <insert id="insertNotice" parameterClass="java.util.Map">
-	insert into notice_$num$(seq_num, categ, state, reg) values(notice_$num$seq.nextval, #categ#, default, sysdate)
+	insert into notice_$num$ values(notice_$num$seq.nextval, 0,0,#call_memnum#,#call_name#,#categ#, #state#, sysdate)
 </insert>
 
 <!-- 타입별 정렬 -->

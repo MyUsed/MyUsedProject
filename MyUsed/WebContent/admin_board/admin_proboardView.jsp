@@ -7,7 +7,7 @@
 <script type="text/javascript">
 	function proRepleOpen(){
 		var url = "admin_proboardReple.nhn?num=${pdto.num}";
-		window.open(url, "chat", "width=600, height=400, left=500, top=100 ,resizable=yes, location=no, status=no, toolbar=no, menubar=no");
+		window.open(url, "chat", "width=700, height=500, left=500, top=100 ,resizable=yes, location=no, status=no, toolbar=no, menubar=no");
 	}
 </script>
 

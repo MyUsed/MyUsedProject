@@ -32,14 +32,28 @@
 			<c:forEach var="list" items="${list}" varStatus="i">
 				<div>
 					<input id="ac-${i.count}" name="accordion-1" type="checkbox" />
-					<label for="ac-${i.count}"><img src="/MyUsed/images/Q.png"/> 0${i.count}. ${list.title} 
-						<b class="right">
-							<c:if test="${fn:length(list.reg) > 11}">
-					    		${fn:substring(list.reg,0,10)}
-					    	</c:if>
-						</b>
-						
-					</label>
+					
+					<c:if test="${i.count < 10}">
+						<label for="ac-${i.count}"><img src="/MyUsed/images/Q.png"/> 0${i.count}. ${list.title} 
+							<b class="right">
+								<c:if test="${fn:length(list.reg) > 11}">
+						    		${fn:substring(list.reg,0,10)}
+						    	</c:if>
+							</b>
+							
+						</label>
+					</c:if>
+					
+					<c:if test="${i.count > 9}">
+						<label for="ac-${i.count}"><img src="/MyUsed/images/Q.png"/> ${i.count}. ${list.title} 
+							<b class="right">
+								<c:if test="${fn:length(list.reg) > 11}">
+						    		${fn:substring(list.reg,0,10)}
+						    	</c:if>
+							</b>
+						</label>
+					</c:if>
+					
 					<article class="ac-small">
 						<img src="/MyUsed/images/A.png"/><div class="center">${list.content}</div> 
 					</article>

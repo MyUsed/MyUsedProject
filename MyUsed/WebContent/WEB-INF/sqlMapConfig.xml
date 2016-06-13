@@ -24,6 +24,10 @@
 	<sqlMap resource="/sql/reportAccSQL.xml"/>
 	<sqlMap resource="/sql/chatSQL.xml"/>
 	<sqlMap resource="/sql/tradeSQL.xml"/>
+	<sqlMap resource="/sql/faqSQL.xml"/>
+	<sqlMap resource="/sql/noticeSQL.xml"/>
+	<sqlMap resource="/sql/qnaSQL.xml"/>
+	<sqlMap resource="/sql/reportSQL.xml"/>
 	<sqlMap resource="/sql/admin_memSQL.xml"/>
 	<sqlMap resource="/adminSql/boardSQL.xml"/>
 	<sqlMap resource="/adminSql/noticeSQL.xml"/>

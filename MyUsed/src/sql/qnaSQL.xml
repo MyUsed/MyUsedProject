@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="qnaBd">
+ <select id="select-All" resultClass="board.QnaDTO">
+ select * from qna order by seq_num desc
+ </select>
+ <select id="qnaCount" resultClass="int">
+ select count(*) from qna 
+ </select>
+ <update id="countUpdate" parameterClass="int">
+ update qna set readcount=readcount+1 where seq_num = #seq_num#
+ </update>
+  <select id="id_Search" parameterClass="String" resultClass="board.QnaDTO">
+ select * from qna where mem_id like '%'||#search#||'%' order by seq_num desc
+ </select>
+ <select id="contents_Search" parameterClass="String" resultClass="board.QnaDTO">
+ select * from qna where title like '%'||#search#||'%' order by seq_num desc
+ </select>
+  <select id="contents" parameterClass="int" resultClass="board.QnaDTO">
+ select * from qna where seq_num = #seq_num# order by seq_num desc
+ </select>
+ <update id="qnaBdUpdate" parameterClass="java.util.Map">
+  update qna set title=#title# ,contents=#contents# where seq_num=#seq_num#
+ </update>
+ <insert id="QnaInsert" parameterClass="java.util.Map">
+insert into qna(seq_num, title, contents, pw, mem_id, qna_ref, qna_re_step,qna_re_level) values(qna_seq.nextval, #title#,#contents#,#pw#,#sessionId#,qna_seq.nextval,1, 0)
+ </insert>
+<delete id="QnaDelete" parameterClass="int">
+delete from qna where seq_num=#seq_num#
+</delete>
+<update id="QnaUpReply" parameterClass="board.QnaDTO">
+update qna set qna_re_step=qna_re_step+1 where qna_ref=#qna_ref# and qna_re_step>#qna_re_step#
+</update>
+<insert id="QnaInReply" parameterClass="board.QnaDTO">
+ insert into qna (seq_num, title, contents, pw, mem_id, qna_ref, qna_re_step,qna_re_level)
+ values (qna_seq.nextval, #title#, #contents#, #pw#, #mem_id#, #qna_ref#, #qna_re_step#+1,#qna_re_level#+1)
+</insert>
+<select id="replyCount" parameterClass="int" resultClass="int">
+select count(*) from qna_reply  where reply_num = #seq_num#
+</select>
+<select id="replylist" parameterClass="int" resultClass="board.QnaReplayDTO">
+select * from qna_reply where reply_num = #seq_num#
+</select>
+</sqlMap>

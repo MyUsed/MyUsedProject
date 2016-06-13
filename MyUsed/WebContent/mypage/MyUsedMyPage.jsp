@@ -304,7 +304,7 @@
  				<c:forEach var="friendState_m1" items="${friendState_m1}">
  					<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState_m1.mem_num}">
  						${friendState_m1.name} 
- 					</a><br />
+ 					</a>
  					<input type="button" value="확인" onClick="javascript:window.location='MyUsedRejectionFriend.nhn?agree=${0}&mem_num=${friendState_m1.mem_num}&num=${num}'">
  					<br />
  				</c:forEach>
@@ -318,7 +318,7 @@
  			<c:forEach var="friendState1" items="${friendState1}">
  				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${friendState1.mem_num}">
  					${friendState1.name}
- 				</a><br />
+ 				</a>
  				<input type="button" value="수락" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${0}&mem_num=${friendState1.mem_num}&num=${num}'">
  				<input type="button" value="거절" onClick="javascript:window.location='MyUsedAgreeFriend.nhn?agree=${1}&mem_num=${friendState1.mem_num}&num=${num}'">
  				<br />

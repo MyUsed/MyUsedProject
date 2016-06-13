@@ -27,7 +27,7 @@
 				${memDTO.name}ดิภว ป็ม๘
 			</a> &nbsp;&nbsp;&nbsp;&nbsp;
 			<a onclick="" style="cursor:pointer;" onmouseover="this.style.textDecoration='none'">
-				ป็ม๘รธ
+				
 			</a>
 		</font>
 	</div>
@@ -77,6 +77,8 @@
 	
 	</table>
 	</div>
+	
+	
 	
 
 </div>

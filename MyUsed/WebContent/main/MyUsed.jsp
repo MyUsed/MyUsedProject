@@ -119,6 +119,51 @@ function NoticeUpdatePost(mynum,pro_num){
 	
 }
 
+//수정 알람 확인 (승인)
+function NoticeUpdateModifyR(mynum){
+	
+	
+	  $.ajax({
+	        type: "post",
+	        url : "/MyUsed/NoticeUpdatModifyR.nhn",
+	        data: {	// url 페이지도 전달할 파라미터
+	        	mynum : mynum
+	        	
+	      	},
+	      
+   	});
+	
+}
+
+//수정 알람 확인 (승인)
+function NoticeUpdateModifyP(mynum){
+	
+	
+	  $.ajax({
+	        type: "post",
+	        url : "/MyUsed/NoticeUpdatModifyP.nhn",
+	        data: {	// url 페이지도 전달할 파라미터
+	        	mynum : mynum
+	        	
+	      	},
+	      
+   	});
+	
+}
+
+
+// ----------------------------------- 친구 알림 스크립트 ------------------------------------------------
+function fri_openMsg() {
+	$("#fri_msgPop").attr('style','display:block;');
+	$("#fri_arrow").attr('style','display:block;');
+}
+
+function fri_closeMsg() {
+	$("#fri_msgPop").attr('style','display:none;');
+	$("#fri_arrow").attr('style','display:none;');
+}
+
+
 
 
 </script>
@@ -137,6 +182,9 @@ function NoticeUpdatePost(mynum,pro_num){
 
 
 
+<!-- 친구 아이콘 누르면 나오는 알람 -->
+<div id="friendNotice" style="position:absolute; z-index:9999;">
+<jsp:include page="friendNotice.jsp"/></div>
 
 
 <div id="contents">   <!-------------------------------- 메인 내용 ------------------------------------------>
@@ -195,6 +243,16 @@ function NoticeUpdatePost(mynum,pro_num){
    			<a href="tradeState.nhn" onclick="javascript:NoticeUpdatePost(${noticelist.board_num},${noticelist.pro_num})"  >
    			<c:if test="${noticelist.categ == 'post'}">
    			<b>님이 상품을 배송 하였습니다.</b>
+   			</c:if>
+   			</a>
+   			<a href="MyUsed.nhn" onclick="javascript:NoticeUpdateModifyR(${noticelist.call_memnum})"  >
+   			<c:if test="${noticelist.categ == 'modify_reject'}">
+   			<b>님의 프로필 수정요청이 거절되었습니다.</b>
+   			</c:if>
+   			</a>
+   			<a href="MyUsed.nhn" onclick="javascript:NoticeUpdateModifyP(${noticelist.call_memnum})"  >
+   			<c:if test="${noticelist.categ == 'modify_permit'}">
+   			<b>님의 프로필 수정요청이 승인되었습니다.</b>
    			</c:if>
    			</a>
    			<br /> &nbsp;

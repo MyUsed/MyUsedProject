@@ -97,26 +97,26 @@ function mgradeError() {
 		</td>
 	</tr>
 	<tr>
-		<td width="15%">이름</td>
+		<td width="15%" align="center">이름</td>
 		<td width="30%">${memDTO.name}</td>
-		<td width="15%">아이디</td>
+		<td width="15%" align="center">아이디</td>
 		<td width="30%">${memDTO.id}</td>
 	</tr>
 	<tr>
-		<td width="15%">생일</td>
+		<td width="15%" align="center">생일</td>
 		<td width="30%">${memDTO.birthdate}</td>
-		<td width="15%">성별</td>
+		<td width="15%" align="center">성별</td>
 		<td width="30%">${memDTO.gender}</td>
 	</tr>
 	<tr>
-		<td width="15%">포인트</td>
+		<td width="15%" align="center">포인트</td>
 		<td width="30%" onclick="openpoint()" style="cursor:pointer;">
 			<div id="mpoint1" style="display:block;">${memDTO.point}</div>
 			<div id="mpoint2" style="display:none;">
 				<input type="text" name="point_modi" id="point_modi" value="${memDTO.point}" onkeypress="modify_point()">
 			</div>
 		</td>
-		<td width="15%">등급</td>
+		<td width="15%" align="center">등급</td>
 		<td width="30%" onclick="opengrade()">
 			<div id="mgrade1" style="display:block;">${memDTO.grade}</div>
 			<div id="mgrade2" style="display:none;">

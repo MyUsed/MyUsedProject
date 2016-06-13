@@ -46,13 +46,13 @@
 	</td></tr>
 	<tr><td>
 	<strong>- 고객센터관리</strong> <br/>
-			QnA수정 <br/>
-			FaQ수정 <br/>
+			<a href="admin_faq.nhn">QnA수정 </a><br/>
+			<a href="admin_qna.nhn">FaQ수정 </a><br/>
 			<a href="admin_notice.nhn">공지사항</a><br/>
 			<a href="admin_noticeModifyMain.nhn">공지사항수정</a><br/>
 			<a href="admin_noticeWrite.nhn">공지사항작성</a><br/>
 			
-			게시판 생성<br/>
+			
 			<br/><br/><br/><br/><br/><br/><br/>
 	</td></tr>
 	

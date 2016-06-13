@@ -121,9 +121,9 @@
 								<ul class="gnb">
 									<li ><a href="#"><font color="#223C6F" >친구 ▼</font></a>
 										<ul class="sub" style="width:120px; box-shadow:1px 1px 1px #BDBDBD;">
-	      									<li><a onclick="deleteFriend('${friendpic.mem_num}')">친구 끊기</a></li>
-            								<li><a onclick="modifyFriendCateg('${friendpic.mem_num}')">카테고리 변경</a></li>
-            								<li><a href="/MyUsed/MyUsed.nhn">쪽지 보내기</a></li>
+	      									<li><a onclick="deleteFriend('${friendpic.mem_num}')"style="cursor:pointer;">친구 끊기</a></li>
+            								<li><a onclick="modifyFriendCateg('${friendpic.mem_num}')"style="cursor:pointer;">카테고리 변경</a></li>
+            								<li><a onclick="javascript:openPaperForm('${friendpic.mem_num}', '${friendpic.name}')" >쪽지 보내기</a></li>
         								</ul>
     								</li>
     							</ul>
@@ -157,8 +157,8 @@
 									<li ><a href="#"><font color="#223C6F" >친구 ▼</font></a>
 										<ul class="sub" style="width:120px; box-shadow:1px 1px 1px #BDBDBD;">
 	      									<li><a onclick="deleteFriend('${friendpic.mem_num}')">친구 끊기</a></li>
-            								<li><a href="/MyUsed/MyUsed.nhn">카테고리 변경</a></li>
-            								<li><a href="/MyUsed/MyUsed.nhn">쪽지 보내기</a></li>
+            								<li><a onclick="modifyFriendCateg('${friendpic.mem_num}')">카테고리 변경</a></li>
+            								<li><a onclick="javascript:openPaperForm('${friendpic.mem_num}', '${friendpic.name}')" >쪽지 보내기</a></li>
         								</ul>
     								</li>
     							</ul>
@@ -192,8 +192,8 @@
 									<li ><a href="#"><font color="#223C6F" >친구 ▼</font></a>
 										<ul class="sub" style="width:120px; box-shadow:1px 1px 1px #BDBDBD;">
 	      									<li><a onclick="deleteFriend('${friendpic.mem_num}')">친구 끊기</a></li>
-            								<li><a href="/MyUsed/MyUsed.nhn">카테고리 변경</a></li>
-            								<li><a href="/MyUsed/MyUsed.nhn">쪽지 보내기</a></li>
+            								<li><a onclick="modifyFriendCateg('${friendpic.mem_num}')">카테고리 변경</a></li>
+            								<li><a onclick="javascript:openPaperForm('${friendpic.mem_num}', '${friendpic.name}')" >쪽지 보내기</a></li>
         								</ul>
     								</li>
     							</ul>
@@ -227,8 +227,8 @@
 									<li ><a href="#"><font color="#223C6F" >친구 ▼</font></a>
 										<ul class="sub" style="width:120px; box-shadow:1px 1px 1px #BDBDBD;">
 	      									<li><a onclick="deleteFriend('${friendpic.mem_num}')">친구 끊기</a></li>
-            								<li><a href="/MyUsed/MyUsed.nhn">카테고리 변경</a></li>
-            								<li><a href="/MyUsed/MyUsed.nhn">쪽지 보내기</a></li>
+            								<li><a onclick="modifyFriendCateg('${friendpic.mem_num}')">카테고리 변경</a></li>
+            								<li><a onclick="javascript:openPaperForm('${friendpic.mem_num}', '${friendpic.name}')" >쪽지 보내기</a></li>
         								</ul>
     								</li>
     							</ul>

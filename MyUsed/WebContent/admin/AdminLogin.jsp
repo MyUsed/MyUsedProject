@@ -18,8 +18,8 @@
 
 	<center>
 	
-	<br/><br/><br/> 
-		<strong>包府磊其捞瘤</strong> <br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<strong>包府磊其捞瘤</strong><br/><br/>
 	<form action="AdminLogin.nhn" method="post" >
 		<input type="text" name="id" placeholder="ID"/> <br />
 		<input type="password" name="pw" placeholder="PASSWARD" /> <br /><br/>

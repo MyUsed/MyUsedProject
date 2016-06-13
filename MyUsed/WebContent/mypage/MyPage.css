@@ -29,7 +29,7 @@
 			background:#EAEAEA;
 	}
 	
-#advertise {  position:absolute; 
+/* #advertise {  position:absolute; 
 		width:11%; 
 		height:500%;
 		left:75%;  
@@ -38,9 +38,9 @@
 		padding-top:30px;
 		z-index:80;
 	 }
-	
+	 */
 			
-#content { width:80%; 
+#content { width:91%; 
 		height:5000px; 
 		/* margin:40px 30% auto;  */
 		margin-top:40px;
@@ -344,7 +344,7 @@
 			  height:350px;
 			  margin-top:790px; 
 			  margin-right:10px;
-			  margin-left:379px;
+			  margin-left:380px;
 			  background:none;
 			  /* border:1px solid #BDBDBD; */ }
 			  

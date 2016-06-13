@@ -98,6 +98,15 @@
 		update notice_$mynum$ set state = 0 where pro_num = #pro_num# and categ = 'post'
 	</update>
 	
+		<!-- notice 업데이트 읽은 것 상태 0으로 변경 정보수정처리 -->
+	<update id="updateNoticeModifyR" parameterClass="java.util.Map">
+		update notice_$mynum$ set state = 0 where call_memnum = #mynum# and categ = 'modify_reject'
+	</update>
+		<!-- notice 업데이트 읽은 것 상태 0으로 변경 정보수정처리 -->
+	<update id="updateNoticeModifyP" parameterClass="java.util.Map">
+		update notice_$mynum$ set state = 0 where call_memnum = #mynum# and categ = 'modify_permit'
+	</update>
+	
 	
 	
 	

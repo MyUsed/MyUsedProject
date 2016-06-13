@@ -82,8 +82,12 @@ public class AdminLoginController {
 		int board_reples = (int)sqlMap.queryForObject("adminMain.board_reples",null);
 		// 3. 좋아요 1000개 이상
 		int board_likes = (int)sqlMap.queryForObject("adminMain.board_likes",null);
-		
-		
+		// 4. 당일 업데이트
+		int board_today = (int)sqlMap.queryForObject("adminMain.board_today",null);
+		// 5. 최근 일주일 업로드
+		int board_week = (int)sqlMap.queryForObject("adminMain.board_week",null);
+		// 6. 최근 한달 업로드
+		int board_month = (int)sqlMap.queryForObject("adminMain.board_month",null);
 		
 		
 		// << 회원통계 메뉴 >>
@@ -151,6 +155,9 @@ public class AdminLoginController {
 		mv.addObject("total_board",total_board);
 		mv.addObject("board_reples",board_reples);
 		mv.addObject("board_likes",board_likes);
+		mv.addObject("board_today",board_today);
+		mv.addObject("board_week",board_week);
+		mv.addObject("board_month",board_month);
 		mv.addObject("total_mem",total_mem);
 		mv.addObject("mem_login",mem_login);
 		mv.addObject("mem_report",mem_report);
@@ -169,6 +176,7 @@ public class AdminLoginController {
 		mv.addObject("adminMem_Team2",adminMem_Team2);
 		mv.addObject("adminMem_Team3",adminMem_Team3);
 		mv.addObject("adminMem_Team4",adminMem_Team4);
+		
 		
 		
 		

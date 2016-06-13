@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="faqBd">
+ <select id="faq-select"  resultClass="board.FaqDTO">
+ select 
+(select name from category_bd a where a.category_cd = b.category)as category_nm,
+  faq_num,
+  mem_id, 
+  pw, 
+  title, 
+  readcount,
+  contents,
+  reg from faq b  order by b.faq_num desc
+ </select>
+ 
+ <select id="faqCount" resultClass="int">
+ select count(*) from faq 
+ </select> 
+ 
+ <update id="countUpdate" parameterClass="int">
+ update faq set readcount=readcount+1 where faq_num = #faq_num#
+ </update>
+
+</sqlMap>

@@ -5,11 +5,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import member.MemberDTO;
 
 @Controller
 public class AdminMemInfoController {
@@ -67,9 +72,16 @@ public class AdminMemInfoController {
 	}
 	
 	@RequestMapping("/ModifyInfo.nhn")
-	public ModelAndView ModifyInfo(int num, int mem_num, String type, String changeval){
+	public ModelAndView ModifyInfo(HttpServletRequest request,int num, int mem_num, String type, String changeval){
 		ModelAndView mv = new ModelAndView();	
 
+
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("memId");
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+
+		
 		Map map = new HashMap();
 		map.put("type", type);				// 수정할 memberlist의 컬럼명
 		map.put("changeval", changeval);	// 수정 값
@@ -82,6 +94,10 @@ public class AdminMemInfoController {
 		Map map2 = new HashMap();
 		map2.put("num", mem_num);
 		map2.put("categ", "modify_permit");	//개인 알림 테이블
+		map2.put("call_name", memDTO.getName()); // 회원 이름
+		map2.put("call_memnum", memDTO.getNum()); // 회원 번호
+		map2.put("state", 1);
+	
 		sqlMap.insert("admin_mem.insertNotice", map2);
 		
 		mv.setViewName("/admin_member/AdminModifyReject.jsp");	
@@ -89,14 +105,25 @@ public class AdminMemInfoController {
 	}
 
 	@RequestMapping("/ModifyReject.nhn")
-	public ModelAndView ModifyReject(int num, String type, int mem_num){
+	public ModelAndView ModifyReject(HttpServletRequest request,int num, String type, int mem_num){
 		ModelAndView mv = new ModelAndView();	
 
+
+		HttpSession session = request.getSession();
+		String sessionId = (String) session.getAttribute("memId");
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+
+		
 		sqlMap.update("admin_mem.reject", num);	
 		
 		Map map2 = new HashMap();
 		map2.put("num", mem_num);
 		map2.put("categ", "modify_reject");	//개인 알림 테이블
+		map2.put("call_name", memDTO.getName()); // 회원 이름
+		map2.put("call_memnum", memDTO.getNum()); // 회원 번호
+		map2.put("state", 1);
+		
 		sqlMap.insert("admin_mem.insertNotice", map2);
 		
 		mv.setViewName("/admin_member/AdminModifyReject.jsp");	

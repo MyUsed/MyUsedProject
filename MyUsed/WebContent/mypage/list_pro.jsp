@@ -86,14 +86,12 @@
 		
 		</td>
 		</tr>
-		
+			
 		<tr bgcolor="#FFFFFF">
 		<td>
-		<hr width="100%"  > 
-		
-		
-		좋아요 
-		<input type="image" src="/MyUsed/images/chiceIcon.png" width="20" height="20" id="choiceB${i.count}" onclick="choiceAjax('${i.count}')" title="찜하기"/>
+		<hr width="100%"> 
+
+		<img id="love" src="/MyUsed/images/likeDown.png"  style='cursor:pointer;' />
 		<input type="hidden" name="num" id="num${i.count}" value="${prolist.num}" />
 		<input type="hidden" name="mem_num" id="mem_num${i.count}" value="${prolist.mem_num}" />
 		<input type="hidden" name="mem_name" id="mem_name${i.count}" value="${prolist.name}" />
@@ -103,10 +101,13 @@
 		
 		 <a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>
 		
-			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="35" height="35" /></a>
+			<a id="choiceB${i.count}" onclick="choiceAjax('${i.count}')"><img src="/MyUsed/images/chooseIcon.png" title="찜하기" width="60" height="65" style='cursor:pointer;'/></a>
+			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="55" height="45" title="구매하기"/></a>
+			
 			<div id="ajaxChoice"></div>
 			
 		</td>
+		
 		</tr>
 
 	</table>

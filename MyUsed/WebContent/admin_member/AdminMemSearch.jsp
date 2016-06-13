@@ -30,6 +30,7 @@ function detail(list) { // 요청성공한 페이지정보가 aaa 변수로 콜백된다.
 function detailError() {
 	alert("detailError");
 }
+
 </script>
 </head>
 
@@ -45,7 +46,15 @@ function detailError() {
 		<td align="center" bgcolor="#D9E5FF"><b>성별</b></td>
 	</tr>
 	<c:forEach var="searchMem" items="${searchMemList}">
-	<tr>
+	<script type="text/javascript">
+	function memmouseOver${searchMem.num}(){
+		document.getElementById("id${searchMem.num}").style.background="#EAEAEA";
+	}
+	function memmouseOut${searchMem.num}(){
+		document.getElementById("id${searchMem.num}").style.background="#FFFFFF";
+	}
+	</script>
+	<tr id="id${searchMem.num}"  onmouseover="memmouseOver${searchMem.num}()" onmouseout="memmouseOut${searchMem.num}()" >
 		<td onclick="detailInfo('${searchMem.num}')" style="cursor:pointer;" align="center">${searchMem.num}</td>
 		<td onclick="detailInfo('${searchMem.num}')" style="cursor:pointer;" align="center">${searchMem.id}</td>
 		<td onclick="detailInfo('${searchMem.num}')" style="cursor:pointer;" align="center">${searchMem.name}</td>

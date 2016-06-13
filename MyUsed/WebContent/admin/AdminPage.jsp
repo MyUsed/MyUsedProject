@@ -25,7 +25,15 @@
 	<c:forEach var="admin_Notice" items="${admin_Notice}" begin="0" end="4">
 	<tr>
 	<td width="70">공지사항</td>
-	<td width="350"> ${admin_Notice.title} </td>
+	
+	<td width="350">
+		<c:if test="${fn:length(admin_Notice.title) > 25}">
+		    		${fn:substring(admin_Notice.title,0,24)}... 
+		</c:if>
+		<c:if test="${fn:length(admin_Notice.title) < 24}">
+		    		${admin_Notice.title}
+		</c:if>
+	  </td>
 	<td width="110" align="center">
 	<c:if test="${fn:length(admin_Notice.reg) > 11}">
 	${fn:substring(admin_Notice.reg,0,10)}
@@ -53,13 +61,13 @@
 	<td bgcolor="#EAEAEA" width="150">좋아요 1000개 이상</td><td align="right"><b><font color="red">${board_likes} 건</font></b></td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="150">당일 업데이트</td><td align="right"><b><font color="red">0 건</font></b></td>
+	<td bgcolor="#EAEAEA" width="150">당일 업데이트</td><td align="right"><b><font color="red">${board_today} 건</font></b></td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="150">최근 일주일 업로드</td><td align="right"><b><font color="red">0 건</font></b></td>
+	<td bgcolor="#EAEAEA" width="150">최근 일주일 업로드</td><td align="right"><b><font color="red">${board_week} 건</font></b></td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="150">최근 한달 업로드</td><td align="right"><b><font color="red">0 건</font></b></td>
+	<td bgcolor="#EAEAEA" width="150">최근 한달 업로드</td><td align="right"><b><font color="red">${board_month} 건</font></b></td>
 	</tr>
 	
 </table>
@@ -86,10 +94,10 @@
 	<td bgcolor="#EAEAEA" width="130">네이버 회원</td><td align="right"><b>${naver_mem}</b> 명</td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">30대 회원</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">남자 회원</td><td align="right"><b>0</b> 명</td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">40대 이상</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">여자 회원</td><td align="right"><b>0</b> 명</td>
 	</tr>
 </table>
 </div>

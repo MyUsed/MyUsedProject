@@ -25,6 +25,18 @@
 	<select id="board_likes" resultClass="int">
 		select count(*) from boardlist where likes > 1000
 	</select>
+	<!-- 4. 오늘 등록된 게시글 -->
+	<select id="board_today" resultClass="int">
+		select count(*) from boardlist where to_char(reg,'yyyy-mm-dd') = to_char(sysdate,'yyyy-mm-dd')
+	</select>
+	<!-- 5. 최근 일주일 등록된 게시글 -->
+	<select id="board_week" resultClass="int">
+		select count(*) from boardlist where reg between  sysdate-7 and sysdate order by reg
+	</select>
+	<!-- 5. 최근 일주일 등록된 게시글 -->
+	<select id="board_month" resultClass="int">
+		select count(*) from boardlist where reg between  add_months(sysdate,-1) and sysdate order by reg
+	</select>
 	
 	
 	

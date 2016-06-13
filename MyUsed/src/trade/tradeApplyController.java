@@ -173,6 +173,8 @@ public class tradeApplyController {
 		map.put("memnum", memnum);
 		sqlMap.update("order.updateNoticeFriend",map); // 친구추가 메세지 확인 알람처리
 		
+		mv.setViewName("");
+		
 		return mv;
 	}
 	
@@ -206,6 +208,34 @@ public class tradeApplyController {
 		
 		return mv;
 	}
+	
+	@RequestMapping("NoticeUpdatModifyR.nhn")
+	public ModelAndView noticeUpdatModifyR( int mynum){
+		ModelAndView mv = new ModelAndView();
+		
+		Map map = new HashMap();
+		map.put("mynum", mynum);
+		
+		
+		sqlMap.update("order.updateNoticeModifyR",map); // 알림 상태 0 으로	변경 배송 
+		
+		return mv;
+	}
+	
+	@RequestMapping("NoticeUpdatModifyP.nhn")
+	public ModelAndView noticeUpdatModifyP( int mynum){
+		ModelAndView mv = new ModelAndView();
+		
+		Map map = new HashMap();
+		map.put("mynum", mynum);
+		
+		
+		sqlMap.update("order.updateNoticeModifyP",map); // 알림 상태 0 으로	변경 배송 
+		
+		return mv;
+	}
+	
+	
 	
 	
 	

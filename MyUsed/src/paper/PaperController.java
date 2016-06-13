@@ -14,14 +14,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import member.MemberDTO;
+import member.ProfilePicDTO;
+
 @Controller
 public class PaperController {
 	@Autowired
 	private SqlMapClientTemplate SqlMapClientTemplate;
 
 	@RequestMapping("paperMain.nhn")	// 쪽지 보여주는 메인
-	public ModelAndView paperMain(int mynum, HttpServletRequest request){
-		
+	public ModelAndView paperMain(int mynum, HttpServletRequest request, ProfilePicDTO proDTO, HttpSession session){
+		Map map = new HashMap();
+		map.put("mem_num", mynum);
+		proDTO = (ProfilePicDTO) SqlMapClientTemplate.queryForObject("profile.newpic", map); // 프로필
+		String sessionId = (String) session.getAttribute("memId");
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) SqlMapClientTemplate.queryForObject("member.selectDTO", sessionId);
+
+		request.setAttribute("name", memDTO.getName());
+
 		String pagecurrent = request.getParameter("currentPage");	// 현재페이지의 parameter값을 담는 변수
 		int currentPage = 1;	// 현재페이지
 		int totalCount = 0;		// 전체 게시글 수
@@ -38,7 +49,6 @@ public class PaperController {
 		}
 		
 		ModelAndView mv = new ModelAndView();
-		Map map = new HashMap();
 		map.put("mynum", mynum);	// 회원 고유 번호
 		List list = SqlMapClientTemplate.queryForList("paper.all", map); // 쪽지테이블 내용 다가져오기
 
@@ -56,6 +66,8 @@ public class PaperController {
 		int paperCount = (int)SqlMapClientTemplate.queryForObject("paper.paperCount", map);	// 글 읽음 여부. state값 가져오기
 		mv.addObject("list", list);
 		mv.addObject("mynum", mynum);
+		mv.addObject("proDTO", proDTO);
+		mv.addObject("memDTO", memDTO);
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.addObject("paperCount", paperCount);
 		mv.setViewName("/paper/paperMain.jsp");
@@ -63,8 +75,17 @@ public class PaperController {
 	}
 	
 	@RequestMapping("paperForm.nhn")	// 쪽지 쓰는 폼
-	public ModelAndView paperForm(int mynum, String name){
+	public ModelAndView paperForm(int mynum, String name, HttpSession session, ProfilePicDTO proDTO){
+		Map map = new HashMap();
+		map.put("mem_num", mynum);
+		proDTO = (ProfilePicDTO) SqlMapClientTemplate.queryForObject("profile.newpic", map); // 프로필
+		String sessionId = (String) session.getAttribute("memId");
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) SqlMapClientTemplate.queryForObject("member.selectDTO", sessionId);
+
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("proDTO", proDTO);
+		mv.addObject("memDTO", memDTO);
 		mv.addObject("mynum", mynum);
 		mv.addObject("name", name);
 		mv.setViewName("/paper/paperForm.jsp");
@@ -189,7 +210,16 @@ public class PaperController {
 	}
 	
 	@RequestMapping("paperCollection.nhn")	// 보낸 쪽지함
-	public ModelAndView paperCollection(int mynum, HttpServletRequest request){
+	public ModelAndView paperCollection(int mynum, HttpServletRequest request, HttpSession session, ProfilePicDTO proDTO){
+		Map map = new HashMap();
+		map.put("mem_num", mynum);
+		proDTO = (ProfilePicDTO) SqlMapClientTemplate.queryForObject("profile.newpic", map); // 프로필
+		String sessionId = (String) session.getAttribute("memId");
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) SqlMapClientTemplate.queryForObject("member.selectDTO", sessionId);
+
+		request.setAttribute("name", memDTO.getName());
+
 		ModelAndView mv = new ModelAndView();
 		
 		String pagecurrent = request.getParameter("currentPage");	// 현재페이지의 parameter값을 담는 변수
@@ -221,6 +251,7 @@ public class PaperController {
 		
 		mv.addObject("mynum", mynum);
 		mv.addObject("list", list);
+		mv.addObject("proDTO", proDTO);
 		mv.addObject("pagingHtml", pagingHtml);
 		mv.setViewName("/paper/paperCollection.jsp");
 		return mv;
@@ -265,4 +296,14 @@ public class PaperController {
 			mv.setViewName("/paper/paperRDelete.jsp");
 			return mv;
 		}
+		
+		@RequestMapping("paperFormnew.nhn")	// 쪽지 쓰는 폼(새창)
+		public ModelAndView paperFormnew(int mynum, String name){
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("mynum", mynum);
+			mv.addObject("name", name);
+			mv.setViewName("/paper/paperForm_new.jsp");
+			return mv;
+		}
+		
 }

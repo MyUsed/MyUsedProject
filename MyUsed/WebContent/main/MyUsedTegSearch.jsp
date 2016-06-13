@@ -10,12 +10,21 @@
 <script src="/MyUsed/main/animate.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <style type="text/css">
-
-#sidebannerR { position:fixed; top:50px; left:43%; margin-left:37%; width:20%; height:100%; background:#EAEAEA; }
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:35%; width:15%; height:100%; background:#E9EAED; }
-#contents { position:absolute; width:50%; height:3000px; margin-top: 30px; margin-left:13%;background:#EAEAEA; }
-#advertise {  position:fixed; width:22%; height:100%; left:61%; margin-right:30%;background:#EAEAEA; }
-
+#contents { width:52%; height:9000px; margin-top:30px; margin-left:13%; background:#EAEAEA; }
+#advertise {  position:fixed; width:22%; height:100%; left:64%; margin-right:30%;background:#EAEAEA; }
+#sidebannerR { position:fixed; 
+		top:50px; 
+		height:500%; 
+		left:86%; 
+		width:14%;
+		margin-left:0%;  
+		padding-left:1%;
+		background:#EAEAEA; 
+		z-index:100;
+	}
+	
+ 
 </style>
 <title>${content} 검색결과</title>
 </head>
@@ -24,7 +33,7 @@
 
 
 <div id="layer_fixed"><jsp:include page="layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
-<div id="sidebannerR"><jsp:include page="sidebannerR.jsp"/></div> <!-- 사이드배너 Right  -->
+<div id="sidebannerR"><jsp:include page="/mypage/friendList.jsp"/></div> <!-- 사이드배너 Right  -->
 <div id="advertise" ><jsp:include page="advertise.jsp"/></div>  <!-- 광고 페이지  -->
 <div id="sidebannerL"><jsp:include page="sidebannerL.jsp"/></div> <!-- 사이드배너 Left -->
 <div id="contents">
@@ -38,7 +47,9 @@
 
 <form name="reple" action="reple.nhn" method="post" >
 
-	
+<br />	
+<div style="padding-left:70px;font-size:110%;font-weight:bold;">${content} 검색결과</div>
+<br />
 <c:forEach var="list" items="${list}">	
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
@@ -116,10 +127,52 @@
 		<td>
 		<hr width="100%"  > 
 		
-		좋아요  / 공유하기 / <a href="reple.nhn?num=${list.num}"><img src="/MyUsed/images/replego.PNG"/></a>
+		<script type="text/javascript">
+			/****** 리플열기 ******/
+			function mianopenreple${list.num}() {
+				if(main_reple_${list.num}.style.display == 'block'){
+				    $('#main_reple_${list.num}').slideUp();
+				    $('#main_reple_${list.num}').attr('style', 'display:none;');				
+				}else{
+				    $.ajax({
+				        type: "post",
+				        url : "/MyUsed/reple.nhn",
+				        data: {	// url 페이지도 전달할 파라미터
+				        	num : '${list.num}',
+				        	page: 0
+				        },
+				        success: reple${list.num},	// 페이지요청 성공시 실행 함수
+				        error: whenError_reple	//페이지요청 실패시 실행함수
+				 	});
+					
+				}
+			}
+			function reple${list.num}(relist){	// 요청성공한 페이지정보가 aaa 변수로 콜백된다.
+			    $('#main_reple_${list.num}').attr('style', 'background:#FFFFFF;  display:block;');
+			    $('#main_reple_${list.num}').slideDown();	// 댓글 폼열기
+			    $('#main_reple_${list.num}').html(relist);
+			    console.log(resdata);
+			}
+			function whenError_reple(){
+			    alert("리플 에러");
+			}
+		</script>
+		
+	 <div id="likewow${i.count}"></div>
+	 <a onclick="likeAjax('${list.num}','${i.count}')">
+	 <c:if test="${list.likes == 0}">
+	 <img id="love" src="/MyUsed/images/likeDown.png"  style='cursor:pointer;' />
+	 </c:if>
+	 </a>
+	 <a onclick="likedownAjax('${list.num}','${i.count}')">
+	 <c:if test="${list.likes != 0}">
+	 <img id="love" src="/MyUsed/images/likeUp.png"  style='cursor:pointer;' />
+	 </c:if>
+	 </a>
+	 <a onclick="javascript:mianopenreple${list.num}()" style="cursor:pointer;"><img src="/MyUsed/images/reple.PNG" width="23" height="17"/><font size="2" color="#9A9DA4">댓글 ${list.reples}개</font></a>
 		</td>
 		</tr>
-		
+				
 		<tr bgcolor="#FFFFFF">
 		<td>
 		
@@ -128,8 +181,19 @@
 		</td>
 		</tr>
 		
+		<tr>
+		<td>
+		
+		<!-- 리플 영역 -->
+		<div id="main_reple_${list.num}" style=" border:2px solid #000000; display:none;"></div>
+	
+		</td>
+		</tr>
+		
+
 
 	</table>
+	<br />
 </c:forEach>
 
 </form>

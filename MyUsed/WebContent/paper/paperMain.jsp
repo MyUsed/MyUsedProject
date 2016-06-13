@@ -2,9 +2,12 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
-<script src="/MyUsed/main/script.js"></script>
 <link rel="stylesheet" type="text/css" href="/MyUsed/main/main.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="/MyUsed/main/script.js"></script>
+<script src="/MyUsed/main/animate.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
 <!-- 전체체크박스 -->
 <script>
 	function CheckAll(){

@@ -44,6 +44,11 @@ public class MainController {
 
 		HttpSession session = request.getSession();
 		String sessionId = (String) session.getAttribute("memId");
+		
+		if(sessionId == null){
+			mv.setViewName("/main/MyUsedNone.jsp");
+		}else{
+		
 		MemberDTO memDTO = new MemberDTO();
 		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
 
@@ -69,11 +74,27 @@ public class MainController {
 		sessionproDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", profileMap2);
 		request.setAttribute("sessionproDTO", sessionproDTO);
 
-		/** 친구 목록 리스트(state2) */
+		/** 모든 친구 목록 */
+		//친구 목록 리스트 가져가기(state별로)
 		Map map = new HashMap();
 		map.put("num", memDTO.getNum());
+		System.out.println(map);
+
+		List friendList = new ArrayList();
+		friendList = sqlMap.queryForList("friend.allFriend", map);
+
+		List friendState0 = new ArrayList();
+		friendState0 = sqlMap.queryForList("friend.friendState0", map);
+
+		List friendState1 = new ArrayList();
+		friendState1 = sqlMap.queryForList("friend.friendState1", map);
+
 		List friendState2 = new ArrayList();
 		friendState2 = sqlMap.queryForList("friend.friendState2", map);
+
+		List friendState_m1 = new ArrayList();
+		friendState_m1 = sqlMap.queryForList("friend.friendState_m1", map);
+
 
 		/** 친구 목록 프로필 사진뽑기 */
 		if (friendState2.size() > 0) {
@@ -132,8 +153,17 @@ public class MainController {
 		mv.addObject("replelist", replelist);
 
 		mv.addObject("memDTO", memDTO);
+		
+
+		mv.addObject("friendState0", friendState0);
+		mv.addObject("friendState1", friendState1);
+		mv.addObject("friendState2", friendState2);
+		mv.addObject("friendState_m1", friendState_m1);
+		
 		mv.setViewName("/main/MyUsed.jsp");
+			}
 		return mv;
+		
 	   }   
 	   
 

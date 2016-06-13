@@ -3,7 +3,7 @@
 <sqlMap namespace="adminNotice">
 
 	<select id="all" resultClass="admin.AdminNoticeDTO">
-		select * from admin_notice
+		select * from admin_notice order by reg desc
 	</select>
 
 	<select id="one" resultClass="admin.AdminNoticeDTO" parameterClass="int">

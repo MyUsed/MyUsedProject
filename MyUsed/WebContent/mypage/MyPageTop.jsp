@@ -70,7 +70,7 @@
  		<label for="paper">
  			<img src="/MyUsed/images/paper2.png" width="15" height="15" style="cursor:pointer;">
  		</label>
- 		<input type="button" id="paper" onclick="javascript:openPaperForm('${memDTO.num}', '${memDTO.name}')" style="display:none">
+ 		<input type="button" id="paper" onclick="javascript:openPaperForm('${num}', '${name}')" style="display:none">
  		</c:if>
 	</div>
 	
@@ -100,14 +100,11 @@
 					<li ><a href="#">더 보기▼</a>
 						<ul class="sub">
 							<c:if test="${mynum != mem_num}">
-	      					<li><a onclick="javascript:reportAccount('${mem_num}')" style="cursor:pointer;">계정 신고</a></li>
+	      					<li style="border:1px solid #EAEAEA;"><a onclick="javascript:reportAccount('${mem_num}')" style="cursor:pointer;">계정 신고</a></li>
 	      					</c:if>
 							<c:if test="${mynum == mem_num}">
-	      					<li><a onclick="javascript:reportAccount('${mem_num}')" style="cursor:pointer;">계정 탈퇴</a></li>
+	      					<li style="border:1px solid #EAEAEA;"><a onclick="javascript:reportAccount('${mem_num}')" style="cursor:pointer;">계정 탈퇴</a></li>
 	      					</c:if>
-            				<li><a href="/MyUsed/MyUsed.nhn">bbbbbb</a></li>
-            				<li><a href="/MyUsed/MyUsed.nhn">cccccc</a></li>
-            				<li><a href="/MyUsed/MyUsed.nhn">dddddd</a></li>
         				</ul>
     				</li>
     			</ul>

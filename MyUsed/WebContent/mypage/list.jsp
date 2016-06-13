@@ -112,8 +112,17 @@
 			    alert("리플 에러");
 			}
 		</script>
-		
-		좋아요  / 공유하기 /
+		 <div id="likewow${i.count}"></div>
+	 <a onclick="likeAjax('${list.num}','${i.count}')">
+	 <c:if test="${list.likes == 0}">
+	 <img id="love" src="/MyUsed/images/likeDown.png"  style='cursor:pointer;' />
+	 </c:if>
+	 </a>
+	 <a onclick="likedownAjax('${list.num}','${i.count}')">
+	 <c:if test="${list.likes != 0}">
+	 <img id="love" src="/MyUsed/images/likeUp.png"  style='cursor:pointer;' />
+	 </c:if>
+	 </a>
 		<a onclick="javascript:openreple${list.num}()" style="cursor:pointer;">
 			<img src="/MyUsed/images/reple.PNG" width="25" height="20"/>
 			<font size="2" color="#9A9DA4">댓글 ${list.reples}개</font>

@@ -10,12 +10,20 @@
 <script src="/MyUsed/main/animate.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <style type="text/css">
-
-#sidebannerR { position:fixed; top:50px; left:43%; margin-left:37%; width:20%; height:100%; background:#EAEAEA; }
 #sidebannerL { position:fixed; top:50px; right:50%; margin-right:35%; width:15%; height:100%; background:#E9EAED; }
-#contents { position:absolute; width:50%; height:3000px; margin-top: 30px; margin-left:13%;background:#EAEAEA; }
-#advertise {  position:fixed; width:22%; height:100%; left:61%; margin-right:30%;background:#EAEAEA; }
-
+#contents { width:52%; height:9000px; margin-top:30px; margin-left:13%; background:#EAEAEA; }
+#advertise {  position:fixed; width:22%; height:100%; left:64%; margin-right:30%;background:#EAEAEA; }
+#sidebannerR { position:fixed; 
+		top:50px; 
+		height:500%; 
+		left:86%; 
+		width:14%;
+		margin-left:0%;  
+		padding-left:1%;
+		background:#EAEAEA; 
+		z-index:100;
+	}
+	
 </style>
 
 <title>${content} 검색결과</title>
@@ -25,7 +33,7 @@
 
 
 <div id="layer_fixed"><jsp:include page="layer_fixed.jsp"/></div> <!-- 상단 검색 Top -->
-<div id="sidebannerR"><jsp:include page="sidebannerR.jsp"/></div> <!-- 사이드배너 Right  -->
+<div id="sidebannerR"><jsp:include page="/mypage/friendList.jsp"/></div> <!-- 사이드배너 Right  -->
 <div id="advertise" ><jsp:include page="advertise.jsp"/></div>  <!-- 광고 페이지  -->
 <div id="sidebannerL"><jsp:include page="sidebannerL.jsp"/></div> <!-- 사이드배너 Left -->
 <div id="contents">
@@ -36,10 +44,13 @@
 
 <!--  상품 보기 페이지  -->	
 
-
+	
+<br />	
+<div style="padding-left:70px;font-size:110%;font-weight:bold;">${content} 검색결과</div>
+<br />
 
 <c:forEach var="prolist" items="${prolist}" varStatus="i">
-	
+
  	<table align="center"  width="550" height="180">
 		<tr	bgcolor="#FFFFFF">
 		<td>
@@ -121,14 +132,12 @@
 		
 		</td>
 		</tr>
-		
+	
 		<tr bgcolor="#FFFFFF">
 		<td>
-		<hr width="100%"  > 
-		
-		
-		좋아요 
-		<input type="image" src="/MyUsed/images/chiceIcon.png" width="20" height="20" id="choiceB${i.count}" onclick="choiceAjax('${i.count}')" title="찜하기"/>
+		<hr width="100%"> 
+
+		<img id="love" src="/MyUsed/images/likeDown.png"  style='cursor:pointer;' />
 		<input type="hidden" name="num" id="num${i.count}" value="${prolist.num}" />
 		<input type="hidden" name="mem_num" id="mem_num${i.count}" value="${prolist.mem_num}" />
 		<input type="hidden" name="mem_name" id="mem_name${i.count}" value="${prolist.name}" />
@@ -138,10 +147,13 @@
 		
 		 <a href="ProductDetailView.nhn?num=${prolist.num}"><img src="/MyUsed/images/reple.PNG"/><font size="2" color="#9A9DA4">댓글 ${prolist.reples}개</font></a>
 		
-			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="35" height="35" /></a>
+			<a id="choiceB${i.count}" onclick="choiceAjax('${i.count}')"><img src="/MyUsed/images/chooseIcon.png" title="찜하기" width="60" height="65" style='cursor:pointer;'/></a>
+			<a href="ProductDetailView.nhn?num=${prolist.num}"><img align="right" style="padding:2px" src="/MyUsed/images/buyIcon.PNG" width="55" height="45" title="구매하기"/></a>
+			
 			<div id="ajaxChoice"></div>
 			
 		</td>
+		
 		</tr>
 
 	</table>

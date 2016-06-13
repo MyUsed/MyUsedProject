@@ -43,7 +43,7 @@ function enter(){
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 			<!-- 친구찾기 -->
-				<input type="text" size="70" name="sword" id="sword" onkeypress="enter()"/>
+				<input type="text" size="70" name="sword" id="sword" />
 				<button onclick="searchword()" ><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
 			
 			
@@ -57,8 +57,9 @@ function enter(){
 				
 				
 				
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40" title="친구"></a>
+				
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;			
+				<img src="/MyUsed/images/mainFriend.png" OnClick="javascript:fri_openMsg()" style='cursor:pointer;' width="45"  height="40" title="친구">
 				<a href="paperMain.nhn?mynum=${num}"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35" title="채팅"></a>
 				
 				<!-- 개인 알림  -->

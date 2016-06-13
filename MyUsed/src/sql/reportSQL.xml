@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC '-//ibatis.apache.org//DTD Sql Map 2.0//EN' 'http://ibatis.apache.org/dtd/sql-map-2.dtd'>
+<sqlMap namespace="report">
+
+	<select id="report-all" resultClass="board.ReportDTO">
+		select * from report
+	</select>
+	 <select id="reportCount" resultClass="int">
+ 		select count(*) from report 
+ 	</select>
+</sqlMap>

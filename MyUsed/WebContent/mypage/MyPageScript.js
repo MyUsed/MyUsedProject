@@ -405,9 +405,9 @@ function whenErrormodal(){
 
 /* 쪽지 새창 */
 function openPaperForm(mynum, name){
-    url = "/MyUsed/paperForm.nhn?mynum="+mynum+"&name="+name;
+    url = "/MyUsed/paperFormnew.nhn?mynum="+mynum+"&name="+name;
     
     // 새로운 윈도우를 엽니다.
     open(url, "confirm", 
-	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400, height=500");
+	"toolbar=no, location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=450, height=400");
 }

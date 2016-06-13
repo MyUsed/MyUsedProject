@@ -95,13 +95,13 @@
 	font-size: 12px;
 }
 .center{
-
-	margin-left: 115px;
+	margin-right: 40px;
+	margin-left: 85px;
 	padding-top:20px;
 }
 .ac-small img{
 	position: absolute;
-	padding:20px 0 0 20px;
+	padding:20px 0 0 23px;
 }
 .ac-container input:checked ~ article.ac-medium{
 	height: 180px;

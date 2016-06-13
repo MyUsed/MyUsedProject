@@ -9,7 +9,7 @@
 			<a href="/MyUsed/MyUsed.nhn">
 			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
 			</a>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
 			<!-- 친구찾기 -->
 				<input type="text" size="70" name="member"/>
@@ -20,11 +20,10 @@
 				
 				<img src="/MyUsed/images/profile/${sessionproDTO.profile_pic}" width="30"  height="30">
 				
-				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${mynum}" onmouseover="this.style.textDecoration='none'"><font color="#F6F6F6">${sessionName} |</font></a> 
+				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${memDTO.num}" onmouseover="this.style.textDecoration='none'"><font color="#F6F6F6">${memDTO.name} |</font></a> 
 				<a href="/MyUsed/MyUsed.nhn" onmouseover="this.style.textDecoration='none'"><font color="#F6F6F6">홈 |</font></a>
 				<label for="callfriend"><font color="#F6F6F6" style="font-weight:lighter; cursor:pointer;">친구찾기</font></label>
 				<input type="button" id="callfriend" onclick="javascript:callHomefriend('${num}')" style="display:none;">
-				
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
@@ -41,7 +40,6 @@
 					<img src="/MyUsed/images/mainView.png" width="40" height="35" title="알림" style="cursor:pointer;">
 				</label>
 				<input type="button" id="msg" OnClick="javascript:" style='display: none;'>
-				
 				
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<!-- 추후 이미지로 바꾸기(페이스북처럼 드롭다운메뉴로) -->

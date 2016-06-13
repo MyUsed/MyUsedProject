@@ -94,6 +94,6 @@
  	<a href="choiceMain.nhn?mynum=${num}" onmouseover="this.style.textDecoration='none'"onmouseover="this.style.textDecoration='none'"><img src="/MyUsed/images/like.png" width="20" height="20">&nbsp;<font size="2"><b>¬Ú«œ±‚</b></font></a>
  	<br /><br />	
  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
- 	<a href="/MyUsed/main/modify.jsp" onmouseover="this.style.textDecoration='none'"><img src="/MyUsed/images/board.png" width="20" height="20">&nbsp;<font size="2"><b>∞Ì∞¥ºæ≈Õ</b></font></a>
+ 	<a href="board.nhn" onmouseover="this.style.textDecoration='none'"><img src="/MyUsed/images/board.png" width="20" height="20">&nbsp;<font size="2"><b>∞Ì∞¥ºæ≈Õ</b></font></a>
  	<br /><br />
 </body>

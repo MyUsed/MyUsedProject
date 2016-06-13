@@ -58,43 +58,7 @@
 </head>
 <body>
 
-<div id="layer_fixed">
-<form action="/MyUsed/MyUsedSearchMember.nhn" method="post">
-	<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
-		<tr>
-			<td style="vertical-align:left; padding-left: 30px; padding-right: 80px;">
-			<a href="/MyUsed/MyUsed.nhn">
-			<img src="/MyUsed/images/Mlogo2.png" width="170"  height="50">
-			</a>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				
-			<!-- 친구찾기 -->
-				<input type="text" size="70" name="member"/>
-				<button type="submit"><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
-			
-			
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				
-				<img src="/MyUsed/images/profile/${sessionproDTO.profile_pic}" width="15"  height="15">
-				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${memDTO.num}">${memDTO.name}</a> | 
-				<a href="/MyUsed/MyUsed.nhn">홈</a> | 
-				<a href="/MyUsed/MyUsed.nhn">친구찾기</a>
-				
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainFriend.png" width="45"  height="40"></a>
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainMessage.png" width="40"  height="35"></a>
-				<a href="/MyUsed/main/modify.jsp"><img src="/MyUsed/images/mainView.png" width="40"  height="35"></a>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<!-- 추후 이미지로 바꾸기(페이스북처럼 드롭다운메뉴로) -->
-				<c:if test="${sessionScope.memId != null }">
-					<a href="/MyUsed/MyUsedLogout.nhn">로그아웃</a>
-				</c:if>
-			</td>
-			
-		</tr>
-	</table>
-	</form>
-</div>
+<div id="layer_fixed"><jsp:include page="/mypage/layer_fixed.jsp"/></div>
 
 <div id="body">
 </div>
@@ -114,15 +78,6 @@
 				${categ2}
 				</c:if>
 				
-			</td>
-			<td align="right">
-				<font size="2">
-				<select>
-					<option>최신등록</option>
-					<option>낮은가격</option>
-					<option>높은가격</option>
-				</select>
-				</font>
 			</td>
 		</tr>
 	</table>
@@ -146,7 +101,7 @@
 				</div>
 				<div id="proview_sub">
 					<font size="5" color="#3B5998">
-						<font size="3" color="#1F51B7" ><b><fmt:formatNumber value="${proList.price}" type="number" />원</b></font>
+						<fmt:formatNumber value="${proList.price}" type="number" />원
 					</font>
 				</div>
 				<input type="hidden" name="num" id="num${i.count}" value="${proList.num}">
