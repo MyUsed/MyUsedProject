@@ -2,6 +2,8 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
 <c:if test="${sessionScope.memId == null}">
 	<script type="text/javascript">
 		alert("로그인 후에 이용하실 수 있습니다.");
@@ -48,8 +50,16 @@
 				<c:forEach var="list" items="${list}" varStatus="i">
 					<table border="1" width="500" height="20">
 					<tr>
-						<td width="20">${list.seq_num}</td>
-						<td width="130">${list.title}</td>
+						<td width="20">${i.count}</td>
+						<td width="130">
+							<c:if test="${fn:length(list.title) > 20}">
+								${fn:substring(list.title,0,19)}...
+							</c:if>
+							
+							<c:if test="${fn:length(list.title) < 20}">
+								${list.title}
+							</c:if>
+						</td>
 						<%-- <td width="50">${list.readcount}</td> --%>
 						<td width="50">관리자</td>
 						<td width="50">

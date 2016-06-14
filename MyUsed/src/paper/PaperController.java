@@ -105,13 +105,19 @@ public class PaperController {
 	}
 	
 	@RequestMapping("paperchatForm.nhn")	// ÂÊÁö ¾²´Â Æû
-	public ModelAndView paperchatForm(int mynum, String name){
+	public ModelAndView paperchatForm(int mynum, String name, HttpSession session, ProfilePicDTO proDTO){
 		ModelAndView mv = new ModelAndView();
-		
+		Map map = new HashMap();
+		map.put("mem_num", mynum);
+		proDTO = (ProfilePicDTO) SqlMapClientTemplate.queryForObject("profile.newpic", map); // ÇÁ·ÎÇÊ
+		String sessionId = (String) session.getAttribute("memId");
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) SqlMapClientTemplate.queryForObject("member.selectDTO", sessionId);
 		// ±¤°í °¡Á®¿È 
 		BannerApplyDTO banner = new BannerApplyDTO();
 		banner = (BannerApplyDTO)SqlMapClientTemplate.queryForObject("main.bannerSelect",null);
-		
+		mv.addObject("proDTO", proDTO);
+		mv.addObject("memDTO", memDTO);
 		mv.addObject("banner",banner);
 		mv.addObject("mynum", mynum);
 		mv.addObject("name", name);

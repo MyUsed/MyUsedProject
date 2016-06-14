@@ -17,6 +17,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import board.QnaDTO;
 import main.MainProboardDTO;
+import member.MemberDTO;
+import member.ProfilePicDTO;
+
 import java.util.*;
 import java.text.*; 
  
@@ -34,18 +37,26 @@ public class bdController {
 	private List<QnaDTO> list4 = new ArrayList<QnaDTO>();;
 	
 	@RequestMapping("board.nhn")//게시판 클릭시 이동하는 화면 컨트롤러
-	public ModelAndView board(){
+	public ModelAndView board(HttpSession session, ProfilePicDTO proDTO){
+		String sessionId = (String) session.getAttribute("memId");
+		Map picmap = new HashMap();
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+		picmap.put("mem_num", memDTO.getNum());
+		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap);
+		
 		SimpleDateFormat formatter = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss", Locale.KOREA );
 		Date currentTime = new Date ( );
 		String dTime = formatter.format ( currentTime );
-		System.out.println ( dTime ); 
-		System.out.println("=========board.nhn===========");
+
 		ModelAndView mv = new ModelAndView();
 //
 		List list = sqlMap.queryForList("notice.notice-all", null);
 		int count=(int)sqlMap.queryForObject("notice.noticeCount", null);
 		mv.addObject("list", list);
 		mv.addObject("count", count);
+		mv.addObject("name", memDTO.getName());
+		mv.addObject("proDTO", proDTO);
 		
 //
 		list2=sqlMap.queryForList("faqBd.faq-select",null);
@@ -68,7 +79,6 @@ public class bdController {
 	}
 	@RequestMapping("SubBoard.nhn")
 	public ModelAndView bd(HttpServletRequest request,String abc){
-		System.out.println("=========bd.nhn===========");
 		ModelAndView mv = new ModelAndView();
 		request.getParameter(abc);
 		mv.addObject("abc", abc);
@@ -76,13 +86,20 @@ public class bdController {
 		return mv;
 	}
 	@RequestMapping("Notice.nhn")
-	public ModelAndView notice(){
-		System.out.println("=========Notice.nhn===========");
+	public ModelAndView notice(HttpSession session, ProfilePicDTO proDTO){
 		ModelAndView mv = new ModelAndView();
-		List list = sqlMap.queryForList("notice.notice-all", null);
+		String sessionId = (String) session.getAttribute("memId");
+		Map picmap = new HashMap();
+		MemberDTO memDTO = new MemberDTO();
+		memDTO = (MemberDTO) sqlMap.queryForObject("member.selectDTO", sessionId);
+		picmap.put("mem_num", memDTO.getNum());
+		proDTO = (ProfilePicDTO) sqlMap.queryForObject("profile.newpic", picmap);
+		List list = sqlMap.queryForList("adminNotice.all", null);
 		int count=(int)sqlMap.queryForObject("notice.noticeCount", null);
 		mv.addObject("list", list);
 		mv.addObject("count", count);
+		mv.addObject("name", memDTO.getName());
+		mv.addObject("proDTO", proDTO);
 		mv.setViewName("/board/NoticeBoard.jsp");
 		return mv;
 	}
@@ -90,18 +107,12 @@ public class bdController {
 	@RequestMapping("Faq.nhn") 
 	public ModelAndView faq(HttpServletRequest request){
 		//System.out.println("category_nm="+category_id);
-		System.out.println("=========faq.nhn===========");
 		ModelAndView mv = new ModelAndView();	
 		list2=sqlMap.queryForList("faqBd.faq-select",null);
-		System.out.println("aaa");
 		int count=(int)sqlMap.queryForObject("faqBd.faqCount", null);
-		System.out.println("count="+count);
 	    request.setAttribute("count", count);
-		System.out.println("--------- Faq 실행 1---------");
 		mv.addObject("list2", list2);
-		System.out.println("--------- Faq 실행 2---------");
 		mv.setViewName("/board/FaqBoard.jsp");
-		System.out.println("--------- Faq 실행 3---------");
 		return mv;
 	}
 	
@@ -110,21 +121,15 @@ public class bdController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 	    String sessionId = (String) session.getAttribute("memId");
-		System.out.println("--------- report 실행 ---------");
 		list=sqlMap.queryForList("report.report-all",null);
 		int count=(int)sqlMap.queryForObject("report.reportCount", null);
-		System.out.println(count);
 	    request.setAttribute("count", count);
-		System.out.println("--------- report 실행 1---------");
 		mv.addObject("list", list);
-		System.out.println("--------- report 실행 2---------");
 		mv.setViewName("/board/ReportBoard.jsp");
-		System.out.println("--------- report 실행 3---------");
 		return mv;
 	}
 	@RequestMapping("Reportwrite.nhn")
 	public ModelAndView reportWrite(HttpServletRequest request){
-		System.out.println("=========qnaWrite.nhn===========");
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 	    String sessionId = (String) session.getAttribute("memId");
@@ -137,16 +142,11 @@ public class bdController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 	    String sessionId = (String) session.getAttribute("memId");
-		System.out.println("--------- qna 실행 ---------");
 		list=sqlMap.queryForList("qnaBd.select-All",null);
 		int count=(int)sqlMap.queryForObject("qnaBd.qnaCount", null);
-		System.out.println(count);
 	    request.setAttribute("count", count);
-		System.out.println("--------- qna 실행 1---------");
 		mv.addObject("list", list);
-		System.out.println("--------- qna 실행 2---------");
 		mv.setViewName("/board/QnaBoard.jsp");
-		System.out.println("--------- qna 실행 3---------");
 		return mv;
 	}
 	
@@ -154,12 +154,8 @@ public class bdController {
 	
 	@RequestMapping("QnaSearch.nhn")
 	public ModelAndView qnaSearch(String gubun, String search){
-		System.out.println("=========qnaSearch.nhn===========");
 		ModelAndView mv = new ModelAndView();
-		System.out.println("search="+gubun);
-		System.out.println("search="+search);
 		int count=(int)sqlMap.queryForObject("qnaBd.qnaCount", null);
-		System.out.println(count);
 		if(gubun.equals("2")){
 			list=sqlMap.queryForList("qnaBd.id_Search",search);
 		}else if(gubun.equals("1")){
@@ -173,9 +169,7 @@ public class bdController {
 	
 	@RequestMapping("Contents.nhn")
 	public ModelAndView qnaContents(int seq_num){
-		System.out.println("=========title.nhn===========");
 		ModelAndView mv = new ModelAndView();
-		System.out.println("search="+seq_num);
 		sqlMap.update("qnaBd.countUpdate",seq_num);
 		QnaDTO contents = new QnaDTO();
 		 contents=(QnaDTO)sqlMap.queryForObject("qnaBd.contents", seq_num);
@@ -183,7 +177,6 @@ public class bdController {
 		int count = (int)sqlMap.queryForObject("qnaBd.replyCount",seq_num);
 		List List = new ArrayList();
 		list = sqlMap.queryForList("qnaBd.replylist",seq_num);
-		System.out.println("count="+count);
 		mv.addObject("count", count); 
 		mv.addObject("list",list);
 		mv.addObject("contents", contents);
@@ -192,9 +185,7 @@ public class bdController {
 	}
 	@RequestMapping("QnaModify.nhn")
 	public ModelAndView qnaModify(int seq_num){
-		System.out.println("=========QnaModify.nhn===========");
 		ModelAndView mv = new ModelAndView();
-		System.out.println("search="+seq_num);
 		QnaDTO contents = new QnaDTO();
 		 contents=(QnaDTO)sqlMap.queryForObject("qnaBd.contents", seq_num);
 		
@@ -205,11 +196,7 @@ public class bdController {
 	
 	@RequestMapping("QnamodifyPro.nhn")
 	public ModelAndView qnaModifyPro(String seq_num, String title, String contents){
-		System.out.println("=========QnaModify.nhn===========");
 		ModelAndView mv = new ModelAndView();
-		System.out.println("seq_num="+seq_num);
-		System.out.println("title="+title);
-		System.out.println("contents="+contents);
 		Map map = new HashMap();
 		map.put("seq_num", seq_num);
 		map.put("title", title);
@@ -218,10 +205,8 @@ public class bdController {
 		sqlMap.update("qnaBd.qnaBdUpdate",map);
 		int count=(int)sqlMap.queryForObject("qnaBd.qnaCount", null);
 		if(count!=0){
-			System.out.println("count>0");
-		list=sqlMap.queryForList("qnaBd.select-All",null);
+			list=sqlMap.queryForList("qnaBd.select-All",null);
 		}else if(count==0){
-			System.out.println("count==0");
 			count=0;
 		}
 		mv.addObject("count", count);
@@ -231,7 +216,6 @@ public class bdController {
 	}
 	@RequestMapping("QnaWrite.nhn")
 	public ModelAndView qnaWrite(HttpServletRequest request){
-		System.out.println("=========qnaWrite.nhn===========");
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 	    String sessionId = (String) session.getAttribute("memId");
@@ -241,7 +225,6 @@ public class bdController {
 	}
 	@RequestMapping("QnaWritePro.nhn")
 	public ModelAndView qnaWritePro(String sessionId, String title, String pw, String contents){
-		System.out.println("=========qnaWrite.nhn===========");
 		ModelAndView mv = new ModelAndView();
 		Map map = new HashMap();
 		map.put("sessionId", sessionId);
@@ -263,16 +246,12 @@ public class bdController {
 	}
 	@RequestMapping("QnaDelete.nhn")
 	public ModelAndView qnaDelete(int seq_num){
-		System.out.println("=========qnaWrite.nhn===========");
 		ModelAndView mv = new ModelAndView();
-		System.out.println(seq_num);
 		sqlMap.delete("qnaBd.QnaDelete", seq_num);
 		int count=(int)sqlMap.queryForObject("qnaBd.qnaCount", null);
 		if(count!=0){
-			System.out.println("count>0");
-		list=sqlMap.queryForList("qnaBd.select-All",null);
+			list=sqlMap.queryForList("qnaBd.select-All",null);
 		}else if(count==0){
-			System.out.println("count==0");
 		}
 		mv.addObject("count", count);
 	    mv.addObject("list", list);
@@ -282,9 +261,7 @@ public class bdController {
 	
 	@RequestMapping("QnaReply.nhn")
 	public ModelAndView qnaReply(int qna_ref){
-		System.out.println("=========QnaReply.nhn===========");
 		ModelAndView mv = new ModelAndView();
-		System.out.println("qna_ref="+qna_ref);	
 		mv.addObject("qna_ref",qna_ref);
 		mv.setViewName("/board/QnaReply.jsp");
 		return mv;
@@ -292,7 +269,6 @@ public class bdController {
 	
 	@RequestMapping("QnaReplyPro.nhn")
 	public ModelAndView qnaReplyPro(QnaDTO dto){
-		System.out.println("=========QnaReplyPro.nhn===========");
 		ModelAndView mv = new ModelAndView();
 		//sqlMap.update("qnaBd.QnaUpReply", dto);
 		sqlMap.insert("qnaBd.QnaInReply", dto);

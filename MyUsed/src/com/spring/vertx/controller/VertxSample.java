@@ -25,7 +25,7 @@ public class VertxSample extends DefaultEmbeddableVerticle {
 				
 				socket.on("msg", new Handler<JsonObject>() {
 					public void handle(JsonObject event) {
-						System.out.println("handler ::: " + event.getString("msg"));
+						//System.out.println("handler ::: " + event.getString("msg"));
 						io.sockets().emit("response", event);
 					}
 				});

@@ -37,7 +37,7 @@ figure,figcaption,img{ display:block; }
 
 <table align="right"  width="100%" height="100%"  bgcolor="#FFFFFF" border="0">
 	<tr align="right">
-		<td rowspan="5" valign="top" width="80%">
+		<td rowspan="6" valign="top" width="80%">
 			<div>
 			<c:if test="${board_pic != null}">
 			<img src="/MyUsed/images/${board_pic}" width="100%" height="530"/>

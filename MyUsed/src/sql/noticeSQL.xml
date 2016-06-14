@@ -3,7 +3,9 @@
 <sqlMap namespace="notice">
 
 	<select id="notice-all" resultClass="board.NoticeDTO">
-		select * from admin_notice
+		<![CDATA[
+			select * from (select * from admin_notice order by reg desc) where rownum <= 5
+		]]>
 	</select>
 	
 	<select id="noticeCount" resultClass="int">

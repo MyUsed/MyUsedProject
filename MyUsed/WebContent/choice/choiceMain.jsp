@@ -77,8 +77,10 @@
 				</tr>
 			
 			</table>
+			<br /> <br />
 		</form>
 	</c:forEach>
+	
 </c:if>
 	
 <c:if test="${count < 1}">

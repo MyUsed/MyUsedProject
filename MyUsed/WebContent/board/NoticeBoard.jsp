@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <c:if test="${sessionScope.memId == null}">
 	<script type="text/javascript">
@@ -42,13 +43,28 @@
 			<c:forEach var="list" items="${list}" varStatus="i">
 				<div>
 					<input id="ac-${i.count}" name="accordion-1" type="checkbox" />
-					<label for="ac-${i.count}"><img src="/MyUsed/images/Q.png"/> 0${i.count}. ${list.title} 
-						<b class="right">
-							<c:if test="${fn:length(list.reg) > 11}">
-								${fn:substring(list.reg,0,10)}
-							</c:if>
-						</b>
-					</label>
+					
+					<c:if test="${i.count < 10}">
+						<label for="ac-${i.count}"><img src="/MyUsed/images/Q.png"/> 0${i.count}. ${list.title} 
+							<b class="right">
+								<c:if test="${fn:length(list.reg) > 11}">
+						    		${fn:substring(list.reg,0,10)}
+						    	</c:if>
+							</b>
+							
+						</label>
+					</c:if>
+					
+					<c:if test="${i.count > 9}">
+						<label for="ac-${i.count}"><img src="/MyUsed/images/Q.png"/> ${i.count}. ${list.title} 
+							<b class="right">
+								<c:if test="${fn:length(list.reg) > 11}">
+						    		${fn:substring(list.reg,0,10)}
+						    	</c:if>
+							</b>
+						</label>
+					</c:if>
+					
 					<article class="ac-small">
 						<img src="/MyUsed/images/A.png"/><div class="center">${list.content}</div> 
 					</article>
