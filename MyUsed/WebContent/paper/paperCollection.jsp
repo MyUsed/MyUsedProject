@@ -69,6 +69,7 @@
 <br/><br/><br/><br/><br/>
 <form name="Rpaper" action="paperRDelete.nhn?mynum=${mynum}" method="post" onsubmit="return confirmB()">
 	<center>
+		<h5><b>보낸 쪽지함</b></h5>
 		<table width="600">
 			<tr>
 				<td colspan="4"><hr color="#BDBDBD"></td>

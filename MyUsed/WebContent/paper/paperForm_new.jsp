@@ -13,7 +13,7 @@
 </script>
 <body bgcolor="#EAEAEA">
 
-<form name="pform" action="paperSend.nhn" method="post">
+<form name="pform" action="paperchatSend.nhn" method="post">
 		<table align="center">
 			<tr height="50"><td align="center"><b>쪽지보내기</b></td></tr>
 		    <tr>

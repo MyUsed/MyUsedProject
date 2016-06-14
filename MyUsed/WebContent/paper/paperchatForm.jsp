@@ -99,6 +99,7 @@ function enter(){
 
 <form action="paperchatSend.nhn" method="post">
 	<center>
+	<h5><b>쪽지보내기</b></h5>
 			<table border="0">
 			    <tr>
 			    	<c:if test="${name == null}">

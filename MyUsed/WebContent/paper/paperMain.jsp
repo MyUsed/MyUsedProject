@@ -68,12 +68,13 @@
 <br/><br/><br/><br/><br/>
 <form name="paper" method="post" action="paperDelete.nhn?mynum=${mynum}" onsubmit="return confirmB()">
 	<center>
+			<h5><b>쪽지함</b></h5>
 	    <table width="600">
 	    
 	    	<tr>
 	    		<td colspan="6"><hr color="#BDBDBD"></td>
 	    	</tr>
-	    
+	    		
 	    	<tr align="center">
 	    		<td>
 	    			<input type="submit" value="삭제"/>

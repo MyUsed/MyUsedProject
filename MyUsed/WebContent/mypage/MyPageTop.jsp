@@ -70,7 +70,7 @@
  		<label for="paper">
  			<img src="/MyUsed/images/paper2.png" width="15" height="15" style="cursor:pointer;">
  		</label>
- 		<input type="button" id="paper" onclick="javascript:openPaperForm('${num}', '${name}')" style="display:none">
+ 		<input type="button" id="paper" onclick="javascript:openPaperForm('${num}', '${frimemDTO.id}')" style="display:none">
  		</c:if>
 	</div>
 	

@@ -46,7 +46,7 @@ function enter(){
 
 
 </script>
-
+	
 
 	<table cellspacing="0" cellpadding="0" style="width:100%; height:100%;">
 		<tr>
@@ -108,6 +108,8 @@ function enter(){
 <br/><br/><br/><br/><br/>
 <form name="pform" action="paperSend.nhn" method="post">
 	<center>
+	
+		<h5><b>쪽지보내기</b></h5>
 		<table border="0">
 		    <tr>
 		    	<c:if test="${name == null}">
