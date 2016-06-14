@@ -39,19 +39,18 @@
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		&nbsp;&nbsp;&nbsp;&nbsp;
 		 <br/>
-		    <a href="/MyUsed/applyBanner.nhn">광고심사</a> <br/>
 			<a href="/MyUsed/insertBanner.nhn">광고등록</a> <br/>
 			<a href="/MyUsed/updateBanner.nhn">광고수정</a><br/>
 			<a href="/MyUsed/deleteBanner.nhn">광고삭제</a> <br/>
+			<a href="/MyUsed/applyBanner.nhn">광고심사</a> <br/>
 	</td></tr>
 	<tr><td>
 	<strong>- 고객센터관리</strong> <br/>
-		
+			<a href="admin_faq.nhn">QnA수정 </a><br/>
+			<a href="admin_qna.nhn">FaQ수정 </a><br/>
 			<a href="admin_notice.nhn">공지사항</a><br/>
 			<a href="admin_noticeModifyMain.nhn">공지사항수정</a><br/>
 			<a href="admin_noticeWrite.nhn">공지사항작성</a><br/>
-			<a href="admin_faq.nhn">QnA수정 </a><br/>
-			<a href="admin_qna.nhn">FaQ수정 </a><br/>
 			
 			
 			<br/><br/><br/><br/><br/><br/><br/>

@@ -101,8 +101,11 @@ public class AdminLoginController {
 		int nomal_mem = (int)sqlMap.queryForObject("adminMain.nomal_mem",null);
 		// 5.네이버 회원소
 		int naver_mem = (int)sqlMap.queryForObject("adminMain.naver_mem",null);
-		
-		
+		// 6.남성회원
+		int m_mem = (int)sqlMap.queryForObject("adminMain.m_mem",null);
+		// 7.여성회원
+		int f_mem = (int)sqlMap.queryForObject("adminMain.f_mem",null);
+				
 		
 		
 		
@@ -132,10 +135,28 @@ public class AdminLoginController {
 		int banner_fail = (int)sqlMap.queryForObject("adminMain.banner_fail",null);
 		
 		
-		// << 매출 현황 메뉴 >>
-		// 1.이달 총 매출
+		// << 개인정보 변경 메뉴 >>
+		// 1.이름 변경 개수
+		List namelist = new ArrayList();
+		namelist = sqlMap.queryForList("admin_mem.type_sort", "name");
+		int name_size = namelist.size();
 		
+		// 2.성별 변경 개수
+		List genderlist = new ArrayList();
+		genderlist = sqlMap.queryForList("admin_mem.type_sort", "gender");
+		int gender_size = genderlist.size();
 		
+		// 3.id 변경 개수
+		List idlist = new ArrayList();
+		idlist = sqlMap.queryForList("admin_mem.type_sort", "id");
+		int id_size = idlist.size();
+
+		// 4.생일 변경 개수
+		List birthdatelist = new ArrayList();
+		birthdatelist = sqlMap.queryForList("admin_mem.type_sort", "birthdate");
+		int birthdate_size = birthdatelist.size();
+		
+
 		
 		// << 직원 관리 메뉴 >>
 		// 1.총 직원 수
@@ -149,7 +170,9 @@ public class AdminLoginController {
 		// 5.사원
 		int adminMem_Team4 = (int)sqlMap.queryForObject("adminMain.adminMem_Team4",null);
 				
-		
+		// << 거래 입출금 내역 >>
+		int inMoney = (Integer)sqlMap.queryForObject("adminMain.inmoney", null);
+		int outMoney = (Integer)sqlMap.queryForObject("adminMain.outmoney", null);
 		
 		mv.addObject("admin_Notice",admin_Notice);
 		mv.addObject("total_board",total_board);
@@ -163,6 +186,8 @@ public class AdminLoginController {
 		mv.addObject("mem_report",mem_report);
 		mv.addObject("nomal_mem",nomal_mem);
 		mv.addObject("naver_mem",naver_mem);
+		mv.addObject("m_mem",m_mem);
+		mv.addObject("f_mem",f_mem);
 		mv.addObject("trade_all",trade_all);
 		mv.addObject("trade_deposit",trade_deposit);
 		mv.addObject("trade_finish",trade_finish);
@@ -176,7 +201,12 @@ public class AdminLoginController {
 		mv.addObject("adminMem_Team2",adminMem_Team2);
 		mv.addObject("adminMem_Team3",adminMem_Team3);
 		mv.addObject("adminMem_Team4",adminMem_Team4);
-		
+		mv.addObject("birthdate_size",birthdate_size);
+		mv.addObject("id_size",id_size);
+		mv.addObject("gender_size",gender_size);
+		mv.addObject("name_size",name_size);
+		mv.addObject("inMoney",inMoney);
+		mv.addObject("outMoney",outMoney);
 		
 		
 		

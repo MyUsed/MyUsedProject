@@ -6,9 +6,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+
 <title> 관리자 페이지 </title>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/MyUsed/admin/admin.css" />
 
+<script type="text/javascript">
+function viewState(){
+		$("#money_state").attr('style', 'display:block;');
+}
+</script>
 </head>
 <body>
 	
@@ -94,10 +102,10 @@
 	<td bgcolor="#EAEAEA" width="130">네이버 회원</td><td align="right"><b>${naver_mem}</b> 명</td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">남자 회원</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">남자 회원</td><td align="right"><b>${m_mem}</b> 명</td>
 	</tr>
 	<tr>
-	<td bgcolor="#EAEAEA" width="130">여자 회원</td><td align="right"><b>0</b> 명</td>
+	<td bgcolor="#EAEAEA" width="130">여자 회원</td><td align="right"><b>${f_mem}</b> 명</td>
 	</tr>
 </table>
 </div>
@@ -128,11 +136,20 @@
 </div>
 
 
-
 <div id="state"> <!-- 진행상태 -->
-	<b>거래 입출금 내역</b>
-	<br/><br/><br/><br/> <center> <input type="button" value="   조회   "/> </center>
+	<b>거래 입출금 내역   </b>
+	<br /><br /><br />
+	<center>
+		<input type="button" onclick="viewState()" value="   조회   " />
+	</center> 
+	<div id="money_state" style="display:none;">
+		<br />
+		입금현황  :	 <b><fmt:formatNumber  value="${inMoney}" type="number" /></b> 원  <br/>
+		출금현황  : <b><fmt:formatNumber value="${outMoney}" type="number" /></b> 원
+	</div>
 </div>
+
+
 
 <div id="product"> <!-- 상품현황 -->
 	<b>상품 현황</b><br/>
@@ -177,19 +194,19 @@
 </div>
 
 <div id="money"> <!-- 인기현황 -->
-	<b>매출 현황</b>
+	 <b>개인 정보 변경 신청</b><a href="MyUsedMemInfo.nhn"><font size="2">더보기</font></a>
 	<table border="1" width="250" height="160" style="border:2px double #747474; border-collapse:collapse;">
 		<tr>
-		<td bgcolor="#EAEAEA" width="100">이달 총 매출</td><td align="right"><b>3.243.000</b> 원</td>
+		<td bgcolor="#EAEAEA" width="100">이름 변경</td><td align="right"><b>${name_size}</b> 건</td>
 		</tr>
 		<tr>
-		<td bgcolor="#EAEAEA" width="100">전달 총 매출</td><td align="right"><b>0</b> 원</td>
+		<td bgcolor="#EAEAEA" width="100">아이디 변경</td><td align="right"><b>${id_size}</b> 건</td>
 		</tr>
 		<tr>
-		<td bgcolor="#EAEAEA" width="100">미정</td><td align="right"><b>0</b> 원</td>
+		<td bgcolor="#EAEAEA" width="100">성별 변경</td><td align="right"><b>${gender_size}</b> 건</td>
 		</tr>
 		<tr>
-		<td bgcolor="#EAEAEA" width="100">미정</td><td align="right"><b>0</b> 원</td>
+		<td bgcolor="#EAEAEA" width="100">생일 변경</td><td align="right"><b>${birthdate_size}</b> 건</td>
 		</tr>
 	</table>
 </div>
