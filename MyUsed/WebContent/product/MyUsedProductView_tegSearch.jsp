@@ -61,12 +61,12 @@
 				
 			<!-- 친구찾기 -->
 				<input type="text" size="70" name="member"/>
-				<button type="submit"><img src="/MyUsed/images/Search.png" width="20"  height="20"></button>
+				<button type="submit"><img src="/MyUsed/images/Search.png" width="35"  height="35"></button>
 			
 			
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				
-				<img src="/MyUsed/images/profile/${sessionproDTO.profile_pic}" width="15"  height="15">
+				<img src="/MyUsed/images/profile/${sessionproDTO.profile_pic}" width="25"  height="25">
 				<a href="/MyUsed/MyUsedMyPage.nhn?mem_num=${memDTO.num}">${memDTO.name}</a> | 
 				<a href="/MyUsed/MyUsed.nhn">홈</a> | 
 				<a href="/MyUsed/MyUsed.nhn">친구찾기</a>
@@ -239,22 +239,7 @@
 
 
 <div id="advertise">
-<br /> 
-<center>
-	<table align="center" width="95%" height="95%">
-	<tr bgcolor="#FFFFFF">
-	<td align="center">
-		<hr width="90%" />
-	<a href="http://www.iei.or.kr/">
-	<img src="/MyUsed/images/${banner}" width="95%" />
-		<hr width="90%" />
-	</a>
-	<a href="http://www.iei.or.kr/"><u>국비지원 바로가기</u></a>
-	</td>
-	</tr>
-	</table>
-	
-</center>
+
 </div>
 
 
